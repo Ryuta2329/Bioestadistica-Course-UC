@@ -1,0 +1,5 @@
+# Prefacio {-}
+
+Esta es el sitio web para la primera edición de **Bioestadística**, publicado en Julio de 2023. 
+Este libro es el resultado de la preparación del material de los cursos de Bioestadística I y Bioestadística II dados en la Universidad de Carabobo, y los cuales tuve la suerte de dictar durante el primer periodo académico de la universidad en 2023. 
+En este libro tú aprenderas 

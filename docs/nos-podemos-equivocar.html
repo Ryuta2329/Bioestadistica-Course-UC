@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>13 Nos podemos equivocar… | Bioestadistitica-UC.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="13 Nos podemos equivocar… | Bioestadistitica-UC.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="13 Nos podemos equivocar… | Bioestadistitica-UC.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introducción-al-contraste-de-hipótesis..html"/>
+<link rel="next" href="estadístico-de-prueba..html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="...">Bioestadística.</a></li>
+<li><a href="...">Marcelo Molinatti</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="1" data-path="introducción..html"><a href="introducción..html"><i class="fa fa-check"></i><b>1</b> Introducción.</a></li>
+<li class="chapter" data-level="2" data-path="teoría-de-probabilidades..html"><a href="teoría-de-probabilidades..html"><i class="fa fa-check"></i><b>2</b> Teoría de Probabilidades.</a></li>
+<li class="chapter" data-level="3" data-path="combinatoria..html"><a href="combinatoria..html"><i class="fa fa-check"></i><b>3</b> Combinatoria.</a></li>
+<li class="chapter" data-level="4" data-path="otros-teoremas-de-probabilidades..html"><a href="otros-teoremas-de-probabilidades..html"><i class="fa fa-check"></i><b>4</b> Otros Teoremas de Probabilidades.</a></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva..html"><a href="estadística-descriptiva..html"><i class="fa fa-check"></i><b>5</b> Estadística Descriptiva.</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html"><i class="fa fa-check"></i><b>5.1</b> Datos no agrupados.</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-tendencia-central."><i class="fa fa-check"></i><b>5.1.1</b> Medidas de Tendencia central.</a></li>
+<li class="chapter" data-level="5.1.2" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-posición."><i class="fa fa-check"></i><b>5.1.2</b> Medidas de posición.</a></li>
+<li class="chapter" data-level="5.1.3" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-dispersión."><i class="fa fa-check"></i><b>5.1.3</b> Medidas de Dispersión.</a></li>
+<li class="chapter" data-level="5.1.4" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-forma."><i class="fa fa-check"></i><b>5.1.4</b> Medidas de Forma.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="datos-agrupados..html"><a href="datos-agrupados..html"><i class="fa fa-check"></i><b>5.2</b> Datos Agrupados.</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-tendencia-central.-1"><i class="fa fa-check"></i><b>5.2.1</b> Medidas de Tendencia Central.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-posición.-1"><i class="fa fa-check"></i><b>5.2.2</b> Medidas de posición.</a></li>
+<li class="chapter" data-level="5.2.3" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-dispersión.-1"><i class="fa fa-check"></i><b>5.2.3</b> Medidas de dispersión.</a></li>
+<li class="chapter" data-level="5.2.4" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-forma.-1"><i class="fa fa-check"></i><b>5.2.4</b> Medidas de forma.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="distribuciones-de-probabilidad..html"><a href="distribuciones-de-probabilidad..html"><i class="fa fa-check"></i><b>6</b> Distribuciones de Probabilidad.</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="función-de-probabilidad..html"><a href="función-de-probabilidad..html"><i class="fa fa-check"></i><b>6.1</b> Función de Probabilidad.</a></li>
+<li class="chapter" data-level="6.2" data-path="función-de-distribución..html"><a href="función-de-distribución..html"><i class="fa fa-check"></i><b>6.2</b> Función de distribución.</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="función-de-distribución..html"><a href="función-de-distribución..html#propiedades-de-la-función-de-distribución."><i class="fa fa-check"></i><b>6.2.1</b> Propiedades de la función de distribución.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="cálculos-con-funciones-de-probabilidades..html"><a href="cálculos-con-funciones-de-probabilidades..html"><i class="fa fa-check"></i><b>6.3</b> Cálculos con funciones de probabilidades.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="distribuciones-de-probabilidad-de-variables-discretas..html"><a href="distribuciones-de-probabilidad-de-variables-discretas..html"><i class="fa fa-check"></i><b>7</b> Distribuciones de probabilidad de variables discretas.</a></li>
+<li class="chapter" data-level="8" data-path="distribuciones-de-probabilidad-de-variables-continuas..html"><a href="distribuciones-de-probabilidad-de-variables-continuas..html"><i class="fa fa-check"></i><b>8</b> Distribuciones de probabilidad de variables continuas.</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="distribución-normal..html"><a href="distribución-normal..html"><i class="fa fa-check"></i><b>8.1</b> Distribución Normal.</a></li>
+<li class="chapter" data-level="8.2" data-path="distribución-ji-cuadrada..html"><a href="distribución-ji-cuadrada..html"><i class="fa fa-check"></i><b>8.2</b> Distribución Ji-Cuadrada.</a></li>
+<li class="chapter" data-level="8.3" data-path="distribución-t-student..html"><a href="distribución-t-student..html"><i class="fa fa-check"></i><b>8.3</b> Distribución <span class="math inline">\(t\)</span>-Student.</a></li>
+<li class="chapter" data-level="8.4" data-path="distribución-f..html"><a href="distribución-f..html"><i class="fa fa-check"></i><b>8.4</b> Distribución <span class="math inline">\(F\)</span>.</a></li>
+<li class="chapter" data-level="8.5" data-path="ejercicios..html"><a href="ejercicios..html"><i class="fa fa-check"></i><b>8.5</b> Ejercicios.</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="inferencia-estadística..html"><a href="inferencia-estadística..html"><i class="fa fa-check"></i><b>9</b> Inferencia Estadística.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="cómo-se-enfrenta-a-la-inferencia-estadística.html"><a href="cómo-se-enfrenta-a-la-inferencia-estadística.html"><i class="fa fa-check"></i><b>9.1</b> ¿Cómo se enfrenta a la Inferencia Estadística?</a></li>
+<li class="chapter" data-level="9.2" data-path="frecuentistas-y-muestreo-repetido..html"><a href="frecuentistas-y-muestreo-repetido..html"><i class="fa fa-check"></i><b>9.2</b> Frecuentistas y muestreo repetido.</a></li>
+<li class="chapter" data-level="9.3" data-path="ámbito-de-la-inferencia-estadística..html"><a href="ámbito-de-la-inferencia-estadística..html"><i class="fa fa-check"></i><b>9.3</b> Ámbito de la inferencia Estadística.</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="teoría-de-muestreo..html"><a href="teoría-de-muestreo..html"><i class="fa fa-check"></i><b>10</b> Teoría de Muestreo.</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="estimación..html"><a href="estimación..html"><i class="fa fa-check"></i><b>10.1</b> Estimación.</a></li>
+<li class="chapter" data-level="10.2" data-path="distribución-muestral-de-un-estimador..html"><a href="distribución-muestral-de-un-estimador..html"><i class="fa fa-check"></i><b>10.2</b> Distribución muestral de un estimador.</a></li>
+<li class="chapter" data-level="10.3" data-path="teorema-del-límite-central-tlc..html"><a href="teorema-del-límite-central-tlc..html"><i class="fa fa-check"></i><b>10.3</b> Teorema del Límite Central (TLC).</a></li>
+<li class="chapter" data-level="10.4" data-path="necesidad-de-especificar-una-muestra..html"><a href="necesidad-de-especificar-una-muestra..html"><i class="fa fa-check"></i><b>10.4</b> Necesidad de especificar una muestra.</a></li>
+<li class="chapter" data-level="10.5" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html"><i class="fa fa-check"></i><b>10.5</b> Diseño de muestreo.</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-aleatorio-simple."><i class="fa fa-check"></i><b>10.5.1</b> Muestreo Aleatorio Simple.</a></li>
+<li class="chapter" data-level="10.5.2" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-aleatorio-estratificado."><i class="fa fa-check"></i><b>10.5.2</b> Muestreo Aleatorio Estratificado.</a></li>
+<li class="chapter" data-level="10.5.3" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-adaptativo."><i class="fa fa-check"></i><b>10.5.3</b> Muestreo Adaptativo.</a></li>
+<li class="chapter" data-level="10.5.4" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-sistemático."><i class="fa fa-check"></i><b>10.5.4</b> Muestreo Sistemático.</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="proceso-de-muestreo..html"><a href="proceso-de-muestreo..html"><i class="fa fa-check"></i><b>10.6</b> Proceso de Muestreo.</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="teoría-de-estimación..html"><a href="teoría-de-estimación..html"><i class="fa fa-check"></i><b>11</b> Teoría de Estimación.</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="propiedades-de-un-estimador..html"><a href="propiedades-de-un-estimador..html"><i class="fa fa-check"></i><b>11.1</b> Propiedades de un estimador.</a></li>
+<li class="chapter" data-level="11.2" data-path="estimación-puntual..html"><a href="estimación-puntual..html"><i class="fa fa-check"></i><b>11.2</b> Estimación puntual.</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="estimación-puntual..html"><a href="estimación-puntual..html#construcción-de-estadísitcos-para-inferencia."><i class="fa fa-check"></i><b>11.2.1</b> Construcción de estadísitcos para inferencia.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html"><i class="fa fa-check"></i><b>11.3</b> Estimación por Intervalos.</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html#intervalos-unilaterales."><i class="fa fa-check"></i><b>11.3.1</b> Intervalos Unilaterales.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="introducción-al-contraste-de-hipótesis..html"><a href="introducción-al-contraste-de-hipótesis..html"><i class="fa fa-check"></i><b>12</b> Introducción al Contraste de Hipótesis.</a></li>
+<li class="chapter" data-level="13" data-path="nos-podemos-equivocar.html"><a href="nos-podemos-equivocar.html"><i class="fa fa-check"></i><b>13</b> Nos podemos equivocar…</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="estadístico-de-prueba..html"><a href="estadístico-de-prueba..html"><i class="fa fa-check"></i><b>13.1</b> Estadístico de Prueba.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias..html"><a href="referencias..html"><i class="fa fa-check"></i>Referencias.</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown">
+Proudly published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="nos-podemos-equivocar" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">13</span> Nos podemos equivocar…<a href="nos-podemos-equivocar.html#nos-podemos-equivocar" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>La decisión tomada esta enlazada a una medida de incertidumbre, por lo que es posible cometer errores en las conclusiones.</p>
+<p>Cualquier afirmación estadística, por tanto, debe ser establecida en conjunto con una medida de que tan seguros estamos de que la decisión tomada es correcta.</p>
+<p>La razón principal es la dependencia con la muestra usada para refutar o ratificar la hipótesis planteada.</p>
+<p><em>Ejemplo</em>. Se examinó la influencia del fármaco <em>succinilcolina</em> sobre los niveles de circulación de andrógenos en la sangre. Se obtuvieron muestras de sangre de venados salvajes inmediatamente después de recibir una inyección intramuscular de <em>succinilcolina</em> con dardos de un rifle de caza. Treinta minutos después se obtuvo una segunda muestra de sangre y después los venados fueron liberados.
+Los niveles de andrógenos de 15 venados al momento de la captura y 30 minutos más tarde, medidos en nanogramos por mililitro (ng <span class="math inline">\({\text{mL}}^{-1}\)</span>), se presentan en la tabla.</p>
+<table>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Conc. Adrogenos (ng/mL)
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:right;">
+Venado
+</th>
+<th style="text-align:right;">
+Al inyectar
+</th>
+<th style="text-align:right;">
+30 min después
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2.76
+</td>
+<td style="text-align:right;">
+7.02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+5.18
+</td>
+<td style="text-align:right;">
+3.10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2.68
+</td>
+<td style="text-align:right;">
+5.44
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3.05
+</td>
+<td style="text-align:right;">
+3.99
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4.10
+</td>
+<td style="text-align:right;">
+5.21
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+7.05
+</td>
+<td style="text-align:right;">
+10.26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+6.60
+</td>
+<td style="text-align:right;">
+13.91
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+4.79
+</td>
+<td style="text-align:right;">
+18.53
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+7.39
+</td>
+<td style="text-align:right;">
+7.91
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+7.30
+</td>
+<td style="text-align:right;">
+4.85
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+11.78
+</td>
+<td style="text-align:right;">
+11.10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+3.74
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+26.00
+</td>
+<td style="text-align:right;">
+94.03
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+67.48
+</td>
+<td style="text-align:right;">
+94.03
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+17.04
+</td>
+<td style="text-align:right;">
+41.70
+</td>
+</tr>
+</tbody>
+</table>
+<p>De los métodos de estimación sabemos que la cantidad de andrógenos al momento de la inyección es de <span class="math inline">\(11.81 \pm 16.64\)</span>. Mientras que la concentración de andrógenos 30 minutos después de la inyección fue de <span class="math inline">\(21.65 \pm 30.92\)</span>.</p>
+<p>Podemos construir un intervalo de confianza para las diferencias entre la concentración de andrógenos antes y después, para cada venado.</p>
+<p><span class="math display">\[-0.38 &lt; D &lt; 20.08\]</span></p>
+<p>El planteamiento de un sistema de experimentación comienza con una conjetura sobre lo que se desea estudiar (en el ejemplo anterior, se desea saber si la succinilcolina es capaz de disminuir los niveles de andrógenos en la sangre).</p>
+<p>Nos preocuparemos por obtener una muestra de tamaño <span class="math inline">\(n\)</span> que esté descrita por los valores <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> de una variable aleatoria <span class="math inline">\(X\)</span>. Suponemos que cada valor es independiente de los demás. Por tanto, podemos conceptualizar estos valores como una secuencia <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> de variables aleatorias independientes e idénticamente distribuidas, cada una de las cuales tiene la misma distribución que <span class="math inline">\(X\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+    \text{Conjetura}: &amp; \text{ La succinilcolina modifica la concentración de andrógeno en venados.} \\
+    \text{No hay cambio}: &amp; \text{ La succinilcolina no cambia la concentración de andrógeno en venados.}
+\end{aligned}
+\]</span></p>
+<p>La formalización comienza con el establecimiento de un conjunto de hipótesis posibles al que llamamos <span class="math inline">\(\Theta\)</span>; y luego, se seleccionan dos hipótesis <span class="math inline">\(\Theta_0 \subseteq \Theta\)</span> y <span class="math inline">\(\Theta_1 \subseteq \Theta\)</span> tales que:</p>
+<p><span class="math display">\[\Theta_0 \cup \Theta_1 = \Theta, \qquad \Theta_0 \cap \Theta_1 = \emptyset\]</span></p>
+<p>Al conjunto <span class="math inline">\(\Theta_0\)</span> se le conoce como hipótesis nula, <span class="math inline">\(H_0\)</span>; y al conjunto <span class="math inline">\(\Theta_1\)</span> se le conoce como hipótesis alternativa, <span class="math inline">\(H_1\)</span>; y se escribe:</p>
+<p><span class="math display">\[
+\begin{aligned}
+    H_0: &amp; \Theta_0 \subseteq \Theta \\
+    H_1: &amp; \Theta_1 \subseteq \Theta
+\end{aligned}
+\]</span></p>
+<p>Además, si se hace un contraste para obtener una conclusión con respecto a un parámetro <span class="math inline">\(\theta\)</span>, el conjunto <span class="math inline">\(\Theta_0\)</span> debe contener la conjetura de que <em>no hay un cambio</em> en el valor esperado del parámetro (más específicamente, en la desviación esperada).</p>
+<p>En el ejemplo sobre el efecto de la succinilcolina sobre la concentración de andrógeno en venados, vimos que la diferencia en la concentración de andrógenos antes y después de la inyección de succinilcolina sirve como variable aleatoria para realizar inferencias.</p>
+<p>De forma que podemos definir el conjunto de todas las posibles hipótesis como <span class="math inline">\(\Theta = \{D \in\mathbb{R}\}\)</span>. Entonces:</p>
+<p><span class="math display">\[
+\begin{aligned}
+    H_0: &amp; \{D \in \mathbb{R}\vert D = 0\} \\
+    H_1: &amp; \{D \in \mathbb{R}\vert D \ne 0\}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+    H_0: &amp; D = 0 \\
+    H_1: &amp; D \ne 0
+\end{aligned}
+\]</span></p>
+<p>La forma de las hipótesis planteadas para un experimento <em>es algo subjetiva</em>, dado que su proposición depende de lo que sabe el investigador y su experiencia.</p>
+<p>Las condiciones de los conjuntos asociados a cada hipótesis pueden ser más precisos, dando lugar a <em>pruebas unilaterales</em>. Por ejemplo:</p>
+<p><span class="math display">\[
+\begin{aligned}
+    H_0: &amp; D \le 0 \\
+    H_1: &amp; D &gt; 0
+\end{aligned}
+\]</span></p>
+<p><strong>La hipótesis a probar es la hipótesis nula</strong>. Esta es la que se toma como cierta, como la proposición de que no hay cambio alguno, y debemos utilizar la información disponible como evidencia para respaldar nuestra <em>conjetura alternativa</em>.</p>
+<p><strong>La hipótesis nula nunca se acepta</strong>, solo <em>no se rechaza</em>. No es que la condición de igualdad no se mantenga, sino que la información que se tiene no es capaz de refutarla.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introducción-al-contraste-de-hipótesis..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estadístico-de-prueba..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

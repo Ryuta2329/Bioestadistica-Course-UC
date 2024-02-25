@@ -1,0 +1,435 @@
+# Teoría de Estimación.
+
+La estimación consiste en realizar predicciones o inferencias sobre los parámetros de una distribución usando la información contenida en la muestra.
+
+> **Fromalmente** 
+> Dada una variable aleatoria $X$ cuya ley de probabilidad depende de un parámetro $\theta$, un estadístico $g(X)$ se dice es estimador de $\theta$ si, para cualquier valor observado de $x \in X$, $g(x)$ se considera un estimado de $\theta$. 
+> Esta definción se puede escribir de otra forma, como:  
+> Dadas las observaciones de variables aleatorias $X_1, X_2, \ldots, X_n$ identica e independientemente distribuidas (_iid_) con función de distirbución $F(x\vert\theta)$, se estima $\theta$.
+
+En la primera definicón anterior, $g(x)$ es una función de la muestra (esto es, de las observaciones realizadas de la v. a. $X$). La definción puede ser un poco dificil de comprender, pero podemos revisarla poco a poco usando un ejemplo.
+
+> _Ejemplo_. Digamos que se realiza un muestreo aleatorio simple de una población cuya función de densidad es una v. a. normal de media $\mu$ y varianza finita $\sigma^2$. Digamos que se quiere construir un estimador de la media poblacional. Ya sabemos que el mejor estimador de la meda poblacional es $\bar{X} = \frac{1}{n}\sum_{i=1}^n X_i$, y por lo tanto se tiene que $g(x) = \bar{X}$. 
+
+De aquí en adelante, nos centraremos en construir estadísticos, además de usar los estimadores usuales ya conocidos. Pero antes, veamos las propiedades que tinene un buen estimador.
+
+## Propiedades de un estimador.
+
+Cualquier estimador que se precie de ser un buen estimador debe cumplir con 3 propiedades deseables para hacer inferencia.
+
+1. El estimador debe ser **insesgado**: un estimador se dice es insesgado cuando la esperanza de su estadístico es igual al valor del parametro siendo estimado. Se escribe el sesgo $B(\hat{\theta})$ como:
+$$B(\hat{\theta}) = E[\hat{\theta}] - \theta$$
+ 
+ > _Por ejemplo_, podemos calcular la esperanza del estadístico $\bar{X}$ como $E[\bar{X}] = E\left[\frac{1}{n}\sum_{i=1}^n X_i\right]$. Usando las propiedades $E[cX] = cE[X]$ y $E[\sum_i X] = \sum_iE[X]$, donde $c$ es una constante, se tiene que:
+ > $$E\left[\frac{1}{n}\sum_{i=1}^n X_i\right] = \frac{1}{n}\sum_{i=1}^n E[X_i]$$
+ > Pero como $E[X] = \mu$ (el valor esperado de una v. a. es su media) entonces:
+ > $$\frac{1}{n}\sum_{i=1}^n E[X_i] = \frac{1}{n}\sum_{i=1}^n\mu_X = \mu$$
+ > y vemos que el estadísitico $\bar{X}$, que estima $\mu$ tiene sesgo nulo. Por lo tanto, $\bar{X}$ es un buen estimador de la media. 
+ 
+2. El estimador debe ser **eficiente**: un estimador $g(x)$ se dice que es eficiente si de todos los posibles estiamdores, $g(x)$ tiene la mínima varianza posible. Más formalmente, si $\hat{X_1}$ y $\hat{X_2}$ son ambos estimadores insesgados de $X$, entonces se dice que $\hat{X_1}$ es un estimador más eficiente de $X$ que $\hat{X_2}$, si $\sigma^2_{\hat{X_1}} < \sigma^2_{\hat{X_2}}$.
+
+```{tikz, echo = FALSE, fig.cap = "Ejemplo gráfico de estimadores: _a)_ sesgado y no eficiente; _b)_ insesgado pero no eficiente; _c)_ sesgado y eficiente; _d)_ insesgado y eficiente.", fig.ext = 'png'}
+\begin{tikzpicture}[font=\sffamily]
+	\draw[latex-latex,thick](0,-9) -- node[midway,sloped,above] {Increasing precision}
+	(0,0) -- node[midway,sloped,above] {Increasing accuracy} (9,0);
+	%
+	\begin{scope}[shift={(2.5,-2.25)}]
+		 \foreach \X in {0.25,0.75,1.25,1.75}
+		 {\draw (0,0) circle (\X);}
+		 \node[anchor=north] at (-90:1.8) {a)};
+		 \foreach \X in {1,...,12}
+		  \fill (-1,1) + (rand*360:rand*1) circle(2pt);
+	\end{scope}
+	%
+	\begin{scope}[shift={(7.5,-2.25)}]
+		 \foreach \X in {0.25,0.75,1.25,1.75}
+		 {\draw (0,0) circle (\X);}
+		 \node[anchor=north] at (-90:1.8) {b)};
+		 \foreach \X in {1,...,12}
+		  \fill  (rand*360:rand*1) circle(2pt);
+	\end{scope}
+	%
+	\begin{scope}[shift={(2.5,-7)}]
+		 \foreach \X in {0.25,0.75,1.25,1.75}
+		 {\draw (0,0) circle (\X);}
+		 \node[anchor=north] at (-90:1.8) {c)};
+		 \foreach \X in {1,...,12}
+		  \fill (-1,1) + (rand*360:rand*0.5) circle(2pt);
+	\end{scope}
+	%
+	\begin{scope}[shift={(7.5,-7)}]
+		 \foreach \X in {0.25,0.75,1.25,1.75}
+		 {\draw (0,0) circle (\X);}
+		 \node[anchor=north] at (-90:1.8) {d)};
+		 \foreach \X in {1,...,12}
+		  \fill  (rand*360:rand*0.5) circle(2pt);
+	\end{scope}
+\end{tikzpicture}
+```
+
+3. El estimador debe ser **consistente**: se dice que un estimador $g(x)$ es consistente si este se aproxima a al parámetro $\theta$ cuando el esfuerzo de meustreo se hace mayor. Formalmente: sea $X_1, X_2, \ldots, X_n$ variables aleatorias _iid_ que se usan para obtener un estimador $\hat{\theta}$ de $\theta$. Se dice que $\hat{\theta}$ es un estimador consistente si converge en probabilidad a $\theta$, esto es:
+$$\lim\limits_{n \to \infty} P\left[\vert\hat{\theta} - \theta\vert\ge\varepsilon\right] = 0$$
+
+ > El último límite se puede modificar para comprender mejor la propiedad de consistencia. Para ello, se puede usar la **desigualdad de Chebyshev**
+ > $$P\left[\vert\hat{\theta} - \theta\vert\ge\varepsilon\right] \le \frac{\sigma^2_\theta}{\varepsilon^2}, \varepsilon > 0$$
+ > y luego, tomando limites a ambos lados, podemos escribir la propiedad de consustencia como:
+ > $$\lim\limits_{n \to \infty} \sigma^2_\hat{\theta} = 0$$
+ > Entonces, un estimador es consistente, cuando la varianza de este cae cero cuando aumentamos el esfuerzo de muestreo. Dicho de otra forma, el estimador es consistente cuando se acerca más al verdadero valor del parámetro cuando $n\rightarrow\infty$.
+
+Ahora podemos proceder a estudiar los estimadores puntuales y por intervalos. 
+
+## Estimación puntual.
+
+Cuando un investigador realiza un experimento, por lo general, solo toma una muestra represntativa de tamaño $n$ de la población de interés y calcula estimadores que le permitan describir los datos obtenidos y relalizar inferencias. El investigador no se moelsta en realizar el experiemnto varias veces (no es como las simulaciones, donde podiamos realizar repeticiones tantas como quisieramos. En la realidad, no se tiene el esfuerzo, la aneergía o los emdios apra realizar multiples repeticiones de un experimento). En estos casos se usan estimadores puntuales para poder realizar inferencias basados en solo una repetición del experimento. 
+
+> Un estimador puntual de un parámetro $\theta$, es solo un valor $\hat{\theta}$ de un estadístico $\hat{\Theta} = g(X)$. Para aclarar la notación, $\hat{\Theta}$ es el conjunto de todos los posibles valores del estadístico, y $\hat{\theta}$ es un elemento de ese conjunto particular, calculado a partir de una muestra. 
+
+Veamos algunos ejemplos.
+
+> _Ejemplo_. Un experimento que busca evaluar la reacción de saltamontes a estímulos visuales o acústicos, en los que midieron el tiempo de reacción a estos antes del vuelo, encontraron que el tiempo de reacción promedio a estúmilos acústicos es $\bar{X}_a = 108{,}05$ segundos, y a estímulos visuales es $\bar{X}_v=87{,}19$ segundos. Estos dos valores son estimadores puntuales de las medias poblacionales $\mu_a$ y $\mu_v$.
+
+> _Ejemplo._ Siniff y Skoog (1964) realizaron un muestreo aleatorio estratificado de una manada de caribúes de Nelchina en Alaska. Para ello, se establecieron 6 estratos (basados en estudios preliminares de la densidad relativa de los caribúes), y seleccionaron de manera aleatoria una muestra en cada uno de tamaño $n_i$ ( $i=A, B, C, D, E, F$ ),  cada una de unidades muestrales de 4 millas cuadradas, obteniendose los datos mostrados en la tabla. 
+> 
+> Se desea saber el tamaño total de la población de caribúes.
+
+```{r point-ex-01, echo=FALSE}
+data_table <- tibble(
+  Estrato=c(LETTERS[1:6], "Total"),
+  stratum_size=c(400, 30, 61, 18, 70, 120, 699),
+  sample_size=c(98, 10, 37, 6, 39, 21, 211),
+  mean_counts=c(24.1, 25.6, 267.6, 179, 293.7, 33.2, NA),
+  variance_counts=c(5575, 4064, 347556, 22798, 123578, 9795, NA)
+)
+
+data_table %>%
+  kbl(col.names=c("Estrato", "Tamaño del Estrato ($S$)", "Tamaño de muestra ($N_h$)", "Número promedio de Caribúes", "Varianza"), escape = FALSE)
+```
+> Para poder conocer un estimado del tamaño poblacional total $\hat{N}$, se necesita primero de un estimado del número promedio de caribúes por unidad de muestreo.
+$$
+\begin{aligned}
+  \bar{X}_{ST} &= \frac{\sum_{h=1}^L N_h \bar{x}_h}{N} \\
+    &= \frac{400\times24{,}1 + 30\times25{,}6 + 61\times267{,}6 + \ldots}{699} \\
+    &= 77{,}96\text{ caribúes milla}^{-2}
+\end{aligned}
+$$
+> y se puede calcular la densidad de toda la población usando el total de millas cuadradas que conforman los estratos:
+> $$\hat{N} = S \times \bar{X}_ST = 699\text{ milla}^2 \times 77{,}96\text{ caribúes milla}^{-2} = 54.597\text{ caribúes}$$
+> Sabemos entonces, que el estimado del número de caribúes es $\hat{N} = 54.597\text{ caribúes}$. Sin embargo, aun necesitamos cuantificar la incertidumbre asociada a esta estimación. Podemos calcular la varianza de $\bar{X}_ST$ como:
+> $$Var(\bar{X}_{ST}) = \sum_{i=1}^L\left[ \frac{W_h^2 S_h^2}{n_h}(1 - f_h) \right]$$
+> donde $W_h = N_h / N$ es el ponderado del estrato y $f_h = n_h / N_h$. Usando los datos de la tabla:
+> $$Var(\bar{X}_{ST}) = \left[ \frac{0{,}572^2 5575}{98} \right]\left(1 - \frac{98}{400}\right) + \left[ \frac{0{,}043^2 4064}{10} \right]\left(1 - \frac{10}{30}\right) + \ldots = 69{,}83$$
+>  de forma que la varianza del tamaño de la población de caribúes es $69{,}83 \times 699^2 = 34.105.734$, y la desviación estándar es $\sqrt{34.105.734} = 5.840$ caribúes.  
+> Entonces el estimador buscado, con su medida de incertidumbre, es $$54.597 \pm 5.840 \text{ caribúes}$$
+
+> _Ejemplo_. 
+
+### Construcción de estadísitcos para inferencia.
+
+
+
+## Estimación por Intervalos.
+
+Una estimación por intervalo de un parámetro $\theta$ es un intervalo de la forma $\hat{\theta}_L < \theta < \hat{\theta}_U$, donde $\hat{\theta}_L$ y $\hat{\theta}_U$ dependen del valor del estadístico $\hat{\Theta}$ para una muestra específica, y también de la distribución de muestreo de $\hat{\Theta}$.
+
+* Al intervalo $\hat{\theta}_L < \theta < \hat{\theta}_U$ se le llama _intervalo de confinaza_, y su longitud es un indicador de la precisión de una estimación puntual.
+* Los valores $\hat{\theta}_L$ y $\hat{\theta}_U$ son estimadores de las variables aleatorias $\hat{\Theta}_L$  $\hat{\Theta}_U$.
+
+El razonamiento de la construcción de intervalos de confianza es utilizar la distriobución muesral de $\hat{\Theta}$ para determinar los límites del intervalo de tal manera que:
+
+$$P(\hat{\Theta}_L < \theta < \hat{\Theta}_U) = 1 - \alpha, \quad 0 < \alpha < 1$$
+
+y decimos que hay una probabilidad de $1 - \alpha$ de que el intervalo contenga a $\theta$.
+
+* El intervalo nos permite tener una confianza de $100(1 - \alpha)$%.
+* El grado de confianza es $1-\alpha$.
+
+El teorema del límite central se hace muy importante para la construcción de estadísticos cuya ley de probabilidad es conocida.
+
+```{r, echo=FALSE, fig.height=6}
+dist_norm <- tibble(
+  q=seq(-3.5, 3.5, by= .01),
+  p=dnorm(seq(-3.5, 3.5, by= .01)))
+
+ggplot(dist_norm, aes(x=q, y=p)) +
+  geom_line(colour="#4F709C", linewidth=1.5) +
+  geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(-1.96, 1.96)) +
+  labs(x = "z", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(
+  	breaks = c(-1.96, 1.96),
+  	labels=c(latex2exp::TeX("$-z_{\\alpha/2}$"), latex2exp::TeX("$z_{\\alpha/2}$"))) +
+  theme_light() + 
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7")
+  )
+```
+
+**Una muestra, varianza conocida.**
+
+Cuando 14 estudiantes de segundo año de medicina del _Bellevue Hospital_ midieron la presión sanguínea de la misma persona, obtuvieron los resultados que se listan abajo. Suponiendo que se sabe que la desviación estándar poblacional es de $10$ mmHg, construya un estimado de un intervalo de confianza del 95% de la media poblacional. De manera ideal, ¿cuál debe ser el intervalo de confianza en esta situación?
+
+```{r data-ex-01}
+pressure <- c(138, 130, 135, 140, 120, 125, 120, 130, 130, 144, 143, 140, 130, 150)
+```
+
+Una manera de construir un estadístico es estableciendo una expresión que nos diga cuanto se desvía nuestro estimador del valor real:
+
+$$\hat{x} - \mu = `r round(mean(pressure), 2)` - \mu$$
+
+La media se calcula usando `mean(pressure)`.
+
+$$\hat{x} - \mu = `r round(mean(pressure), 2)` - \mu \rightarrow \frac{\hat{x} - \mu}{\sigma/\sqrt{n}} = \frac{`r round(mean(pressure), 2)` - \mu}{10 / \sqrt{14}} \sim N(0, 1)$$
+
+Entonces podemos construir un intervalo de confianza del 95% (esto indica que $0{,}95 = 1 - \alpha$, por lo que $\alpha = 0{,}05$) como:
+
+$$
+\begin{aligned}
+  P(-z_{\alpha/2} < Z < z_{\alpha/2}) &= P\left(-z_{\alpha/2} < \frac{`r round(mean(pressure), 2)` - \mu}{10 / \sqrt{14}} < z_{\alpha/2}\right) = 0{,}95 \\
+    &= P\left(-z_{\alpha/2}\frac{10}{\sqrt{14}} < `r round(mean(pressure), 2)` - \mu < z_{\alpha/2}\frac{10}{\sqrt{14}}\right) = 0{,}95 \\
+    &= P\left(-`r round(mean(pressure), 2)` - z_{\alpha/2}\frac{10}{\sqrt{14}} < - \mu < -`r round(mean(pressure), 2)` + z_{\alpha/2}\frac{10}{\sqrt{14}}\right) = 0{,}95 \\
+    &= P\left(`r round(mean(pressure), 2)` - z_{\alpha/2}\frac{10}{\sqrt{14}} < \mu < `r round(mean(pressure), 2)` + z_{\alpha/2}\frac{10}{\sqrt{14}}\right) = 0{,}95 \\
+\end{aligned}
+$$
+
+**Una muestra, varianza conocida.**
+
+Tal que el intervalo es:
+
+$$`r round(mean(pressure), 2)` - z_{\alpha/2}\frac{10}{\sqrt{14}} < \mu < `r round(mean(pressure), 2)` + z_{\alpha/2}\frac{10}{\sqrt{14}}$$
+
+Como $\alpha=0{,}05$, entonces $\alpha/2=0{,}025$, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución normal, o usando `qnorm(.025, 0, 1)`. En este caso, $z_{\alpha/2} = `r round(qnorm(.025), 2)`$:
+
+$$`r round(mean(pressure) - qnorm(.025) * 10 / sqrt(14), 2)` \text{ mmHg} < \mu < `r round(mean(pressure) + qnorm(.025) * 10 / sqrt(14), 2)` \text{ mmHg}$$
+
+**¿Cómo sé que mis datos son normales?**
+
+Se calculan los residuales de la muestra: $\varepsilon_i = X_i - \bar{X}$ para $i=1, 2, \ldots, n$
+
+```{r qqplot-01-show, eval=FALSE, echo=TRUE}
+res <- pressure - mean(pressure)
+
+# Grafico Cuantil-Cuantil
+ggplot(NULL, aes(sample=res)) +
+  stat_qq() + 
+  stat_qq_line(colour="#213555", size=1.5) +
+  theme_light() + 
+  theme(
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7")
+  )
+```
+**Una muestra, varianza desconocida.**
+
+Control del plomo en el aire. A continuación se listan las cantidades de plomo medidas (en microgramos por metro cúbico o $\mu g$ ${m}^{-3}$) en el aire. La _Environmental Protection Agency_ estableció un estándar de calidad del aire para el plomo de $1{,}5$ $\mu g$ ${m}^{-3}$. Las medidas que se presentan abajo se registraron en el edificio 5 del _World Trade Center_ en diferentes días, inmediatamente después de la destrucción causada por los ataques terroristas del 11 de septiembre de 2001. Después del colapso de los dos edificios hubo una gran preocupación por la calidad del aire. Utilice los valores dados para construir un estimado del intervalo de confianza del 95% para la cantidad media de plomo en el aire. ¿Hay algo en este conjunto de datos que sugiera que el intervalo de confianza tal vez no sea muy bueno? Explique.
+
+```{r}
+air_quality <- c(5.40, 1.10, 0.42, 0.73, 0.48, 1.10)
+```
+
+Al igual que antes:
+
+$$\hat{x} - \mu = `r round(mean(air_quality), 2)` - \mu$$
+
+Esta diferencia la debemos entandarizar usando la desviacion típica:
+
+$$\hat{x} - \mu = `r round(mean(air_quality), 2)` - \mu \rightarrow \frac{\hat{x} - \mu}{S/\sqrt{n}} = \frac{`r round(mean(air_quality), 2)` - \mu}{`r round(sd(air_quality), 3)` / \sqrt{6}} \sim t(n - 1)$$
+
+La desviación estándar se calcula usando `sd(air_quality)`.
+Entonces podemos construir un intervalo de confianza del 95% (esto indica que $0{,}95 = 1 - \alpha$, por lo que $\alpha = 0{,}05$) como:
+
+$$
+\begin{aligned}
+  P(-t_{\alpha/2, n - 1} < T < t_{\alpha/2, n - 1}) &= P\left(-t_{\alpha/2, n - 1} < \frac{`r round(mean(air_quality), 2)` - \mu}{`r round(sd(air_quality), 3)` / \sqrt{6}} < t_{\alpha/2, n - 1}\right) = 0{,}95 \\
+    &= P\left(-t_{\alpha/2, n - 1}\frac{`r round(sd(air_quality), 3)`}{\sqrt{6}} < `r round(mean(air_quality), 2)` - \mu < t_{\alpha/2, n - 1}\frac{`r round(sd(air_quality), 3)`}{\sqrt{6}}\right) = 0{,}95 \\
+    &= P\left(-`r round(mean(pressure), 2)` - t_{\alpha/2, n - 1}\frac{`r round(sd(air_quality), 3)`}{\sqrt{6}} < - \mu < -`r round(mean(air_quality), 2)` + t_{\alpha/2, n - 1}\frac{`r round(sd(air_quality), 3)`}{\sqrt{6}}\right) = 0{,}95 \\
+    &= P\left(`r round(mean(air_quality), 2)` - t_{\alpha/2, n - 1}\frac{`r round(sd(air_quality), 3)`}{\sqrt{6}} < \mu < `r round(mean(air_quality), 2)` + t_{\alpha/2, n - 1}\frac{`r round(sd(air_quality), 3)`}{\sqrt{6}}\right) = 0{,}95 \\
+\end{aligned}
+$$
+
+Y el intervalo es:
+
+$$`r round(mean(air_quality), 2)` - t_{\alpha/2, n - 1}\frac{`r round(sd(air_quality), 3)`}{\sqrt{6}} < \mu < `r round(mean(air_quality), 2)` + t_{\alpha/2, n - 1}\frac{`r round(sd(air_quality), 3)`}{\sqrt{6}}$$
+
+Como $\alpha=0{,}05$, entonces $\alpha/2=0{,}025$, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución $t$-Student con $n - 1$ grados de libertad, o usando `qt(.025, 5)`. En este caso, $t_{\alpha/2, 5} = `r round(qt(.025, 5), 4)`$:
+
+$$`r round(mean(air_quality) - qt(.025, 5) * sd(air_quality) / sqrt(6), 2)` \mu\text{g m}^{-3} < \mu < `r round(mean(air_quality) + qt(.025, 5) * sd(air_quality) / sqrt(6), 2)` \mu\text{g m}^{-3}$$
+
+**Proporciones**
+
+$$\frac{\hat{p} - \pi}{\sqrt{\hat{p}(1 - \hat{p})}} \sim N(0, 1)$$
+
+**Diferencia de proporciones**
+
+$$\frac{(\hat{p}_1 - \hat{p}_2) - \Delta}{\sqrt{\hat{p}_1(1 - \hat{p}_1)/n_1 + \hat{p}_2(1 - \hat{p}_2)/n_2}} \sim N(0, 1)$$
+
+**Diferencia de medias, varianzas conocidas**
+
+$$\frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{\sigma_1^2/n_1 + \sigma_2^2/n_2}} \sim N(0, 1)$$
+
+$$P(-z_{\alpha/2} < Z < z_{\alpha/2})= 1 - \alpha$$
+
+```{r, echo=FALSE, fig.height=5}
+ggplot(dist_norm, aes(x=q, y=p)) +
+  geom_line(colour="#4F709C", size=1.5) +
+  geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(-1.96, 1.96)) +
+  labs(x = "z", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(
+    breaks = c(-1.96, 1.96),
+    labels=c(latex2exp::TeX("$-z_{\\alpha/2}$"), latex2exp::TeX("$z_{\\alpha/2}$"))) +
+  theme_light() + 
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7")
+  )
+```
+
+**Diferencia de medias, varianzas desconocidas iguales**
+
+Se usa el estimado puntual de la varianza agrupada (_pooled_): $S_{pool}^2 = \frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}$, de forma que:
+
+$$\frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{S_{pool}\sqrt{1/n_1 + 1/n_2}} \sim t(n_1 + n_2 - 2)$$
+
+$$P(-t_{\alpha/2, n - 1} < T < t_{\alpha/2, n - 1}) = 1 - \alpha$$
+
+```{r, echo=FALSE, fig.height=5}
+dist_t <- tibble(
+  q=seq(-3.5, 3.5, by= .01),
+  p=dt(seq(-3.5, 3.5, by= .01), 3))
+
+ggplot(dist_t, aes(x=q, y=p)) +
+  geom_line(colour="#4F709C", size=1.5) +
+  geom_area(stat = "function", 
+    fun = dt, args=list(df=3), fill = "#213555", xlim = c(-2.35, 2.35)) +
+  labs(x = "t", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(
+    breaks = c(-2.35, 2.35),
+    labels=c(latex2exp::TeX("$-t_{\\alpha/2}$"), latex2exp::TeX("$t_{\\alpha/2}$"))) +
+  theme_light() + 
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7")
+  )
+```
+
+**Diferencia de medias, varianzas desconocidas distintas**
+
+En este caso, se usa una expresión _un tanto más complicada_ para los grados de libertad:
+
+$$\frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{S_1^2/n_1 + S_2^2/n_2}} \sim t(\nu), \quad \nu=\frac{(S_1^2/n_1 + S_2^2/n_2)}{[(S_1^2/n_1)^2/(n_1 - 1) + (S_2^2/n_2)^2/(n_2 - 1)]}$$
+
+**Estimación de la varianza: varianza poblacional conocida**
+
+En un estudio de los efectos sobre los bebés que tiene el consumo de cocaína durante el embarazo, se obtuvieron los siguientes datos muestrales de pesos al nacer: $n=190$, $\bar{x} = 2700$ g, $S = 645$ g (según datos de _Cognitive Outcomes of Preschool Children with Prenatal Cocaine Exposure_, de Singer _et al_., _Journal of American Medical Association_, vol. 291, núm. 20). Utilice los datos muestrales para construir un estimado del intervalo de confianza del 95% para la desviación estándar de todos los pesos al nacer de hijos de madres que consumieron cocaína durante el embarazo. Con base en el resultado, ¿parece que la desviación estándar difiere de la desviación estándar de $696$ g de los pesos al nacer de hijos de madres que no consumieron cocaína durante el embarazo?
+
+**Estimación de la varianza: varianza poblacional conocida**
+
+Se usan proporciones para realizar las estimaciones:
+
+$$\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1} \rightarrow P(\chi^2_{1 - \alpha/2, n-1} < X^2 < \chi^2_{\alpha/2, n-1}) = 1 - \alpha$$
+
+**Estimación de la varianza: varianza poblacional conocida**
+
+Se usan proporciones para realizar las estimaciones:
+
+$$\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1} \rightarrow P(\chi^2_{\alpha/2, n-1} < X^2 < \chi^2_{1 - \alpha/2, n-1}) = 1 - \alpha$$
+
+Entonces podemos construir un intervalo de confianza del 95% (esto indica que $0{,}95 = 1 - \alpha$, por lo que $\alpha = 0{,}05$) como:
+
+$$
+\begin{aligned}
+  P(\chi^2_{\alpha/2, n-1} < X^2 < \chi^2_{1 - \alpha/2, n-1}) &= P\left(\chi^2_{\alpha/2, n-1} < \frac{(189)(645\text{ g})^2}{\sigma^2} < \chi^2_{1 - \alpha/2, n-1}\right) = 0{,}95 \\
+    &= P\left(\frac{1}{\chi^2_{1 - \alpha/2, n-1}} < \frac{\sigma^2}{(189)(645\text{ g})^2} < \frac{1}{\chi^2_{\alpha/2, n-1}}\right) = 0{,}95 \\
+    &= P\left(\frac{(189)(645\text{ g})^2}{\chi^2_{1 - \alpha/2, n-1}} < \sigma^2 < \frac{(189)(645\text{ g})^2}{\chi^2_{\alpha/2, n-1}}\right) = 0{,}95 
+\end{aligned}
+$$
+
+Y el intervalo es:
+
+$$\frac{(189)(645\text{ g})^2}{\chi^2_{1 - \alpha/2, n-1}} < \sigma^2 < \frac{(189)(645\text{ g})^2}{\chi^2_{\alpha/2, n-1}}$$
+
+Como $\alpha=0{,}05$, entonces $\alpha/2=0{,}025$, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución chi-cuadrado, o usando `qchisq(.025, 189)`. En este caso, $\chi^2_{\alpha/2, n-1} = `r round(qchisq(.025, 189), 2)`$:
+
+$$`r round(189 * (645 ** 2) / qchisq(.975, 189), 2)` < \sigma^2 < `r round(189 * (645 ** 2) / qchisq(.025, 189), 2)`$$
+
+De forma que el intervalo para la desviación estándar es:
+
+$$`r round(sqrt(189 * (645 ** 2) / qchisq(.975, 189)), 2)` \text{ g} < \sigma < `r round(sqrt(189 * (645 ** 2) / qchisq(.025, 189)), 2)` \text{ g}$$
+
+**Estimación de la proporción de dos varianza**
+
+Se ha realizado un estudio sobre la velocidad en vuelo de diversas especies de pájaros. El propósito era comparar las velocidades del pelícano pardo y el ostrero americano. Se cronometró una muestra de $9$ pajaros pardos y $12$ pajaros ostreros, volando con el viento de costado con una velocidad de viento de $5$ a $8$ millas h${}^{-1}$, y se obtuvo que el pájaro pardo vuela, en promedio, a $26{,}05 \pm 6{,}34$ millas h${}^{-1}$, y el ostrero a $30{,}19 \pm 3{,}20$ millas h${}^{-1}$. Construya un intervalo de confianza del 95% para la proporción de varianzas.
+
+Al igual que antes, usamos la proporción entre las varianzas para construir un estadístico a partir del cual derivar nuestra ley de probabilidad:
+
+$$\frac{\sigma_2^2 S_1^2}{\sigma_1^2 S_2^2} = \frac{(6{,}34)^2\sigma_2^2}{(3{,}20)^2\sigma_1^2} \sim F(n_1 - 1, n_2 - 1) \rightarrow P(f_{1 - \alpha/2, n_1-1, n_2-1} < F < f_{\alpha/2, n_1-1, n_2-1})$$
+
+Entonces podemos construir un intervalo de confianza del 90% (esto indica que $0{,}90 = 1 - \alpha$, por lo que $\alpha = 0{,}1$) como:
+
+$$
+\begin{aligned}
+  P(f_{\alpha/2, \nu_1, \nu_2} < F < f_{1 - \alpha/2, \nu_1, \nu_2}) &= P\left(f_{\alpha/2, \nu_1, \nu_2} < \frac{(6{,}34)^2\sigma_2^2}{(3{,}20)^2\sigma_1^2} < f_{1 - \alpha/2, \nu_1, \nu_2}\right) = 0{,}90 \\
+    &= P\left(f_{\alpha/2, \nu_1, \nu_2}\frac{(3{,}20)^2}{(6{,}34)^2} < \frac{\sigma_2^2}{\sigma_1^2} < f_{1 - \alpha/2, \nu_1, \nu_2}\frac{(3{,}20)^2}{(6{,}34)^2}\right) = 0{,}90 \\
+    &= P\left(\frac{1}{f_{1 - \alpha/2, \nu_1, \nu_2}}\frac{(6{,}34)^2}{(3{,}20)^2} < \frac{\sigma_1^2}{\sigma_2^2} < \frac{1}{f_{\alpha/2, \nu_1, \nu_2}}\frac{(6{,}34)^2}{(3{,}20)^2}\right) = 0{,}90
+\end{aligned}
+$$
+
+Y el intervalo es:
+
+$$\frac{1}{f_{\alpha/2, n_1-1, n_2-1}}\frac{(6{,}34)^2}{(3{,}20)^2} < \frac{\sigma_1^2}{\sigma_2^2} < \frac{1}{f_{1 - \alpha/2, n_1-1, n_2-1}}\frac{(6{,}34)^2}{(3{,}20)^2}$$
+
+Como $\alpha=0{,}1$, entonces $\alpha/2=0{,}05$, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución $F$, o usando `qf(.05, 8, 11)`:
+
+$$`r round(6.34 ** 2 / 3.20 ** 2 / qf(1 - .05, 8, 11), 2)` < \frac{\sigma_1^2}{\sigma_2^2} < `r round(6.34 ** 2 / 3.20 ** 2 / qf(.05, 8, 11), 2)`$$
+
+### Intervalos Unilaterales.
+
+Simplemente se prescinde de uno de las desigualdades. Pueden ser intervalos a la derecha:
+
+$$P(Z > z_{1 - \alpha/2}) = 1 - \alpha$$
+
+... o intervalos a la izquierda:
+
+$$P(Z < z_{\alpha/2}) = 1 - \alpha$$
+
+```{r, echo=FALSE, fig.height=7}
+cowplot::plot_grid(
+  ggplot(dist_norm, aes(x=q, y=p)) +
+  geom_line(colour="#4F709C", size=1.5) +
+  geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(-3.5, 1.96)) +
+  labs(x = "z", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(
+    breaks = 1.96,
+    labels=latex2exp::TeX("$z_{\\alpha}$")) +
+  theme_light() + 
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7")
+  ),
+  ggplot(dist_norm, aes(x=q, y=p)) +
+    geom_line(colour="#4F709C", size=1.5) +
+    geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(-1.96, 3.5)) +
+    labs(x = "z", y = "") +
+    scale_y_continuous(breaks = NULL) +
+    scale_x_continuous(
+      breaks = -1.96,
+      labels=latex2exp::TeX("$-z_{\\alpha}$")) +
+    theme_light() + 
+    theme(
+      axis.line=element_blank(),
+      panel.grid=element_blank(),
+      panel.background=element_rect(fill="#F5EFE7"),
+      plot.background=element_rect(fill="#F5EFE7")
+  ), nrow=2)
+```

@@ -1,0 +1,417 @@
+# Estadística Descriptiva.
+
+Un conjunto de datos se puede describir usando:
+
+1. **Medidas de tendencia central**: estas son valores que describen el centro alrededor del cual el conjunto de observaciones se distribuye. De esta forma, nos permite describir donde se localizan la mayoría de las observaciones. Son tres:
+
+ * _Media_: describe la localización media de las observaciones.
+ * _Mediana_: es el valor que distribuye las observaciones de tal forma que 50% de estas quedan por encima de ella, y el otro 50% por debajo.
+ * _Moda_: describe la posición de la (o las) observación (observaciones) más frecuente(s).
+
+2. **Medidas de posición**: vienen definidos por los cuantiles de una distribución. Un _cuantil_ $C_p$ se define como el valor que deja por debajo de si $p\times100$% de las observaciones. Por ejemplo, el cuantil $C_{0{,}3}$ es aquel valor que deja por debajo de si $30$% de las observaciones.  
+ Nos ayuda a describir la posición que una observación ocupa dentro del dominio sobre el cual se distribuyen los datos. Algunos ejemplos son:
+
+ * Los cuartiles: ($C_{0{,}25i}$ con $i = 1,2,3$) que distribuyen las observaciones en $4$ partes,
+ * Los deciles ($C_{0{,}1i}$ con $i = 1,2,\ldots,10$), que dividen la distribución en $10$ partes, y
+ * Los percentiles ($C_{0{,}01i}$ con $i = 1,2,\ldots, 99, 100$), que dividen la distribución en $100$ partes.
+ 
+3. **Medidas de dispersión**: estas son medidas de que tan variables son las observaciones. Sirven para describir la dispersión de las observaciones en su dominio y alrededor de su centro. Pueden ser:
+
+ * _Rango o Recorrido_: es la diferencia entre el valor máximo y el valor  mínimo observado. Nos dice que tan amplio es el dominio ocupado por las observaciones, o que tan amplio es el intervalo sobre el cual se distribuyen todas las observaciones.
+ * _Rango intercuartílico_: es la diferencia entre el tercer cuartil y primer cuartil, y por lo tanto, describe la amplitud del intervalo que contiene a un $50$% de las observaciones.
+ * _Varianza_: es una medida de las diferencias cuadráticas promedio de las observaciones con respecto a la media (sumatoria de cuadrados promedio). Sirve como una medida de cuán variable es un conjunto de datos, dado que a mayor son las _desviaciones_ de la media, más grande es la varianza.
+ * _Desviación estándar_: es una medida de la distancia promedio de las observaciones con respeto a la media. Al igual que antes para la varianza, la desviación estándar sirve como medida de variabilidad con respecto al centro, dado que a mayor la distancia de las observaciones a la media, mayor será la desviación estándar.
+ * _Coeficiente de variación_: es el valor proporcional de la desviación estándar con respecto a la media (_Desviación estándar / Media_). Esta sirve como medida de dispersión relativa, dado que permite comparar distribuciones basado en cuán distantes, en promedio, de la media están las observaciones, basados en el tamaño relativo de esta con respecto a la media.
+
+4. **Medidas de forma**: estas nos ayudan a describir la simetría y ensanchamiento de la distribución de las observaciones. Estas son:
+
+ * _Asimetría_: es un coeficiente cuyo valor nos permite decir si las observaciones se encuentran acumuladas a la derecha, o la izquierda de la distribución (a esto se le llama _sesgo_).
+ * _Curtosis_: esta describe que tan amplio es el pico de la distribución de observaciones, permitiéndonos decir si se trata de una colina amplía o de un pico estrecho.
+
+<!---
+Punto de énfasis para explicar distribuciones
+* La normal como estándar de comparación.
+* Sesgos y como se ven
+* Observaciones atípicas y extremas.
+* Datos agrupados y no agrupados.
+* Aspectos prácticos del análisis descriptivo.
+--->
+
+## Datos no agrupados.
+
+Para comprender los conceptos de la estadística descriptiva en datos sin agrupar, usamos el conjunto de datos obtenidos del experimento que busca evaluar la reacción de saltamontes a estímulos visuales o acústicos, que midieron el tiempo de reacción a estos antes del vuelo:
+
+**A estímulos acústicos**: $86, 102, 103, 99, 108, 100, 118, 108, 109, 113, 114, 107, 107, 117, 120, 101, 126, 109, 106$.
+
+**A estímulos visuales**: $72, 95, 73, 99, 71, 90, 102, 97, 71, 75, 80, 70, 100, 104, 81, 103, 101, 103, 77, 78, 89$.
+
+### Medidas de Tendencia central.
+
+El _promedio_ se define como:
+
+$$\bar{X} = \frac{\sum_{i=1}^k f_ix_i}{n}$$
+
+dónde $x_i$ es la $i$-ésima observación, y $f_i$ es la frecuencia absoluta de la observación (cuantas veces se repite $x_i$ entre el número de observaciones), y la sumatoria se hace sobre los $k$ observaciones únicas (las observaciones repetidas no se toman en cuenta, ya se están tomando en cuenta al multiplicar por $f_i$ el valor observado repetido).
+
+> Para el tiempo de reacción a estímulos acústicos se calcularía entonces:
+$$\begin{aligned}
+  \bar{X}_a &= \frac{86+102+103+99+2\times108+100+118+109+113+114+2\times107+117+120+101+126+109+106}{19} \\
+  &= 108{,}05 \text{ segundos}
+\end{aligned}$$
+Procediendo de igual forma para el tiempo de reacción a estímulos visuales se obtiene $\bar{X}_v=87{,}19$ segundos (¡verifícalo!).
+
+La _mediana_ para datos agrupados se consigue siguiendo los siguientes pasos:
+
+1. Se ordenan de menor a mayor las observaciones.  
+2. Se asignan índices a los datos ordenados desde $1$ a $n$: al menor dato se le asigna el índice $1$, al siguiente el $2$, y así sucesivamente.
+3. Se calcula el índice de posición de la mediana como $(n + 1)/2$ si $n$ es impar. Si $n$ es par se calculan los índices de posición $(n-1)/2$ y $(n+1)/2$.
+4. La mediana es entonces:
+$$M = \begin{cases}
+  x_{(n + 1)/2}, & \text{ si }n\text{ es impar}. \\
+  \frac{x_{(n-1)/2} + x_{(n+1)/2}}{2}, & \text{ si }n\text{ es par.}
+\end{cases}$$
+
+> Para el caso del tiempo de reacción a estímulos acústicos, tenemos que los datos ordenados son:
+$$\begin{aligned}
+  &86_{(1)}, 99_{(2)}, 100_{(3)}, 101_{(4)},  102_{(5)}, 103_{(6)}, 106_{(7)}, 107_{(8)}, 107_{(9)}, 108_{(10)}, 108_{(11)}, 109_{(12)}, 109_{(13)}, 113_{(14)}, \\ 
+  &114_{(15)}, 117_{(16)}, 118_{(17)}, 120_{(18)}, 126_{(19)}
+\end{aligned}$$
+dónde el subscrito entre paréntesis corresponde al índice dado al dato. Cómo $n=19$ es impar, se calcula el índice de posición $(n+1)/2 = 10$. Ubicamos en los datos ordenados la observación con el índice $10$:
+$$\begin{aligned}
+  &86_{(1)}, 99_{(2)}, 100_{(3)}, 101_{(4)},  102_{(5)}, 103_{(6)}, 106_{(7)}, 107_{(8)}, 107_{(9)}, \color{red}{108_{(10)}}, 108_{(11)}, 109_{(12)}, 109_{(13)}, 113_{(14)}, \\
+  &114_{(15)}, 117_{(16)}, 118_{(17)}, 120_{(18)}, 126_{(19)}
+\end{aligned}$$
+y este valor corresponde a la mediana, de forma que:
+$$M =108 \text{ segundos}$$
+Se puede proceder de igual forma con el tiempo de reacción a estímulos visuales y obtener $M = 89\text{ segundos}$ (¡verifícalo!).
+
+La _moda_ para datos no agrupados es la observación con la máxima frecuencia registrada (la frecuencia con la mayor magnitud):
+
+$$Moda(\{x_i\}_{i=1}^n) = \{x_i \vert f_{x_i} = max(\{f_{x_1}, f_{x_2}, \ldots, f_{x_n}\})\}$$
+
+(la notación $\{x_i\}_{i=1}^k$ y $\{x_1, x_2, \ldots, x_n\}$ son equivalentes, es decir, $\{x_i\}_{i=1}^n = \{x_1, x_2, \ldots, x_n\}$). Para calcular la moda se siguen los siguientes pasos:
+
+1. Se ordenan los datos de menor a mayor.
+2. Se calculan las frecuencias absolutas $f_{x_i}$ contando el número de veces que la magnitud de una observación se repite.
+3. La moda es el valor que más se repita. Si hay más de un valor con la misma frecuencia absoluta, entonces la moda es un conjunto de todos los valores con la misma frecuencia absoluta.
+
+> En el caso del tiempo de reacción a estímulos acústicos, los datos ordenados son:
+$$\begin{aligned}
+ &86_{(1)}, 99_{(1)}, 100_{(1)}, 101_{(1)}, 102_{(1)}, 103_{(1)}, 106_{(1)}, 107_{(2)}, 108_{(2)}, \\
+ &109_{(2)}, 113_{(1)}, 114_{(1)}, 117_{(1)}, 118_{(1)}, 120_{(1)}, 126_{(1)}
+\end{aligned}$$
+donde se muestra como subscrito en paréntesis la frecuencia absoluta $f_{x_i}$. Como la $max(\{f_{x_i}\}) = 2$, que es la frecuencia absoluta de $107, 108$ y $109$ todos en segundos, por lo que $Moda(\{x_i\}_{i=1}^n) = \{107, 108, 109\}$ y los datos son multimodales.  
+En el caso de estímulos visuales, $max(\{f_{x_i}\}) = 2$ para $71$ y $103$
+todos en segundos, por lo que $Moda(\{x_i\}_{i=1}^n) = \{71, 103\}$ segundos (¡verifícalo!).
+
+A continuación se muestra un resumen de los estadísticos de tendencia central calculados para los tiempos de reacción acústico y visual, usando R:
+
+```{r descriptives-non-grouped-one, echo = TRUE, eval = TRUE}
+acoustic <- c(86, 102, 103, 99, 108, 100, 118, 108, 109, 113, 114, 107, 107, 117, 120, 101, 126, 109, 106)
+visual <- c(72, 95, 73, 99, 71, 90, 102, 97, 71, 75, 80, 70, 100, 104, 81, 103, 101, 103, 77, 78, 89)
+
+# Para el calculo de la moda
+f_a_acoustic <- table(acoustic)
+mode_acoustic <- names(f_a_acoustic)[which(f_a_acoustic == max(f_a_acoustic))]
+f_a_visual <- table(visual)
+mode_visual <- names(f_a_visual)[which(f_a_visual == max(f_a_visual))]
+
+tibble(
+  Estimulo = c("Acústico", "Visual"),
+  Media = c(mean(acoustic), mean(visual)),
+  Mediana = c(median(acoustic), median(visual)),
+  Moda = c(paste(mode_acoustic, collapse=", "), paste(mode_visual, collapse=", "))
+) %>%
+ kbl()
+```
+
+donde se muestra que:
+
+* Para los tiempos de reacción a estímulos acústicos, la media y la mediana coinciden bastante, y aunque la moda consiste de tres elementos, la media y la mediana caen dentro de ese conjunto, lo cual indica que la distribución consiste de un solo pico simétrico.
+* Para los tiempos de reacción a estímulos visuales, la mediana se desvía ligeramente de la media, indicando que la distribución es algo simétrica, pero como las modas están alejadas en promedio unas 16 unidades de la media/mediana, y unas 30 unidades entre sí, podemos decir que la distribución consiste de dos picos.
+
+Lo anterior implica que los saltamontes responden de forma única a estímulos acústicos, pero a los estímulos visuales una parte de la población de saltamontes responde rápidamente y la otra parte no tan rápido.
+
+### Medidas de posición.
+
+Para los datos no agrupados, los _cuantiles_ se pueden calcular siguiendo los siguientes pasos:
+
+1. Se ordenan los datos de menor a mayor.
+2. Se asignan índices a las posiciones de cada observación.
+3. Se calcula la posición de los cuantiles usando:
+$$C_i = \begin{cases}
+  \frac{n\times i}{d}, \text{ si }n\text{ es par.} \\
+  \frac{(n+1)\times i}{d}, \text{ si }n\text{ es impar.}
+\end{cases}$$
+4. Ubicamos las observaciones $X_{C_i}$ correspondientes a cada cuantil. Si $C_i$ no es un entero, se calcula el promedio $x_{C_i} = (x_{(C_i - 0{,}5)} + x_{(C_i + 0{,}5)}) / 2$.
+
+dónde la $i$ es un entero que corresponde al $i$-ésimo cuantil (ve más abajo el ejemplo), y la $d$ representa en cuántas partes queremos dividir la distribución.
+Por ejemplo, si quisiéramos calcular los cuartiles, tendríamos que dividir la distribución en cuatro partes estableciendo $d=4$, y las $i$ tendrían valores de $1, 2$ y $3$ para los cuartiles $Q_1, Q_2$ y $Q_3$, respectivamente (cambiamos la notación de $C_i$ a $Q_i$ debido a que así se denotan usualmente en otros libros de texto y recursos).
+
+> Para los tiempos de reacción ante estímulos acústicos ya se tienen los datos ordenados antes, junto con índices. Para calcular los cuartiles, como $n=19$ es impar, calculamos $Q_i = (19 + 1)\times i/4 = 5i$, por lo que:
+$$\{Q_1, Q_2, Q_3\} = \{5, 10, 15\}$$
+Buscamos las observaciones en las posiciones dadas por el conjunto anterior:
+$$\begin{aligned}
+  &86_{(1)}, 99_{(2)}, 100_{(3)}, 101_{(4)},  \color{red}{102_{(5)}}, 103_{(6)}, 106_{(7)}, 107_{(8)}, 107_{(9)}, \color{red}{108_{(10)}}, 108_{(11)}, 109_{(12)}, 109_{(13)}, 113_{(14)}, \\
+  &\color{red}{114_{(15)}}, 117_{(16)}, 118_{(17)}, 120_{(18)}, 126_{(19)}
+\end{aligned}$$
+Por lo tanto, los cuartiles son:
+$$\{x_{Q_1}, x_{Q_2}, x_{Q_3}\} = \{102, 108, 114\}$$
+
+Notamos dos cosas: la primera es que la mediana y el cuartil 2 coinciden como se esperaba. Segundo, si vemos los datos ordenados con los cuartiles en rojo, vemos que entre cada cuartil hay exactamente 4 datos, es decir, la distribución se dividió en cuatro partes, cada una con exactamente la misma cantidad de datos.
+
+> Para los tiempos de reacción a estímulos visuales, se puede encontrar que $\{Q_1, Q_2, Q_3\} = \{5{,}5; 11; 16{,}5\}$. Esta vez, los cuartiles son decimales, por lo que podemos usar el valor promedio de las observaciones entre las observaciones adyacentes. Por ejemplo, para $Q_1 = 5{,}5$, se ubican las observaciones $x_5 = 73$ y $x_6 = 75$ (que son los enteros adyacentes a $5{,}5$) y calculamos el promedio $(73 + 75) / 2 = 74$. Realizamos el mismo procedimiento para el tercer cuartil y entonces $\{x_{Q_1}, x_{Q_2}, x_{Q_3}\} = \{74; 89; 100{,}5\}$ (¡Verifica los resultado!).
+
+**Ejercicio**. Calcula para los datos de tiempos de reacción de saltamontes a estímulos acústicos y visuales, los deciles ($d=10$) y percentiles ($d = 100$).
+
+A continuación, se resumen los estadísticos de posición en conjunto con los de tendencia central para los tiempos de reacción (añadimos por conveniencia el mínimo y máximo valor registrado):
+
+```{r descriptives-non-grouped-two, echo = TRUE, eval = TRUE}
+tibble(
+  Estimulo = c("Acústico", "Visual"),
+  Min = c(min(acoustic), min(visual)),
+  Q_1 = c(102, 74),
+  Media = c(mean(acoustic), mean(visual)),
+  Mediana = c(median(acoustic), median(visual)),
+  Q_3 = c(114, 100.5),
+  Max = c(max(acoustic), max(visual)),
+  Moda = c(paste(mode_acoustic, collapse=", "), paste(mode_visual, collapse=", "))
+) %>% 
+  kbl()
+```
+
+donde podemos ver que la distribución de datos en el grupo que recibió estímulos acústicos es más equitativa, ya que los cuartiles se distancian uno del otro en $6$ unidades, mientras que los cuartiles de los datos de estímulos visuales se distancian $15$ y $11{,}5$ unidades, por lo que hay más datos hacia tiempos de reacción altos, y no tanto en tiempos de reacción bajos. Esto ayuda a enfatizar la asimetría pequeña de la distribución de estímulos visuales, y la simetría de la de estímulos acústicos.
+
+### Medidas de Dispersión.
+
+El _recorrido_ o _rango_ se define como la diferencia con respecto al valor máximo y el mínimo:
+
+$$R = x_{max} - x_{min}$$
+
+> Para los tiempos de reacción se tiene que para estímulos acústicos $R_a = 126 - 86 = 40$ segundos, y para estímulos visuales $R = 104 - 70 = 34$ segundos.  
+Esto quiere decir, que el tiempo de reacción a estímulos visuales ocupa una mayor cantidad de posibles observaciones, lo cual lo hace más variable la respuesta que la respuesta a estímulos acústicos.
+
+El _rango intercuartílico_ ($IQR$) es un recorrido pero tomado desde el primer cuartil al tercer cuartil:
+
+$$IQR = Q_3-Q_1$$
+
+> Para los tiempos de reacción a estímulos acústicos $IQR = 114 -102 = 12$ segundos, mientras que para estímulos visuales $IQR = 100{,}5 - 74 = 26{,}5$ segundos.  
+Esto quiere decir que el 50% de las observaciones típicas para la respuesta a estímulos acústicos caen en un intervalo más pequeño comparado con la respuesta típica a estímulos visuales, haciendo el tiempo de reacción más consistente en el primer caso.
+
+La _varianza_ se define como:
+
+$$S^2 = \frac{\sum_{i=1}^k f_i(x_i - \bar{X})^2}{n - 1}$$
+
+es decir, a cada observación le quitamos el valor medio, y al resultado lo elevamos al cuadrado. Luego, sumamos los resultados y dividimos entre $n-1$.
+
+> Para los datos de tiempos de reacción a estímulos acústicos, se tiene que las diferencias con respecto a la media son:
+$$\begin{aligned}
+  &-22{,}05; -6{,}05; -5{,}05; -9{,}05; -0{,}05; -8{,}05; 9{,}95; -0{,}05; 0{,}95; \\
+  &4{,}95; 5{,}95; -1{,}05; -1{,}05; 8{,}95; 11{,}95; -7{,}05; 17{,}95; 0{,}95; -2{,}05
+\end{aligned}$$
+donde las desviaciones más grandes son aquellas que se alejan más de la media. Elevando al cuadrado permite eliminar los signos, de forma que al sumar no se cancelen los terminos, se obtiene:
+$$\begin{aligned}
+  &486{,}32; 36{,}63; 25{,}53; 81{,}95; 0; 64{,}84; 98{,}95; 0; 0{,}9; 24{,}48; \\
+  &35{,}37; 1{,}11; 1{,}11; 80{,}06; 142{,}74; 49{,}74; 322{,}11; 0{,}9; 4{,}21
+\end{aligned}$$
+Luego, sumando estos valores se obtiene:
+$$S^2 = \frac{1456{,}95}{19 - 1} = 80{,}94\text{ s}^2$$
+Para los tiempos de reacción a estímulos visuales se tiene $S^2= 167{,}16\text{ s}^2$ (verifícalo!).
+
+La _desviación estándar_ es:
+
+$$S = \sqrt{S^2}$$
+
+Y sirve como medida de la distancia promedio de las observaciones con respecto a la media.
+
+> Usando el resultado anterior, se tiene para los tiempos de reacción a estímulos acústicos $S = 8{,}997$ segundos, y para los tiempos de reacción a estímulos visuales $S = 12{,}929$ segundos.  
+Esto quiere decir que el $68{,}2$% de las observaciones típicas para la respuesta a estímulos acústicos caen a una distancia de una $\sim9$ segundos de la media, mientras que para los estímulos visuales caen a unos $\sim13$ segundos de la media, haciendo más variable la respuesta a estímulos visuales.
+
+La última medida de variación importante es el _coeficiente de variación_, $CV$, que se define como:
+
+$$CV = \frac{S}{\bar{X}}$$
+
+Y nos dice que tan grande es la desviación estándar con respecto a la media. Para una distribución normal este valor es $\sim0{,}3$ ($30$% en valor porcentual).
+
+> Para los tiempos de reacción se tiene que para estímulos acústicos $CV =
+8{,}997/ 108{,}05 = 0{,}0833$ ($\sim8{,}3$%), y para estímulos visuales $CV = 12{,}929 / 87{,}19 = 0{,}1483$ ($\sim14{,}8$%).  
+Esto quiere decir, que el tiempo de reacción a estímulos visuales tiene una variación mayor (de aproximadamente 6% mayor) que la respuesta a estímulos acústicos, dado que la desviación estándar representa una mayor proporción de la magnitud de la media.
+
+Resumimos los estadísticos de dispersión a continuación:
+
+```{r descriptives-non-grouped-three, echo = TRUE, eval = TRUE}
+tibble(
+  Estimulo = c("Acústico", "Visual"),
+  Rango = c(max(acoustic) - min(acoustic), max(visual) - min(visual)),
+  IQR = c(114 - 102, 100.5 - 74),
+  Varianza = c(var(acoustic), var(visual)),
+  Std.Dev = c(sd(acoustic), sd(visual)),
+  CV = c(sd(acoustic) / mean(acoustic), sd(visual) / mean(visual)) * 100
+) %>% 
+  kbl()
+```
+
+### Medidas de Forma.
+
+El _coeficiente de asimetría_ es una medida de forma que busca cuantificar la simetría de una distribución. Se calcula como:
+
+$$A = \frac{\sum_{i=1}^n(x_i - \bar{X})^3}{n S^3}$$
+
+Para una distribución simétrica, se esperaría obtener el mismo número de diferencias $(x_i - \bar{X})^3$ negativas  como positivas, y al sumar la magnitud de todas las diferencias negativas, esta sería de igual magnitud que la suma de todas las diferencias positivas, por lo que $A = 0$ si la distribución es simétrica (aunque lo contrario no es cierto: el que $A = 0$ no asegura que la distribución sea simétrica).  
+La asimetría puede ser positiva o negativa dependiendo de la dirección del sesgo. Para distribuciones sesgadas hacia la derecha, $A > 0$. Para distribuciones sesgadas hacia la izquierda, $A < 0$.
+
+> Se puede calcular la sumatoria de cubos para los tiempos de reacción a estímulos acústicos y visuales, y obtener el coeficiente de asimetría, que para las población de saltamontes sometida a estímulos acústicos $A = -0{,}23$, y para la que fue sometida a estímulos visuales $A = -0{,}01$.  
+Esto muestra que los tiempos de reacción a estímulos visuales es solo muy ligeramente asimétrica, pero que la de tiempos de reacción a estímulos acústicos es in poco más sesgada hacia la izquierda (aunque no tan apreciablemente).
+
+La _curtosis_ se define como:
+
+$$K = \frac{\sum_{i=1}^n(x_i - \bar{X})^4}{n S^4} - 3$$
+
+lo cual nos dice algo sobre la forma como se concentran los datos alrededor de la media. Para la distribución normal (que es simétrica y se usa como estándar de comparación) se puede verificar que $K = 0$. Se dice entonces que la distribución:
+* Es _platicúrtica_ si $K < 0$, y esto implica que las distribuciones extremas son más probables con respecto a la normal.
+* Es _mesocúrtica_ si $K=0$, y las observaciones se distribuyen más como una normal.
+* Es _leptocúrtica_ si $K > 0$, y entonces las observaciones tienden a aglomerarse alrededor de la media más de lo que ocurre en la distribución normal.
+
+> Para las población de saltamontes sometida a estímulos acústicos $K = 0{,}166$, y para la que fue sometida a estímulos visuales $K = -1{,}79$.  
+Esto muestra que los tiempos de reacción a estímulos acústicos se asemeja a una distribución mesocúrtica y los tiempos de reacción a estímulos visuales es platicúrtica, indicando una distribución que tiene _colas pesadas_, siendo la de estímulos visuales mucho más dispersa alrededor de la media (esto tiene sentido dado nuestro descubrimiento de que se trata de una distribución multimodal).
+
+```{r descriptives-non-grouped-four, echo = TRUE, eval = TRUE}
+tibble(
+  Estimulo = c("Acústico", "Visual"),
+  Asimetria = c(1 / 19, 1 / 21) * c(sum((acoustic - mean(acoustic)) ** 3) / sd(acoustic) ** 3, sum((visual - mean(visual)) ** 3) / sd(visual) ** 3),
+  Curtosis = c(1 / 19, 1 / 21) * c(sum((acoustic - mean(acoustic)) ** 4) / sd(acoustic) ** 4, sum((visual - mean(visual)) ** 4) / sd(visual) ** 4) - 3
+) %>%
+  kbl()
+```
+
+**Ejercicio** Para el siguiente conjunto de datos de pesos de individuos de una población, separados en Machos (M) y Hembras (H), realice un análisis descriptivo.
+
+```{r descriptives-non-grouped-five, echo = TRUE, eval = TRUE}
+# Datos Diferencias Peso de Machos y hembras
+ungrouped <- tibble(
+    Sex = unlist(strsplit("HMHMHMHMMHMMHHHMHMMHMHMMHMMHHMHMMHMMHMHMMHMHMMHHMM", "")),
+    Peso = c(98.5, 150.6, 108.3, 159.4, 162.6, 122.5, 118.5, 167.5, 170.5, 120.4, 177.5, 186.5, 115.4, 115.5, 52.5, 157.6, 134.4, 148.5, 131.5, 143.4, 145.6, 108.6, 155.5, 110.6, 154.5, 183.5, 191.5, 128.6, 135.4, 195.4, 137.5, 205.6, 190.7, 120.5, 188.7, 176.3, 118.5, 158.5, 116.5, 161.4, 165.5, 142.6, 164.6, 120.5, 170.4, 195.5, 132.5, 129.5, 215.6, 176.5)
+  )
+```
+
+## Datos Agrupados.
+
+Para comprender los conceptos de la estadística descriptiva en datos agrupados, usamos el conjunto de datos obtenidos del experimento que busca evaluar los niveles de glicemia (en mg dL${}^{-1}$) en 25 pacientes, cuyos resultados fueron:
+
+$$75, 82, 90, 95, 101, 112, 121, 132, 140, 97, 84, 90, 96, 102, 114, 121, 138, 87, 91, 96, 104, 123, 89, 93, 99$$
+
+Como vimos antes, estos datos se pueden agrupar en clases que denotan intervalos (que pueden ser continuos o aparentes) en los cuales caen las observaciones con cierta frecuencia absoluta, como se muestra a continuación:
+
+```{r descriptives-non-grouped-six, echo = TRUE, eval = TRUE}
+glicemia <- tribble(
+  ~Lim_rel_inf, ~Lim_rel_sup, ~`Marca de Clase`, ~`f_i`, ~`fr_i`, ~`F_i`, ~`Fr_i`,
+  74.5, 86.5, 80.5, 3, 12 / 100, 3, 12 / 100,
+  86.5, 98.5, 92.5, 10, 40 / 100, 13, 52 / 100,
+  98.5, 110.5, 104.5, 4, 16 / 100, 17, 68 / 100,
+  110.5, 122.5, 116.5, 4, 16 / 100, 21, 84 / 100,
+  122.5, 134.5, 128.5, 2, 8 / 100, 23, 92 / 100,
+  134.5, 146.5, 140.5, 2, 8 / 100, 25, 100 / 100)
+
+glicemia %>% kbl()
+```
+
+### Medidas de Tendencia Central.
+
+El _promedio_ se define como:
+
+$$\bar{X} = \frac{\sum_{i=1}^k f_ic_i}{n}$$
+
+dónde $c_i$ es la $i$-ésima marca de clase, y $f_i$ es la frecuencia absoluta asociada a la marca de clase (cuantas observaciones $c_i$ contiene dentro de los límites del intervalo).
+
+> Para las marcas de clases de los índices de glicemia medidos se calcularía entonces:
+$$\bar{X} = \frac{3\times80{,}5 + 10\times92{,}5 + 4\times104{,}5 + 4\times116{,}5 + 2\times128{,}5 + 2\times140{,}5}{25}=103{,}54 \text{ g dL}^{-1}$$
+
+La _mediana_ para datos agrupados se consigue siguiendo los siguientes pasos:
+
+1. Se calcula el índice de posición de la mediana como $n/2$.
+2. Se localiza la clase que identifica el intervalo mediano (aquel que contiene la mediana) al buscar la primera clase cuya frecuencia absoluta acumulada sea igual o mayor a $n/2$.
+3. La mediana es entonces:
+$$M = L_i + \left(\frac{n/2 - F_{i-1}}{f_i}\right)\cdot a_i$$
+donde $L_i$ es el límite inferior del intervalo mediano, $F_{i-1}$ es la frecuencia absoluta acumulada de la clase anterior, $f_i$ es la frecuencia absoluta de la clase que contiene la mediana, y $a_i$ es la amplitud de los intervalos.
+
+> Para el caso de los índices de glicemia, se tiene que $n/2 = 25/2 =12{,}5$. La primera clase con $F_i \ge 12{,}5$ es la segunda clase ($F_i = 13$). Inspeccionando la tabla de datos agrupados podemos calcular entonces:
+$$M = 86{,}5 + \left(\frac{12{,}5 - 3}{10}\right)\cdot 12 = 97{,}9\text{ g dL}^{-1}$$
+
+La _moda_ se calcula, para datos agrupados, siguiendo estos pasos:
+
+1. Se busca la clase modal (aquella que contiene la moda) determinando cuál de ellas tiene la mayor frecuencia absoluta.
+2. Se calcula la moda como:
+$$Moda(\{c_i\}_{i=1}^k) = L_i + \left(\frac{f_i - f_{i-1}}{(f_i - f_{i-1}) + (f_i - f_{i+1})}\right)\cdot a_i$$
+
+> Para el caso de los índices de glicemia, la clase con la mayor frecuencia absoluta es la segunda clase, por lo que:
+$$Moda(\{c_i\}_{i=1}^k) = 86{,}5 + \left(\frac{10 - 3}{(10 - 3) + (10 - 4)}\right)\cdot 12 = 92{,}96\text{ g dL}^{-1}$$
+
+Notamos que los resultados sobre los datos de frecuencia muestran que $Moda < M < \bar{X}$, lo cual nos indica que la distribución esta sesgada a la derecha.
+
+### Medidas de posición.
+
+Para los cuantiles de datos agrupados, se sigue un procedimiento similar al de datos sin agrupar, identificando primero las clases que contiene los cuantiles. Para ello, se sigue el procedimiento:
+
+1. Calcula $\frac{n\times i}{d}$ donde $i$ representa el $i$-ésimo cuantil, y $d$ el número de partes en las que se desea dividir la distribución.
+2. Se busca en la tabla de datos agrupados la clase cuya frecuencia absoluta acumulada sea mayor o igual a $\frac{n\times i}{d}$. Este será la clase cuantílica.
+3. Se calcula el cuantil como:
+$$C_i = L_i + \left(\frac{f_i - f_{i-1}}{f_i}\right)\cdot a_i$$
+
+> Digamos que queremos calcular los cuartiles de los datos de índice de glicemia. En este caso, calculamos para $i = 1,2,3$ los valores de $i\times n / 4$, los cuales son $6{,}25, 12{,}5,$ y $18{,}75$.  
+Calculamos los cuartiles: para el primer cuartil, el resultado muestra que el cuartil se encuentra en la segunda clase, por lo que:
+$$Q_1 = 86{,}5 + \left(\frac{10 - 3}{10}\right)\cdot 12 = 95{,}7\text{ g dL}^{-1}$$  
+Para el segundo cuartil nos damos cuenta que el método arroja $Q_2 = Q_1$, lo cual es un error (asegúrese de verificar este resultado, ¿por qué sucede esto?). La razón de esto es que la resolución de los datos no permite la estimación de los cuantiles dado el tamaño de la muestra (vea la discusión más adelante en la siguiente sección). En este caso, recordamos que $Q_2 = M$, y usamos el valor de la mediana calculado anteriormente:
+$$Q_2 = 97{,}9\text{ g dL}^{-1}$$
+Para el tercer cuartil, vemos que la clase que contiene el cuartil es la cuarta clase, por lo que:
+$$Q_3 = 110{,}5 + \left(\frac{21 - 17}{21}\right)\cdot 12 = 112{,}79\text{ g dL}^{-1}$$
+
+De los resultados anteriores, podemos notar que la distancia entre el primer y segundo cuartil es un orden de magnitud menor que la distancia entre el segundo y tercer cuartil, indicando que las observaciones en la tercera parte de la distribución tienen una mayor dispersión, y que en la segunda parte de la distribución las observaciones se aglomeran. Esto refuerza la intuición obtenida antes con las medidas de tendencia central que la distribución está sesgada hacia la derecha.
+
+### Medidas de dispersión.
+
+El recorrido (o rango) y el rango intercuartílico (IQR) se calculan igual que antes para datos sin agrupar. Sin embargo, la definición de varianza la modificamos para usar las marcas de clase, y no las observaciones:
+
+$$S^2 = \frac{\sum_{i=1}^k f_i(c_i - \bar{X})^2}{n - 1}$$
+
+A partir de esta, es posible calcular la desviación estándar y el coeficiente de variación tal como se definieron para datos sin agrupar.
+
+> Se tiene que $R = 140 - 75 = 65$ g dL${}^{-1}$ y $IQR = 112{,}79 - 95{,}7 = 17{,}09$ g dL${}^{-1}$, los cuales nos indican que el 50% de las observaciones solo se encuentran ocupando aproximadamente un $4$% del dominio posible de las observaciones.  
+La varianza es $S^2 = 311{,}04$ (g dL${}^{-1}$)${}^2$, y $S = 17{,}64$ g dL${}^{-1}$ con $CV = 0{,}1703$. Esto nos indica que la distribución de los datos parece no ser tan variable, pero esto puede ser engañoso ya que sabemos que la distribución esta sesgada.
+
+### Medidas de forma.
+
+Para el cálculo del coeficiente de asimetría y curtosis, se procede al igual que antes para datos sin agrupar, pero usamos las marcas de clases en lugar de las observaciones para realizar el cálculo. El coeficiente de asimetría se calcula como:
+
+$$A = \frac{\sum_{i=1}^kf_i(c_i - \bar{X})^3}{nS^3}$$
+
+y la curtosis como:
+
+$$A = \frac{\sum_{i=1}^kf_i(c_i - \bar{X})^4}{nS^4} - 3$$
+
+> Para los índices de glicemia resumidos en la tabla de datos agrupados, obtenemos $A = 0{,}661$ y $K = 2{,}32$. Esto nos indica que la distribución es ligeramente sesgada hacia la derecha (como ya parecíamos intuir de las otras medidas) y leptocúrtica. Esto indica que el sesgo observado es resultado de observaciones atípicas.
+
+```{r descriptives-non-grouped-seven, echo = TRUE, eval = TRUE}
+Media <- sum(glicemia$f_i * glicemia$`Marca de Clase`) / 25
+Std.Dev <- sqrt(sum(glicemia$f_i * (glicemia$`Marca de Clase` - Media) ** 2) / 24)
+
+tribble(~Media, ~`Desv. Est.`, ~Asimetria, ~Curtosis,
+  Media,
+  Std.Dev,
+  sum(glicemia$f_i * (glicemia$`Marca de Clase` - Media) ** 3) / (25 * Std.Dev ** 3),
+  sum(glicemia$f_i * (glicemia$`Marca de Clase` - Media) ** 4) / (25 * Std.Dev ** 4)
+) %>% 
+kbl()
+```
+
+**Ejercicio**. En un estudio del síndrome de Down, se examinaron 180 niños afectados y la siguiente tabla da la distribución de frecuencias para el cociente intelectual (IQ) de los niños. Complete la tabla de datos agrupados, añadiendo las columnas que hagan falta, y determine las medidas de tendencia central, los cuartiles, deciles y percentiles, las medidas de dispersión y de forma. Discuta los resultados.
+
+```{r descriptives-non-grouped-eight, echo = TRUE, eval = TRUE}
+tibble(
+  Clase = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
+  `Límites de clase` = c("10.5 a 20.5", "20.5 a 30.5", "30.5 a 40.5", "40.5 a 50.5", "50.5 a 60.5", "60.5 a 70.5", "70.5 a 80.5", "80.5 a 90.5", "90.5 a 100.5"),
+  `Marca de clase` = c(15.5, 25.5, 35.5, 45.5, 55.5, 65.5, 75.5, 85.5, 95.5),
+  `Frecuencia f_i` = c(4, 34, 0, 70, 43, 19, 7, 2, 1)
+) %>%
+kbl()
+```
+

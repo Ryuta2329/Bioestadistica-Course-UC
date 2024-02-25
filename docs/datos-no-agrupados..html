@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.1 Datos no agrupados. | Bioestadistitica-UC.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.1 Datos no agrupados. | Bioestadistitica-UC.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.1 Datos no agrupados. | Bioestadistitica-UC.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="estadística-descriptiva..html"/>
+<link rel="next" href="datos-agrupados..html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="...">Bioestadística.</a></li>
+<li><a href="...">Marcelo Molinatti</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="1" data-path="introducción..html"><a href="introducción..html"><i class="fa fa-check"></i><b>1</b> Introducción.</a></li>
+<li class="chapter" data-level="2" data-path="teoría-de-probabilidades..html"><a href="teoría-de-probabilidades..html"><i class="fa fa-check"></i><b>2</b> Teoría de Probabilidades.</a></li>
+<li class="chapter" data-level="3" data-path="combinatoria..html"><a href="combinatoria..html"><i class="fa fa-check"></i><b>3</b> Combinatoria.</a></li>
+<li class="chapter" data-level="4" data-path="otros-teoremas-de-probabilidades..html"><a href="otros-teoremas-de-probabilidades..html"><i class="fa fa-check"></i><b>4</b> Otros Teoremas de Probabilidades.</a></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva..html"><a href="estadística-descriptiva..html"><i class="fa fa-check"></i><b>5</b> Estadística Descriptiva.</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html"><i class="fa fa-check"></i><b>5.1</b> Datos no agrupados.</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-tendencia-central."><i class="fa fa-check"></i><b>5.1.1</b> Medidas de Tendencia central.</a></li>
+<li class="chapter" data-level="5.1.2" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-posición."><i class="fa fa-check"></i><b>5.1.2</b> Medidas de posición.</a></li>
+<li class="chapter" data-level="5.1.3" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-dispersión."><i class="fa fa-check"></i><b>5.1.3</b> Medidas de Dispersión.</a></li>
+<li class="chapter" data-level="5.1.4" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-forma."><i class="fa fa-check"></i><b>5.1.4</b> Medidas de Forma.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="datos-agrupados..html"><a href="datos-agrupados..html"><i class="fa fa-check"></i><b>5.2</b> Datos Agrupados.</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-tendencia-central.-1"><i class="fa fa-check"></i><b>5.2.1</b> Medidas de Tendencia Central.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-posición.-1"><i class="fa fa-check"></i><b>5.2.2</b> Medidas de posición.</a></li>
+<li class="chapter" data-level="5.2.3" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-dispersión.-1"><i class="fa fa-check"></i><b>5.2.3</b> Medidas de dispersión.</a></li>
+<li class="chapter" data-level="5.2.4" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-forma.-1"><i class="fa fa-check"></i><b>5.2.4</b> Medidas de forma.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="distribuciones-de-probabilidad..html"><a href="distribuciones-de-probabilidad..html"><i class="fa fa-check"></i><b>6</b> Distribuciones de Probabilidad.</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="función-de-probabilidad..html"><a href="función-de-probabilidad..html"><i class="fa fa-check"></i><b>6.1</b> Función de Probabilidad.</a></li>
+<li class="chapter" data-level="6.2" data-path="función-de-distribución..html"><a href="función-de-distribución..html"><i class="fa fa-check"></i><b>6.2</b> Función de distribución.</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="función-de-distribución..html"><a href="función-de-distribución..html#propiedades-de-la-función-de-distribución."><i class="fa fa-check"></i><b>6.2.1</b> Propiedades de la función de distribución.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="cálculos-con-funciones-de-probabilidades..html"><a href="cálculos-con-funciones-de-probabilidades..html"><i class="fa fa-check"></i><b>6.3</b> Cálculos con funciones de probabilidades.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="distribuciones-de-probabilidad-de-variables-discretas..html"><a href="distribuciones-de-probabilidad-de-variables-discretas..html"><i class="fa fa-check"></i><b>7</b> Distribuciones de probabilidad de variables discretas.</a></li>
+<li class="chapter" data-level="8" data-path="distribuciones-de-probabilidad-de-variables-continuas..html"><a href="distribuciones-de-probabilidad-de-variables-continuas..html"><i class="fa fa-check"></i><b>8</b> Distribuciones de probabilidad de variables continuas.</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="distribución-normal..html"><a href="distribución-normal..html"><i class="fa fa-check"></i><b>8.1</b> Distribución Normal.</a></li>
+<li class="chapter" data-level="8.2" data-path="distribución-ji-cuadrada..html"><a href="distribución-ji-cuadrada..html"><i class="fa fa-check"></i><b>8.2</b> Distribución Ji-Cuadrada.</a></li>
+<li class="chapter" data-level="8.3" data-path="distribución-t-student..html"><a href="distribución-t-student..html"><i class="fa fa-check"></i><b>8.3</b> Distribución <span class="math inline">\(t\)</span>-Student.</a></li>
+<li class="chapter" data-level="8.4" data-path="distribución-f..html"><a href="distribución-f..html"><i class="fa fa-check"></i><b>8.4</b> Distribución <span class="math inline">\(F\)</span>.</a></li>
+<li class="chapter" data-level="8.5" data-path="ejercicios..html"><a href="ejercicios..html"><i class="fa fa-check"></i><b>8.5</b> Ejercicios.</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="inferencia-estadística..html"><a href="inferencia-estadística..html"><i class="fa fa-check"></i><b>9</b> Inferencia Estadística.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="cómo-se-enfrenta-a-la-inferencia-estadística.html"><a href="cómo-se-enfrenta-a-la-inferencia-estadística.html"><i class="fa fa-check"></i><b>9.1</b> ¿Cómo se enfrenta a la Inferencia Estadística?</a></li>
+<li class="chapter" data-level="9.2" data-path="frecuentistas-y-muestreo-repetido..html"><a href="frecuentistas-y-muestreo-repetido..html"><i class="fa fa-check"></i><b>9.2</b> Frecuentistas y muestreo repetido.</a></li>
+<li class="chapter" data-level="9.3" data-path="ámbito-de-la-inferencia-estadística..html"><a href="ámbito-de-la-inferencia-estadística..html"><i class="fa fa-check"></i><b>9.3</b> Ámbito de la inferencia Estadística.</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="teoría-de-muestreo..html"><a href="teoría-de-muestreo..html"><i class="fa fa-check"></i><b>10</b> Teoría de Muestreo.</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="estimación..html"><a href="estimación..html"><i class="fa fa-check"></i><b>10.1</b> Estimación.</a></li>
+<li class="chapter" data-level="10.2" data-path="distribución-muestral-de-un-estimador..html"><a href="distribución-muestral-de-un-estimador..html"><i class="fa fa-check"></i><b>10.2</b> Distribución muestral de un estimador.</a></li>
+<li class="chapter" data-level="10.3" data-path="teorema-del-límite-central-tlc..html"><a href="teorema-del-límite-central-tlc..html"><i class="fa fa-check"></i><b>10.3</b> Teorema del Límite Central (TLC).</a></li>
+<li class="chapter" data-level="10.4" data-path="necesidad-de-especificar-una-muestra..html"><a href="necesidad-de-especificar-una-muestra..html"><i class="fa fa-check"></i><b>10.4</b> Necesidad de especificar una muestra.</a></li>
+<li class="chapter" data-level="10.5" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html"><i class="fa fa-check"></i><b>10.5</b> Diseño de muestreo.</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-aleatorio-simple."><i class="fa fa-check"></i><b>10.5.1</b> Muestreo Aleatorio Simple.</a></li>
+<li class="chapter" data-level="10.5.2" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-aleatorio-estratificado."><i class="fa fa-check"></i><b>10.5.2</b> Muestreo Aleatorio Estratificado.</a></li>
+<li class="chapter" data-level="10.5.3" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-adaptativo."><i class="fa fa-check"></i><b>10.5.3</b> Muestreo Adaptativo.</a></li>
+<li class="chapter" data-level="10.5.4" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-sistemático."><i class="fa fa-check"></i><b>10.5.4</b> Muestreo Sistemático.</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="proceso-de-muestreo..html"><a href="proceso-de-muestreo..html"><i class="fa fa-check"></i><b>10.6</b> Proceso de Muestreo.</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="teoría-de-estimación..html"><a href="teoría-de-estimación..html"><i class="fa fa-check"></i><b>11</b> Teoría de Estimación.</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="propiedades-de-un-estimador..html"><a href="propiedades-de-un-estimador..html"><i class="fa fa-check"></i><b>11.1</b> Propiedades de un estimador.</a></li>
+<li class="chapter" data-level="11.2" data-path="estimación-puntual..html"><a href="estimación-puntual..html"><i class="fa fa-check"></i><b>11.2</b> Estimación puntual.</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="estimación-puntual..html"><a href="estimación-puntual..html#construcción-de-estadísitcos-para-inferencia."><i class="fa fa-check"></i><b>11.2.1</b> Construcción de estadísitcos para inferencia.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html"><i class="fa fa-check"></i><b>11.3</b> Estimación por Intervalos.</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html#intervalos-unilaterales."><i class="fa fa-check"></i><b>11.3.1</b> Intervalos Unilaterales.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="introducción-al-contraste-de-hipótesis..html"><a href="introducción-al-contraste-de-hipótesis..html"><i class="fa fa-check"></i><b>12</b> Introducción al Contraste de Hipótesis.</a></li>
+<li class="chapter" data-level="13" data-path="nos-podemos-equivocar.html"><a href="nos-podemos-equivocar.html"><i class="fa fa-check"></i><b>13</b> Nos podemos equivocar…</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="estadístico-de-prueba..html"><a href="estadístico-de-prueba..html"><i class="fa fa-check"></i><b>13.1</b> Estadístico de Prueba.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias..html"><a href="referencias..html"><i class="fa fa-check"></i>Referencias.</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown">
+Proudly published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="datos-no-agrupados." class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Datos no agrupados.<a href="datos-no-agrupados..html#datos-no-agrupados." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para comprender los conceptos de la estadística descriptiva en datos sin agrupar, usamos el conjunto de datos obtenidos del experimento que busca evaluar la reacción de saltamontes a estímulos visuales o acústicos, que midieron el tiempo de reacción a estos antes del vuelo:</p>
+<p><strong>A estímulos acústicos</strong>: <span class="math inline">\(86, 102, 103, 99, 108, 100, 118, 108, 109, 113, 114, 107, 107, 117, 120, 101, 126, 109, 106\)</span>.</p>
+<p><strong>A estímulos visuales</strong>: <span class="math inline">\(72, 95, 73, 99, 71, 90, 102, 97, 71, 75, 80, 70, 100, 104, 81, 103, 101, 103, 77, 78, 89\)</span>.</p>
+<div id="medidas-de-tendencia-central." class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Medidas de Tendencia central.<a href="datos-no-agrupados..html#medidas-de-tendencia-central." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El <em>promedio</em> se define como:</p>
+<p><span class="math display">\[\bar{X} = \frac{\sum_{i=1}^k f_ix_i}{n}\]</span></p>
+<p>dónde <span class="math inline">\(x_i\)</span> es la <span class="math inline">\(i\)</span>-ésima observación, y <span class="math inline">\(f_i\)</span> es la frecuencia absoluta de la observación (cuantas veces se repite <span class="math inline">\(x_i\)</span> entre el número de observaciones), y la sumatoria se hace sobre los <span class="math inline">\(k\)</span> observaciones únicas (las observaciones repetidas no se toman en cuenta, ya se están tomando en cuenta al multiplicar por <span class="math inline">\(f_i\)</span> el valor observado repetido).</p>
+<blockquote>
+<p>Para el tiempo de reacción a estímulos acústicos se calcularía entonces:
+<span class="math display">\[\begin{aligned}
+\bar{X}_a &amp;= \frac{86+102+103+99+2\times108+100+118+109+113+114+2\times107+117+120+101+126+109+106}{19} \\
+&amp;= 108{,}05 \text{ segundos}
+\end{aligned}\]</span>
+Procediendo de igual forma para el tiempo de reacción a estímulos visuales se obtiene <span class="math inline">\(\bar{X}_v=87{,}19\)</span> segundos (¡verifícalo!).</p>
+</blockquote>
+<p>La <em>mediana</em> para datos agrupados se consigue siguiendo los siguientes pasos:</p>
+<ol style="list-style-type: decimal">
+<li>Se ordenan de menor a mayor las observaciones.<br />
+</li>
+<li>Se asignan índices a los datos ordenados desde <span class="math inline">\(1\)</span> a <span class="math inline">\(n\)</span>: al menor dato se le asigna el índice <span class="math inline">\(1\)</span>, al siguiente el <span class="math inline">\(2\)</span>, y así sucesivamente.</li>
+<li>Se calcula el índice de posición de la mediana como <span class="math inline">\((n + 1)/2\)</span> si <span class="math inline">\(n\)</span> es impar. Si <span class="math inline">\(n\)</span> es par se calculan los índices de posición <span class="math inline">\((n-1)/2\)</span> y <span class="math inline">\((n+1)/2\)</span>.</li>
+<li>La mediana es entonces:
+<span class="math display">\[M = \begin{cases}
+  x_{(n + 1)/2}, &amp; \text{ si }n\text{ es impar}. \\
+  \frac{x_{(n-1)/2} + x_{(n+1)/2}}{2}, &amp; \text{ si }n\text{ es par.}
+\end{cases}\]</span></li>
+</ol>
+<blockquote>
+<p>Para el caso del tiempo de reacción a estímulos acústicos, tenemos que los datos ordenados son:
+<span class="math display">\[\begin{aligned}
+&amp;86_{(1)}, 99_{(2)}, 100_{(3)}, 101_{(4)},  102_{(5)}, 103_{(6)}, 106_{(7)}, 107_{(8)}, 107_{(9)}, 108_{(10)}, 108_{(11)}, 109_{(12)}, 109_{(13)}, 113_{(14)}, \\
+&amp;114_{(15)}, 117_{(16)}, 118_{(17)}, 120_{(18)}, 126_{(19)}
+\end{aligned}\]</span>
+dónde el subscrito entre paréntesis corresponde al índice dado al dato. Cómo <span class="math inline">\(n=19\)</span> es impar, se calcula el índice de posición <span class="math inline">\((n+1)/2 = 10\)</span>. Ubicamos en los datos ordenados la observación con el índice <span class="math inline">\(10\)</span>:
+<span class="math display">\[\begin{aligned}
+&amp;86_{(1)}, 99_{(2)}, 100_{(3)}, 101_{(4)},  102_{(5)}, 103_{(6)}, 106_{(7)}, 107_{(8)}, 107_{(9)}, \color{red}{108_{(10)}}, 108_{(11)}, 109_{(12)}, 109_{(13)}, 113_{(14)}, \\
+&amp;114_{(15)}, 117_{(16)}, 118_{(17)}, 120_{(18)}, 126_{(19)}
+\end{aligned}\]</span>
+y este valor corresponde a la mediana, de forma que:
+<span class="math display">\[M =108 \text{ segundos}\]</span>
+Se puede proceder de igual forma con el tiempo de reacción a estímulos visuales y obtener <span class="math inline">\(M = 89\text{ segundos}\)</span> (¡verifícalo!).</p>
+</blockquote>
+<p>La <em>moda</em> para datos no agrupados es la observación con la máxima frecuencia registrada (la frecuencia con la mayor magnitud):</p>
+<p><span class="math display">\[Moda(\{x_i\}_{i=1}^n) = \{x_i \vert f_{x_i} = max(\{f_{x_1}, f_{x_2}, \ldots, f_{x_n}\})\}\]</span></p>
+<p>(la notación <span class="math inline">\(\{x_i\}_{i=1}^k\)</span> y <span class="math inline">\(\{x_1, x_2, \ldots, x_n\}\)</span> son equivalentes, es decir, <span class="math inline">\(\{x_i\}_{i=1}^n = \{x_1, x_2, \ldots, x_n\}\)</span>). Para calcular la moda se siguen los siguientes pasos:</p>
+<ol style="list-style-type: decimal">
+<li>Se ordenan los datos de menor a mayor.</li>
+<li>Se calculan las frecuencias absolutas <span class="math inline">\(f_{x_i}\)</span> contando el número de veces que la magnitud de una observación se repite.</li>
+<li>La moda es el valor que más se repita. Si hay más de un valor con la misma frecuencia absoluta, entonces la moda es un conjunto de todos los valores con la misma frecuencia absoluta.</li>
+</ol>
+<blockquote>
+<p>En el caso del tiempo de reacción a estímulos acústicos, los datos ordenados son:
+<span class="math display">\[\begin{aligned}
+&amp;86_{(1)}, 99_{(1)}, 100_{(1)}, 101_{(1)}, 102_{(1)}, 103_{(1)}, 106_{(1)}, 107_{(2)}, 108_{(2)}, \\
+&amp;109_{(2)}, 113_{(1)}, 114_{(1)}, 117_{(1)}, 118_{(1)}, 120_{(1)}, 126_{(1)}
+\end{aligned}\]</span>
+donde se muestra como subscrito en paréntesis la frecuencia absoluta <span class="math inline">\(f_{x_i}\)</span>. Como la <span class="math inline">\(max(\{f_{x_i}\}) = 2\)</span>, que es la frecuencia absoluta de <span class="math inline">\(107, 108\)</span> y <span class="math inline">\(109\)</span> todos en segundos, por lo que <span class="math inline">\(Moda(\{x_i\}_{i=1}^n) = \{107, 108, 109\}\)</span> y los datos son multimodales.<br />
+En el caso de estímulos visuales, <span class="math inline">\(max(\{f_{x_i}\}) = 2\)</span> para <span class="math inline">\(71\)</span> y <span class="math inline">\(103\)</span>
+todos en segundos, por lo que <span class="math inline">\(Moda(\{x_i\}_{i=1}^n) = \{71, 103\}\)</span> segundos (¡verifícalo!).</p>
+</blockquote>
+<p>A continuación se muestra un resumen de los estadísticos de tendencia central calculados para los tiempos de reacción acústico y visual, usando R:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="datos-no-agrupados..html#cb1-1" tabindex="-1"></a>acoustic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">86</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">99</span>, <span class="dv">108</span>, <span class="dv">100</span>, <span class="dv">118</span>, <span class="dv">108</span>, <span class="dv">109</span>, <span class="dv">113</span>, <span class="dv">114</span>, <span class="dv">107</span>, <span class="dv">107</span>, <span class="dv">117</span>, <span class="dv">120</span>, <span class="dv">101</span>, <span class="dv">126</span>, <span class="dv">109</span>, <span class="dv">106</span>)</span>
+<span id="cb1-2"><a href="datos-no-agrupados..html#cb1-2" tabindex="-1"></a>visual <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">72</span>, <span class="dv">95</span>, <span class="dv">73</span>, <span class="dv">99</span>, <span class="dv">71</span>, <span class="dv">90</span>, <span class="dv">102</span>, <span class="dv">97</span>, <span class="dv">71</span>, <span class="dv">75</span>, <span class="dv">80</span>, <span class="dv">70</span>, <span class="dv">100</span>, <span class="dv">104</span>, <span class="dv">81</span>, <span class="dv">103</span>, <span class="dv">101</span>, <span class="dv">103</span>, <span class="dv">77</span>, <span class="dv">78</span>, <span class="dv">89</span>)</span>
+<span id="cb1-3"><a href="datos-no-agrupados..html#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="datos-no-agrupados..html#cb1-4" tabindex="-1"></a><span class="co"># Para el calculo de la moda</span></span>
+<span id="cb1-5"><a href="datos-no-agrupados..html#cb1-5" tabindex="-1"></a>f_a_acoustic <span class="ot">&lt;-</span> <span class="fu">table</span>(acoustic)</span>
+<span id="cb1-6"><a href="datos-no-agrupados..html#cb1-6" tabindex="-1"></a>mode_acoustic <span class="ot">&lt;-</span> <span class="fu">names</span>(f_a_acoustic)[<span class="fu">which</span>(f_a_acoustic <span class="sc">==</span> <span class="fu">max</span>(f_a_acoustic))]</span>
+<span id="cb1-7"><a href="datos-no-agrupados..html#cb1-7" tabindex="-1"></a>f_a_visual <span class="ot">&lt;-</span> <span class="fu">table</span>(visual)</span>
+<span id="cb1-8"><a href="datos-no-agrupados..html#cb1-8" tabindex="-1"></a>mode_visual <span class="ot">&lt;-</span> <span class="fu">names</span>(f_a_visual)[<span class="fu">which</span>(f_a_visual <span class="sc">==</span> <span class="fu">max</span>(f_a_visual))]</span>
+<span id="cb1-9"><a href="datos-no-agrupados..html#cb1-9" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="datos-no-agrupados..html#cb1-10" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb1-11"><a href="datos-no-agrupados..html#cb1-11" tabindex="-1"></a>  <span class="at">Estimulo =</span> <span class="fu">c</span>(<span class="st">&quot;Acústico&quot;</span>, <span class="st">&quot;Visual&quot;</span>),</span>
+<span id="cb1-12"><a href="datos-no-agrupados..html#cb1-12" tabindex="-1"></a>  <span class="at">Media =</span> <span class="fu">c</span>(<span class="fu">mean</span>(acoustic), <span class="fu">mean</span>(visual)),</span>
+<span id="cb1-13"><a href="datos-no-agrupados..html#cb1-13" tabindex="-1"></a>  <span class="at">Mediana =</span> <span class="fu">c</span>(<span class="fu">median</span>(acoustic), <span class="fu">median</span>(visual)),</span>
+<span id="cb1-14"><a href="datos-no-agrupados..html#cb1-14" tabindex="-1"></a>  <span class="at">Moda =</span> <span class="fu">c</span>(<span class="fu">paste</span>(mode_acoustic, <span class="at">collapse=</span><span class="st">&quot;, &quot;</span>), <span class="fu">paste</span>(mode_visual, <span class="at">collapse=</span><span class="st">&quot;, &quot;</span>))</span>
+<span id="cb1-15"><a href="datos-no-agrupados..html#cb1-15" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="datos-no-agrupados..html#cb1-16" tabindex="-1"></a> <span class="fu">kbl</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Estimulo
+</th>
+<th style="text-align:right;">
+Media
+</th>
+<th style="text-align:right;">
+Mediana
+</th>
+<th style="text-align:left;">
+Moda
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Acústico
+</td>
+<td style="text-align:right;">
+108.05263
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+107, 108, 109
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Visual
+</td>
+<td style="text-align:right;">
+87.19048
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+71, 103
+</td>
+</tr>
+</tbody>
+</table>
+<p>donde se muestra que:</p>
+<ul>
+<li>Para los tiempos de reacción a estímulos acústicos, la media y la mediana coinciden bastante, y aunque la moda consiste de tres elementos, la media y la mediana caen dentro de ese conjunto, lo cual indica que la distribución consiste de un solo pico simétrico.</li>
+<li>Para los tiempos de reacción a estímulos visuales, la mediana se desvía ligeramente de la media, indicando que la distribución es algo simétrica, pero como las modas están alejadas en promedio unas 16 unidades de la media/mediana, y unas 30 unidades entre sí, podemos decir que la distribución consiste de dos picos.</li>
+</ul>
+<p>Lo anterior implica que los saltamontes responden de forma única a estímulos acústicos, pero a los estímulos visuales una parte de la población de saltamontes responde rápidamente y la otra parte no tan rápido.</p>
+</div>
+<div id="medidas-de-posición." class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Medidas de posición.<a href="datos-no-agrupados..html#medidas-de-posición." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para los datos no agrupados, los <em>cuantiles</em> se pueden calcular siguiendo los siguientes pasos:</p>
+<ol style="list-style-type: decimal">
+<li>Se ordenan los datos de menor a mayor.</li>
+<li>Se asignan índices a las posiciones de cada observación.</li>
+<li>Se calcula la posición de los cuantiles usando:
+<span class="math display">\[C_i = \begin{cases}
+  \frac{n\times i}{d}, \text{ si }n\text{ es par.} \\
+  \frac{(n+1)\times i}{d}, \text{ si }n\text{ es impar.}
+\end{cases}\]</span></li>
+<li>Ubicamos las observaciones <span class="math inline">\(X_{C_i}\)</span> correspondientes a cada cuantil. Si <span class="math inline">\(C_i\)</span> no es un entero, se calcula el promedio <span class="math inline">\(x_{C_i} = (x_{(C_i - 0{,}5)} + x_{(C_i + 0{,}5)}) / 2\)</span>.</li>
+</ol>
+<p>dónde la <span class="math inline">\(i\)</span> es un entero que corresponde al <span class="math inline">\(i\)</span>-ésimo cuantil (ve más abajo el ejemplo), y la <span class="math inline">\(d\)</span> representa en cuántas partes queremos dividir la distribución.
+Por ejemplo, si quisiéramos calcular los cuartiles, tendríamos que dividir la distribución en cuatro partes estableciendo <span class="math inline">\(d=4\)</span>, y las <span class="math inline">\(i\)</span> tendrían valores de <span class="math inline">\(1, 2\)</span> y <span class="math inline">\(3\)</span> para los cuartiles <span class="math inline">\(Q_1, Q_2\)</span> y <span class="math inline">\(Q_3\)</span>, respectivamente (cambiamos la notación de <span class="math inline">\(C_i\)</span> a <span class="math inline">\(Q_i\)</span> debido a que así se denotan usualmente en otros libros de texto y recursos).</p>
+<blockquote>
+<p>Para los tiempos de reacción ante estímulos acústicos ya se tienen los datos ordenados antes, junto con índices. Para calcular los cuartiles, como <span class="math inline">\(n=19\)</span> es impar, calculamos <span class="math inline">\(Q_i = (19 + 1)\times i/4 = 5i\)</span>, por lo que:
+<span class="math display">\[\{Q_1, Q_2, Q_3\} = \{5, 10, 15\}\]</span>
+Buscamos las observaciones en las posiciones dadas por el conjunto anterior:
+<span class="math display">\[\begin{aligned}
+&amp;86_{(1)}, 99_{(2)}, 100_{(3)}, 101_{(4)},  \color{red}{102_{(5)}}, 103_{(6)}, 106_{(7)}, 107_{(8)}, 107_{(9)}, \color{red}{108_{(10)}}, 108_{(11)}, 109_{(12)}, 109_{(13)}, 113_{(14)}, \\
+&amp;\color{red}{114_{(15)}}, 117_{(16)}, 118_{(17)}, 120_{(18)}, 126_{(19)}
+\end{aligned}\]</span>
+Por lo tanto, los cuartiles son:
+<span class="math display">\[\{x_{Q_1}, x_{Q_2}, x_{Q_3}\} = \{102, 108, 114\}\]</span></p>
+</blockquote>
+<p>Notamos dos cosas: la primera es que la mediana y el cuartil 2 coinciden como se esperaba. Segundo, si vemos los datos ordenados con los cuartiles en rojo, vemos que entre cada cuartil hay exactamente 4 datos, es decir, la distribución se dividió en cuatro partes, cada una con exactamente la misma cantidad de datos.</p>
+<blockquote>
+<p>Para los tiempos de reacción a estímulos visuales, se puede encontrar que <span class="math inline">\(\{Q_1, Q_2, Q_3\} = \{5{,}5; 11; 16{,}5\}\)</span>. Esta vez, los cuartiles son decimales, por lo que podemos usar el valor promedio de las observaciones entre las observaciones adyacentes. Por ejemplo, para <span class="math inline">\(Q_1 = 5{,}5\)</span>, se ubican las observaciones <span class="math inline">\(x_5 = 73\)</span> y <span class="math inline">\(x_6 = 75\)</span> (que son los enteros adyacentes a <span class="math inline">\(5{,}5\)</span>) y calculamos el promedio <span class="math inline">\((73 + 75) / 2 = 74\)</span>. Realizamos el mismo procedimiento para el tercer cuartil y entonces <span class="math inline">\(\{x_{Q_1}, x_{Q_2}, x_{Q_3}\} = \{74; 89; 100{,}5\}\)</span> (¡Verifica los resultado!).</p>
+</blockquote>
+<p><strong>Ejercicio</strong>. Calcula para los datos de tiempos de reacción de saltamontes a estímulos acústicos y visuales, los deciles (<span class="math inline">\(d=10\)</span>) y percentiles (<span class="math inline">\(d = 100\)</span>).</p>
+<p>A continuación, se resumen los estadísticos de posición en conjunto con los de tendencia central para los tiempos de reacción (añadimos por conveniencia el mínimo y máximo valor registrado):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="datos-no-agrupados..html#cb2-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb2-2"><a href="datos-no-agrupados..html#cb2-2" tabindex="-1"></a>  <span class="at">Estimulo =</span> <span class="fu">c</span>(<span class="st">&quot;Acústico&quot;</span>, <span class="st">&quot;Visual&quot;</span>),</span>
+<span id="cb2-3"><a href="datos-no-agrupados..html#cb2-3" tabindex="-1"></a>  <span class="at">Min =</span> <span class="fu">c</span>(<span class="fu">min</span>(acoustic), <span class="fu">min</span>(visual)),</span>
+<span id="cb2-4"><a href="datos-no-agrupados..html#cb2-4" tabindex="-1"></a>  <span class="at">Q_1 =</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">74</span>),</span>
+<span id="cb2-5"><a href="datos-no-agrupados..html#cb2-5" tabindex="-1"></a>  <span class="at">Media =</span> <span class="fu">c</span>(<span class="fu">mean</span>(acoustic), <span class="fu">mean</span>(visual)),</span>
+<span id="cb2-6"><a href="datos-no-agrupados..html#cb2-6" tabindex="-1"></a>  <span class="at">Mediana =</span> <span class="fu">c</span>(<span class="fu">median</span>(acoustic), <span class="fu">median</span>(visual)),</span>
+<span id="cb2-7"><a href="datos-no-agrupados..html#cb2-7" tabindex="-1"></a>  <span class="at">Q_3 =</span> <span class="fu">c</span>(<span class="dv">114</span>, <span class="fl">100.5</span>),</span>
+<span id="cb2-8"><a href="datos-no-agrupados..html#cb2-8" tabindex="-1"></a>  <span class="at">Max =</span> <span class="fu">c</span>(<span class="fu">max</span>(acoustic), <span class="fu">max</span>(visual)),</span>
+<span id="cb2-9"><a href="datos-no-agrupados..html#cb2-9" tabindex="-1"></a>  <span class="at">Moda =</span> <span class="fu">c</span>(<span class="fu">paste</span>(mode_acoustic, <span class="at">collapse=</span><span class="st">&quot;, &quot;</span>), <span class="fu">paste</span>(mode_visual, <span class="at">collapse=</span><span class="st">&quot;, &quot;</span>))</span>
+<span id="cb2-10"><a href="datos-no-agrupados..html#cb2-10" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-11"><a href="datos-no-agrupados..html#cb2-11" tabindex="-1"></a>  <span class="fu">kbl</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Estimulo
+</th>
+<th style="text-align:right;">
+Min
+</th>
+<th style="text-align:right;">
+Q_1
+</th>
+<th style="text-align:right;">
+Media
+</th>
+<th style="text-align:right;">
+Mediana
+</th>
+<th style="text-align:right;">
+Q_3
+</th>
+<th style="text-align:right;">
+Max
+</th>
+<th style="text-align:left;">
+Moda
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Acústico
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:right;">
+108.05263
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+114.0
+</td>
+<td style="text-align:right;">
+126
+</td>
+<td style="text-align:left;">
+107, 108, 109
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Visual
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+87.19048
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:right;">
+100.5
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+71, 103
+</td>
+</tr>
+</tbody>
+</table>
+<p>donde podemos ver que la distribución de datos en el grupo que recibió estímulos acústicos es más equitativa, ya que los cuartiles se distancian uno del otro en <span class="math inline">\(6\)</span> unidades, mientras que los cuartiles de los datos de estímulos visuales se distancian <span class="math inline">\(15\)</span> y <span class="math inline">\(11{,}5\)</span> unidades, por lo que hay más datos hacia tiempos de reacción altos, y no tanto en tiempos de reacción bajos. Esto ayuda a enfatizar la asimetría pequeña de la distribución de estímulos visuales, y la simetría de la de estímulos acústicos.</p>
+</div>
+<div id="medidas-de-dispersión." class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Medidas de Dispersión.<a href="datos-no-agrupados..html#medidas-de-dispersión." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El <em>recorrido</em> o <em>rango</em> se define como la diferencia con respecto al valor máximo y el mínimo:</p>
+<p><span class="math display">\[R = x_{max} - x_{min}\]</span></p>
+<blockquote>
+<p>Para los tiempos de reacción se tiene que para estímulos acústicos <span class="math inline">\(R_a = 126 - 86 = 40\)</span> segundos, y para estímulos visuales <span class="math inline">\(R = 104 - 70 = 34\)</span> segundos.<br />
+Esto quiere decir, que el tiempo de reacción a estímulos visuales ocupa una mayor cantidad de posibles observaciones, lo cual lo hace más variable la respuesta que la respuesta a estímulos acústicos.</p>
+</blockquote>
+<p>El <em>rango intercuartílico</em> (<span class="math inline">\(IQR\)</span>) es un recorrido pero tomado desde el primer cuartil al tercer cuartil:</p>
+<p><span class="math display">\[IQR = Q_3-Q_1\]</span></p>
+<blockquote>
+<p>Para los tiempos de reacción a estímulos acústicos <span class="math inline">\(IQR = 114 -102 = 12\)</span> segundos, mientras que para estímulos visuales <span class="math inline">\(IQR = 100{,}5 - 74 = 26{,}5\)</span> segundos.<br />
+Esto quiere decir que el 50% de las observaciones típicas para la respuesta a estímulos acústicos caen en un intervalo más pequeño comparado con la respuesta típica a estímulos visuales, haciendo el tiempo de reacción más consistente en el primer caso.</p>
+</blockquote>
+<p>La <em>varianza</em> se define como:</p>
+<p><span class="math display">\[S^2 = \frac{\sum_{i=1}^k f_i(x_i - \bar{X})^2}{n - 1}\]</span></p>
+<p>es decir, a cada observación le quitamos el valor medio, y al resultado lo elevamos al cuadrado. Luego, sumamos los resultados y dividimos entre <span class="math inline">\(n-1\)</span>.</p>
+<blockquote>
+<p>Para los datos de tiempos de reacción a estímulos acústicos, se tiene que las diferencias con respecto a la media son:
+<span class="math display">\[\begin{aligned}
+&amp;-22{,}05; -6{,}05; -5{,}05; -9{,}05; -0{,}05; -8{,}05; 9{,}95; -0{,}05; 0{,}95; \\
+&amp;4{,}95; 5{,}95; -1{,}05; -1{,}05; 8{,}95; 11{,}95; -7{,}05; 17{,}95; 0{,}95; -2{,}05
+\end{aligned}\]</span>
+donde las desviaciones más grandes son aquellas que se alejan más de la media. Elevando al cuadrado permite eliminar los signos, de forma que al sumar no se cancelen los terminos, se obtiene:
+<span class="math display">\[\begin{aligned}
+&amp;486{,}32; 36{,}63; 25{,}53; 81{,}95; 0; 64{,}84; 98{,}95; 0; 0{,}9; 24{,}48; \\
+&amp;35{,}37; 1{,}11; 1{,}11; 80{,}06; 142{,}74; 49{,}74; 322{,}11; 0{,}9; 4{,}21
+\end{aligned}\]</span>
+Luego, sumando estos valores se obtiene:
+<span class="math display">\[S^2 = \frac{1456{,}95}{19 - 1} = 80{,}94\text{ s}^2\]</span>
+Para los tiempos de reacción a estímulos visuales se tiene <span class="math inline">\(S^2= 167{,}16\text{ s}^2\)</span> (verifícalo!).</p>
+</blockquote>
+<p>La <em>desviación estándar</em> es:</p>
+<p><span class="math display">\[S = \sqrt{S^2}\]</span></p>
+<p>Y sirve como medida de la distancia promedio de las observaciones con respecto a la media.</p>
+<blockquote>
+<p>Usando el resultado anterior, se tiene para los tiempos de reacción a estímulos acústicos <span class="math inline">\(S = 8{,}997\)</span> segundos, y para los tiempos de reacción a estímulos visuales <span class="math inline">\(S = 12{,}929\)</span> segundos.<br />
+Esto quiere decir que el <span class="math inline">\(68{,}2\)</span>% de las observaciones típicas para la respuesta a estímulos acústicos caen a una distancia de una <span class="math inline">\(\sim9\)</span> segundos de la media, mientras que para los estímulos visuales caen a unos <span class="math inline">\(\sim13\)</span> segundos de la media, haciendo más variable la respuesta a estímulos visuales.</p>
+</blockquote>
+<p>La última medida de variación importante es el <em>coeficiente de variación</em>, <span class="math inline">\(CV\)</span>, que se define como:</p>
+<p><span class="math display">\[CV = \frac{S}{\bar{X}}\]</span></p>
+<p>Y nos dice que tan grande es la desviación estándar con respecto a la media. Para una distribución normal este valor es <span class="math inline">\(\sim0{,}3\)</span> (<span class="math inline">\(30\)</span>% en valor porcentual).</p>
+<blockquote>
+<p>Para los tiempos de reacción se tiene que para estímulos acústicos <span class="math inline">\(CV = 8{,}997/ 108{,}05 = 0{,}0833\)</span> (<span class="math inline">\(\sim8{,}3\)</span>%), y para estímulos visuales <span class="math inline">\(CV = 12{,}929 / 87{,}19 = 0{,}1483\)</span> (<span class="math inline">\(\sim14{,}8\)</span>%).<br />
+Esto quiere decir, que el tiempo de reacción a estímulos visuales tiene una variación mayor (de aproximadamente 6% mayor) que la respuesta a estímulos acústicos, dado que la desviación estándar representa una mayor proporción de la magnitud de la media.</p>
+</blockquote>
+<p>Resumimos los estadísticos de dispersión a continuación:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="datos-no-agrupados..html#cb3-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb3-2"><a href="datos-no-agrupados..html#cb3-2" tabindex="-1"></a>  <span class="at">Estimulo =</span> <span class="fu">c</span>(<span class="st">&quot;Acústico&quot;</span>, <span class="st">&quot;Visual&quot;</span>),</span>
+<span id="cb3-3"><a href="datos-no-agrupados..html#cb3-3" tabindex="-1"></a>  <span class="at">Rango =</span> <span class="fu">c</span>(<span class="fu">max</span>(acoustic) <span class="sc">-</span> <span class="fu">min</span>(acoustic), <span class="fu">max</span>(visual) <span class="sc">-</span> <span class="fu">min</span>(visual)),</span>
+<span id="cb3-4"><a href="datos-no-agrupados..html#cb3-4" tabindex="-1"></a>  <span class="at">IQR =</span> <span class="fu">c</span>(<span class="dv">114</span> <span class="sc">-</span> <span class="dv">102</span>, <span class="fl">100.5</span> <span class="sc">-</span> <span class="dv">74</span>),</span>
+<span id="cb3-5"><a href="datos-no-agrupados..html#cb3-5" tabindex="-1"></a>  <span class="at">Varianza =</span> <span class="fu">c</span>(<span class="fu">var</span>(acoustic), <span class="fu">var</span>(visual)),</span>
+<span id="cb3-6"><a href="datos-no-agrupados..html#cb3-6" tabindex="-1"></a>  <span class="at">Std.Dev =</span> <span class="fu">c</span>(<span class="fu">sd</span>(acoustic), <span class="fu">sd</span>(visual)),</span>
+<span id="cb3-7"><a href="datos-no-agrupados..html#cb3-7" tabindex="-1"></a>  <span class="at">CV =</span> <span class="fu">c</span>(<span class="fu">sd</span>(acoustic) <span class="sc">/</span> <span class="fu">mean</span>(acoustic), <span class="fu">sd</span>(visual) <span class="sc">/</span> <span class="fu">mean</span>(visual)) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb3-8"><a href="datos-no-agrupados..html#cb3-8" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-9"><a href="datos-no-agrupados..html#cb3-9" tabindex="-1"></a>  <span class="fu">kbl</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Estimulo
+</th>
+<th style="text-align:right;">
+Rango
+</th>
+<th style="text-align:right;">
+IQR
+</th>
+<th style="text-align:right;">
+Varianza
+</th>
+<th style="text-align:right;">
+Std.Dev
+</th>
+<th style="text-align:right;">
+CV
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Acústico
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+80.94152
+</td>
+<td style="text-align:right;">
+8.996751
+</td>
+<td style="text-align:right;">
+8.326267
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Visual
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+26.5
+</td>
+<td style="text-align:right;">
+167.16190
+</td>
+<td style="text-align:right;">
+12.929111
+</td>
+<td style="text-align:right;">
+14.828581
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="medidas-de-forma." class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Medidas de Forma.<a href="datos-no-agrupados..html#medidas-de-forma." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El <em>coeficiente de asimetría</em> es una medida de forma que busca cuantificar la simetría de una distribución. Se calcula como:</p>
+<p><span class="math display">\[A = \frac{\sum_{i=1}^n(x_i - \bar{X})^3}{n S^3}\]</span></p>
+<p>Para una distribución simétrica, se esperaría obtener el mismo número de diferencias <span class="math inline">\((x_i - \bar{X})^3\)</span> negativas como positivas, y al sumar la magnitud de todas las diferencias negativas, esta sería de igual magnitud que la suma de todas las diferencias positivas, por lo que <span class="math inline">\(A = 0\)</span> si la distribución es simétrica (aunque lo contrario no es cierto: el que <span class="math inline">\(A = 0\)</span> no asegura que la distribución sea simétrica).<br />
+La asimetría puede ser positiva o negativa dependiendo de la dirección del sesgo. Para distribuciones sesgadas hacia la derecha, <span class="math inline">\(A &gt; 0\)</span>. Para distribuciones sesgadas hacia la izquierda, <span class="math inline">\(A &lt; 0\)</span>.</p>
+<blockquote>
+<p>Se puede calcular la sumatoria de cubos para los tiempos de reacción a estímulos acústicos y visuales, y obtener el coeficiente de asimetría, que para las población de saltamontes sometida a estímulos acústicos <span class="math inline">\(A = -0{,}23\)</span>, y para la que fue sometida a estímulos visuales <span class="math inline">\(A = -0{,}01\)</span>.<br />
+Esto muestra que los tiempos de reacción a estímulos visuales es solo muy ligeramente asimétrica, pero que la de tiempos de reacción a estímulos acústicos es in poco más sesgada hacia la izquierda (aunque no tan apreciablemente).</p>
+</blockquote>
+<p>La <em>curtosis</em> se define como:</p>
+<p><span class="math display">\[K = \frac{\sum_{i=1}^n(x_i - \bar{X})^4}{n S^4} - 3\]</span></p>
+<p>lo cual nos dice algo sobre la forma como se concentran los datos alrededor de la media. Para la distribución normal (que es simétrica y se usa como estándar de comparación) se puede verificar que <span class="math inline">\(K = 0\)</span>. Se dice entonces que la distribución:
+* Es <em>platicúrtica</em> si <span class="math inline">\(K &lt; 0\)</span>, y esto implica que las distribuciones extremas son más probables con respecto a la normal.
+* Es <em>mesocúrtica</em> si <span class="math inline">\(K=0\)</span>, y las observaciones se distribuyen más como una normal.
+* Es <em>leptocúrtica</em> si <span class="math inline">\(K &gt; 0\)</span>, y entonces las observaciones tienden a aglomerarse alrededor de la media más de lo que ocurre en la distribución normal.</p>
+<blockquote>
+<p>Para las población de saltamontes sometida a estímulos acústicos <span class="math inline">\(K = 0{,}166\)</span>, y para la que fue sometida a estímulos visuales <span class="math inline">\(K = -1{,}79\)</span>.<br />
+Esto muestra que los tiempos de reacción a estímulos acústicos se asemeja a una distribución mesocúrtica y los tiempos de reacción a estímulos visuales es platicúrtica, indicando una distribución que tiene <em>colas pesadas</em>, siendo la de estímulos visuales mucho más dispersa alrededor de la media (esto tiene sentido dado nuestro descubrimiento de que se trata de una distribución multimodal).</p>
+</blockquote>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="datos-no-agrupados..html#cb4-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb4-2"><a href="datos-no-agrupados..html#cb4-2" tabindex="-1"></a>  <span class="at">Estimulo =</span> <span class="fu">c</span>(<span class="st">&quot;Acústico&quot;</span>, <span class="st">&quot;Visual&quot;</span>),</span>
+<span id="cb4-3"><a href="datos-no-agrupados..html#cb4-3" tabindex="-1"></a>  <span class="at">Asimetria =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">19</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">21</span>) <span class="sc">*</span> <span class="fu">c</span>(<span class="fu">sum</span>((acoustic <span class="sc">-</span> <span class="fu">mean</span>(acoustic)) <span class="sc">**</span> <span class="dv">3</span>) <span class="sc">/</span> <span class="fu">sd</span>(acoustic) <span class="sc">**</span> <span class="dv">3</span>, <span class="fu">sum</span>((visual <span class="sc">-</span> <span class="fu">mean</span>(visual)) <span class="sc">**</span> <span class="dv">3</span>) <span class="sc">/</span> <span class="fu">sd</span>(visual) <span class="sc">**</span> <span class="dv">3</span>),</span>
+<span id="cb4-4"><a href="datos-no-agrupados..html#cb4-4" tabindex="-1"></a>  <span class="at">Curtosis =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">19</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">21</span>) <span class="sc">*</span> <span class="fu">c</span>(<span class="fu">sum</span>((acoustic <span class="sc">-</span> <span class="fu">mean</span>(acoustic)) <span class="sc">**</span> <span class="dv">4</span>) <span class="sc">/</span> <span class="fu">sd</span>(acoustic) <span class="sc">**</span> <span class="dv">4</span>, <span class="fu">sum</span>((visual <span class="sc">-</span> <span class="fu">mean</span>(visual)) <span class="sc">**</span> <span class="dv">4</span>) <span class="sc">/</span> <span class="fu">sd</span>(visual) <span class="sc">**</span> <span class="dv">4</span>) <span class="sc">-</span> <span class="dv">3</span></span>
+<span id="cb4-5"><a href="datos-no-agrupados..html#cb4-5" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="datos-no-agrupados..html#cb4-6" tabindex="-1"></a>  <span class="fu">kbl</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Estimulo
+</th>
+<th style="text-align:right;">
+Asimetria
+</th>
+<th style="text-align:right;">
+Curtosis
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Acústico
+</td>
+<td style="text-align:right;">
+-0.2299108
+</td>
+<td style="text-align:right;">
+0.1659499
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Visual
+</td>
+<td style="text-align:right;">
+-0.0100155
+</td>
+<td style="text-align:right;">
+-1.7877228
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejercicio</strong> Para el siguiente conjunto de datos de pesos de individuos de una población, separados en Machos (M) y Hembras (H), realice un análisis descriptivo.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="datos-no-agrupados..html#cb5-1" tabindex="-1"></a><span class="co"># Datos Diferencias Peso de Machos y hembras</span></span>
+<span id="cb5-2"><a href="datos-no-agrupados..html#cb5-2" tabindex="-1"></a>ungrouped <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb5-3"><a href="datos-no-agrupados..html#cb5-3" tabindex="-1"></a>    <span class="at">Sex =</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(<span class="st">&quot;HMHMHMHMMHMMHHHMHMMHMHMMHMMHHMHMMHMMHMHMMHMHMMHHMM&quot;</span>, <span class="st">&quot;&quot;</span>)),</span>
+<span id="cb5-4"><a href="datos-no-agrupados..html#cb5-4" tabindex="-1"></a>    <span class="at">Peso =</span> <span class="fu">c</span>(<span class="fl">98.5</span>, <span class="fl">150.6</span>, <span class="fl">108.3</span>, <span class="fl">159.4</span>, <span class="fl">162.6</span>, <span class="fl">122.5</span>, <span class="fl">118.5</span>, <span class="fl">167.5</span>, <span class="fl">170.5</span>, <span class="fl">120.4</span>, <span class="fl">177.5</span>, <span class="fl">186.5</span>, <span class="fl">115.4</span>, <span class="fl">115.5</span>, <span class="fl">52.5</span>, <span class="fl">157.6</span>, <span class="fl">134.4</span>, <span class="fl">148.5</span>, <span class="fl">131.5</span>, <span class="fl">143.4</span>, <span class="fl">145.6</span>, <span class="fl">108.6</span>, <span class="fl">155.5</span>, <span class="fl">110.6</span>, <span class="fl">154.5</span>, <span class="fl">183.5</span>, <span class="fl">191.5</span>, <span class="fl">128.6</span>, <span class="fl">135.4</span>, <span class="fl">195.4</span>, <span class="fl">137.5</span>, <span class="fl">205.6</span>, <span class="fl">190.7</span>, <span class="fl">120.5</span>, <span class="fl">188.7</span>, <span class="fl">176.3</span>, <span class="fl">118.5</span>, <span class="fl">158.5</span>, <span class="fl">116.5</span>, <span class="fl">161.4</span>, <span class="fl">165.5</span>, <span class="fl">142.6</span>, <span class="fl">164.6</span>, <span class="fl">120.5</span>, <span class="fl">170.4</span>, <span class="fl">195.5</span>, <span class="fl">132.5</span>, <span class="fl">129.5</span>, <span class="fl">215.6</span>, <span class="fl">176.5</span>)</span>
+<span id="cb5-5"><a href="datos-no-agrupados..html#cb5-5" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="estadística-descriptiva..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="datos-agrupados..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

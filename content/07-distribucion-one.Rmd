@@ -1,0 +1,2 @@
+# Distribuciones de probabilidad de variables discretas.
+

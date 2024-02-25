@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.2 Datos Agrupados. | Bioestadistitica-UC.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.2 Datos Agrupados. | Bioestadistitica-UC.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.2 Datos Agrupados. | Bioestadistitica-UC.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="datos-no-agrupados..html"/>
+<link rel="next" href="distribuciones-de-probabilidad..html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="...">Bioestadística.</a></li>
+<li><a href="...">Marcelo Molinatti</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="1" data-path="introducción..html"><a href="introducción..html"><i class="fa fa-check"></i><b>1</b> Introducción.</a></li>
+<li class="chapter" data-level="2" data-path="teoría-de-probabilidades..html"><a href="teoría-de-probabilidades..html"><i class="fa fa-check"></i><b>2</b> Teoría de Probabilidades.</a></li>
+<li class="chapter" data-level="3" data-path="combinatoria..html"><a href="combinatoria..html"><i class="fa fa-check"></i><b>3</b> Combinatoria.</a></li>
+<li class="chapter" data-level="4" data-path="otros-teoremas-de-probabilidades..html"><a href="otros-teoremas-de-probabilidades..html"><i class="fa fa-check"></i><b>4</b> Otros Teoremas de Probabilidades.</a></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva..html"><a href="estadística-descriptiva..html"><i class="fa fa-check"></i><b>5</b> Estadística Descriptiva.</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html"><i class="fa fa-check"></i><b>5.1</b> Datos no agrupados.</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-tendencia-central."><i class="fa fa-check"></i><b>5.1.1</b> Medidas de Tendencia central.</a></li>
+<li class="chapter" data-level="5.1.2" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-posición."><i class="fa fa-check"></i><b>5.1.2</b> Medidas de posición.</a></li>
+<li class="chapter" data-level="5.1.3" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-dispersión."><i class="fa fa-check"></i><b>5.1.3</b> Medidas de Dispersión.</a></li>
+<li class="chapter" data-level="5.1.4" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-forma."><i class="fa fa-check"></i><b>5.1.4</b> Medidas de Forma.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="datos-agrupados..html"><a href="datos-agrupados..html"><i class="fa fa-check"></i><b>5.2</b> Datos Agrupados.</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-tendencia-central.-1"><i class="fa fa-check"></i><b>5.2.1</b> Medidas de Tendencia Central.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-posición.-1"><i class="fa fa-check"></i><b>5.2.2</b> Medidas de posición.</a></li>
+<li class="chapter" data-level="5.2.3" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-dispersión.-1"><i class="fa fa-check"></i><b>5.2.3</b> Medidas de dispersión.</a></li>
+<li class="chapter" data-level="5.2.4" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-forma.-1"><i class="fa fa-check"></i><b>5.2.4</b> Medidas de forma.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="distribuciones-de-probabilidad..html"><a href="distribuciones-de-probabilidad..html"><i class="fa fa-check"></i><b>6</b> Distribuciones de Probabilidad.</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="función-de-probabilidad..html"><a href="función-de-probabilidad..html"><i class="fa fa-check"></i><b>6.1</b> Función de Probabilidad.</a></li>
+<li class="chapter" data-level="6.2" data-path="función-de-distribución..html"><a href="función-de-distribución..html"><i class="fa fa-check"></i><b>6.2</b> Función de distribución.</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="función-de-distribución..html"><a href="función-de-distribución..html#propiedades-de-la-función-de-distribución."><i class="fa fa-check"></i><b>6.2.1</b> Propiedades de la función de distribución.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="cálculos-con-funciones-de-probabilidades..html"><a href="cálculos-con-funciones-de-probabilidades..html"><i class="fa fa-check"></i><b>6.3</b> Cálculos con funciones de probabilidades.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="distribuciones-de-probabilidad-de-variables-discretas..html"><a href="distribuciones-de-probabilidad-de-variables-discretas..html"><i class="fa fa-check"></i><b>7</b> Distribuciones de probabilidad de variables discretas.</a></li>
+<li class="chapter" data-level="8" data-path="distribuciones-de-probabilidad-de-variables-continuas..html"><a href="distribuciones-de-probabilidad-de-variables-continuas..html"><i class="fa fa-check"></i><b>8</b> Distribuciones de probabilidad de variables continuas.</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="distribución-normal..html"><a href="distribución-normal..html"><i class="fa fa-check"></i><b>8.1</b> Distribución Normal.</a></li>
+<li class="chapter" data-level="8.2" data-path="distribución-ji-cuadrada..html"><a href="distribución-ji-cuadrada..html"><i class="fa fa-check"></i><b>8.2</b> Distribución Ji-Cuadrada.</a></li>
+<li class="chapter" data-level="8.3" data-path="distribución-t-student..html"><a href="distribución-t-student..html"><i class="fa fa-check"></i><b>8.3</b> Distribución <span class="math inline">\(t\)</span>-Student.</a></li>
+<li class="chapter" data-level="8.4" data-path="distribución-f..html"><a href="distribución-f..html"><i class="fa fa-check"></i><b>8.4</b> Distribución <span class="math inline">\(F\)</span>.</a></li>
+<li class="chapter" data-level="8.5" data-path="ejercicios..html"><a href="ejercicios..html"><i class="fa fa-check"></i><b>8.5</b> Ejercicios.</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="inferencia-estadística..html"><a href="inferencia-estadística..html"><i class="fa fa-check"></i><b>9</b> Inferencia Estadística.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="cómo-se-enfrenta-a-la-inferencia-estadística.html"><a href="cómo-se-enfrenta-a-la-inferencia-estadística.html"><i class="fa fa-check"></i><b>9.1</b> ¿Cómo se enfrenta a la Inferencia Estadística?</a></li>
+<li class="chapter" data-level="9.2" data-path="frecuentistas-y-muestreo-repetido..html"><a href="frecuentistas-y-muestreo-repetido..html"><i class="fa fa-check"></i><b>9.2</b> Frecuentistas y muestreo repetido.</a></li>
+<li class="chapter" data-level="9.3" data-path="ámbito-de-la-inferencia-estadística..html"><a href="ámbito-de-la-inferencia-estadística..html"><i class="fa fa-check"></i><b>9.3</b> Ámbito de la inferencia Estadística.</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="teoría-de-muestreo..html"><a href="teoría-de-muestreo..html"><i class="fa fa-check"></i><b>10</b> Teoría de Muestreo.</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="estimación..html"><a href="estimación..html"><i class="fa fa-check"></i><b>10.1</b> Estimación.</a></li>
+<li class="chapter" data-level="10.2" data-path="distribución-muestral-de-un-estimador..html"><a href="distribución-muestral-de-un-estimador..html"><i class="fa fa-check"></i><b>10.2</b> Distribución muestral de un estimador.</a></li>
+<li class="chapter" data-level="10.3" data-path="teorema-del-límite-central-tlc..html"><a href="teorema-del-límite-central-tlc..html"><i class="fa fa-check"></i><b>10.3</b> Teorema del Límite Central (TLC).</a></li>
+<li class="chapter" data-level="10.4" data-path="necesidad-de-especificar-una-muestra..html"><a href="necesidad-de-especificar-una-muestra..html"><i class="fa fa-check"></i><b>10.4</b> Necesidad de especificar una muestra.</a></li>
+<li class="chapter" data-level="10.5" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html"><i class="fa fa-check"></i><b>10.5</b> Diseño de muestreo.</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-aleatorio-simple."><i class="fa fa-check"></i><b>10.5.1</b> Muestreo Aleatorio Simple.</a></li>
+<li class="chapter" data-level="10.5.2" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-aleatorio-estratificado."><i class="fa fa-check"></i><b>10.5.2</b> Muestreo Aleatorio Estratificado.</a></li>
+<li class="chapter" data-level="10.5.3" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-adaptativo."><i class="fa fa-check"></i><b>10.5.3</b> Muestreo Adaptativo.</a></li>
+<li class="chapter" data-level="10.5.4" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-sistemático."><i class="fa fa-check"></i><b>10.5.4</b> Muestreo Sistemático.</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="proceso-de-muestreo..html"><a href="proceso-de-muestreo..html"><i class="fa fa-check"></i><b>10.6</b> Proceso de Muestreo.</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="teoría-de-estimación..html"><a href="teoría-de-estimación..html"><i class="fa fa-check"></i><b>11</b> Teoría de Estimación.</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="propiedades-de-un-estimador..html"><a href="propiedades-de-un-estimador..html"><i class="fa fa-check"></i><b>11.1</b> Propiedades de un estimador.</a></li>
+<li class="chapter" data-level="11.2" data-path="estimación-puntual..html"><a href="estimación-puntual..html"><i class="fa fa-check"></i><b>11.2</b> Estimación puntual.</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="estimación-puntual..html"><a href="estimación-puntual..html#construcción-de-estadísitcos-para-inferencia."><i class="fa fa-check"></i><b>11.2.1</b> Construcción de estadísitcos para inferencia.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html"><i class="fa fa-check"></i><b>11.3</b> Estimación por Intervalos.</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html#intervalos-unilaterales."><i class="fa fa-check"></i><b>11.3.1</b> Intervalos Unilaterales.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="introducción-al-contraste-de-hipótesis..html"><a href="introducción-al-contraste-de-hipótesis..html"><i class="fa fa-check"></i><b>12</b> Introducción al Contraste de Hipótesis.</a></li>
+<li class="chapter" data-level="13" data-path="nos-podemos-equivocar.html"><a href="nos-podemos-equivocar.html"><i class="fa fa-check"></i><b>13</b> Nos podemos equivocar…</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="estadístico-de-prueba..html"><a href="estadístico-de-prueba..html"><i class="fa fa-check"></i><b>13.1</b> Estadístico de Prueba.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias..html"><a href="referencias..html"><i class="fa fa-check"></i>Referencias.</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown">
+Proudly published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="datos-agrupados." class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Datos Agrupados.<a href="datos-agrupados..html#datos-agrupados." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para comprender los conceptos de la estadística descriptiva en datos agrupados, usamos el conjunto de datos obtenidos del experimento que busca evaluar los niveles de glicemia (en mg dL<span class="math inline">\({}^{-1}\)</span>) en 25 pacientes, cuyos resultados fueron:</p>
+<p><span class="math display">\[75, 82, 90, 95, 101, 112, 121, 132, 140, 97, 84, 90, 96, 102, 114, 121, 138, 87, 91, 96, 104, 123, 89, 93, 99\]</span></p>
+<p>Como vimos antes, estos datos se pueden agrupar en clases que denotan intervalos (que pueden ser continuos o aparentes) en los cuales caen las observaciones con cierta frecuencia absoluta, como se muestra a continuación:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="datos-agrupados..html#cb6-1" tabindex="-1"></a>glicemia <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb6-2"><a href="datos-agrupados..html#cb6-2" tabindex="-1"></a>  <span class="sc">~</span>Lim_rel_inf, <span class="sc">~</span>Lim_rel_sup, <span class="sc">~</span><span class="st">`</span><span class="at">Marca de Clase</span><span class="st">`</span>, <span class="sc">~</span><span class="st">`</span><span class="at">f_i</span><span class="st">`</span>, <span class="sc">~</span><span class="st">`</span><span class="at">fr_i</span><span class="st">`</span>, <span class="sc">~</span><span class="st">`</span><span class="at">F_i</span><span class="st">`</span>, <span class="sc">~</span><span class="st">`</span><span class="at">Fr_i</span><span class="st">`</span>,</span>
+<span id="cb6-3"><a href="datos-agrupados..html#cb6-3" tabindex="-1"></a>  <span class="fl">74.5</span>, <span class="fl">86.5</span>, <span class="fl">80.5</span>, <span class="dv">3</span>, <span class="dv">12</span> <span class="sc">/</span> <span class="dv">100</span>, <span class="dv">3</span>, <span class="dv">12</span> <span class="sc">/</span> <span class="dv">100</span>,</span>
+<span id="cb6-4"><a href="datos-agrupados..html#cb6-4" tabindex="-1"></a>  <span class="fl">86.5</span>, <span class="fl">98.5</span>, <span class="fl">92.5</span>, <span class="dv">10</span>, <span class="dv">40</span> <span class="sc">/</span> <span class="dv">100</span>, <span class="dv">13</span>, <span class="dv">52</span> <span class="sc">/</span> <span class="dv">100</span>,</span>
+<span id="cb6-5"><a href="datos-agrupados..html#cb6-5" tabindex="-1"></a>  <span class="fl">98.5</span>, <span class="fl">110.5</span>, <span class="fl">104.5</span>, <span class="dv">4</span>, <span class="dv">16</span> <span class="sc">/</span> <span class="dv">100</span>, <span class="dv">17</span>, <span class="dv">68</span> <span class="sc">/</span> <span class="dv">100</span>,</span>
+<span id="cb6-6"><a href="datos-agrupados..html#cb6-6" tabindex="-1"></a>  <span class="fl">110.5</span>, <span class="fl">122.5</span>, <span class="fl">116.5</span>, <span class="dv">4</span>, <span class="dv">16</span> <span class="sc">/</span> <span class="dv">100</span>, <span class="dv">21</span>, <span class="dv">84</span> <span class="sc">/</span> <span class="dv">100</span>,</span>
+<span id="cb6-7"><a href="datos-agrupados..html#cb6-7" tabindex="-1"></a>  <span class="fl">122.5</span>, <span class="fl">134.5</span>, <span class="fl">128.5</span>, <span class="dv">2</span>, <span class="dv">8</span> <span class="sc">/</span> <span class="dv">100</span>, <span class="dv">23</span>, <span class="dv">92</span> <span class="sc">/</span> <span class="dv">100</span>,</span>
+<span id="cb6-8"><a href="datos-agrupados..html#cb6-8" tabindex="-1"></a>  <span class="fl">134.5</span>, <span class="fl">146.5</span>, <span class="fl">140.5</span>, <span class="dv">2</span>, <span class="dv">8</span> <span class="sc">/</span> <span class="dv">100</span>, <span class="dv">25</span>, <span class="dv">100</span> <span class="sc">/</span> <span class="dv">100</span>)</span>
+<span id="cb6-9"><a href="datos-agrupados..html#cb6-9" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="datos-agrupados..html#cb6-10" tabindex="-1"></a>glicemia <span class="sc">%&gt;%</span> <span class="fu">kbl</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Lim_rel_inf
+</th>
+<th style="text-align:right;">
+Lim_rel_sup
+</th>
+<th style="text-align:right;">
+Marca de Clase
+</th>
+<th style="text-align:right;">
+f_i
+</th>
+<th style="text-align:right;">
+fr_i
+</th>
+<th style="text-align:right;">
+F_i
+</th>
+<th style="text-align:right;">
+Fr_i
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+74.5
+</td>
+<td style="text-align:right;">
+86.5
+</td>
+<td style="text-align:right;">
+80.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+86.5
+</td>
+<td style="text-align:right;">
+98.5
+</td>
+<td style="text-align:right;">
+92.5
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+98.5
+</td>
+<td style="text-align:right;">
+110.5
+</td>
+<td style="text-align:right;">
+104.5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+110.5
+</td>
+<td style="text-align:right;">
+122.5
+</td>
+<td style="text-align:right;">
+116.5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+0.84
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+122.5
+</td>
+<td style="text-align:right;">
+134.5
+</td>
+<td style="text-align:right;">
+128.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+0.92
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+134.5
+</td>
+<td style="text-align:right;">
+146.5
+</td>
+<td style="text-align:right;">
+140.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+</tr>
+</tbody>
+</table>
+<div id="medidas-de-tendencia-central.-1" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Medidas de Tendencia Central.<a href="datos-agrupados..html#medidas-de-tendencia-central.-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El <em>promedio</em> se define como:</p>
+<p><span class="math display">\[\bar{X} = \frac{\sum_{i=1}^k f_ic_i}{n}\]</span></p>
+<p>dónde <span class="math inline">\(c_i\)</span> es la <span class="math inline">\(i\)</span>-ésima marca de clase, y <span class="math inline">\(f_i\)</span> es la frecuencia absoluta asociada a la marca de clase (cuantas observaciones <span class="math inline">\(c_i\)</span> contiene dentro de los límites del intervalo).</p>
+<blockquote>
+<p>Para las marcas de clases de los índices de glicemia medidos se calcularía entonces:
+<span class="math display">\[\bar{X} = \frac{3\times80{,}5 + 10\times92{,}5 + 4\times104{,}5 + 4\times116{,}5 + 2\times128{,}5 + 2\times140{,}5}{25}=103{,}54 \text{ g dL}^{-1}\]</span></p>
+</blockquote>
+<p>La <em>mediana</em> para datos agrupados se consigue siguiendo los siguientes pasos:</p>
+<ol style="list-style-type: decimal">
+<li>Se calcula el índice de posición de la mediana como <span class="math inline">\(n/2\)</span>.</li>
+<li>Se localiza la clase que identifica el intervalo mediano (aquel que contiene la mediana) al buscar la primera clase cuya frecuencia absoluta acumulada sea igual o mayor a <span class="math inline">\(n/2\)</span>.</li>
+<li>La mediana es entonces:
+<span class="math display">\[M = L_i + \left(\frac{n/2 - F_{i-1}}{f_i}\right)\cdot a_i\]</span>
+donde <span class="math inline">\(L_i\)</span> es el límite inferior del intervalo mediano, <span class="math inline">\(F_{i-1}\)</span> es la frecuencia absoluta acumulada de la clase anterior, <span class="math inline">\(f_i\)</span> es la frecuencia absoluta de la clase que contiene la mediana, y <span class="math inline">\(a_i\)</span> es la amplitud de los intervalos.</li>
+</ol>
+<blockquote>
+<p>Para el caso de los índices de glicemia, se tiene que <span class="math inline">\(n/2 = 25/2 =12{,}5\)</span>. La primera clase con <span class="math inline">\(F_i \ge 12{,}5\)</span> es la segunda clase (<span class="math inline">\(F_i = 13\)</span>). Inspeccionando la tabla de datos agrupados podemos calcular entonces:
+<span class="math display">\[M = 86{,}5 + \left(\frac{12{,}5 - 3}{10}\right)\cdot 12 = 97{,}9\text{ g dL}^{-1}\]</span></p>
+</blockquote>
+<p>La <em>moda</em> se calcula, para datos agrupados, siguiendo estos pasos:</p>
+<ol style="list-style-type: decimal">
+<li>Se busca la clase modal (aquella que contiene la moda) determinando cuál de ellas tiene la mayor frecuencia absoluta.</li>
+<li>Se calcula la moda como:
+<span class="math display">\[Moda(\{c_i\}_{i=1}^k) = L_i + \left(\frac{f_i - f_{i-1}}{(f_i - f_{i-1}) + (f_i - f_{i+1})}\right)\cdot a_i\]</span></li>
+</ol>
+<blockquote>
+<p>Para el caso de los índices de glicemia, la clase con la mayor frecuencia absoluta es la segunda clase, por lo que:
+<span class="math display">\[Moda(\{c_i\}_{i=1}^k) = 86{,}5 + \left(\frac{10 - 3}{(10 - 3) + (10 - 4)}\right)\cdot 12 = 92{,}96\text{ g dL}^{-1}\]</span></p>
+</blockquote>
+<p>Notamos que los resultados sobre los datos de frecuencia muestran que <span class="math inline">\(Moda &lt; M &lt; \bar{X}\)</span>, lo cual nos indica que la distribución esta sesgada a la derecha.</p>
+</div>
+<div id="medidas-de-posición.-1" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Medidas de posición.<a href="datos-agrupados..html#medidas-de-posición.-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para los cuantiles de datos agrupados, se sigue un procedimiento similar al de datos sin agrupar, identificando primero las clases que contiene los cuantiles. Para ello, se sigue el procedimiento:</p>
+<ol style="list-style-type: decimal">
+<li>Calcula <span class="math inline">\(\frac{n\times i}{d}\)</span> donde <span class="math inline">\(i\)</span> representa el <span class="math inline">\(i\)</span>-ésimo cuantil, y <span class="math inline">\(d\)</span> el número de partes en las que se desea dividir la distribución.</li>
+<li>Se busca en la tabla de datos agrupados la clase cuya frecuencia absoluta acumulada sea mayor o igual a <span class="math inline">\(\frac{n\times i}{d}\)</span>. Este será la clase cuantílica.</li>
+<li>Se calcula el cuantil como:
+<span class="math display">\[C_i = L_i + \left(\frac{f_i - f_{i-1}}{f_i}\right)\cdot a_i\]</span></li>
+</ol>
+<blockquote>
+<p>Digamos que queremos calcular los cuartiles de los datos de índice de glicemia. En este caso, calculamos para <span class="math inline">\(i = 1,2,3\)</span> los valores de <span class="math inline">\(i\times n / 4\)</span>, los cuales son <span class="math inline">\(6{,}25, 12{,}5,\)</span> y <span class="math inline">\(18{,}75\)</span>.<br />
+Calculamos los cuartiles: para el primer cuartil, el resultado muestra que el cuartil se encuentra en la segunda clase, por lo que:
+<span class="math display">\[Q_1 = 86{,}5 + \left(\frac{10 - 3}{10}\right)\cdot 12 = 95{,}7\text{ g dL}^{-1}\]</span><br />
+Para el segundo cuartil nos damos cuenta que el método arroja <span class="math inline">\(Q_2 = Q_1\)</span>, lo cual es un error (asegúrese de verificar este resultado, ¿por qué sucede esto?). La razón de esto es que la resolución de los datos no permite la estimación de los cuantiles dado el tamaño de la muestra (vea la discusión más adelante en la siguiente sección). En este caso, recordamos que <span class="math inline">\(Q_2 = M\)</span>, y usamos el valor de la mediana calculado anteriormente:
+<span class="math display">\[Q_2 = 97{,}9\text{ g dL}^{-1}\]</span>
+Para el tercer cuartil, vemos que la clase que contiene el cuartil es la cuarta clase, por lo que:
+<span class="math display">\[Q_3 = 110{,}5 + \left(\frac{21 - 17}{21}\right)\cdot 12 = 112{,}79\text{ g dL}^{-1}\]</span></p>
+</blockquote>
+<p>De los resultados anteriores, podemos notar que la distancia entre el primer y segundo cuartil es un orden de magnitud menor que la distancia entre el segundo y tercer cuartil, indicando que las observaciones en la tercera parte de la distribución tienen una mayor dispersión, y que en la segunda parte de la distribución las observaciones se aglomeran. Esto refuerza la intuición obtenida antes con las medidas de tendencia central que la distribución está sesgada hacia la derecha.</p>
+</div>
+<div id="medidas-de-dispersión.-1" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Medidas de dispersión.<a href="datos-agrupados..html#medidas-de-dispersión.-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El recorrido (o rango) y el rango intercuartílico (IQR) se calculan igual que antes para datos sin agrupar. Sin embargo, la definición de varianza la modificamos para usar las marcas de clase, y no las observaciones:</p>
+<p><span class="math display">\[S^2 = \frac{\sum_{i=1}^k f_i(c_i - \bar{X})^2}{n - 1}\]</span></p>
+<p>A partir de esta, es posible calcular la desviación estándar y el coeficiente de variación tal como se definieron para datos sin agrupar.</p>
+<blockquote>
+<p>Se tiene que <span class="math inline">\(R = 140 - 75 = 65\)</span> g dL<span class="math inline">\({}^{-1}\)</span> y <span class="math inline">\(IQR = 112{,}79 - 95{,}7 = 17{,}09\)</span> g dL<span class="math inline">\({}^{-1}\)</span>, los cuales nos indican que el 50% de las observaciones solo se encuentran ocupando aproximadamente un <span class="math inline">\(4\)</span>% del dominio posible de las observaciones.<br />
+La varianza es <span class="math inline">\(S^2 = 311{,}04\)</span> (g dL<span class="math inline">\({}^{-1}\)</span>)<span class="math inline">\({}^2\)</span>, y <span class="math inline">\(S = 17{,}64\)</span> g dL<span class="math inline">\({}^{-1}\)</span> con <span class="math inline">\(CV = 0{,}1703\)</span>. Esto nos indica que la distribución de los datos parece no ser tan variable, pero esto puede ser engañoso ya que sabemos que la distribución esta sesgada.</p>
+</blockquote>
+</div>
+<div id="medidas-de-forma.-1" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Medidas de forma.<a href="datos-agrupados..html#medidas-de-forma.-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para el cálculo del coeficiente de asimetría y curtosis, se procede al igual que antes para datos sin agrupar, pero usamos las marcas de clases en lugar de las observaciones para realizar el cálculo. El coeficiente de asimetría se calcula como:</p>
+<p><span class="math display">\[A = \frac{\sum_{i=1}^kf_i(c_i - \bar{X})^3}{nS^3}\]</span></p>
+<p>y la curtosis como:</p>
+<p><span class="math display">\[A = \frac{\sum_{i=1}^kf_i(c_i - \bar{X})^4}{nS^4} - 3\]</span></p>
+<blockquote>
+<p>Para los índices de glicemia resumidos en la tabla de datos agrupados, obtenemos <span class="math inline">\(A = 0{,}661\)</span> y <span class="math inline">\(K = 2{,}32\)</span>. Esto nos indica que la distribución es ligeramente sesgada hacia la derecha (como ya parecíamos intuir de las otras medidas) y leptocúrtica. Esto indica que el sesgo observado es resultado de observaciones atípicas.</p>
+</blockquote>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="datos-agrupados..html#cb7-1" tabindex="-1"></a>Media <span class="ot">&lt;-</span> <span class="fu">sum</span>(glicemia<span class="sc">$</span>f_i <span class="sc">*</span> glicemia<span class="sc">$</span><span class="st">`</span><span class="at">Marca de Clase</span><span class="st">`</span>) <span class="sc">/</span> <span class="dv">25</span></span>
+<span id="cb7-2"><a href="datos-agrupados..html#cb7-2" tabindex="-1"></a>Std.Dev <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(glicemia<span class="sc">$</span>f_i <span class="sc">*</span> (glicemia<span class="sc">$</span><span class="st">`</span><span class="at">Marca de Clase</span><span class="st">`</span> <span class="sc">-</span> Media) <span class="sc">**</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">24</span>)</span>
+<span id="cb7-3"><a href="datos-agrupados..html#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="datos-agrupados..html#cb7-4" tabindex="-1"></a><span class="fu">tribble</span>(<span class="sc">~</span>Media, <span class="sc">~</span><span class="st">`</span><span class="at">Desv. Est.</span><span class="st">`</span>, <span class="sc">~</span>Asimetria, <span class="sc">~</span>Curtosis,</span>
+<span id="cb7-5"><a href="datos-agrupados..html#cb7-5" tabindex="-1"></a>  Media,</span>
+<span id="cb7-6"><a href="datos-agrupados..html#cb7-6" tabindex="-1"></a>  Std.Dev,</span>
+<span id="cb7-7"><a href="datos-agrupados..html#cb7-7" tabindex="-1"></a>  <span class="fu">sum</span>(glicemia<span class="sc">$</span>f_i <span class="sc">*</span> (glicemia<span class="sc">$</span><span class="st">`</span><span class="at">Marca de Clase</span><span class="st">`</span> <span class="sc">-</span> Media) <span class="sc">**</span> <span class="dv">3</span>) <span class="sc">/</span> (<span class="dv">25</span> <span class="sc">*</span> Std.Dev <span class="sc">**</span> <span class="dv">3</span>),</span>
+<span id="cb7-8"><a href="datos-agrupados..html#cb7-8" tabindex="-1"></a>  <span class="fu">sum</span>(glicemia<span class="sc">$</span>f_i <span class="sc">*</span> (glicemia<span class="sc">$</span><span class="st">`</span><span class="at">Marca de Clase</span><span class="st">`</span> <span class="sc">-</span> Media) <span class="sc">**</span> <span class="dv">4</span>) <span class="sc">/</span> (<span class="dv">25</span> <span class="sc">*</span> Std.Dev <span class="sc">**</span> <span class="dv">4</span>)</span>
+<span id="cb7-9"><a href="datos-agrupados..html#cb7-9" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-10"><a href="datos-agrupados..html#cb7-10" tabindex="-1"></a><span class="fu">kbl</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Media
+</th>
+<th style="text-align:right;">
+Desv. Est.
+</th>
+<th style="text-align:right;">
+Asimetria
+</th>
+<th style="text-align:right;">
+Curtosis
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+103.54
+</td>
+<td style="text-align:right;">
+17.63633
+</td>
+<td style="text-align:right;">
+0.6609389
+</td>
+<td style="text-align:right;">
+2.32162
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejercicio</strong>. En un estudio del síndrome de Down, se examinaron 180 niños afectados y la siguiente tabla da la distribución de frecuencias para el cociente intelectual (IQ) de los niños. Complete la tabla de datos agrupados, añadiendo las columnas que hagan falta, y determine las medidas de tendencia central, los cuartiles, deciles y percentiles, las medidas de dispersión y de forma. Discuta los resultados.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="datos-agrupados..html#cb8-1" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb8-2"><a href="datos-agrupados..html#cb8-2" tabindex="-1"></a>  <span class="at">Clase =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>),</span>
+<span id="cb8-3"><a href="datos-agrupados..html#cb8-3" tabindex="-1"></a>  <span class="st">`</span><span class="at">Límites de clase</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;10.5 a 20.5&quot;</span>, <span class="st">&quot;20.5 a 30.5&quot;</span>, <span class="st">&quot;30.5 a 40.5&quot;</span>, <span class="st">&quot;40.5 a 50.5&quot;</span>, <span class="st">&quot;50.5 a 60.5&quot;</span>, <span class="st">&quot;60.5 a 70.5&quot;</span>, <span class="st">&quot;70.5 a 80.5&quot;</span>, <span class="st">&quot;80.5 a 90.5&quot;</span>, <span class="st">&quot;90.5 a 100.5&quot;</span>),</span>
+<span id="cb8-4"><a href="datos-agrupados..html#cb8-4" tabindex="-1"></a>  <span class="st">`</span><span class="at">Marca de clase</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">15.5</span>, <span class="fl">25.5</span>, <span class="fl">35.5</span>, <span class="fl">45.5</span>, <span class="fl">55.5</span>, <span class="fl">65.5</span>, <span class="fl">75.5</span>, <span class="fl">85.5</span>, <span class="fl">95.5</span>),</span>
+<span id="cb8-5"><a href="datos-agrupados..html#cb8-5" tabindex="-1"></a>  <span class="st">`</span><span class="at">Frecuencia f_i</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">34</span>, <span class="dv">0</span>, <span class="dv">70</span>, <span class="dv">43</span>, <span class="dv">19</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb8-6"><a href="datos-agrupados..html#cb8-6" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="datos-agrupados..html#cb8-7" tabindex="-1"></a><span class="fu">kbl</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Clase
+</th>
+<th style="text-align:left;">
+Límites de clase
+</th>
+<th style="text-align:right;">
+Marca de clase
+</th>
+<th style="text-align:right;">
+Frecuencia f_i
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+10.5 a 20.5
+</td>
+<td style="text-align:right;">
+15.5
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+20.5 a 30.5
+</td>
+<td style="text-align:right;">
+25.5
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+30.5 a 40.5
+</td>
+<td style="text-align:right;">
+35.5
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+40.5 a 50.5
+</td>
+<td style="text-align:right;">
+45.5
+</td>
+<td style="text-align:right;">
+70
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+50.5 a 60.5
+</td>
+<td style="text-align:right;">
+55.5
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+60.5 a 70.5
+</td>
+<td style="text-align:right;">
+65.5
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+70.5 a 80.5
+</td>
+<td style="text-align:right;">
+75.5
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+80.5 a 90.5
+</td>
+<td style="text-align:right;">
+85.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+90.5 a 100.5
+</td>
+<td style="text-align:right;">
+95.5
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="datos-no-agrupados..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="distribuciones-de-probabilidad..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Estadística Descriptiva. | Bioestadistitica-UC.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Estadística Descriptiva. | Bioestadistitica-UC.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Estadística Descriptiva. | Bioestadistitica-UC.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="otros-teoremas-de-probabilidades..html"/>
+<link rel="next" href="datos-no-agrupados..html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="...">Bioestadística.</a></li>
+<li><a href="...">Marcelo Molinatti</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="1" data-path="introducción..html"><a href="introducción..html"><i class="fa fa-check"></i><b>1</b> Introducción.</a></li>
+<li class="chapter" data-level="2" data-path="teoría-de-probabilidades..html"><a href="teoría-de-probabilidades..html"><i class="fa fa-check"></i><b>2</b> Teoría de Probabilidades.</a></li>
+<li class="chapter" data-level="3" data-path="combinatoria..html"><a href="combinatoria..html"><i class="fa fa-check"></i><b>3</b> Combinatoria.</a></li>
+<li class="chapter" data-level="4" data-path="otros-teoremas-de-probabilidades..html"><a href="otros-teoremas-de-probabilidades..html"><i class="fa fa-check"></i><b>4</b> Otros Teoremas de Probabilidades.</a></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva..html"><a href="estadística-descriptiva..html"><i class="fa fa-check"></i><b>5</b> Estadística Descriptiva.</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html"><i class="fa fa-check"></i><b>5.1</b> Datos no agrupados.</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-tendencia-central."><i class="fa fa-check"></i><b>5.1.1</b> Medidas de Tendencia central.</a></li>
+<li class="chapter" data-level="5.1.2" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-posición."><i class="fa fa-check"></i><b>5.1.2</b> Medidas de posición.</a></li>
+<li class="chapter" data-level="5.1.3" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-dispersión."><i class="fa fa-check"></i><b>5.1.3</b> Medidas de Dispersión.</a></li>
+<li class="chapter" data-level="5.1.4" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-forma."><i class="fa fa-check"></i><b>5.1.4</b> Medidas de Forma.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="datos-agrupados..html"><a href="datos-agrupados..html"><i class="fa fa-check"></i><b>5.2</b> Datos Agrupados.</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-tendencia-central.-1"><i class="fa fa-check"></i><b>5.2.1</b> Medidas de Tendencia Central.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-posición.-1"><i class="fa fa-check"></i><b>5.2.2</b> Medidas de posición.</a></li>
+<li class="chapter" data-level="5.2.3" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-dispersión.-1"><i class="fa fa-check"></i><b>5.2.3</b> Medidas de dispersión.</a></li>
+<li class="chapter" data-level="5.2.4" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-forma.-1"><i class="fa fa-check"></i><b>5.2.4</b> Medidas de forma.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="distribuciones-de-probabilidad..html"><a href="distribuciones-de-probabilidad..html"><i class="fa fa-check"></i><b>6</b> Distribuciones de Probabilidad.</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="función-de-probabilidad..html"><a href="función-de-probabilidad..html"><i class="fa fa-check"></i><b>6.1</b> Función de Probabilidad.</a></li>
+<li class="chapter" data-level="6.2" data-path="función-de-distribución..html"><a href="función-de-distribución..html"><i class="fa fa-check"></i><b>6.2</b> Función de distribución.</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="función-de-distribución..html"><a href="función-de-distribución..html#propiedades-de-la-función-de-distribución."><i class="fa fa-check"></i><b>6.2.1</b> Propiedades de la función de distribución.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="cálculos-con-funciones-de-probabilidades..html"><a href="cálculos-con-funciones-de-probabilidades..html"><i class="fa fa-check"></i><b>6.3</b> Cálculos con funciones de probabilidades.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="distribuciones-de-probabilidad-de-variables-discretas..html"><a href="distribuciones-de-probabilidad-de-variables-discretas..html"><i class="fa fa-check"></i><b>7</b> Distribuciones de probabilidad de variables discretas.</a></li>
+<li class="chapter" data-level="8" data-path="distribuciones-de-probabilidad-de-variables-continuas..html"><a href="distribuciones-de-probabilidad-de-variables-continuas..html"><i class="fa fa-check"></i><b>8</b> Distribuciones de probabilidad de variables continuas.</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="distribución-normal..html"><a href="distribución-normal..html"><i class="fa fa-check"></i><b>8.1</b> Distribución Normal.</a></li>
+<li class="chapter" data-level="8.2" data-path="distribución-ji-cuadrada..html"><a href="distribución-ji-cuadrada..html"><i class="fa fa-check"></i><b>8.2</b> Distribución Ji-Cuadrada.</a></li>
+<li class="chapter" data-level="8.3" data-path="distribución-t-student..html"><a href="distribución-t-student..html"><i class="fa fa-check"></i><b>8.3</b> Distribución <span class="math inline">\(t\)</span>-Student.</a></li>
+<li class="chapter" data-level="8.4" data-path="distribución-f..html"><a href="distribución-f..html"><i class="fa fa-check"></i><b>8.4</b> Distribución <span class="math inline">\(F\)</span>.</a></li>
+<li class="chapter" data-level="8.5" data-path="ejercicios..html"><a href="ejercicios..html"><i class="fa fa-check"></i><b>8.5</b> Ejercicios.</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="inferencia-estadística..html"><a href="inferencia-estadística..html"><i class="fa fa-check"></i><b>9</b> Inferencia Estadística.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="cómo-se-enfrenta-a-la-inferencia-estadística.html"><a href="cómo-se-enfrenta-a-la-inferencia-estadística.html"><i class="fa fa-check"></i><b>9.1</b> ¿Cómo se enfrenta a la Inferencia Estadística?</a></li>
+<li class="chapter" data-level="9.2" data-path="frecuentistas-y-muestreo-repetido..html"><a href="frecuentistas-y-muestreo-repetido..html"><i class="fa fa-check"></i><b>9.2</b> Frecuentistas y muestreo repetido.</a></li>
+<li class="chapter" data-level="9.3" data-path="ámbito-de-la-inferencia-estadística..html"><a href="ámbito-de-la-inferencia-estadística..html"><i class="fa fa-check"></i><b>9.3</b> Ámbito de la inferencia Estadística.</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="teoría-de-muestreo..html"><a href="teoría-de-muestreo..html"><i class="fa fa-check"></i><b>10</b> Teoría de Muestreo.</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="estimación..html"><a href="estimación..html"><i class="fa fa-check"></i><b>10.1</b> Estimación.</a></li>
+<li class="chapter" data-level="10.2" data-path="distribución-muestral-de-un-estimador..html"><a href="distribución-muestral-de-un-estimador..html"><i class="fa fa-check"></i><b>10.2</b> Distribución muestral de un estimador.</a></li>
+<li class="chapter" data-level="10.3" data-path="teorema-del-límite-central-tlc..html"><a href="teorema-del-límite-central-tlc..html"><i class="fa fa-check"></i><b>10.3</b> Teorema del Límite Central (TLC).</a></li>
+<li class="chapter" data-level="10.4" data-path="necesidad-de-especificar-una-muestra..html"><a href="necesidad-de-especificar-una-muestra..html"><i class="fa fa-check"></i><b>10.4</b> Necesidad de especificar una muestra.</a></li>
+<li class="chapter" data-level="10.5" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html"><i class="fa fa-check"></i><b>10.5</b> Diseño de muestreo.</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-aleatorio-simple."><i class="fa fa-check"></i><b>10.5.1</b> Muestreo Aleatorio Simple.</a></li>
+<li class="chapter" data-level="10.5.2" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-aleatorio-estratificado."><i class="fa fa-check"></i><b>10.5.2</b> Muestreo Aleatorio Estratificado.</a></li>
+<li class="chapter" data-level="10.5.3" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-adaptativo."><i class="fa fa-check"></i><b>10.5.3</b> Muestreo Adaptativo.</a></li>
+<li class="chapter" data-level="10.5.4" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-sistemático."><i class="fa fa-check"></i><b>10.5.4</b> Muestreo Sistemático.</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="proceso-de-muestreo..html"><a href="proceso-de-muestreo..html"><i class="fa fa-check"></i><b>10.6</b> Proceso de Muestreo.</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="teoría-de-estimación..html"><a href="teoría-de-estimación..html"><i class="fa fa-check"></i><b>11</b> Teoría de Estimación.</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="propiedades-de-un-estimador..html"><a href="propiedades-de-un-estimador..html"><i class="fa fa-check"></i><b>11.1</b> Propiedades de un estimador.</a></li>
+<li class="chapter" data-level="11.2" data-path="estimación-puntual..html"><a href="estimación-puntual..html"><i class="fa fa-check"></i><b>11.2</b> Estimación puntual.</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="estimación-puntual..html"><a href="estimación-puntual..html#construcción-de-estadísitcos-para-inferencia."><i class="fa fa-check"></i><b>11.2.1</b> Construcción de estadísitcos para inferencia.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html"><i class="fa fa-check"></i><b>11.3</b> Estimación por Intervalos.</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html#intervalos-unilaterales."><i class="fa fa-check"></i><b>11.3.1</b> Intervalos Unilaterales.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="introducción-al-contraste-de-hipótesis..html"><a href="introducción-al-contraste-de-hipótesis..html"><i class="fa fa-check"></i><b>12</b> Introducción al Contraste de Hipótesis.</a></li>
+<li class="chapter" data-level="13" data-path="nos-podemos-equivocar.html"><a href="nos-podemos-equivocar.html"><i class="fa fa-check"></i><b>13</b> Nos podemos equivocar…</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="estadístico-de-prueba..html"><a href="estadístico-de-prueba..html"><i class="fa fa-check"></i><b>13.1</b> Estadístico de Prueba.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias..html"><a href="referencias..html"><i class="fa fa-check"></i>Referencias.</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown">
+Proudly published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estadística-descriptiva." class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Estadística Descriptiva.<a href="estadística-descriptiva..html#estadística-descriptiva." class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Un conjunto de datos se puede describir usando:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Medidas de tendencia central</strong>: estas son valores que describen el centro alrededor del cual el conjunto de observaciones se distribuye. De esta forma, nos permite describir donde se localizan la mayoría de las observaciones. Son tres:</li>
+</ol>
+<ul>
+<li><em>Media</em>: describe la localización media de las observaciones.</li>
+<li><em>Mediana</em>: es el valor que distribuye las observaciones de tal forma que 50% de estas quedan por encima de ella, y el otro 50% por debajo.</li>
+<li><em>Moda</em>: describe la posición de la (o las) observación (observaciones) más frecuente(s).</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Medidas de posición</strong>: vienen definidos por los cuantiles de una distribución. Un <em>cuantil</em> <span class="math inline">\(C_p\)</span> se define como el valor que deja por debajo de si <span class="math inline">\(p\times100\)</span>% de las observaciones. Por ejemplo, el cuantil <span class="math inline">\(C_{0{,}3}\)</span> es aquel valor que deja por debajo de si <span class="math inline">\(30\)</span>% de las observaciones.<br />
+Nos ayuda a describir la posición que una observación ocupa dentro del dominio sobre el cual se distribuyen los datos. Algunos ejemplos son:</li>
+</ol>
+<ul>
+<li>Los cuartiles: (<span class="math inline">\(C_{0{,}25i}\)</span> con <span class="math inline">\(i = 1,2,3\)</span>) que distribuyen las observaciones en <span class="math inline">\(4\)</span> partes,</li>
+<li>Los deciles (<span class="math inline">\(C_{0{,}1i}\)</span> con <span class="math inline">\(i = 1,2,\ldots,10\)</span>), que dividen la distribución en <span class="math inline">\(10\)</span> partes, y</li>
+<li>Los percentiles (<span class="math inline">\(C_{0{,}01i}\)</span> con <span class="math inline">\(i = 1,2,\ldots, 99, 100\)</span>), que dividen la distribución en <span class="math inline">\(100\)</span> partes.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Medidas de dispersión</strong>: estas son medidas de que tan variables son las observaciones. Sirven para describir la dispersión de las observaciones en su dominio y alrededor de su centro. Pueden ser:</li>
+</ol>
+<ul>
+<li><em>Rango o Recorrido</em>: es la diferencia entre el valor máximo y el valor mínimo observado. Nos dice que tan amplio es el dominio ocupado por las observaciones, o que tan amplio es el intervalo sobre el cual se distribuyen todas las observaciones.</li>
+<li><em>Rango intercuartílico</em>: es la diferencia entre el tercer cuartil y primer cuartil, y por lo tanto, describe la amplitud del intervalo que contiene a un <span class="math inline">\(50\)</span>% de las observaciones.</li>
+<li><em>Varianza</em>: es una medida de las diferencias cuadráticas promedio de las observaciones con respecto a la media (sumatoria de cuadrados promedio). Sirve como una medida de cuán variable es un conjunto de datos, dado que a mayor son las <em>desviaciones</em> de la media, más grande es la varianza.</li>
+<li><em>Desviación estándar</em>: es una medida de la distancia promedio de las observaciones con respeto a la media. Al igual que antes para la varianza, la desviación estándar sirve como medida de variabilidad con respecto al centro, dado que a mayor la distancia de las observaciones a la media, mayor será la desviación estándar.</li>
+<li><em>Coeficiente de variación</em>: es el valor proporcional de la desviación estándar con respecto a la media (<em>Desviación estándar / Media</em>). Esta sirve como medida de dispersión relativa, dado que permite comparar distribuciones basado en cuán distantes, en promedio, de la media están las observaciones, basados en el tamaño relativo de esta con respecto a la media.</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Medidas de forma</strong>: estas nos ayudan a describir la simetría y ensanchamiento de la distribución de las observaciones. Estas son:</li>
+</ol>
+<ul>
+<li><em>Asimetría</em>: es un coeficiente cuyo valor nos permite decir si las observaciones se encuentran acumuladas a la derecha, o la izquierda de la distribución (a esto se le llama <em>sesgo</em>).</li>
+<li><em>Curtosis</em>: esta describe que tan amplio es el pico de la distribución de observaciones, permitiéndonos decir si se trata de una colina amplía o de un pico estrecho.</li>
+</ul>
+<!---
+Punto de énfasis para explicar distribuciones
+* La normal como estándar de comparación.
+* Sesgos y como se ven
+* Observaciones atípicas y extremas.
+* Datos agrupados y no agrupados.
+* Aspectos prácticos del análisis descriptivo.
+--->
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="otros-teoremas-de-probabilidades..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="datos-no-agrupados..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

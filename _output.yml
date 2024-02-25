@@ -1,0 +1,13 @@
+bookdown::gitbook:
+  split_by: section
+  split_bib: false
+  number_sections: true
+  config:
+    toc:
+      before: |
+        <li><a href="...">Bioestadística.</a></li>
+        <li><a href="...">Marcelo Molinatti</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown">
+        Proudly published with bookdown</a></li>
+

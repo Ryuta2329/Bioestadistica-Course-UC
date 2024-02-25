@@ -1,0 +1,366 @@
+# Teoría de Muestreo.
+
+La teoría de muestreo lidia con el problema de construir un _conjunto muestra_ a partir de un _conjunto población_. La validez de las conclusiones que se establecen sobre la población dependen de si la muestra se seleccionó de tal forma que representa a la población correctamente. 
+
+En este punto, necesitamos definiciones precisas de población y muestra:
+
+* **Población**: colección de individuos o unidades en la que estamos interesados, y que tiene una ley o distribución de probabilidad asociada. Se denota el tamaño poblacional (el número total de individuos) como $N$.
+* **Muestra**: es una colección de individuos o unidades tomados de una población.  Se denota el tamaño de la muestra (el número total de individuos recolectados de la población) como $n$. En general, $n < N$.
+
+Una muestra se puede recolectar de una poblacion por medio de un _censo_ o por _muestreo aleatorio_. El primero se refiere a un muestreo exhaustivo de todos los individuos que conforman la población. El segundo hace referencia a un método que asegura la recolección aleatoria de elementos del conjunto población para construir un conjunto muestra más pequeño.
+
+Dado que la población tiene asociada una ley de probabilidad, se especifica para esta los parámetros de esa ley de probabilidad, y es sobre estos que haremos inferencias, por medio de estimadores. Hasta este punto, henos estado hablando sobre estimadores como valores que calculamos para tratar de saber el verdadero valor de una propiedad o caracteristica, y hemos hablado de parametros como esos valores verdaderos que estan ocultos a nosotros. Definimos ahora con precisión estos términos:
+
+* Un **parámetro** es un valor numérico que logra resumir la información sobre una población. En casi todos los casos, este valor es completamente desconocido, pero se busca conocer su valor. 
+* Un **estimador** es un estadístico (es decir, tiene una distribución asociada), un valor numérico que ayuda a resumir la información sobre una muestra y se usa para estimar un parámetro poblacional desconocido.
+
+> **Notación**. De forma general, se denota como $\theta$ al parámetro (o ${\boldsymbol\theta}$, en notación vectorial, si es más de un parámetro). Pero dependiendo de la ley de probabilidad, se puede especificar otra notación particular. Por ejemplo, es usual llamar a la media poblacional con la letra $\mu$, a la varianza poblacional con la letra $\sigma^2$, a las proporciones poblacionales con la letra $\pi$, entre otras.  
+> Si la media poblacional es el único parámetro desconocido, entonces $\theta = \mu$. Pero si ambos, media y varianza son desconocidos, se resumen los parámetros con la notacion vectorial usual:
+> $${\boldsymbol\theta} = \begin{pmatrix} \mu \\ \sigma^2 \end{pmatrix}$$
+
+Ya nos hemos encontrado antes con estimadores y parámetros. 
+
+1. En los capítulos de distribuciones de probabilidad (capítulos blah blah blah) definimos leyes de probabilidad discreta y continua de interés, y definimos allí los parámetros de los que dependen. Por ejemplo, para una distribución normal, el parámetro media poblacional se denota como $\mu$ y la desviación estándar poblacional se define como $\sigma$. Es usual hacer uso de letras griegas para definir parámetros poblacionales, pero por simplicidad, algunas veces se hace uso de notaciones alfanuméricas usuales. Por ejemplo, para la distribución binomial, la probabilidad de éxito la denotamos como $p$. Sin embargo, también es usual hacer uso de la notación $\pi$ para describir este parámetro, de forma que no haya confusiones al trabajar con notación de probabilidades. 
+
+2. Por otro lado, ya hemos encontrado antes estiamdores usuales: en el capítulo [Estadística descriptiva.] definimos el promedio, la varianza, la desviación estándar, y otras propiedades con que resumir la información contenida en los datos. Estos son ejemplos de estimadores. Se pueden denotar de dos formas: 
+ * Usando la letra griega correspondiente al parámetro poblacional, pero colocandole un sombrero. Por ejemplo, podríamos denotar al estimador de la media poblacional $\mu$ como $\hat{\mu}$, al estimador de la desviación estándar poblacional $\sigma$ como $\hat{\sigma}$, y así sucesivamente. 
+ * Usando letras alfanuméricas para los estimadores. Por ejemplo, al estimador de la media poblacional $\mu$ es usual denotarlo como $\bar{X}$, al estimador de la desviación estándar poblacional $\sigma$ como $S$, y así sucesivamente. 
+
+En los capítulos siguientes haremos lo posible por adherirnos a la notación de sombreritos donde sea conveniente, pero en algunos casos haremos uso de la notación usual por conveniencia. El contexto se hace claro dependiendo del caso, y se aclarará donde sea necesario en los lugares donde pueda ser causa de confusión.
+
+## Estimación.
+
+La estimación consiste en hacer inferencias o predicciones sobre los parámetros de una población, los cuales están ocultos a nostoros, usando la información contenida en una muestra. La estimación puede ser de dos tipos:
+
+* **Estimación puntual**: una estimación puntual es un estimador que se calcula a partir de una sola muestra particular. Este tiene tres propiedades esenciales: debe ser _i)_ eficiente, _ii)_ consistente, y _iii)_ suficiente.
+* **Estimación por intervalos**: son un par de estimadores que definen los límites de un intervalo, que se calculan a partir de una muestra, y se espera que contenga el parámetro que esta siendo estimado.
+
+Los estimadores, sea cuales sean, deben construirse. La construcción de estos debe ser tal que estos tengan varias propiedades deseables para hacer inferencia: no deben estar **sesgados**, lo cual se garantiza al emplear métodos de muestreo que permitan tomar **muestras aleatorias**. Además, deben elegirse de tal forma que sean de mínima varianza, y deben ser consistentes, esto es, a medida que aumente el esfuerzo de muestreo, el estimador debe ir acercandose cada vez más al valor del parámetro.
+
+Cualquier proceso de estimación comienza con la suposición de un modelo estocástico que se asume correcto (como se discute en el capítulo [Infererncia estadística.]) una vez recolectada la muestra. Este modelo es una función de densidad $f(x; \theta)$ que resume la forma en la que se generan las observaciones (la notación hace referencia a que $f$ es una función de las observaciones $x$, dados los parámetros $\theta$). En capítulos anteriores hemos dicho que si una v. a. $X$ sigue una distribución $f(x)$, se escribe $X \sim f(x; \theta)$. 
+
+Cuando recolectamos una muestra, tenemos $n$ observaciones $x_1, x_2, \ldots, x_n$ de una variable alestoria $X$ en estudio. Sin embargo, resulta más conveniente entender a las observaciones como generadas por $n$ variables aleatorias: $X_1$ genera la observación $x_1$, $X_2$ genera la observación $x_2$, $\ldots$, $X_n$ genera la observación $x_n$, donde cada v. a. se distribuye con la misma ley de probabilidad $f(x, \theta)$. En este caso, se dice que las $n$ v. a. se distribuyen identicamente. Si además, estas variables son independientes entre sí, se dicen que las $n$ v. a. son independiente e identicamente distribuidas, que se abrevia como iid, y se escribe:
+
+$$X_i \overset{iid}{\sim} f(x_i; \theta)\text{ para }i = 1, 2, \ldots, n$$
+
+que se lee como: las variable aleatorias son independientes e identicamente distribuidas como $f(x; \theta)$. Ahora, si bien cada variable aleatoria tiene su ley de probabilidad, la muestra en su totalidad tiene una ley de probabilidad que se deriva de la ley de probabilidad de las v. a. individuales. La función de probabilidad conjunta de las $n$ v. a. iid viene dada por:
+
+$$f(X_1, \ldots, X_n; \theta) = f(x_1; \theta) f(x_2; \theta)\ldots f(x_n; \theta)$$ 
+
+> _Ejemplo_. Digamos que se recolecta una muestra de $n$ observaciones generadas por las v. a. $X_1, \ldots, X_n$ que son iid como $N(\mu, \sigma^2)$. Entonces la función de probabilidad conjunta es:
+> $$\begin{aligned}
+  f(x_1, x_2, \ldots, x_n; \mu, \sigma^2) &= f(x_1; \mu, \sigma^2) f(x_2; \mu, \sigma^2)\ldots f(x_n; \mu, \sigma^2) \\
+    &= \left(\frac{1}{\sqrt{2\pi} \sigma} e^{-\frac{(x_1 - \mu)^2}{2\sigma^2}}\right)\left(\frac{1}{\sqrt{2\pi} \sigma} e^{-\frac{(x_2 - \mu)^2}{2\sigma^2}}\right)\ldots\left(\frac{1}{\sqrt{2\pi} \sigma} e^{-\frac{(x_n - \mu)^2}{2\sigma^2}}\right) \\
+    &= \frac{1}{(\sqrt{2\pi}\sigma)^n}e^{-\sum_{i=1}^n\frac{(x_i - \mu)^2}{2\sigma^2}}
+\end{aligned}$$
+> donde se usó las propiedades de producto de potencia con igual base. Al expandir la potencia y aplicar propiedades de sumatoria (tarea sencilla que puede verificar usted mismo) se obtiene que:
+> $$f(x_1, x_2, \ldots, x_n; \mu, \sigma^2) = \frac{1}{(\sqrt{2\pi}\sigma)^n}e^{-\frac{(\bar{X} - \mu)^2}{2\sigma^2}}$$
+> y esta es la función de distribución conjunta para la muestra de tamaño $n$ recolectada.
+
+El enfasis que se hace es que la muestra tiene una ley de probabilidad asociada que resulta de las suposiciones iniciales del modelo, y, por lo tanto, la inferencia es dependiente de estas suposiciones. También se trata de aclarar la notación que usaremos y que se encuentra frecuentemente en textos de estadística.
+
+## Distribución muestral de un estimador.
+
+En el capítulo anterior construimos la distribución del estimador del peso promedio de una muestra de patos negros de tamaño $n$ tomada de forma  aleatoria. Dijimos que esta _distribución de las medias obtenidas de cada una de esas muestras hipotéticas_ es conocida como **distribución muestral** y que esta muestra la variabilidad del estimador o los posibles valores que este puede tomar. Ahora profundizaremos en las propiedades de esta distribución que la hacen útil en inferencia estadística. 
+
+La variabilidad de la distribución muestral depende del número de observaciones que componen a la población, del número de observaciones que componen a la muestra, y del procedimiento usado para tomar la muestra de la población. Esta variabilidad se puede cuantificar en una cantidad llamada **error estándar**, y a medida que aumenta el tamaño de la muestra tomada, menor es el error estándar. Esto se resume en el siguiente resultado:
+
+$$SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}$$
+
+donde $\sigma$ es la desviación estándar poblacional. Este resultado es cierto sin importar si la distribución subyacente de la población es normal o no. El valor de la desviación estándar poblacional esta oculto a nosotros, de la misma forma que lo esta la media poblacional, y por lo tanto, también se debe estimar a partir de la muestra. Y, al igual que con la media poblacional, diferentes muestran arrojaran diferentes posibles valores del estimador, y esta variabilidad se puede resumir en la distribución muestral de la desviación estándar. Así mismo, como con otro parámetros podemos obtener estimadores de muestras, entonces estos estimadores siempre tienen asociado una distribución muestral para describir su variabilidad, y esta última se cuantifica usando la medida de error estándar. 
+
+> _Ejemplo_. Volvamos al ejemplo de muestreo de patos negros para medir su peso total. Realizaremos simulaciones similares a la realizada antes, pero en lugar de repetir el experimento de tomar muestras miles de veces, el experimento de toma de muestra se hace una sola vez. Solo modificaremos el tamaño de la muestra obtenida de la población, de forma que no solo tomemos muestras de tamaño $50$, sino que realizaremos la simulación usando muestras de tamaño $20$, $100$ y $1000$ también. Los resultados se muestran en la figura \@ref(fig:sampling-theory-one).
+
+```{r sampling-theory-one, echo = FALSE, warning = FALSE, fig.cap = "Dependencia de la distribución muestral con el tamaño de la muestra recolectada.", fig.width = 14, fig.height = 7}
+# Se asume media poblacional de 1161 g y desviacion estandar poblacional de 98 g
+bd_wieghts <- tibble(duck_id = 1:2300, weight = rnorm(2300, 1161, 98))
+
+# Se realizan 1 muestreo aleatorios de n observaciones de la poblacion.
+# Se usan tres muestreos, uno con un tamaño pequeño de 20, uno de tamaño medio de 50,
+# y uno de tamaño grande de 100
+virtual_samples <- list(small=20, medium=50, large=100, `very large`=1000) %>%
+  map(\(n) { # Aqui el paso iterativo
+    n_sample <- bd_wieghts %>%
+      rep_sample_n(size = n, reps = 1)
+  })
+    
+samples_plots <- virtual_samples %>%
+  map2(c(small=20, medium=50, large=100, `very large`=1000), \(n_sample, n) { # Aqui el paso iterativo
+    # Se realiza el histograma de frecuencias
+    ggplot(n_sample, aes(x = weight)) +
+      geom_histogram(bins=15, boundary = 0.4, color = "#213555", fill="#213555") +
+      labs(x = "Peso de los patos negros", y="Conteo",
+        title = paste("Distribution muestral para n= ", n, sep="")) +
+      theme_light(base_size = 14) + 
+      theme(panel.grid=element_blank())
+  })
+
+# Grafico los histogramas en fila
+cowplot::plot_grid(plotlist=samples_plots, nrow=1)
+```
+
+> Vemos que en el gráfico correspondiente a la muestra más pequeña, la variabilidad es bastante grande y la mayoría de los datos se concentran alrededor de la verdadera media $\mu = 1161$ kg. Pero se observan datos atípicos con frecuencias altas que sesgan mucho la forma de la distribución. Al aumentar el tamaño de la muestra recolectada, se puede observar que el sesgo va desapareciendo y las observaciones atípicas son cada vez menos frecuentes. De esta forma, podemos ver que el tamaño de la muestra afecta el calculo de cualquier estimador, haciendo que este este más o menos desviado del verdadero valor dependiendo del $n$.  
+> Ésto es fácil de cuantificar si calculamos la desviación estándar en cada simulación (que se muestra en cada uno de los gráficos de la figura anterior) y luego calculamos el error estándar, como se muestra en el siguiente fragmento de código de R:
+
+```{r sampling-theory-two, echo = FALSE, warning = FALSE, fig.width = 14, fig.height = 7}
+# Calculamos las desviaciones estándar de cada muestra
+std_error <- virtual_samples %>% 
+  bind_rows(.id = "size") %>%
+  group_by(size) %>%
+  mutate(size = factor(size, levels = c("small", "medium", "large", "very large")))  %>%
+  summarise(
+    sample_size = n(),
+    mean = mean(weight),
+    std_dev = sd(weight),
+    std_error = std_dev / sqrt(last(sample_size))
+  )
+
+# Creamos la tabla de datos
+std_error %>% kbl()
+```
+
+> En la tabla vemos que nuestro estimador de la media y la desviación estándar se acercan cada vez más al valor real de $1161$ kg y $98$ kg, y que el error estándar es cada vez más pequeño a medida que aumenta el tamaño de la muestra. Esto quiere decir que, a medida que aumentamos el tamaño de la muestra, nuestros estimadores se acercan cada vez más al valor real, y se hacen cada vez más precisos. 
+
+Este resultado se resume en uno de los teoremas más importantes de la teoría de probabilidades y estadística, _la ley de los grandes números_. 
+
+> **La ley de los grandes números**. Sea $X_1,X_2, \ldots$ una sucesión infinita de variables aleatorias independientes e idénticamente distribuidas con media finita $\mu$. Entonces, cuando $n \rightarrow \infty$, 
+>$$\frac{1}{n}\sum_{i=1}^{n}X_i \rightarrow \mu$$
+> en donde la convergencia se verifica en el sentido casi seguro (ley fuerte) y también en probabilidad (ley débil).
+
+Lo que dice el teorema es que, a medida que la muestra de la cual calculamos el estimador se hace más grande, el error en nuestra medida irá decreciendo más y más hasta converger al verdadero valor del parámetro (la convergencia casi segura y en probabilidad son formas de convergencia de una serie infinita de v. a. definidas en terminos de la probabilidad de que la convergencia se de es segura y de la probabilidad de las desviaciones tan pequelñas como se quiera del estimador y el parámetro es nula, respectivamente. Para más detalles, consulte @lehmann1999elements o @rincon2014introduccion).
+
+> Aquí un comentario pertinente sobre la notación. Si bien usamos la letra griega $\mu$ en el teorema, misma letra que usamos para denotar la media poblacional de una distribución normal, no debemos pensar que el teorema solo es cierto oara este parámetro.  
+> En el teorema, se usa $\mu$ como notación más amplia de un parámetro verdadero cualquiera. Por ejemplo, si la variable aleatoría $X$ son desviaciones estándar de la media, entonces el parámetro $\mu$ es el resltado de promediar todas las desviaciones estándar de todas las posibles muestras reclectadas de tamaño $n$, este promedio es $\sigma$ y el teorema se escribiría:
+> $$\frac{1}{n}\sum_{i=1}^{n}X_i \rightarrow \sigma$$
+
+## Teorema del Límite Central (TLC).
+
+Este teorema es el más importante de los que verémos en este libro. Este establce la distribución muestral de estadísticos construidos a partir de estimadores calculados de una muestra, y usa la ley de los grandes números para verificar que la ley de probabilidad del estadístico converge a una normal estándar.
+
+> Sea $X_1, X_2, \ldots$ una sucesión infinita de variables aleatorias independientes e idénticamente distribuidas, con media $\theta$ y error estándar $SE(\theta)$. Entonces la función de distribución de la variable aleatoria:
+> $$Z_n = \frac{\hat{\theta} - \theta}{SE(\theta)}$$
+> tiende a la función de distribución normal estándar cuando $n$ tiende a infinito.
+
+El TLC establece que el estadístico $Z_n$ tendrá una distribución normal estándar sin importar la distribución de las v. a. $X_1, X_2, \ldots, X_n$, para valores grnades de $n$, aunque esto **no** implica que la muestra tendrá una forma de campana. _En general, a mayor sea la muestra, más cercana esta estará de la verdadera distribución poblacional_.
+
+Ahora, desde un punto de vista práctico, este teorema se cumple cuando $n \ge 30$, de forma que no se necesitan muestras demasiado grandes para poder justificar la normalidad al realizar inferencia. Cuando $n < 30$, la distribución muestral es más variables, haciendo que los estimadores de $\theta$ y $SE(\theta)$ sean menos precisos, y por lo tanto es mejor utilizar la distribución $t$-Student con $n - 1$ grados de libertad.
+
+> _Ejemplo_. Simulemos un conjunto de variables aleatoria $Z_n$ para distintos valores de $n = 5, 10, 20, 30, 50, 100, 500, 1000$. Para ellos, imaginemos un experimento donde se siembran $n$ semillas y se registra despues de un tiempo, si la semilla germina o no. Denotamos un exito como _la semilla no germnina_, que se sabe tiene probabilidad de exito de $0{,}2$. Con esta información, simulamos $1000$ replicas del experimento para cada $n$, y construimos un histograma sobre el cual dibujamos una curva de la función de densidad normal estándar para comparar.
+> 
+```{r sampling-theory-three, echo = FALSE, warning = FALSE, fig.width = 14, fig.height = 17}
+# Definimos la probabilidad de exito d ela distribución binomial
+# Luego simulamos una población de donde realizaremos la toma de muestras
+prob_succes <- .2
+simulated_pop <- rbinom(10000, 1, prob_succes)
+
+# Se realizan 1000 muestreo aleatorios de n (para n = 5, 15, 30, 50, 100, y 500) observaciones de la poblacion.
+virtual_samples <- list(5, 10, 20, 30, 50, 100, 500, 1000) %>%
+  map(\(n) { # Aqui el paso iterativo
+    n_sample <- tibble(Exitos = simulated_pop) %>%
+      rep_sample_n(size = n, reps = 1000)
+    
+    # Calculamos Z_n del TLC
+    sample_dist <- n_sample %>% 
+      group_by(replicate) %>% 
+      summarise(`Z_n` = (sum(Exitos) / n - prob_succes) / sqrt(prob_succes * (1 - prob_succes) / n)) 
+
+    # Hacemos un histograma de los resultados.
+    ggplot(sample_dist, aes(x = `Z_n`)) +
+      geom_histogram(aes(y=..density..), 
+        bins = ifelse(n < 50, ceiling(1 + 3.322 * log(n)), ceiling(sqrt(n))), fill = "#213555") +
+      stat_function(fun = dnorm, n = 100, linewidth = 1.2, colour = "paleturquoise2") +
+      labs(x = "Z_n", y="Conteo") +
+      annotate("text", x = 2.5, y = .45, label = paste("n =", n)) +
+      {if (!(n %in% c(500, 1000))) {
+        scale_x_continuous(name = NULL, breaks = NULL, limits = c(-5, 5))
+      } else scale_x_continuous(limits = c(-5, 5)) } +
+      {if (!(n %in% c(5, 20, 50, 500))) {
+        scale_y_continuous(name = NULL, breaks = NULL, limits = c(0, .5)) 
+      } else scale_y_continuous(limits = c(0, .5)) } +
+      theme_light() + 
+      theme(panel.grid = element_blank())
+  })
+
+cowplot::plot_grid(plotlist=virtual_samples, nrow=4)
+```
+> el gráfico muestra indudablemente que a medida que el $n$ crece, el histograma de la distribución muestral se aproxima cada vez más a una normal estándar, y que el ajuste siempre es mejor cuando $n \ge 30$, y para valores menores a este, el ajuste no es tan bueno. 
+
+Este ejemplo busca convencerlo de que el TLC es válido y aplicable a la hora de realizar inferenias. Pero también enfatiza la importancia de elegir un tamaño muestral aadecuado para que la suposición de normalidad tenga sentido de $Z_n$ tenga sentido. En los próximos capítulos estaremos usando este teorema continuamente cuando derivemos la distribución muestral de los estadísitcos que cosntruiuremos para realizar estimaciones y contrastar hipóteis.
+
+**Corrección por población finita**. Para cualquier población estadística que consiste de $N$ unidades, se define la corrección de población finita como:
+
+$$1 - f = 1 - \frac{n}{N}$$
+
+* Solo tiene importancia en poblaciones pequeñas, en las que $n > 0{,}05\times N$.
+* Modifica los estimadores de la desviación estandar.
+
+## Necesidad de especificar una muestra.
+
+La especificación de una muestra requiere de varios pasos particulares, pero de forma invariable esta sujeta a la pregunta que se busca responder al realizar un experimento, y a la cantidad de esfuerzo y dinero que se puede invertir para realizar dicho experimento.
+
+> _El proceso de diseño y toma de muestra no es puramente matemático_: Los objetivos del experimento deben especificarse, y esto involucra especificar variables que podrían ser importantes, el equipo de muestreo a usar, cuanto esfuerzo se puede invertir, ...  
+> Toda esta información, es la que ayuda a elegir un método de estimación a usar.
+
+En este punto, se hace la pregunta: **¿Qué tan grande debe ser la muestra que voy a tomar?**
+
+El tamaño de la muestra es muy importante para asegurar la representatividad de la población que se esta muestreando, pero también lo es para poder evaluar el efecto de un tratamiento al realizar un experimento (en, por ejemplo, diseños experimentales factoriales o por bloques, o análisis tan sencillos como pruebas $t$).
+
+
+La elección del tamaño de la muestra requiere de la especificación de:
+
+* La prueba a utilizar.
+* El **nivel de significancia** mínimo a usar (tradicionalmente, 1%, 5% o 10%).
+* El **tamaño del efecto** a contrastar.
+* La **potencia** deseada para la prueba (usualmente, 80%).
+
+
+La potencia tiene como valor el que su consideración obliga al investigador a pensar en términos de la fuerza de los efectos que su experimento es probable produzca.  
+Aquí, la información a _priori_ comienza a ser de vital importancia.
+
+**Particularmente en el contraste de hipótesis** 
+El trabajo del investigador no es demostrar que un tratamiento no produce el mismo efecto que el control, es demostrar la efectividad del tratamiento. 
+
+El tamaño de la muestra a usar tiene que ser tal que:
+* Permita determinar si un efecto dado (su magnitud) puede interpretarse como suficientemente confiable o válido como para que la comunidad científica acepte una hipótesis. 
+* Permita determinar (o se determina tal que) que tan probable es que los datos de un estudio resulten en una significancia estadística antes de que el estudio se haya llevado a acabo.
+
+No solo es _profesionalmente autodestructivo_ el diseñar experimentos que no tengan una alta probabilidad de éxito, sino que no es ético el hacerlo por la simple razón de que se consumen recursos escasos (monetarios, de esfuerzo o tiempo). 
+
+## Diseño de muestreo.
+
+El elegir un correcto método de muestreo es vital para obtener información representativa de la población. Se hace importante el diseño del muestreo: en cuanto al método (sistemático o aleatorio) y en cuanto al número de muestras. 
+
+1. **Muestreo aleatorio simple**.
+2. **Muestreo aleatorio estratificado**.
+3. **Muestreo adaptativo**.
+4. **Muestreo sistemático**.
+
+**Consideraciones**.
+
+* Debemos primero establecer de forma explícita la población estadística.
+* Se debe especificar la unidad de muestreo.
+* Luego se selecciona una muestra con algún plan particular.
+
+
+Cualquier estadístico asume que la muestra sigue los principios del **muestreo probabilístico**:
+
+1. Se define un conjunto de muestras distintas $S_1$, $S_2$, $\ldots$ en el que cierta unidad de muestreo especifica es asignado a $S_1$, otro a $S_2$, y así sucesivamente.
+2. A cada muestra $S_i$ ( $i=1, 2, \ldots$ ) se le asigna una probabilidad de ser seleccionada.
+3. Se selecciona una de las muestras por la probabilidad adecuada, usando una tabla de números aleatorios.
+
+Claro, el muestreo puede no ser probabilístico:
+
+* Muestreo de solo unidades accesibles.
+* Muestreo influenciado por sesgos sensoriales.
+* Influencia de prejuicios u otras subjetividades al muestrear _unidades típicas_
+* El uso de solo voluntarios.
+
+### Muestreo Aleatorio Simple.
+
+```{r simple-random-sampling-1, echo=FALSE, eval=TRUE}
+set.seed(53)
+
+grid <- tibble(
+  x=runif(100, -3, 3), y=runif(100, -3, 3),
+  color_point=rep("#D8C4B6", 100))
+
+ggplot(grid, aes(x=x, y=y, fill=color_point)) +
+  geom_point(size=3, colour="#213555") +
+  theme_light() +
+  labs(
+    title="Población de N unidades muestrales.", 
+    subtitle="Cada unidad tiene igual probabilidad de ser seleccionado") +
+  theme(
+    legend.position="none",
+    axis.text=element_blank(),
+    axis.ticks=element_blank(),
+    axis.title=element_blank(),
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7"))
+```
+
+
+```{r simple-random-sampling, echo=FALSE, eval=TRUE}
+sampled <- sample(1:100, 20)
+grid$color_point[sampled] <- "#4F709C"
+
+ggplot(grid, aes(x=x, y=y, colour=color_point)) +
+  geom_point(size=3) +
+  scale_colour_manual(values=grid$color_point) +
+  theme_light() +
+  labs(
+    title="Población de N unidades muestrales y n unidades seleccionadas.", 
+    subtitle="Cada unidad tiene igual probabilidad de ser seleccionado") +
+  theme(
+    legend.position="none",
+    axis.text=element_blank(),
+    axis.ticks=element_blank(),
+    axis.title=element_blank(),
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7"))
+```
+
+### Muestreo Aleatorio Estratificado.
+
+
+La población de $N$ individuos se subdivide en $h$ subpoblaciones o *estratos* que no se solapen, de forma que $N = N_1 + N_2 + \ldots + N_L$.  
+Cada estrato es entonces muestreado por separado, obteniéndose muestras $n_1$, $n_2$, $\ldots$, $n_L$. 
+
+```{r , echo=FALSE}
+#knitr::include_graphics(here::here("figs", "stratified-sampling.png"))
+```
+
+
+La estratificación es recomendable cuando: 
+* Se requieren estimadores de medias y varianzas separadamente para cada estrato.
+* La probabilidad de seleccionar una muestra varía de un área a otra.
+* Se necesita mayor precisión de un estimador.
+* La organización administrativa del equipo lo ve conveniente.
+
+
+**¿Cómo construir los estratos?**
+* No deben exceder más de 6 estratos.
+* Basado en conocimiento a _priori_.
+* Basado en una variable a medir o controlar.
+* Las muestras pueden decidir estratificarse luego del proceso de recolección.
+
+
+### Muestreo Adaptativo.
+
+Hace uso de datos recolectados para realizar decisiones sobre el esfuerzo de muestreo.  
+
+Puede ser de dos tipos: 
+
+_i)_ **Muestreo adaptativo aglomerado** (_clusters_): se realiza un muestreo aleatorio simple, como se describió antes. Si una o más unidades de muestreo tienen una muestra de interés, se seleccionan unidades de muestreo adicionales en la vecindad de estas. 
+
+_ii)_ **Muestreo adaptativo aglomerado estratificado**: se sigue el procedimiento descrito en _i)_, pero sobre estratos definidos como se explica antes.
+
+
+```{r , echo=FALSE}
+#knitr::include_graphics(here::here("figs", "stratified-1.jpg"))
+```
+
+```{r , echo=FALSE}
+#knitr::include_graphics(here::here("figs", "stratified-2.jpg"))
+```
+
+### Muestreo Sistemático.
+
+Se usa principalmente por su simplicidad, y también para poder realizar muestreos uniformemente espaciados (en tiempo y espacio), que pueden tratarse como aleatorios, sin sesgo alguno.  
+Se debe cuidar por la presencia de variaciones periódicas. 
+
+```{r , echo=FALSE}
+#knitr::include_graphics(here::here("figs", "multistage.png"))
+```
+
+## Proceso de Muestreo.
+
+
+* Identificación del conjunto Población.
+* Determinación del tamaño de nuestro conjunto muestral.
+* Proporcionar un medio para la base de la selección de muestras del medio Población.
+* Selección de muestras del medio utilizando una de las muchas técnicas de muestreo como el muestreo aleatorio simple, sistemático o estratificado.
+* Verificar si el conjunto de muestra formado contiene elementos que realmente coinciden con los diferentes atributos del conjunto de población, sin grandes variaciones entre ellos.
+* Comprobación de errores o estimaciones inexactas en el conjunto de muestras formadas, que pueden o no haber ocurrido.
+* El conjunto que obtenemos después de realizar los pasos anteriores en realidad contribuye al conjunto de muestra.
+

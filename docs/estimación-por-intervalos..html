@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11.3 Estimación por Intervalos. | Bioestadistitica-UC.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11.3 Estimación por Intervalos. | Bioestadistitica-UC.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11.3 Estimación por Intervalos. | Bioestadistitica-UC.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="estimación-puntual..html"/>
+<link rel="next" href="introducción-al-contraste-de-hipótesis..html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="...">Bioestadística.</a></li>
+<li><a href="...">Marcelo Molinatti</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="1" data-path="introducción..html"><a href="introducción..html"><i class="fa fa-check"></i><b>1</b> Introducción.</a></li>
+<li class="chapter" data-level="2" data-path="teoría-de-probabilidades..html"><a href="teoría-de-probabilidades..html"><i class="fa fa-check"></i><b>2</b> Teoría de Probabilidades.</a></li>
+<li class="chapter" data-level="3" data-path="combinatoria..html"><a href="combinatoria..html"><i class="fa fa-check"></i><b>3</b> Combinatoria.</a></li>
+<li class="chapter" data-level="4" data-path="otros-teoremas-de-probabilidades..html"><a href="otros-teoremas-de-probabilidades..html"><i class="fa fa-check"></i><b>4</b> Otros Teoremas de Probabilidades.</a></li>
+<li class="chapter" data-level="5" data-path="estadística-descriptiva..html"><a href="estadística-descriptiva..html"><i class="fa fa-check"></i><b>5</b> Estadística Descriptiva.</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html"><i class="fa fa-check"></i><b>5.1</b> Datos no agrupados.</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-tendencia-central."><i class="fa fa-check"></i><b>5.1.1</b> Medidas de Tendencia central.</a></li>
+<li class="chapter" data-level="5.1.2" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-posición."><i class="fa fa-check"></i><b>5.1.2</b> Medidas de posición.</a></li>
+<li class="chapter" data-level="5.1.3" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-dispersión."><i class="fa fa-check"></i><b>5.1.3</b> Medidas de Dispersión.</a></li>
+<li class="chapter" data-level="5.1.4" data-path="datos-no-agrupados..html"><a href="datos-no-agrupados..html#medidas-de-forma."><i class="fa fa-check"></i><b>5.1.4</b> Medidas de Forma.</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="datos-agrupados..html"><a href="datos-agrupados..html"><i class="fa fa-check"></i><b>5.2</b> Datos Agrupados.</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-tendencia-central.-1"><i class="fa fa-check"></i><b>5.2.1</b> Medidas de Tendencia Central.</a></li>
+<li class="chapter" data-level="5.2.2" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-posición.-1"><i class="fa fa-check"></i><b>5.2.2</b> Medidas de posición.</a></li>
+<li class="chapter" data-level="5.2.3" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-dispersión.-1"><i class="fa fa-check"></i><b>5.2.3</b> Medidas de dispersión.</a></li>
+<li class="chapter" data-level="5.2.4" data-path="datos-agrupados..html"><a href="datos-agrupados..html#medidas-de-forma.-1"><i class="fa fa-check"></i><b>5.2.4</b> Medidas de forma.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="distribuciones-de-probabilidad..html"><a href="distribuciones-de-probabilidad..html"><i class="fa fa-check"></i><b>6</b> Distribuciones de Probabilidad.</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="función-de-probabilidad..html"><a href="función-de-probabilidad..html"><i class="fa fa-check"></i><b>6.1</b> Función de Probabilidad.</a></li>
+<li class="chapter" data-level="6.2" data-path="función-de-distribución..html"><a href="función-de-distribución..html"><i class="fa fa-check"></i><b>6.2</b> Función de distribución.</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="función-de-distribución..html"><a href="función-de-distribución..html#propiedades-de-la-función-de-distribución."><i class="fa fa-check"></i><b>6.2.1</b> Propiedades de la función de distribución.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="cálculos-con-funciones-de-probabilidades..html"><a href="cálculos-con-funciones-de-probabilidades..html"><i class="fa fa-check"></i><b>6.3</b> Cálculos con funciones de probabilidades.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="distribuciones-de-probabilidad-de-variables-discretas..html"><a href="distribuciones-de-probabilidad-de-variables-discretas..html"><i class="fa fa-check"></i><b>7</b> Distribuciones de probabilidad de variables discretas.</a></li>
+<li class="chapter" data-level="8" data-path="distribuciones-de-probabilidad-de-variables-continuas..html"><a href="distribuciones-de-probabilidad-de-variables-continuas..html"><i class="fa fa-check"></i><b>8</b> Distribuciones de probabilidad de variables continuas.</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="distribución-normal..html"><a href="distribución-normal..html"><i class="fa fa-check"></i><b>8.1</b> Distribución Normal.</a></li>
+<li class="chapter" data-level="8.2" data-path="distribución-ji-cuadrada..html"><a href="distribución-ji-cuadrada..html"><i class="fa fa-check"></i><b>8.2</b> Distribución Ji-Cuadrada.</a></li>
+<li class="chapter" data-level="8.3" data-path="distribución-t-student..html"><a href="distribución-t-student..html"><i class="fa fa-check"></i><b>8.3</b> Distribución <span class="math inline">\(t\)</span>-Student.</a></li>
+<li class="chapter" data-level="8.4" data-path="distribución-f..html"><a href="distribución-f..html"><i class="fa fa-check"></i><b>8.4</b> Distribución <span class="math inline">\(F\)</span>.</a></li>
+<li class="chapter" data-level="8.5" data-path="ejercicios..html"><a href="ejercicios..html"><i class="fa fa-check"></i><b>8.5</b> Ejercicios.</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="inferencia-estadística..html"><a href="inferencia-estadística..html"><i class="fa fa-check"></i><b>9</b> Inferencia Estadística.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="cómo-se-enfrenta-a-la-inferencia-estadística.html"><a href="cómo-se-enfrenta-a-la-inferencia-estadística.html"><i class="fa fa-check"></i><b>9.1</b> ¿Cómo se enfrenta a la Inferencia Estadística?</a></li>
+<li class="chapter" data-level="9.2" data-path="frecuentistas-y-muestreo-repetido..html"><a href="frecuentistas-y-muestreo-repetido..html"><i class="fa fa-check"></i><b>9.2</b> Frecuentistas y muestreo repetido.</a></li>
+<li class="chapter" data-level="9.3" data-path="ámbito-de-la-inferencia-estadística..html"><a href="ámbito-de-la-inferencia-estadística..html"><i class="fa fa-check"></i><b>9.3</b> Ámbito de la inferencia Estadística.</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="teoría-de-muestreo..html"><a href="teoría-de-muestreo..html"><i class="fa fa-check"></i><b>10</b> Teoría de Muestreo.</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="estimación..html"><a href="estimación..html"><i class="fa fa-check"></i><b>10.1</b> Estimación.</a></li>
+<li class="chapter" data-level="10.2" data-path="distribución-muestral-de-un-estimador..html"><a href="distribución-muestral-de-un-estimador..html"><i class="fa fa-check"></i><b>10.2</b> Distribución muestral de un estimador.</a></li>
+<li class="chapter" data-level="10.3" data-path="teorema-del-límite-central-tlc..html"><a href="teorema-del-límite-central-tlc..html"><i class="fa fa-check"></i><b>10.3</b> Teorema del Límite Central (TLC).</a></li>
+<li class="chapter" data-level="10.4" data-path="necesidad-de-especificar-una-muestra..html"><a href="necesidad-de-especificar-una-muestra..html"><i class="fa fa-check"></i><b>10.4</b> Necesidad de especificar una muestra.</a></li>
+<li class="chapter" data-level="10.5" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html"><i class="fa fa-check"></i><b>10.5</b> Diseño de muestreo.</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-aleatorio-simple."><i class="fa fa-check"></i><b>10.5.1</b> Muestreo Aleatorio Simple.</a></li>
+<li class="chapter" data-level="10.5.2" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-aleatorio-estratificado."><i class="fa fa-check"></i><b>10.5.2</b> Muestreo Aleatorio Estratificado.</a></li>
+<li class="chapter" data-level="10.5.3" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-adaptativo."><i class="fa fa-check"></i><b>10.5.3</b> Muestreo Adaptativo.</a></li>
+<li class="chapter" data-level="10.5.4" data-path="diseño-de-muestreo..html"><a href="diseño-de-muestreo..html#muestreo-sistemático."><i class="fa fa-check"></i><b>10.5.4</b> Muestreo Sistemático.</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="proceso-de-muestreo..html"><a href="proceso-de-muestreo..html"><i class="fa fa-check"></i><b>10.6</b> Proceso de Muestreo.</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="teoría-de-estimación..html"><a href="teoría-de-estimación..html"><i class="fa fa-check"></i><b>11</b> Teoría de Estimación.</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="propiedades-de-un-estimador..html"><a href="propiedades-de-un-estimador..html"><i class="fa fa-check"></i><b>11.1</b> Propiedades de un estimador.</a></li>
+<li class="chapter" data-level="11.2" data-path="estimación-puntual..html"><a href="estimación-puntual..html"><i class="fa fa-check"></i><b>11.2</b> Estimación puntual.</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="estimación-puntual..html"><a href="estimación-puntual..html#construcción-de-estadísitcos-para-inferencia."><i class="fa fa-check"></i><b>11.2.1</b> Construcción de estadísitcos para inferencia.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html"><i class="fa fa-check"></i><b>11.3</b> Estimación por Intervalos.</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html#intervalos-unilaterales."><i class="fa fa-check"></i><b>11.3.1</b> Intervalos Unilaterales.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="introducción-al-contraste-de-hipótesis..html"><a href="introducción-al-contraste-de-hipótesis..html"><i class="fa fa-check"></i><b>12</b> Introducción al Contraste de Hipótesis.</a></li>
+<li class="chapter" data-level="13" data-path="nos-podemos-equivocar.html"><a href="nos-podemos-equivocar.html"><i class="fa fa-check"></i><b>13</b> Nos podemos equivocar…</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="estadístico-de-prueba..html"><a href="estadístico-de-prueba..html"><i class="fa fa-check"></i><b>13.1</b> Estadístico de Prueba.</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias..html"><a href="referencias..html"><i class="fa fa-check"></i>Referencias.</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown">
+Proudly published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estimación-por-intervalos." class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Estimación por Intervalos.<a href="estimación-por-intervalos..html#estimación-por-intervalos." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una estimación por intervalo de un parámetro <span class="math inline">\(\theta\)</span> es un intervalo de la forma <span class="math inline">\(\hat{\theta}_L &lt; \theta &lt; \hat{\theta}_U\)</span>, donde <span class="math inline">\(\hat{\theta}_L\)</span> y <span class="math inline">\(\hat{\theta}_U\)</span> dependen del valor del estadístico <span class="math inline">\(\hat{\Theta}\)</span> para una muestra específica, y también de la distribución de muestreo de <span class="math inline">\(\hat{\Theta}\)</span>.</p>
+<ul>
+<li>Al intervalo <span class="math inline">\(\hat{\theta}_L &lt; \theta &lt; \hat{\theta}_U\)</span> se le llama <em>intervalo de confinaza</em>, y su longitud es un indicador de la precisión de una estimación puntual.</li>
+<li>Los valores <span class="math inline">\(\hat{\theta}_L\)</span> y <span class="math inline">\(\hat{\theta}_U\)</span> son estimadores de las variables aleatorias <span class="math inline">\(\hat{\Theta}_L\)</span> <span class="math inline">\(\hat{\Theta}_U\)</span>.</li>
+</ul>
+<p>El razonamiento de la construcción de intervalos de confianza es utilizar la distriobución muesral de <span class="math inline">\(\hat{\Theta}\)</span> para determinar los límites del intervalo de tal manera que:</p>
+<p><span class="math display">\[P(\hat{\Theta}_L &lt; \theta &lt; \hat{\Theta}_U) = 1 - \alpha, \quad 0 &lt; \alpha &lt; 1\]</span></p>
+<p>y decimos que hay una probabilidad de <span class="math inline">\(1 - \alpha\)</span> de que el intervalo contenga a <span class="math inline">\(\theta\)</span>.</p>
+<ul>
+<li>El intervalo nos permite tener una confianza de <span class="math inline">\(100(1 - \alpha)\)</span>%.</li>
+<li>El grado de confianza es <span class="math inline">\(1-\alpha\)</span>.</li>
+</ul>
+<p>El teorema del límite central se hace muy importante para la construcción de estadísticos cuya ley de probabilidad es conocida.</p>
+<p><img src="Bioestadistitica-UC_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><strong>Una muestra, varianza conocida.</strong></p>
+<p>Cuando 14 estudiantes de segundo año de medicina del <em>Bellevue Hospital</em> midieron la presión sanguínea de la misma persona, obtuvieron los resultados que se listan abajo. Suponiendo que se sabe que la desviación estándar poblacional es de <span class="math inline">\(10\)</span> mmHg, construya un estimado de un intervalo de confianza del 95% de la media poblacional. De manera ideal, ¿cuál debe ser el intervalo de confianza en esta situación?</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="estimación-por-intervalos..html#cb15-1" tabindex="-1"></a>pressure <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">138</span>, <span class="dv">130</span>, <span class="dv">135</span>, <span class="dv">140</span>, <span class="dv">120</span>, <span class="dv">125</span>, <span class="dv">120</span>, <span class="dv">130</span>, <span class="dv">130</span>, <span class="dv">144</span>, <span class="dv">143</span>, <span class="dv">140</span>, <span class="dv">130</span>, <span class="dv">150</span>)</span></code></pre></div>
+<p>Una manera de construir un estadístico es estableciendo una expresión que nos diga cuanto se desvía nuestro estimador del valor real:</p>
+<p><span class="math display">\[\hat{x} - \mu = 133.93 - \mu\]</span></p>
+<p>La media se calcula usando <code>mean(pressure)</code>.</p>
+<p><span class="math display">\[\hat{x} - \mu = 133.93 - \mu \rightarrow \frac{\hat{x} - \mu}{\sigma/\sqrt{n}} = \frac{133.93 - \mu}{10 / \sqrt{14}} \sim N(0, 1)\]</span></p>
+<p>Entonces podemos construir un intervalo de confianza del 95% (esto indica que <span class="math inline">\(0{,}95 = 1 - \alpha\)</span>, por lo que <span class="math inline">\(\alpha = 0{,}05\)</span>) como:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  P(-z_{\alpha/2} &lt; Z &lt; z_{\alpha/2}) &amp;= P\left(-z_{\alpha/2} &lt; \frac{133.93 - \mu}{10 / \sqrt{14}} &lt; z_{\alpha/2}\right) = 0{,}95 \\
+    &amp;= P\left(-z_{\alpha/2}\frac{10}{\sqrt{14}} &lt; 133.93 - \mu &lt; z_{\alpha/2}\frac{10}{\sqrt{14}}\right) = 0{,}95 \\
+    &amp;= P\left(-133.93 - z_{\alpha/2}\frac{10}{\sqrt{14}} &lt; - \mu &lt; -133.93 + z_{\alpha/2}\frac{10}{\sqrt{14}}\right) = 0{,}95 \\
+    &amp;= P\left(133.93 - z_{\alpha/2}\frac{10}{\sqrt{14}} &lt; \mu &lt; 133.93 + z_{\alpha/2}\frac{10}{\sqrt{14}}\right) = 0{,}95 \\
+\end{aligned}
+\]</span></p>
+<p><strong>Una muestra, varianza conocida.</strong></p>
+<p>Tal que el intervalo es:</p>
+<p><span class="math display">\[133.93 - z_{\alpha/2}\frac{10}{\sqrt{14}} &lt; \mu &lt; 133.93 + z_{\alpha/2}\frac{10}{\sqrt{14}}\]</span></p>
+<p>Como <span class="math inline">\(\alpha=0{,}05\)</span>, entonces <span class="math inline">\(\alpha/2=0{,}025\)</span>, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución normal, o usando <code>qnorm(.025, 0, 1)</code>. En este caso, <span class="math inline">\(z_{\alpha/2} = -1.96\)</span>:</p>
+<p><span class="math display">\[139.17 \text{ mmHg} &lt; \mu &lt; 128.69 \text{ mmHg}\]</span></p>
+<p><strong>¿Cómo sé que mis datos son normales?</strong></p>
+<p>Se calculan los residuales de la muestra: <span class="math inline">\(\varepsilon_i = X_i - \bar{X}\)</span> para <span class="math inline">\(i=1, 2, \ldots, n\)</span></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="estimación-por-intervalos..html#cb16-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> pressure <span class="sc">-</span> <span class="fu">mean</span>(pressure)</span>
+<span id="cb16-2"><a href="estimación-por-intervalos..html#cb16-2" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="estimación-por-intervalos..html#cb16-3" tabindex="-1"></a><span class="co"># Grafico Cuantil-Cuantil</span></span>
+<span id="cb16-4"><a href="estimación-por-intervalos..html#cb16-4" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="cn">NULL</span>, <span class="fu">aes</span>(<span class="at">sample=</span>res)) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="estimación-por-intervalos..html#cb16-5" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
+<span id="cb16-6"><a href="estimación-por-intervalos..html#cb16-6" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>(<span class="at">colour=</span><span class="st">&quot;#213555&quot;</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="estimación-por-intervalos..html#cb16-7" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span> </span>
+<span id="cb16-8"><a href="estimación-por-intervalos..html#cb16-8" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb16-9"><a href="estimación-por-intervalos..html#cb16-9" tabindex="-1"></a>    <span class="at">panel.background=</span><span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">&quot;#F5EFE7&quot;</span>),</span>
+<span id="cb16-10"><a href="estimación-por-intervalos..html#cb16-10" tabindex="-1"></a>    <span class="at">plot.background=</span><span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">&quot;#F5EFE7&quot;</span>)</span>
+<span id="cb16-11"><a href="estimación-por-intervalos..html#cb16-11" tabindex="-1"></a>  )</span></code></pre></div>
+<p><strong>Una muestra, varianza desconocida.</strong></p>
+<p>Control del plomo en el aire. A continuación se listan las cantidades de plomo medidas (en microgramos por metro cúbico o <span class="math inline">\(\mu g\)</span> <span class="math inline">\({m}^{-3}\)</span>) en el aire. La <em>Environmental Protection Agency</em> estableció un estándar de calidad del aire para el plomo de <span class="math inline">\(1{,}5\)</span> <span class="math inline">\(\mu g\)</span> <span class="math inline">\({m}^{-3}\)</span>. Las medidas que se presentan abajo se registraron en el edificio 5 del <em>World Trade Center</em> en diferentes días, inmediatamente después de la destrucción causada por los ataques terroristas del 11 de septiembre de 2001. Después del colapso de los dos edificios hubo una gran preocupación por la calidad del aire. Utilice los valores dados para construir un estimado del intervalo de confianza del 95% para la cantidad media de plomo en el aire. ¿Hay algo en este conjunto de datos que sugiera que el intervalo de confianza tal vez no sea muy bueno? Explique.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="estimación-por-intervalos..html#cb17-1" tabindex="-1"></a>air_quality <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.40</span>, <span class="fl">1.10</span>, <span class="fl">0.42</span>, <span class="fl">0.73</span>, <span class="fl">0.48</span>, <span class="fl">1.10</span>)</span></code></pre></div>
+<p>Al igual que antes:</p>
+<p><span class="math display">\[\hat{x} - \mu = 1.54 - \mu\]</span></p>
+<p>Esta diferencia la debemos entandarizar usando la desviacion típica:</p>
+<p><span class="math display">\[\hat{x} - \mu = 1.54 - \mu \rightarrow \frac{\hat{x} - \mu}{S/\sqrt{n}} = \frac{1.54 - \mu}{1.914 / \sqrt{6}} \sim t(n - 1)\]</span></p>
+<p>La desviación estándar se calcula usando <code>sd(air_quality)</code>.
+Entonces podemos construir un intervalo de confianza del 95% (esto indica que <span class="math inline">\(0{,}95 = 1 - \alpha\)</span>, por lo que <span class="math inline">\(\alpha = 0{,}05\)</span>) como:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  P(-t_{\alpha/2, n - 1} &lt; T &lt; t_{\alpha/2, n - 1}) &amp;= P\left(-t_{\alpha/2, n - 1} &lt; \frac{1.54 - \mu}{1.914 / \sqrt{6}} &lt; t_{\alpha/2, n - 1}\right) = 0{,}95 \\
+    &amp;= P\left(-t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}} &lt; 1.54 - \mu &lt; t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}}\right) = 0{,}95 \\
+    &amp;= P\left(-133.93 - t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}} &lt; - \mu &lt; -1.54 + t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}}\right) = 0{,}95 \\
+    &amp;= P\left(1.54 - t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}} &lt; \mu &lt; 1.54 + t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}}\right) = 0{,}95 \\
+\end{aligned}
+\]</span></p>
+<p>Y el intervalo es:</p>
+<p><span class="math display">\[1.54 - t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}} &lt; \mu &lt; 1.54 + t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}}\]</span></p>
+<p>Como <span class="math inline">\(\alpha=0{,}05\)</span>, entonces <span class="math inline">\(\alpha/2=0{,}025\)</span>, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución <span class="math inline">\(t\)</span>-Student con <span class="math inline">\(n - 1\)</span> grados de libertad, o usando <code>qt(.025, 5)</code>. En este caso, <span class="math inline">\(t_{\alpha/2, 5} = -2.5706\)</span>:</p>
+<p><span class="math display">\[3.55 \mu\text{g m}^{-3} &lt; \mu &lt; -0.47 \mu\text{g m}^{-3}\]</span></p>
+<p><strong>Proporciones</strong></p>
+<p><span class="math display">\[\frac{\hat{p} - \pi}{\sqrt{\hat{p}(1 - \hat{p})}} \sim N(0, 1)\]</span></p>
+<p><strong>Diferencia de proporciones</strong></p>
+<p><span class="math display">\[\frac{(\hat{p}_1 - \hat{p}_2) - \Delta}{\sqrt{\hat{p}_1(1 - \hat{p}_1)/n_1 + \hat{p}_2(1 - \hat{p}_2)/n_2}} \sim N(0, 1)\]</span></p>
+<p><strong>Diferencia de medias, varianzas conocidas</strong></p>
+<p><span class="math display">\[\frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{\sigma_1^2/n_1 + \sigma_2^2/n_2}} \sim N(0, 1)\]</span></p>
+<p><span class="math display">\[P(-z_{\alpha/2} &lt; Z &lt; z_{\alpha/2})= 1 - \alpha\]</span></p>
+<p><img src="Bioestadistitica-UC_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><strong>Diferencia de medias, varianzas desconocidas iguales</strong></p>
+<p>Se usa el estimado puntual de la varianza agrupada (<em>pooled</em>): <span class="math inline">\(S_{pool}^2 = \frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}\)</span>, de forma que:</p>
+<p><span class="math display">\[\frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{S_{pool}\sqrt{1/n_1 + 1/n_2}} \sim t(n_1 + n_2 - 2)\]</span></p>
+<p><span class="math display">\[P(-t_{\alpha/2, n - 1} &lt; T &lt; t_{\alpha/2, n - 1}) = 1 - \alpha\]</span></p>
+<p><img src="Bioestadistitica-UC_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><strong>Diferencia de medias, varianzas desconocidas distintas</strong></p>
+<p>En este caso, se usa una expresión <em>un tanto más complicada</em> para los grados de libertad:</p>
+<p><span class="math display">\[\frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{S_1^2/n_1 + S_2^2/n_2}} \sim t(\nu), \quad \nu=\frac{(S_1^2/n_1 + S_2^2/n_2)}{[(S_1^2/n_1)^2/(n_1 - 1) + (S_2^2/n_2)^2/(n_2 - 1)]}\]</span></p>
+<p><strong>Estimación de la varianza: varianza poblacional conocida</strong></p>
+<p>En un estudio de los efectos sobre los bebés que tiene el consumo de cocaína durante el embarazo, se obtuvieron los siguientes datos muestrales de pesos al nacer: <span class="math inline">\(n=190\)</span>, <span class="math inline">\(\bar{x} = 2700\)</span> g, <span class="math inline">\(S = 645\)</span> g (según datos de <em>Cognitive Outcomes of Preschool Children with Prenatal Cocaine Exposure</em>, de Singer <em>et al</em>., <em>Journal of American Medical Association</em>, vol. 291, núm. 20). Utilice los datos muestrales para construir un estimado del intervalo de confianza del 95% para la desviación estándar de todos los pesos al nacer de hijos de madres que consumieron cocaína durante el embarazo. Con base en el resultado, ¿parece que la desviación estándar difiere de la desviación estándar de <span class="math inline">\(696\)</span> g de los pesos al nacer de hijos de madres que no consumieron cocaína durante el embarazo?</p>
+<p><strong>Estimación de la varianza: varianza poblacional conocida</strong></p>
+<p>Se usan proporciones para realizar las estimaciones:</p>
+<p><span class="math display">\[\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1} \rightarrow P(\chi^2_{1 - \alpha/2, n-1} &lt; X^2 &lt; \chi^2_{\alpha/2, n-1}) = 1 - \alpha\]</span></p>
+<p><strong>Estimación de la varianza: varianza poblacional conocida</strong></p>
+<p>Se usan proporciones para realizar las estimaciones:</p>
+<p><span class="math display">\[\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1} \rightarrow P(\chi^2_{\alpha/2, n-1} &lt; X^2 &lt; \chi^2_{1 - \alpha/2, n-1}) = 1 - \alpha\]</span></p>
+<p>Entonces podemos construir un intervalo de confianza del 95% (esto indica que <span class="math inline">\(0{,}95 = 1 - \alpha\)</span>, por lo que <span class="math inline">\(\alpha = 0{,}05\)</span>) como:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  P(\chi^2_{\alpha/2, n-1} &lt; X^2 &lt; \chi^2_{1 - \alpha/2, n-1}) &amp;= P\left(\chi^2_{\alpha/2, n-1} &lt; \frac{(189)(645\text{ g})^2}{\sigma^2} &lt; \chi^2_{1 - \alpha/2, n-1}\right) = 0{,}95 \\
+    &amp;= P\left(\frac{1}{\chi^2_{1 - \alpha/2, n-1}} &lt; \frac{\sigma^2}{(189)(645\text{ g})^2} &lt; \frac{1}{\chi^2_{\alpha/2, n-1}}\right) = 0{,}95 \\
+    &amp;= P\left(\frac{(189)(645\text{ g})^2}{\chi^2_{1 - \alpha/2, n-1}} &lt; \sigma^2 &lt; \frac{(189)(645\text{ g})^2}{\chi^2_{\alpha/2, n-1}}\right) = 0{,}95
+\end{aligned}
+\]</span></p>
+<p>Y el intervalo es:</p>
+<p><span class="math display">\[\frac{(189)(645\text{ g})^2}{\chi^2_{1 - \alpha/2, n-1}} &lt; \sigma^2 &lt; \frac{(189)(645\text{ g})^2}{\chi^2_{\alpha/2, n-1}}\]</span></p>
+<p>Como <span class="math inline">\(\alpha=0{,}05\)</span>, entonces <span class="math inline">\(\alpha/2=0{,}025\)</span>, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución chi-cuadrado, o usando <code>qchisq(.025, 189)</code>. En este caso, <span class="math inline">\(\chi^2_{\alpha/2, n-1} = 152.82\)</span>:</p>
+<p><span class="math display">\[3.4341145\times 10^{5} &lt; \sigma^2 &lt; 5.1451145\times 10^{5}\]</span></p>
+<p>De forma que el intervalo para la desviación estándar es:</p>
+<p><span class="math display">\[586.01 \text{ g} &lt; \sigma &lt; 717.29 \text{ g}\]</span></p>
+<p><strong>Estimación de la proporción de dos varianza</strong></p>
+<p>Se ha realizado un estudio sobre la velocidad en vuelo de diversas especies de pájaros. El propósito era comparar las velocidades del pelícano pardo y el ostrero americano. Se cronometró una muestra de <span class="math inline">\(9\)</span> pajaros pardos y <span class="math inline">\(12\)</span> pajaros ostreros, volando con el viento de costado con una velocidad de viento de <span class="math inline">\(5\)</span> a <span class="math inline">\(8\)</span> millas h<span class="math inline">\({}^{-1}\)</span>, y se obtuvo que el pájaro pardo vuela, en promedio, a <span class="math inline">\(26{,}05 \pm 6{,}34\)</span> millas h<span class="math inline">\({}^{-1}\)</span>, y el ostrero a <span class="math inline">\(30{,}19 \pm 3{,}20\)</span> millas h<span class="math inline">\({}^{-1}\)</span>. Construya un intervalo de confianza del 95% para la proporción de varianzas.</p>
+<p>Al igual que antes, usamos la proporción entre las varianzas para construir un estadístico a partir del cual derivar nuestra ley de probabilidad:</p>
+<p><span class="math display">\[\frac{\sigma_2^2 S_1^2}{\sigma_1^2 S_2^2} = \frac{(6{,}34)^2\sigma_2^2}{(3{,}20)^2\sigma_1^2} \sim F(n_1 - 1, n_2 - 1) \rightarrow P(f_{1 - \alpha/2, n_1-1, n_2-1} &lt; F &lt; f_{\alpha/2, n_1-1, n_2-1})\]</span></p>
+<p>Entonces podemos construir un intervalo de confianza del 90% (esto indica que <span class="math inline">\(0{,}90 = 1 - \alpha\)</span>, por lo que <span class="math inline">\(\alpha = 0{,}1\)</span>) como:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  P(f_{\alpha/2, \nu_1, \nu_2} &lt; F &lt; f_{1 - \alpha/2, \nu_1, \nu_2}) &amp;= P\left(f_{\alpha/2, \nu_1, \nu_2} &lt; \frac{(6{,}34)^2\sigma_2^2}{(3{,}20)^2\sigma_1^2} &lt; f_{1 - \alpha/2, \nu_1, \nu_2}\right) = 0{,}90 \\
+    &amp;= P\left(f_{\alpha/2, \nu_1, \nu_2}\frac{(3{,}20)^2}{(6{,}34)^2} &lt; \frac{\sigma_2^2}{\sigma_1^2} &lt; f_{1 - \alpha/2, \nu_1, \nu_2}\frac{(3{,}20)^2}{(6{,}34)^2}\right) = 0{,}90 \\
+    &amp;= P\left(\frac{1}{f_{1 - \alpha/2, \nu_1, \nu_2}}\frac{(6{,}34)^2}{(3{,}20)^2} &lt; \frac{\sigma_1^2}{\sigma_2^2} &lt; \frac{1}{f_{\alpha/2, \nu_1, \nu_2}}\frac{(6{,}34)^2}{(3{,}20)^2}\right) = 0{,}90
+\end{aligned}
+\]</span></p>
+<p>Y el intervalo es:</p>
+<p><span class="math display">\[\frac{1}{f_{\alpha/2, n_1-1, n_2-1}}\frac{(6{,}34)^2}{(3{,}20)^2} &lt; \frac{\sigma_1^2}{\sigma_2^2} &lt; \frac{1}{f_{1 - \alpha/2, n_1-1, n_2-1}}\frac{(6{,}34)^2}{(3{,}20)^2}\]</span></p>
+<p>Como <span class="math inline">\(\alpha=0{,}1\)</span>, entonces <span class="math inline">\(\alpha/2=0{,}05\)</span>, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución <span class="math inline">\(F\)</span>, o usando <code>qf(.05, 8, 11)</code>:</p>
+<p><span class="math display">\[1.33 &lt; \frac{\sigma_1^2}{\sigma_2^2} &lt; 13\]</span></p>
+<div id="intervalos-unilaterales." class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Intervalos Unilaterales.<a href="estimación-por-intervalos..html#intervalos-unilaterales." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Simplemente se prescinde de uno de las desigualdades. Pueden ser intervalos a la derecha:</p>
+<p><span class="math display">\[P(Z &gt; z_{1 - \alpha/2}) = 1 - \alpha\]</span></p>
+<p>… o intervalos a la izquierda:</p>
+<p><span class="math display">\[P(Z &lt; z_{\alpha/2}) = 1 - \alpha\]</span></p>
+<p><img src="Bioestadistitica-UC_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="estimación-puntual..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introducción-al-contraste-de-hipótesis..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

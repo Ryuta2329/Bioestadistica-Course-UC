@@ -1,0 +1,128 @@
+# Introducción al Contraste de Hipótesis.
+
+Sirve como método que facilite el proceso de toma de decisión en base a datos recolectados de una población. 
+Su finalidad es producir conclusiones sobre la población partiendo de una hipótesis particular. 
+
+Se parte de una _conjetura_ inicial sobre el sistema en estudio, esta determina la forma de .
+Se necesitan de datos experimentales. 
+
+La **hipótesis estadística** es una aseveración o conjetura respecto a una o más poblaciones que se estudian. 
+
+* Puede ser verdadera o no.
+* Una decisión tomada en base al contraste, esta plagada de incertidumbre.
+* Debe ser formalizada en un planteamiento matemático concreto. 
+
+# Nos podemos equivocar...
+
+La decisión tomada esta enlazada a una medida de incertidumbre, por lo que es posible cometer errores en las conclusiones. 
+
+Cualquier afirmación estadística, por tanto, debe ser establecida en conjunto con una medida de que tan seguros estamos de que la decisión tomada es correcta. 
+
+La razón principal es la dependencia con la muestra usada para refutar o ratificar la hipótesis planteada. 
+
+_Ejemplo_. Se examinó la influencia del fármaco _succinilcolina_ sobre los niveles de circulación de andrógenos en la sangre. Se obtuvieron muestras de sangre de venados salvajes inmediatamente después de recibir una inyección intramuscular de _succinilcolina_ con dardos de un rifle de caza. Treinta minutos después se obtuvo una segunda muestra de sangre y después los venados fueron liberados. 
+Los niveles de andrógenos de 15 venados al momento de la captura y 30 minutos más tarde, medidos en nanogramos por mililitro (ng ${\text{mL}}^{-1}$), se presentan en la tabla.
+
+```{r, echo=FALSE, eval=TRUE}
+suppressPackageStartupMessages({
+	library(dplyr)
+	library(kableExtra)
+})
+
+data_example <- tibble(
+  venado_id=1:15,
+  androgen_at=c(2.76, 5.18, 2.68, 3.05, 4.10, 7.05, 6.60, 4.79, 7.39, 7.30, 11.78, 3.90, 26.00, 67.48, 17.04),
+  androgen_30min=c(7.02, 3.10, 5.44, 3.99, 5.21, 10.26, 13.91, 18.53, 7.91, 4.85, 11.10, 3.74, 94.03, 94.03, 41.70)
+)
+
+kbl(data_example,
+    col.names=c("Venado", "Al inyectar", "30 min después")) %>%
+  add_header_above(c("", "Conc. Adrogenos (ng/mL)"=2))
+```
+
+De los métodos de estimación sabemos que la cantidad de andrógenos al momento de la inyección es de $`r round(mean(data_example[["androgen_at"]]), 2)` \pm `r round(sd(data_example[["androgen_at"]]), 2)`$. Mientras que la concentración de andrógenos 30 minutos después de la inyección fue de $`r round(mean(data_example[["androgen_30min"]]), 2)` \pm `r round(sd(data_example[["androgen_30min"]]), 2)`$. 
+
+Podemos construir un intervalo de confianza para las diferencias entre la concentración de andrógenos antes y después, para cada venado. 
+
+$$`r round(mean(data_example[["androgen_30min"]] - data_example[["androgen_at"]]) + qt(.025, nrow(data_example) - 1) * sd(data_example[["androgen_30min"]] - data_example[["androgen_at"]]) / sqrt(nrow(data_example)), 2)` < D < `r round(mean(data_example[["androgen_30min"]] - data_example[["androgen_at"]]) + qt(.975, nrow(data_example) - 1) * sd(data_example[["androgen_30min"]] - data_example[["androgen_at"]]) / sqrt(nrow(data_example)), 2)`$$
+
+El planteamiento de un sistema de experimentación comienza con una conjetura sobre lo que se desea estudiar (en el ejemplo anterior, se desea saber si la succinilcolina es capaz de disminuir los niveles de andrógenos en la sangre).
+
+Nos preocuparemos por obtener una muestra de tamaño $n$ que esté descrita por los valores $x_1, x_2, \ldots, x_n$ de una variable aleatoria $X$. Suponemos que cada valor es independiente de los demás. Por tanto, podemos conceptualizar estos valores como una secuencia $X_1, X_2, \ldots, X_n$ de variables aleatorias independientes e idénticamente distribuidas, cada una de las cuales tiene la misma distribución que $X$.
+
+$$
+\begin{aligned}
+	\text{Conjetura}: & \text{ La succinilcolina modifica la concentración de andrógeno en venados.} \\
+	\text{No hay cambio}: & \text{ La succinilcolina no cambia la concentración de andrógeno en venados.}
+\end{aligned}
+$$
+
+La formalización comienza con el establecimiento de un conjunto de hipótesis posibles al que llamamos $\Theta$; y luego, se seleccionan dos hipótesis $\Theta_0 \subseteq \Theta$ y $\Theta_1 \subseteq \Theta$ tales que:
+
+$$\Theta_0 \cup \Theta_1 = \Theta, \qquad \Theta_0 \cap \Theta_1 = \emptyset$$
+
+Al conjunto $\Theta_0$ se le conoce como hipótesis nula, $H_0$; y al conjunto $\Theta_1$ se le conoce como hipótesis alternativa, $H_1$; y se escribe:
+
+$$
+\begin{aligned}
+	H_0: & \Theta_0 \subseteq \Theta \\
+	H_1: & \Theta_1 \subseteq \Theta
+\end{aligned}
+$$
+
+Además, si se hace un contraste para obtener una conclusión con respecto a un parámetro $\theta$, el conjunto $\Theta_0$ debe contener la conjetura de que _no hay un cambio_ en el valor esperado del parámetro (más específicamente, en la desviación esperada). 
+
+En el ejemplo sobre el efecto de la succinilcolina sobre la concentración de andrógeno en venados, vimos que la diferencia en la concentración de andrógenos antes y después de la inyección de succinilcolina sirve como variable aleatoria para realizar inferencias. 
+
+De forma que podemos definir el conjunto de todas las posibles hipótesis como $\Theta = \{D \in\mathbb{R}\}$. Entonces:
+
+$$
+\begin{aligned}
+	H_0: & \{D \in \mathbb{R}\vert D = 0\} \\
+	H_1: & \{D \in \mathbb{R}\vert D \ne 0\}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+	H_0: & D = 0 \\
+	H_1: & D \ne 0
+\end{aligned}
+$$
+
+La forma de las hipótesis planteadas para un experimento _es algo subjetiva_, dado que su proposición depende de lo que sabe el investigador y su experiencia.
+
+Las condiciones de los conjuntos asociados a cada hipótesis pueden ser más precisos, dando lugar a _pruebas unilaterales_. Por ejemplo:
+
+$$
+\begin{aligned}
+	H_0: & D \le 0 \\
+	H_1: & D > 0
+\end{aligned}
+$$
+
+**La hipótesis a probar es la hipótesis nula**. Esta es la que se toma como cierta, como la proposición de que no hay cambio alguno, y debemos utilizar la información disponible como evidencia para respaldar nuestra _conjetura alternativa_.  
+
+**La hipótesis nula nunca se acepta**, solo _no se rechaza_. No es que la condición de igualdad no se mantenga, sino que la información que se tiene no es capaz de refutarla.
+
+## Estadístico de Prueba.
+
+El estadístico de prueba se construye a partir de la información que se tiene del parámetro poblacional $\theta$, es decir, usando el estimador $\hat{\theta}$ calculado a partir de la muestra de tamaño $n$. 
+
+Para desviaciones con respecto a un valor promedio:
+
+$$\hat{Z} = \frac{\hat{\theta} - \theta}{SE(\theta)} \sim N(0,1), \qquad \hat{T} = \frac{\hat{\theta} - \theta}{\hat{SE(\hat{\theta})}} \sim t(n-1)$$
+
+Para contrastes de hipótesis sobre la varianza:
+
+$$\hat{\chi}^2 = \frac{(n-1) Var(\hat{\theta})}{Var(\theta)} \sim \chi^2(n-1), \qquad \hat{F} = \frac{Var(\hat{\theta_1})}{Var(\hat{\theta_2})} \sim F(n_1 - 1, n_2 - 1)$$
+
+_Ejemplo_. Siguiendo con nuestro ejemplo de la concentración de andrógenos luego de una inyección de succinilcolina, podemos trabajar con las diferencias $d_i$ (pata $i=1, \ldots, n$) entre la concentración de andrógenos antes y 30 min después de la inyección del metabolito. 
+Cada $d_i$ es la realización de una variable aleatoria $D_i$, cuya ley de probabilidad es la misma para todo $i=1,\ldots, n$. 
+
+Podemos construir un estadístico basado en estas diferencias para verificar si de verdad hay un cambio en la concentración de andrógenos:
+
+$$\bar{d} - D, \text{ que para el caso particular, } D=0 \text{ por lo que queda } \bar{d} - 0$$
+
+$$\frac{\bar{d} - 0}{\hat{S}_d/\sqrt{n}} = `r round(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), 2)` \sim t(n - 1)$$
+

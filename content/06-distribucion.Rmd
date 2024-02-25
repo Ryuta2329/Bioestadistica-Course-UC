@@ -1,0 +1,177 @@
+# Distribuciones de Probabilidad.
+
+Hasta este punto, hemos definido ya lo que es una variable aleatoria y cómo podemos usar esta variable para definir probabilidades en intervalos de números reales.  
+Estas funciones se pueden definir para obtener información de las características de las variables aleatorias. Las funciones usadas son la _función de distribución_ (o _función de densidad probabilística_) y la _función de distribución_ (o _función de distribución acumulada_).
+
+## Función de Probabilidad.
+
+Esta función es la que no da información sobre la probabilidad de un evento cualquiera dentro del espacio probabilístico.  
+El establecer la definición de la función de probabilidad se debe hacer para los casos en los que se tienen variables aleatorias discretas, y para los casos en los que se tienen variables aleatorias continuas.
+
+> **Caso discreto**.
+Sea una v.a. $X$ que toma valores $x_0, x_1, \ldots$ con probabilidades $p_0 = P(X = x_0), p_1 = P(X = x_1), \ldots$ (esta es una lista infinita, pero numerable, de probabilidades asignadas a los posibles valores de $X$). Se define entonces la _función de probabilidad discreta_ como:
+$$f(x) = \begin{cases}
+  P(X = x), & \text{ si }x = x_0, x_1, \ldots \\
+  0, & \text{ de otra forma.}
+\end{cases}$$
+
+Notamos que una función definida de esta forma, cumple con todos los axiomas de Kolmogorov y es, por lo tanto, una medida de probabilidad. De lo que se tiene:
+$$\begin{align}
+  f(x) &\ge 0 \\
+  \sum f(x) &= 1
+\end{align}$$
+De esta forma, podemos definir la probabilidad de un evento cualquiera como:
+$$P(X \in A) = \sum_{x \in A} f(x)$$
+
+Esto es así ya que, como vimos, $A$ estaría formado por la unión de eventos disjuntos, cuya probabilidad es la sumatoria de las probabilidades individuales.
+
+> _Ejemplo_. Sea $X$ una v.a. que toma los valores $1,2,3$ con probabilidades $0{,}3, 0{,}5, 0{,}2$, respectivamente. Definimos la función de probabilidad como:
+$$f(x) = \begin{cases}
+  0{,}3, & \text{ si }x = 1 \\
+  0{,}5, & \text{ si }x = 2 \\
+  0{,}2, & \text{ si }x = 3 \\
+  0, & \text{ de otra forma.}
+\end{cases}$$
+cuyo gráfico se muestra a continuación.
+
+```{r distribution-fun-one, echo = TRUE, eval = TRUE}
+ggplot(NULL, aes(x = 1:3, y=c(.3, .5, .2))) +
+  geom_segment(aes(x = 1:3, y = rep(0, 3), xend = 1:3, yend = c(.3, .5, .2)), linewidth = 2, linetype = "dashed", colour = "gray75") +
+  geom_point(size = 3) +
+  geom_hline(yintercept = 0, linewidth = 3) +
+  geom_point(aes(y = rep(0, 3)), size = 3, shape = 21, fill = "white") +
+  ylab("f(x)") + xlab("x") +
+  theme_light(base_size = 14) +
+  theme(panel.grid = element_blank())
+```
+
+> a partir de la cual podemos calcular la probabilidad de cualquier evento, como por ejemplo $P(X\ge2) = P(X=2) + P(X=3) + P(X=4) + \ldots = 0{,}5 + 0{,}2 + 0 + \ldots = 0{,}7$ o $P(\vert X\vert = 1) = P(X = 1) + P(X = -1) = 0{,}3 + 0 = 0{,}3$.
+
+En el ejemplo anterior vemos que no hubo necesidad de definir un experimento aleatorio para construir una función de probabilidad. Esta libertad nos permite definir arbitrariamente funciones de probabilidad en esquemas genéricos, lo único que se necesita es que obedezcan los axiomas de Kolmogorov.
+
+> **_Ejercicio_**. Una muestra de $7$ semillas contiene $2$ infectadas con una enfermedad. Un agrónomo compra $3$ de las semillas al azar. Si $x$ es el número de unidades defectuosas que compra el agrónomo, calcule la distribución de probabilidad de $X$. Exprese los resultados de forma gráfica como un histograma de probabilidad.
+
+Ahora definimos la función de probabilidad para el caso contínuo.
+
+> **Caso continuo**.
+Sea $X$ una v.a. continua. Decimos que $f(x)$ es la función de densidad de la variable $X$ en el intervalo $[a, b]\in\mathbb{R}$ si se cumple:
+$$P(X \in[a,b]) = \int_a^b f(x)dx$$
+donde $f(x)$ es una función no negativa e integrable en el intervalo $[a,b]$
+
+Bajo esta definición, es claro que se cumplen los criterios de Kolmogorov:
+$$\begin{align}
+  f(x) &\ge 0 \space \forall \space x \in \mathbb{R} \\
+  \int_{-\infty}^{\infty} f(x) &= 1
+\end{align}$$
+
+> _Ejemplo_. Sea $X$ una v.a. continua con función de probabilidad definida como:
+$$f(x) = \begin{cases}
+  3x^2/2, & \text{ si } -1 < x < 1 \\
+  0, & \text{ de otra forma}
+\end{cases}$$
+cuyo gráfico se muestra a continuación.
+
+```{r distribution-fun-two, echo = TRUE, eval = TRUE}
+x <- seq(-1, 1, by=.1)
+
+ggplot(NULL, aes(x = x)) +
+  geom_line(aes(y=1.5 * x ** 2), linewidth = 2) +
+  geom_line(aes(x = c(-1.5, -1), y=c(0, 0)), linewidth = 2) +
+  geom_line(aes(x = c(1, 1.5), y=c(0, 0)), linewidth = 2) +
+  geom_point(aes(x=c(-1, 1), y = rep(0, 2)), size = 3, shape = 21, fill = "white") +
+  ylab("f(x)") + xlab("x") +
+  theme_light()
+```
+
+> a partir de la cual podemos calcular la probabilidad de cualquier evento, como por ejemplo:
+$$\begin{aligned}
+  P(X \le 1/3) &= \int_{-\infty}^{1/3}f(x)dx \\
+    &= \int_{-\infty}^{-1}0dx + \int_{-1}^{1/3}\frac{3}{2}x^2dx  \\
+    &= 0 + \frac{(1/3)^3}{2} - \frac{(-1)^3}{2} \\
+    &= \frac{1}{54} + \frac{1}{2} \\
+    &= \frac{14}{27}
+\end{aligned}$$
+
+Al igual que antes, no hubo necesidad de definir un experimento aleatorio para construir una función de probabilidad continua.
+
+> **_Ejercicio_**. El tiempo que pasa, en segundos, para que un murciélago detecte entre árboles sucesivos a una presa que se mueve a una velocidad dada es una variable aleatoria continua con una función de distribución acumulativa:
+$$F(x) = \begin{cases}
+  0, & x < 0, \\
+  1 - e^{-8x}, & x ≥ 0
+\end{cases}$$
+Calcule la probabilidad de que el tiempo que pase para que el murciélago detecte entre árboles sucesivos a las presas que exceden una velocidad de escape sea menor de 12 minutos.
+
+## Función de distribución.
+
+Sea $X$ una variable aleatoria cualquiera, la _función de distribución_, denotada como $F(x) : \mathbb{R} \rightarrow \mathbb{R}$ (lo cual se lee como: $F(x)$ toma un número real y lo transformar en otro número real) se define como la probabilidad:
+$$F(x) = P(X \le x)$$
+
+Vemos entonces porque la llamamos también _función de probabilidad acumulada_, ya que $F(x)$ denota la probabilidad acumulada hasta el valor observado $x$.  
+También notamos que, como las probabilidades son todas mayores o iguales a cero, y que la probabilidad del espacio muestral en su totalidad es $1$, la función de distribución se define entre $0$ y $1$.
+
+Al igual que antes, se hace necesario distinguir entre la función de distribución en el caso discreto y en el caso continuo.
+
+> **Caso discreto**. Si $X$ es una v.a. discreta con función de distribución $f(x)$, entonces se define:
+$$F(x) = \sum_{t \le x} f(t)$$
+
+> _Ejemplo_. Para el ejemplo anterior dado para la función de probabilidad de una v.a. discreta, podemos construir la función de distribución considerando todos los intervalos donde la probabilidad se mantenga contante. De esta forma obtenemos:
+$$F(x) = \begin{cases}
+  0, & x < 1 \\
+  0{,}3, & 1 \le x < 2 \\
+  0{,}8, & 2 \le x < 3 \\
+  1, & x \ge 3 \\
+\end{cases}$$
+cuyo gráfico se muestra a continuación.
+
+```{r distribution-fun-three, echo = TRUE, eval = TRUE}
+ggplot(NULL, aes(x = 1:3, y=c(.3, .8, 1))) +
+  geom_point(size = 3) +
+  geom_line(aes(x = c(0, 1), y = c(0, 0)), linewidth = 2) +
+  geom_line(aes(x = c(1, 2), y = c(.3, .3)), linewidth = 2) +
+  geom_line(aes(x = c(2, 3), y = c(.8, .8)), linewidth = 2) +
+  geom_line(aes(x = c(3, 4), y = c(1, 1)), linewidth = 2) +
+  geom_point(aes(x = c(1, 2, 3), y = c(0, .3, .8)), size = 3, shape = 21, fill = "white") +
+  ylab("F(x)") + xlab("x") +
+  theme_light()
+```
+
+> **Caso continuo**. Si $X$ es una v.a. continua con función de distribución $f(x)$, entonces se define:
+$$F(x) = \int_{-\infty}^x f(t)dt$$
+
+> _Ejemplo_. Se tiene una variable aleatoria $X$ con función de probabilidad dada por:
+$f(x) = \begin{cases}\vert x\vert, & -1 < x < 1 \\ 0 & \text{ de otra forma}\end{cases}$. La obtención de la función de distribución se obtiene aplicando la definición en cada intervalo en los que la definición de $f(x)$ cambia. Empezando con el intervalo de $(-\infty, -1)$, se tiene:
+$$F(X) = \int_{-\infty}^-1 0dx = 0$$
+Luego, en el intervalo $[-1,0)$ se tiene:
+$$F(X) = \int_{-1}^x -xdx = (1-x^2)/2$$
+y así seguimos hasta obtener $F(x)$ en todos los reales:
+$$F(x) = \begin{cases}
+  0, &x \le -1 \\
+  (1-x^2)/2, &-1 \le x < 0 \\
+  (1+x^2)/2, &0 < x \le 1 \\
+  1, &x \ge 1 \\
+\end{cases}$$
+cuyo gráfico se muestra a continuación.
+
+```{r distribution-fun-four, echo = TRUE, eval = TRUE}
+ggplot(NULL, aes(x = c(-1.5, -1), y=c(0, 0))) +
+  geom_line(linewidth = 2) +
+  geom_line(aes(x = seq(-1, 0, by = .1), y = (1 - seq(-1, 0, by = .1) ** 2) / 2), linewidth = 2) +
+  geom_line(aes(x = seq(0, 1, by = .1), y = (1 + seq(0, 1, by = .1) ** 2) / 2), linewidth = 2) +
+  geom_line(aes(x = c(1, 1.5), y = c(1, 1)), linewidth = 2) +
+  ylab("F(x)") + xlab("x") +
+  theme_light()
+```
+
+### Propiedades de la función de distribución.
+
+La función de distribución resulta ser muy importante desde el punto de vista matemático, pues siempre puede definirse dicha función para cualquier variable aleatoria y a través de ella quedan representadas todas las propiedades de la variable aleatoria.
+
+Cualquier función que cumpla las siguientes propiedades es una función de distribución, sea que tenga o no una variable aleatoria asociada.
+
+* $F(x)$ está acotada por arriba por $1$, lo cual se puede escribir como $$\lim_{x\rightarrow\infty} F(x) = 1$$. Esto es así dado que la probabilidad de todo el espacio muestral es $1$.
+* $F(x)$ está acotada por abajo por $0$, lo cual se puede escribir como $$\lim_{x\rightarrow-\infty} F(x) = 0$$. Esto es así dado que las probabilidades son no negativas.
+* $F(x)$ es monótona no decreciente, esto es, si $x_1 \le x_2$, entonces $F(x_1) \le F(x_2)$.
+* $F(x)$ es continua por la derecha, lo cual se puede escribir como $$F(x) = \lim_{x\rightarrow x_0^+} F(x)$$.
+
+## Cálculos con funciones de probabilidades.
+

@@ -1,0 +1,493 @@
+# Distribuciones de probabilidad de variables continuas.
+
+## Distribución Normal.
+
+La distribución normal (o gaussiana) es de las distribuciones más importantes que estudiaremos. Esta la usaremos con frecuencia más adelante cuando realicemos inferencias a partir de observaciones realizadas en un experimento. Aparecerá primero en el _teorema del límite central_ (capítulo [Teoría de Muestreo.]), que es uno de los teoremas más importantes que tiene aplicaciones directas en la práctica. 
+
+Decimos que una variable aleatoria $X$ tiene una distribución normal si su función de densidad viene dada por:
+
+$$f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x - \mu)^2}{2\sigma^2}}, \quad -\infty < x < \infty,$$
+
+donde $\mu, \sigma^2 \in \mathbb{R}$, con $\sigma^2 > 0$, son los parámetros de la distribución. Si la variable $X$ se distribuye como normal se escribe:
+
+$$X \sim N(\mu, \sigma^2)$$
+
+La grafica de la función de densidad normal tiene forma de campana, siendo simétrica con respecto a la vertical que pasa por la media $\mu$, la cual es el centro de la campana. Siendo $\sigma$ (raíz cuadrada de la varianza $\sigma^2$) es la distancia del centro a cualquiera de los puntos de inflexión de la curva (como se muestra en la figura \@ref(fig:distribution-continuos-one)).
+
+```{r distribution-continuos-one, echo = FALSE, eval = TRUE, fig.cap = "Función de densidad de una variable aleatoria normal N($\\mu, \\sigma^2$).", warning = FALSE}
+ggplot(NULL, aes(x=seq(-3.5, 3.5, by=.01), y=dnorm(seq(-3.5, 3.5, by=.01), 0, 1))) +
+  geom_segment(aes(x = 0, y = 0, xend = 0, yend = dnorm(0, 0, 1)), linewidth = 1, colour = "gray75") +
+  geom_segment(
+    aes(x = 0, y = dnorm(1, 0, 1), xend = 1, yend = dnorm(1, 0, 1)), 
+    linewidth = 1, colour = "gray75", arrow = arrow(length = unit(0.03, "npc"), ends = "both")) +
+  annotate("text", x = .5, y = dnorm(1, 0, 1) - .01, label = latex2exp::TeX("$\\sigma$"), size = 6) +
+  geom_line(linewidth=1.5) +
+  labs(x = "", y = "f(x)") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(
+    breaks = 0,
+    labels=latex2exp::TeX("$\\mu$")) +
+  theme_light(base_size=14) +
+  theme(
+    axis.text = element_text(size = 20),
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+  )
+```
+
+Esta información se resume como:
+
+\begin{aligned}
+  & E(X) = \mu \\
+  & Var(X) = \sigma^2
+\end{aligned}
+
+La función de distribución viene dada por la integral:
+
+$$F(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(y - \mu)^2}{2\sigma^2}}dy$$
+
+la cual no tiene primitiva analítica asociada y debe resolverse por métodos numéricos. Es posible obtener valores de probabilidad acumulada en R usando el comando `pnorm`, el cual da $F(x) = P(X \le x)$, como se muestra en la figura siguiente.
+
+```{r distribution-continuos-two, echo = FALSE, eval = TRUE, fig.cap = "Función de distribución acumulada de una variable aleatoria normal N($\\mu, \\sigma^2$).", warning = FALSE}
+ggplot(NULL, aes(x=seq(-3.5, 3.5, by=.01), y=pnorm(seq(-3.5, 3.5, by=.01), 0, 1))) +
+  geom_line(linewidth=1.5) +
+  labs(x = "", y = "F(x)") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(
+    limits = c(-3.5, 3.5),
+    breaks = 1,
+    labels=latex2exp::TeX("$x$")) +
+  theme_light(base_size=14) +
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+  )
+```
+
+> Por ejemplo, supongamos que se tiene la variable aleatoria $X$ que representa la longitud del ala de abejas de cierta granja de apicultores. Se sabe, de estudios anteriores, que la longitud media es de $1{,}5 \pm 0{,}73$ cm. Los mismos estudios preliminares han mostrado que $X$ sigue una distribución normal, por lo que se escribe:
+> $$X \sim N(\mu = 1{,}5, \sigma^2 = `r round(0.73^2, 3)`)$$
+> Podemos obtener la probabilidad de que una abeja tenga una longitud del ala menor a $1$ cm, $P(X \le 1\text{ cm})$ como ```pnorm(1, 1.5, 0.73)``` (figura \@ref(fig:distribution-continuos-three), a la izquierda). Si queremos la probabilidad de aquellas con una longitud del ala mayor a $3$ cm, $P(X \ge 3\text{ cm}) = 1 - P(X \le 3\text{ cm})$, que se calcula en R como ```1 - pnorm(3, 1.5, 0.73)``` (figura \@ref(fig:distribution-continuos-three), a la derecha).
+
+```{r distribution-continuos-three, echo = FALSE, eval = TRUE, , fig.cap = "Función de densidad de una variable aleatoria normal N($\\mu = 1{,}5, \\sigma^2 = 0{,}532$), donde se muestra de forma grafica la probabilidad acumulada $P(X \\le 1)$ (a la izquierda) y $P(X \\ge 3)$ (a la derecha).", warning = FALSE, fig.width = 14, fig.height = 7}
+cowplot::plot_grid(
+  ggplot(NULL, 
+      aes(
+        x = 1.5 + seq(-3.5, 3.5, by=.01) * .73, 
+        y = dnorm(1.5 + seq(-3.5, 3.5, by=.01) * .73, 1.5, .73))) +
+    geom_segment(
+      aes(x = 1.5, y = 0, xend = 1.5, yend = dnorm(1.5, 1.5, .73)), 
+      linewidth = 1, colour = "gray75") +
+    geom_segment(
+      aes(x = 1, y = 0, xend = 1, yend = dnorm(1, 1.5, .73)), 
+      linewidth = 1, colour = "gray75") +
+    geom_area(
+      stat = "function",
+      fun = dnorm, args=list(mean=1.5, sd=.73), 
+      fill = "paleturquoise2", xlim = c(-1, 1), alpha = .4) +
+    annotate("text", x = .5, y = dnorm(.05, 1.5, .73), label = "P(X \u2264 1)", angle = 0, size = 5) +
+    geom_line(linewidth=1.5) +
+    labs(x = "", y = "f(x)") +
+    scale_y_continuous(breaks = NULL) +
+    scale_x_continuous(
+      breaks = 1.5,
+      labels=latex2exp::TeX("$\\mu = 1{,}5 cm$")) +
+    theme_light(base_size=14) +
+    theme(
+      axis.text = element_text(size = 20),
+      axis.line=element_blank(),
+      panel.grid=element_blank(),
+    ), 
+  ggplot(NULL, 
+      aes(
+        x = 1.5 + seq(-3.5, 3.5, by=.01) * .73, 
+        y = dnorm(1.5 + seq(-3.5, 3.5, by=.01) * .73, 1.5, .73))) +
+    geom_segment(
+      aes(x = 1.5, y = 0, xend = 1.5, yend = dnorm(1.5, 1.5, .73)), 
+      linewidth = 1, colour = "gray75") +
+    geom_segment(
+      aes(x = 3, y = 0, xend = 3, yend = dnorm(3, 1.5, .73)), 
+      linewidth = 1, colour = "gray75") +
+    geom_area(
+      stat = "function",
+      fun = dnorm, args=list(mean=1.5, sd=.73), 
+      fill = "paleturquoise2", xlim = c(3, 4), alpha = .4) +
+    annotate("text", x = 3.5, y = dnorm(.1, 1.5, .73), label = "P(X \u2265 3)", angle = 0, size = 5) +
+    geom_segment(
+      aes(x = 3.1, y = dnorm(3.5, 1.5, .73), xend = 3.5, yend = .07), 
+      linewidth = 1, colour = "gray75") +
+    geom_line(linewidth=1.5) +
+    labs(x = "", y = "f(x)") +
+    scale_y_continuous(breaks = NULL) +
+    scale_x_continuous(
+      breaks = 1.5,
+      labels=latex2exp::TeX("$\\mu = 1{,}5 cm$")) +
+    theme_light(base_size=14) +
+    theme(
+      axis.text = element_text(size = 20),
+      axis.line=element_blank(),
+      panel.grid=element_blank(),
+    ),
+  nrow = 1
+)
+```
+
+Notamos, de las figuras del ejemplo, que la probabilidad acumulada se puede entender como el área debajo de la función de densidad para un valor de $X$ observado o menor, y que para encontrar valores acumulados hacia arriba, solo necesitamos usar $1 - F(X)$. 
+
+> **Ejercicio**. Un investigador informa que unos ratones a los que primero se les restringen drásticamente sus dietas y después se les enriquecen con vitaminas y proteínas vivirán un promedio de $40$ meses. Si suponemos que la vida de tales ratones se distribuye normalmente, con una desviación estándar de $6{,}3$ meses, calcule la probabilidad de que un ratón determinado viva _a)_ más de $32$ meses; _b)_ menos de $28$ meses; _c)_ entre $37$ y $49$ meses.
+
+Un caso particular de esta distribución, que es muy útil, es cuando $\mu = 0$ y $\sigma^2 = 1$, la cual da lugar a la distribución normal estándar, cuya función de densidad queda:
+
+$$f(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}, \quad -\infty < x < \infty,$$
+
+la cual también se denota como $\phi(x)$. Esto es importante porque significa que siempre es posible transformar una v.a. normal en una estándar por una simple operación:
+
+$$Z = \frac{X - \mu}{\sigma} \sim N(0, 1)$$
+
+que se conoce como _estandarización_. La importancia de este procedimiento es que el cálculo de probabilidades de una variable aleatoria normal se puede reducir al cálculo de probabilidad de una variable aleatoria de distribución normal estándar. Esto es fácil de ver ya que:
+
+\begin{aligned}
+  P(a < X < b) &= P(a - \mu < X - \mu < b - \mu) \\
+    &= P\left(\frac{a - \mu}{\sigma} < \frac{C - \mu}{\sigma} < \frac{b - \mu}{\sigma}\right) \\
+    &= P\left(\frac{a - \mu}{\sigma} < Z < \frac{b - \mu}{\sigma}\right)
+\end{aligned}
+
+Se puede demostrar que si $X$ se distribuye como una normal estándar, entonces la variable $-X$ también tiene distribución normal estándar, y:
+
+$$\Phi(-x) = 1 - \Phi(x)$$
+
+Definimos los _cuantiles_ de la distribución normal estándar $z_\alpha$ para cada valor de $\alpha$ en el intervalo $(0,1)$ como aquel para el cual:
+
+$$\Phi(z_{\alpha}) = 1 - \alpha$$
+
+Algunos cuantiles importantes que vale la pena recordar, y que usaremos frecuentemente más adelante son: $z_{0{,}9} = 1{,}28$, $z_{0{,}95} = 1{,}64$, $z_{0{,}975} = 1{,}96$ y $z_{0{,}99} = 2{,}33$. 
+
+Ahora, mencioanmos una proposición muy útil sobre la suma de dos variables aleatorias normales.
+
+> Sean $X_1$ y $X_2$ dos variables aleatorias independientes con distribución $N(\mu_1, \sigma_1^2)$ y $N(\mu_2, \sigma_2^2)$, entonces:
+$$X_1 + X_2 \sim N(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)$$
+
+Veamos un ejemplo. 
+
+> Por ejemplo, digamos que un investigador tiene una población de ciertas bacterias en un cultivo puro que se esta estudiando por sus capacidades de producir cierta proteína transmembrana de interés, que sirve como transportador de un metabolito que se desea degradar. Se sabe que esta se produce en este cultivo con una densidad de $35 \pm 4{,}3$ unidades por centímetro cuadrado por célula.  
+> Sin embargo, en un accidente, el investigador mezclo dos cultivos con capacidades distintas de producir la proteína transmembrana. Este segundo cultivo tiene una capacidad menor de producir la proteína que funciona como transportador, haciendola menos efectiva en metabolizar el metabolito, con una densidad de solo $11 \pm 7{,}1$ unidades por centímetro cuadrado por célula.  
+> Si suponemos que la v. a. densidad de la proteína por centímetro cuadrado por célula se distribuye como una normal, entonces $X_{\text{Cultivo 1}}\sim N(35, 18{,}49)$ y $X_{\text{Cultivo 2}}\sim N(11, 50{,}41)$ en ambos cultivos aislados; y luego del accidente, $X_{\text{Cultivo Mezclado}}\sim N(46, 68{,}9)$.
+
+## Distribución Ji-Cuadrada.
+
+Se dice que una variable aleatoria continúa $X$ sigue una distribución Ji-Cuadrada con $n$ grados de libertad ($n>0$), si su función de densidad viene dada por:
+
+$$f(x) = \begin{cases} \frac{1}{\gamma(n/2)}\left(\frac{1}{2}\right)^{n/2}x^{n/2 - 1}e^{-x/2} &\text{ si }x > 0 \\ 0 &\text{ en otro caso}\end{cases}$$
+
+Esta función se distribuye en el intervalo $(0, \infty)$ y su único parámetro son los grados de libertad $n$ que puede ser cualquier valor positivo, aunque la mayoría de las veces tomará solo valores enteros positivos. En la figura \@ref(fig:distribution-continuos-four) se muestra esta distribución para $n = 1, 2, 5$, y $8$: a partir de $n=3$ aparece un pico en la función, el cual se desplaza a valores mayores a medida que $n$ aumenta. 
+
+```{r distribution-continuos-four, echo = FALSE, eval = TRUE, fig.cap = "Función de densidad de una variable aleatoria Ji-Cuadrada $\\chi^2(n)$.", warning = FALSE}
+ggplot(NULL, aes(x=seq(0, 10, by=.01), y=dchisq(seq(0, 10, by=.01), 1))) +
+  annotate("text", x = c(1.2, 2, 3, 7), y = dchisq(c(.6, 1.5, 3, 7), c(1,2,5,8)) + .05, label = paste("n =", c(1,2,5,8)), size = 6) +
+  geom_line(linewidth=1.2) +
+  geom_line(aes(x=seq(0, 10, by=.01), y=dchisq(seq(0, 10, by=.01), 2)), linewidth=1.2) +
+  geom_line(aes(x=seq(0, 10, by=.01), y=dchisq(seq(0, 10, by=.01), 5)), linewidth=1.2) +
+  geom_line(aes(x=seq(0, 10, by=.01), y=dchisq(seq(0, 10, by=.01), 8)), linewidth=1.2) +
+  labs(x = "", y = "f(x)") +
+  scale_y_continuous(breaks = .5, limits = c(0, .5)) +
+  scale_x_continuous(breaks = 0:10) +
+  theme_light(base_size=14) +
+  theme(
+    axis.text = element_text(size = 10),
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+  )
+```
+
+Si $X$ sigue una distribución Ji-Cuadrada, escribiremos
+
+$$X \sim \chi^2(n)$$
+
+Su función de distribución viene dada por:
+
+$$F(x) = \int_0^{x} \frac{1}{\gamma(n/2)} \left(\frac{1}{2}\right)^{n/2}u^{n/2 - 1}e^{-u/2}du$$
+
+cuyo gráfico se muestra a comtinuación para una v. a. $X \sim \chi^2(n = 8)$:
+
+```{r distribution-continuos-five, echo = FALSE, eval = TRUE, fig.cap = "Función de distribución acumulada de una variable aleatoria $\\chi^2(n = 8)$.", warning = FALSE}
+ggplot(NULL, aes(x=seq(0, 15, by=.01), y=pchisq(seq(0, 15, by=.01), 8))) +
+  geom_line(linewidth=1.5) +
+  labs(x = "", y = "F(x)") +
+  scale_x_continuous(
+    limits = c(0, 15),
+    breaks = 1:15) +
+  theme_light(base_size=14) +
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+  )
+```
+
+Es posible obtener valores de probabilidad acumulada en R usando el comando `pchisq`, el cual da $F(x) = P(X \le x)$. Para esta distribución, es posible demostrar que:
+
+\begin{aligned}
+  & E(X) = n \\
+  & Var(X) = 2n
+\end{aligned}
+
+Antes de ver un ejemplo de calculo de porbabilidades a partir de la función de distribución, es bueno conocer los siguientes resultados. 
+
+La distribución Ji-cuadrada se puede obtener como resultado de elevar al cuadrado una variable normal estándar. Si $X \sim N (0, 1)$, entonces:
+
+$$X^2 \sim \chi^2(1)$$
+
+Este resultado, junto con la siguiente proposición, nos permitirán entender la distribución de v. a. con distribución Ji-Cuadrada. 
+
+> Sea $X$ y $Y$ dos v. a. independientes con distribución $\chi^2(n)$ y $\chi^2(m)$, respectivamente. Entonces:
+$$X + Y \sim \chi^2(n + m)$$
+
+Este resultado se puede extender a la suma de $n$ variables aleatorias independientes distribuidas como Ji-cuadrado. Esto nos dice que podemos entender cualquier variable aleatoria que sigue una distribución Ji-Cuadrado como una suma de v. a. con la misma distribución pero cada una con un solo grado de libertad, cada una de las cuales se entiende como una v. a. normal estándar al cuadrado. 
+
+<!--- Aqui va un ejemplo pero no se me ocurre anda--->
+
+Se nos permite obtener el siguiente resultado que utilizaremos más adelante cuando hablemos de inferencia estadística, y que es tan importante para realizar inferencia sobre la varianza. 
+
+> Sean $X_1, \ldots, X_n$ variables aleatorias independientes, cada una de ellas con distribución $N(\mu, \sigma^2)$. Entonces:
+$$\frac{(n - 1)S^2}{\sigma^2} \sim \chi^2(n - 1)$$
+donde $S^2 = \frac{1}{n - 1}\sum_{i=1}^n(X_i - \bar{X})^2$ y $\bar{X} = \frac{1}{n}\sum_{i=1}^nX_i$. 
+
+Veamos un ejemplo.
+
+> _Por ejemplo_, se sabe que en madres que no consumieron cocaína al nacer, el peso de los bebés nacidos tiene una desviación entándar de $\sigma = 696$ g. En un estudio de los efectos que tiene el consumo de cocaína sobre los bebés durante el embarazo, se recolectaron datos de $n = 190$ madres consumidoras de cocaína.  
+> Por la proposión anterior, sabemos que la variabilidad en el peso de los bebés con respecto al valor conocido se distribuye como una $\chi^2(n - 1)$. Podemos calcular la probabilidad de que la variabilidad sea la mitad del valor conocido de $696$ g, calculando la variable aleatoria $(190 - 1) \frac{(1/2)\sigma^2}{\sigma^2} = 189/2 = 94{,}5$, cuya probabilidad se puede calcular en R como ```pchisq(94.5, 189)``` que arroja un valor de `r round(pchisq(94.5, 189), 4)` (se muestra en la gráfica de la izquierda de la figura \@ref(fig:distribution-continuos-six)). Si la variabilidad es aproximadamente 8% menor al valor conocido, entonces $(190 - 1) \frac{0{,}92\sigma^2}{\sigma^2} = 173{,}88$, entonces se calcula ```pchisq(173.8, 189)``` que arroja `r round(pchisq(173.88, 189), 4 )` (que se muestra en la gráfica de la derecha de la figura \@ref(fig:distribution-continuos-six))
+
+```{r distribution-continuos-six, echo = FALSE, eval = TRUE, , fig.cap = "Función de densidad de una variable aleatoria $\\chi^2(n = 189)$, donde se muestra de forma grafica la probabilidad acumulada $P(X \\le 94{,}5)$ (a la izquierda) y $P(X \\le 173{,}88)$ (a la derecha).", warning = FALSE, fig.width = 14, fig.height = 7}
+cowplot::plot_grid(
+  ggplot(NULL, 
+      aes(
+        x = seq(0, 200, by=.01), 
+        y = dchisq(seq(0, 200, by=.01), 189))) +
+    geom_segment(
+      aes(x = 94.5, y = 0, xend = 94.5, yend = dchisq(94.5, 189)), 
+      linewidth = 1, colour = "gray75") +
+    geom_area(
+      stat = "function",
+      fun = dchisq, args=list(df=189), 
+      fill = "paleturquoise2", xlim = c(0, 94.5), alpha = .4) +
+    annotate("text", x = 94.5, y = dchisq(94.5, 189)+.001, label = "P(X \u2264 94.5)", angle = 0, size = 5) +
+    geom_line(linewidth=1.5) +
+    labs(x = "", y = "f(x)") +
+    scale_y_continuous(breaks = NULL) +
+    theme_light(base_size=14) +
+    theme(
+      axis.text = element_text(size = 10),
+      axis.line=element_blank(),
+      panel.grid=element_blank(),
+    ), 
+  ggplot(NULL, 
+      aes(
+        x = seq(0, 200, by=.01), 
+        y = dchisq(seq(0, 200, by=.01), 189))) +
+    geom_segment(
+      aes(x = 173.88, y = 0, xend = 173.88, yend = dchisq(173.88, 189)), 
+      linewidth = 1, colour = "gray75") +
+    geom_area(
+      stat = "function",
+      fun = dchisq, args=list(df=189), 
+      fill = "paleturquoise2", xlim = c(0, 173.88), alpha = .4) +
+    annotate("text", x = 100, y = dchisq(150, 189)+.001, label = "P(X \u2264 173,88)", angle = 0, size = 5) +
+    geom_segment(
+      aes(x = 100, y = dchisq(151, 189), xend = 150, yend = dchisq(145, 189)), 
+      linewidth = 1, colour = "gray75") +
+    geom_line(linewidth=1.5) +
+    labs(x = "", y = "f(x)") +
+    scale_y_continuous(breaks = NULL) +
+    theme_light(base_size=14) +
+    theme(
+      axis.text = element_text(size = 10),
+      axis.line=element_blank(),
+      panel.grid=element_blank(),
+    ),
+  nrow = 1
+)
+```
+
+## Distribución $t$-Student.
+
+Se dice que un variable aleatoria continua $X$ sigue una distribución $t$-Student con $n$ grados de libertad ($n>0$), si su función de densidad viene dada por:
+
+$$f(x) = \frac{\Gamma(\frac{n + 1}{2})}{\sqrt{n\pi}\Gamma(n/2)}\left(1 + \frac{x^2}{n}\right)^{-(n+1)/2}, \quad -\infty < x < \infty$$
+
+y se escribe:
+
+$$X \sim t(n)$$
+
+en donde $n$ es un número real positivo, aunque tomaremos principalmente el caso cuando $n$ es entero positivo. 
+
+```{r distribution-continuos-seven, echo = FALSE, eval = TRUE, fig.cap = "Función de densidad de una variable aleatoria $t$-Student $t(n)$, para $n = 1$ (línea sólida), $n = 4$ (línea quebrada) y $n = 15$ (línea punteada). En rojo se muestra la distribución normal estándar.", warning = FALSE}
+  ggplot(
+      tibble(
+        X = seq(-3.5, 3.5, by=.01),
+        `N(0, 1)` = dnorm(seq(-3.5, 3.5, by=.01), 0, 1),
+        `t(n = 1)` = dt(seq(-3.5, 3.5, by=.01), 1),
+        `t(n = 4)` = dt(seq(-3.5, 3.5, by=.01), 4),
+        `t(n = 15)` = dt(seq(-3.5, 3.5, by=.01), 15),
+        ), 
+      aes(x=X, y=`N(0, 1)`)) +
+    geom_line(linewidth=1.2, colour = "red") +
+    geom_line(aes(y=`t(n = 1)`), linewidth=1.2, linetype = 1) +
+    geom_line(aes(y=`t(n = 4)`), linewidth=1.2, linetype = 2) +
+    geom_line(aes(y=`t(n = 15)`), linewidth=1.2, linetype = 3) +
+  labs(x = "", y = "f(x)") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(breaks = NULL, limits = c(-3.5, 3.5)) +
+  theme_light(base_size=14) +
+  theme(
+    axis.text = element_text(size = 10),
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+  )
+```
+
+La función de densidad es de campana como la normal, pero con colas más _pesadas_ que esta última, esto es, la probabilidad de obtener una observación extrema es mayor que la probabilidad de esa misma observación proviniendo de una distribución normal. A medida que aumentan los grados de libertad, la amplitud de las colas disminuye y la distribución se aproxima a una normal, y en el límite cuando $n\rightarrow\infty$, ambas densidades coinciden. 
+
+La función de distribución tampoco tiene una expresión sencilla y se escribe como:
+
+$$F(x) = \int_{-\infty}^\infty \frac{\Gamma(\frac{n+1}{2})}{\sqrt{n\pi}\Gamma(n/2)} \left(1 + \frac{u^2}{n}\right)^{-(n+1)/2} du$$
+
+cuyo gráfico se muestra a continuación para una $t$-Student de $4$ grados de libertad.
+
+```{r distribution-continuos-eight, echo = FALSE, eval = TRUE, fig.cap = "Función de distribución acumulada de una variable aleatoria $t(n = 4)$.", warning = FALSE}
+ggplot(NULL, aes(x=seq(-3.5, 3.5, by=.01), y=pt(seq(-3.5, 3.5, by=.01), 4))) +
+  geom_line(linewidth=1.5) +
+  labs(x = "", y = "F(x)") +
+  scale_x_continuous(
+    limits = c(-3.5, 3.5)) +
+  theme_light(base_size=14) +
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+  )
+```
+
+Es posible obtener valores de probabilidad acumulada en R usando el comando `pt`, el cual da $F(x) = P(X \le x)$ (vea el ejemplo al final de esta subsección). 
+
+Para esta distribución, es posible demostrar que:
+
+\begin{aligned}
+  & E(X) = 0, \quad n > 1 \\
+  & Var(X) = \frac{n}{n - 2}, \quad n > 2
+\end{aligned}
+
+Esta distribución resulta cuando se estudian ciertas operaciones entre variables aleatorias. Un resultado que usaremos seguido en inferencia estadística es el siguiente: 
+
+> Si $X \sim N(0,1)$ y $Y \sim \chi^2(n)$ son dos variables aleatorias independientes, entonces:
+> $$\frac{X}{\sqrt{Y/n}} \sim t(n)$$
+
+También se puede llegar al siguiente resultado: 
+
+> Sean $X_1, \ldots, X_n$ v. a. independientes, cada una de ellas con distribución normal $N(\mu, \sigma^2)$. Entonces:
+> $$\frac{\bar{X} - \mu}{S/\sqrt{n}} \sim t(n - 1)$$
+>donde $S^2 = \frac{1}{n - 1}\sum_{i=1}^n(X_i - \bar{X})^2$ y $\bar{X} = \frac{1}{n}\sum_{i=1}^nX_i$. 
+
+Veamos un ejemplo.
+
+> _Ejemplo_. Un programa que busca probar la eficacia de productos microbiológicos por su capacidad de degradar contaminantes derivados del petroleo (de tal forma que se puedan limpiar los ecosistemas que sufren el efecto del derrames amplios en las costas) es puesto en marcha. Investigaciones iniciales muestran que el producto es capaz de disminuir la cantidad de derivados del petroleo en un promedio de $10$ ppm. 
+> Las pruebas del producto, basadas en una muestra de $5$ recolecciones al azar de agua contaminadas y se les aplica el producto y se encuentra una variabilidad en la apcidad de degradación de $5{,}2$ ppm. La proposición anterior entoncs muestra que la variable aleatoria 
+> $$\frac{\bar{X} - 10}{5{,}2/\sqrt{5}} \sim t(4)$$
+> Por lo que podemos calcular la probabilidad de que al aplicar el producto se reduzca la contamianción por petroleo a $5$ ppm, introduciendo este valor en la ecuación anterior, obteniendose $(5 - 10)/5{,}2/\sqrt{5} = -0{,}4300$. Luego usamos la función ```pt``` como en ```pt(-0.43, 4)``` que arroja un valor de `r round(pt(-0.43, 4), 4)` (como se ve en la figura \@ref(fig:distribution-continuos-nine), a la izquierda). Si queremos la probabilidad de que la contaminación solo descienda hasta $20$ ppm como mínimo, entonces se calcula $(20 - 10)/5{,}2/\sqrt{5} = 0{,}86$, cuya probabilidad se puede calcular como ```1 - pt(0.86, 4)```, cuyo valor es `r round(pt(0.86, 4), 4)` (como se ve en la figura \@ref(fig:distribution-continuos-nine), a la derecha).
+
+```{r distribution-continuos-nine, echo = FALSE, eval = TRUE, fig.cap = "Función de distribución acumulada de una variable aleatoria $t(n = 4)$.", warning = FALSE, fig.width = 14, fig.height = 7}
+cowplot::plot_grid(
+ggplot(NULL, aes(x=seq(-3.5, 3.5, by=.01), y=dt(seq(-3.5, 3.5, by=.01), 4))) +
+  geom_area(
+    stat = "function",
+    fun = dt, args=list(df=4), 
+    fill = "paleturquoise2", xlim = c(-3.5, -0.4300), alpha = .4) +
+  annotate("text", x = -1, y = dt(-2, 4), label = "P(X \u2264 5)", angle = 0, size = 5) +
+  geom_segment(
+    aes(x = -0.43, y = 0, xend = -0.43, yend = dt(-0.43, 4)), 
+      linewidth = 1, colour = "gray75") +
+  geom_line(linewidth=1.5) +
+  labs(x = "", y = "F(x)") +
+  scale_x_continuous(
+    limits = c(-3.5, 3.5)) +
+  theme_light(base_size=14) +
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+  ),
+  ggplot(NULL, aes(x=seq(-3.5, 3.5, by=.01), y=dt(seq(-3.5, 3.5, by=.01), 4))) +
+  geom_area(
+    stat = "function",
+    fun = dt, args=list(df=4), 
+    fill = "paleturquoise2", xlim = c(0.86, 3.5), alpha = .4) +
+  annotate("text", x = 1.5, y = dt(2.5, 4), label = "P(X \u2265 20)", angle = 0, size = 5) +
+  geom_segment(
+    aes(x = 0.86, y = 0, xend = 0.86, yend = dt(0.86, 4)), 
+      linewidth = 1, colour = "gray75") +
+  geom_line(linewidth=1.5) +
+  labs(x = "", y = "F(x)") +
+  scale_x_continuous(
+    limits = c(-3.5, 3.5)) +
+  theme_light(base_size=14) +
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+  ), nrow = 1)
+```
+
+## Distribución $F$.
+
+Se dice que la variable aleatoria continua $X$ tiene una distribución $F$ de Fisher-Snedecor con $a > 0$ y $b > 0$ grados de libertad si su función de densidad viene dada por: 
+
+$$f(x) = \begin{cases}
+  \frac{\Gamma(\frac{a + b}{2})}{\Gamma(\frac{a}{2})\Gamma(\frac{b}{2})}\left(\frac{a}{b}\right)^{a/2}x^{a/2 - 1}\left(1 + \frac{a}{b}x\right)^{-(a + b)/2} & \text{si }x > 0 \\
+  0 & \text{de otra forma.}
+\end{cases}$$
+
+y se escribe
+
+$$X \sim F(a, b)$$
+
+La gráfica de $f(x)$ se muestra a continuación.
+
+```{r distribution-continuos-ten, echo = FALSE, eval = TRUE, fig.cap = "Función de densidad de una variable aleatoria $F(a, b)$, para difernetes combinaciones de los parámetros.", warning = FALSE}
+ggplot(NULL, aes(x=seq(0, 5, by=.01), y=df(seq(0, 5, by=.01), 1, 1))) +
+  annotate("text", x = rep(4, 4), y = c(.75, .6, .45, .3), 
+    label = paste("a =", c(1, 15, 4, 5), ", b =", c(1, 15, 10, 2)), size = 6) +
+  geom_segment(
+    aes(x = rep(3, 4), y =c(.75, .6, .45, .3), xend = c(.2, 1.4, 1.15, 1.1), yend =c(.75, .6, .45, .3)), 
+    colour = "gray40", linetype = "dashed", arrow = arrow(length = unit(0.03, "npc"), ends = "last")) +
+  geom_line(linewidth=1.2) +
+  geom_line(aes(y=df(seq(0, 5, by=.01), 15, 15)), linewidth=1.2) +
+  geom_line(aes(y=df(seq(0, 5, by=.01), 4, 10)), linewidth=1.2) +
+  geom_line(aes(y=df(seq(0, 5, by=.01), 5, 2)), linewidth=1.2) +
+  labs(x = "", y = "f(x)") +
+  scale_y_continuous(breaks = .5, limits = c(0, 1)) +
+  scale_x_continuous(breaks = 0:5) +
+  theme_light(base_size=14) +
+  theme(
+    axis.text = element_text(size = 10),
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+  )
+```
+
+Es posible obtener valores de probabilidad acumulada en R usando el comando `pf`, el cual da $F(x) = P(X \le x)$, que no tiene una expresión sencilla reducida.
+
+Para esta distribución, es posible demostrar que:
+
+\begin{aligned}
+  & E(X) = \frac{b}{b - 2}, \quad b > 2 \\
+  & Var(X) = \frac{2b^2(a + b - 2)}{a(b - 2)^2(b - 4)}, \quad n > 4
+\end{aligned}
+
+La distribución $F(a, b)$ aparece como resultado de realizar operciones entre variables aleatorias con distribución Ju-Cuadrada, como se muestra en la siguiente proposición. 
+
+> Sean $X$ y $Y$ dos variables aleatorias independientes con distribución $\chi^2(a)$ y $\chi^2(b)$, respectivamente. Entonces:
+> $$\frac{X/a}{Y/b} \sim F(a, b)$$
+
+## Ejercicios.
+
+1. Se ha realizado un estudio sobre la velocidad en vuelo de diversas especies de pájaros. El propósito era comparar las velocidades de dos especies de aves relacioandas entre sí, pero que se ha visto tienen tiempos de vuelo similares, pero una de ellas es más variable que la otra dada la longitud mas variable de la envergadura de las alas. Estudios previos muestran que la velocidad de vuelo de la especie con tiempos de vuelo menos variable, volando con el viento de costado con una velocidad de viento de $5$ a $8$ millas h${}^{-1}$, en promedio, es $26{,}05 \pm 3{,}20$ millas h${}^{-1}$. Si se tomará una muestra de $12$ individuos de esta población, determine la probabilidad de que la variabilidad _a)_ sea mayor a $6$ milla h${}^{-1}$, _b)_ sea menor a $1$ milla h${}^{-1}$, _c)_ este entre $2{,}5$ y $4{,}3$ millas h${}^{-1}$.
+2. Un proceso industrial nuevo quiere lograr conseguir producir biocombustible a base de microalgas. Para hacer rentable esto, se requiere conseguir una producción neta de biomasa de microalgas de $5{,}6$ g L${}^{-1}$. _a)_ Determine la probabilidad de lograr alcanzar esta cantidad de biomasa o más, si el proceso actual genera en promedio solo $2{,}5 \pm 0{,}89$ g L${}^{-1}$, asumiendo que la distribución de bioamsa es una normal. Un cambio en las condiciones de cultivo han logrado aumentar el rendimiento del proceso a $4{,}3 \pm 0{,}78$ g L${}^{-1}$. Determine la probabilidad de _b)_ alcanzar, al menos, el valor de $5{,}6$ g L${}^{-1}$ bajo este nuevo escenario, _c)_ de lograr una producción de biomasa entre $4{,}0$ y $5{,}6$ g L${}^{-1}$. 
+3. Se han desarrollado aortas artificiales a base de celulosa que requieren tengan un diametro de interno de $20$ mm para que sea efectiva. A partir de una muestra de $5$ aortas producidas se encuentra que el diametro medio es de $18{,}2 \pm 0{,}9$ mm. ¿Cuál es la probabilidad de que _a)_ el diámetro sea de, al menos, el valor requerido?, _b)_ el diámetro este entre $19$ y $23$ mm?, _c)_ el diámetro se como mínimo de $17$ mm?
+4. La productividad de un proceso de cultivo de papás hidropónico en una planta de producción nueva en Valencia es de $27 \pm 5$ kg semanales. Calcule la probabilidad de _a)_ que la productividad sea mayor a $30$ kg semanales, _b)_ que la productividad este entre los $25$ y $30$ kg semanales, _c)_ que la producción sea menor a los $15$ kg. Asuma que la productividad semanal sigue una distribución normal.
+5. En estudios de herencia, es posible saber si un carácter se hereda de forma autosómica o sexual, simplemente estudiando la progenie de un primer entrecruzamiento, que denominamos F1, verificando si la proporción de individuos que presentan los caracteres siguen las proporciones mendelianas $3:1$. Para ello, se hace uso de la variable aleatoria:
+ $$X^2 = \sum_{i=1}^k \frac{d_i^2}{e_i} = \sum_{i=1}^k \frac{(o_i - e_i)^2}{e_i}$$
+ la cual se distribuye como una chi-cuadrado con $k-1$ grados de libertad, donde $k$ es el número de clases (o fenotipos) expresados por el gen considerado, y $e_i$ es el valor esperado. En un experimento clásico, se contabilizaron el número de semillas rugosas y lisas obtenidas en F1 luego de un entrecruzamiento de semillas lisas y rugosas. El número de semillas lisas contabilizado fue de $384$ semillas lisas, y $118$ semillas rugosas. ¿Cuál es la probabilidad de que el caracter se transmita de forma autosómica?

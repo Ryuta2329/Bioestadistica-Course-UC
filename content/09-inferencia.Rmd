@@ -1,0 +1,100 @@
+# Inferencia Estadística.
+
+La inferencia es la parte de la estadística que se encarga de formalizar el proceso de estimación y contrastes de hipótesis. Su problema fundamental consiste en poder derivar declaraciones acerca de un fenómeno natural de interés a partir de observaciones realizadas del fenómeno. 
+
+> Las declaraciones de las que se hablan, son declaraciones en un sentido estadístico: esto es, las declaraciones se establecen con cierto grado de veracidad. No son verdades universales, sino que están sujetas a errores. El problema de la inferencia estadística es cuantificar que tan seguro estamos sobre esas declaraciones.
+
+La razón de que las declaraciones estén sujetas a variabilidad tiene que ver con las observaciones que realizamos del fenómeno. Las observaciones se usan para realizar inferencias acerca de las características o propiedades particulares del fenómeno en estudio. Estas observaciones no son perfectas y están limitadas a los recursos que posee el investigador para llevarlas a cabo:
+
+* No son perfectas ya que cualquier medición está sujeta a que tan preciso es el instrumento con el que medimos (eso incluye nuestros sentidos). Además, las observaciones contienen una variabilidad inherente que es debida solo al azar. Esto hace que se tenga cierta incertidumbre al realizar mediciones, que son desviaciones aleatorias del valor real de lo que se está midiendo. 
+* Son limitadas dado que no se tiene siempre el dinero, el tiempo, o la energía para recolectar toda la información disponible. Esto hace que no se disponga siempre de toda la información que pueda ayudarnos a estudiar un fenómeno particular, sino que solo un subconjunto de esa información. 
+
+En conclusión, las observaciones realizadas del fenómeno en cuestión contienen variación aleatoria que hacen imposible el observar directamente la característica o propiedad que se está estudiando, y dado que las declaraciones derivan de estas observaciones, se necesita cuantificar esta variabilidad/incertidumbre, necesitándose así modelos estocásticos para poder tratar con esta variación. Es por ello que se hace necesario de modelos estadísticos con los cuales manejar los datos. 
+
+Estos modelos se originan de la matemática deductiva (aquellos que comienzan con teorías generales y que, por argumentos lógicos, se llega a conclusiones específicas), pero no necesariamente son los correctos, y esto hace que estén sujetos a incertidumbre. Obtener información (observaciones) no nos permite decir que modelo es el correcto. Simplemente no sabemos: al realizar inferencia y obtener declaraciones de estas, asumimos un modelo correcto y analizamos los datos bajo esta premisa, y toleramos/soportamos la posibilidad de caer en un error debido a una mala elección del modelo.
+
+> Por ejemplo, al hablar de inferencia en los próximos capítulos, estaremos suponiendo que la distribución subyacente a los datos en una _distribución normal_. Esta suposición bajo la cual analizamos los datos y hacemos contrastes puede no ser la correcta, por lo que cualquier conclusión que derive de esas pruebas puede ser errada.  
+> Podríamos decidir usar otro modelo, otra distribución subyacente a partir de la cual hacer inferencias, pero aun así, este modelo podría no ser correcto de todos modos. Podemos cuantificar que tanto podemos aceptar la suposición de partida, pero estas decisiones también estarían sujetas a incertidumbre. Es un _trade-off_ entre la necesidad de analizar los datos y la probabilidad de caer en un error debido a esa elección de un modelo.
+
+Esta incertidumbre de la que hablamos en el último apartado es lo que se conoce como incertidumbre _inductiva_ y es esto lo que hace que los problemas estadísticos sean inductivos: _se parte de las observaciones realizadas sobre una característica/propiedad que no podemos observar directamente al realizar un experimento_. Es esta incertidumbre la que hace a las declaraciones derivadas de la inferencia, falibles. 
+
+Para puntualizar, decimos que existen dos tipos de incertidumbre:
+
+* **Incertidumbre estocástica**: es aquella que está relacionada a la aleatoriedad de las observaciones, y la capacidad de estas de dar información sobre parámetros fijos. Se puede manejar al aumentar el tamaño del experimento. 
+* **Incertidumbre inductiva**: se debe a que la información es incompleta al elegir un modelo. Aunque la anterior es fácil de manejar, esta no. Puede ser imposible cuantificarla o controlarla.
+
+La idea general de la inferencia es poder cuantificar la incertidumbre estocástica y explicar la variabilidad observada en los datos, pero el mecanismo subyacente no es tan importante de explicar. El problema es que la incertidumbre inductiva tiende a incrementar la incertidumbre estocástica, pero siempre podemos realizar análisis hasta tener un razonable control sobre esta última. Esta distinción entre tipos de incertidumbre y el manejo de ambas, es lo que hace que diferentes investigadores puedan llegar a distintas conclusiones.
+
+## ¿Cómo se enfrenta a la Inferencia Estadística?
+
+Básicamente, las corrientes de pensamiento tienen que ver sobre cómo se plantea la visión de probabilidad:
+
+* Como la frecuencia esperada a la larga (luego de repetir el experimento muchas veces); o
+* Como una noción subjetiva de incertidumbre.
+
+> _Por ejemplo_: Si lanzamos una moneda, tenemos un sentido de incertidumbre acerca del resultado: decimos que la probabilidad de obtener una _cara_ es de $0{,}5$. Ahora, pensemos en el siguiente lanzamiento: ¿podemos decir que la incertidumbre sobre el resultado sigue siendo $0{,}5$?¿o la probabilidad de $0{,}5$ solo tiene sentido a la larga?  
+> Si obtenemos _cara_ durante el primer lanzamiento, la probabilidad de obtener otra cara, dado que el resultado anterior, viene dado por el teorema de Bayes. Sin embargo, el uso de este teorema requiere que especifiquemos la distribución de probabilidad _a priori_, y es aquí donde está el problema entre los frecuentistas y bayesianos:
+> 
+> * Los frecuentistas, estresarían el hecho de que lo que importa es la probabilidad a la larga, sin importar cuanta información tengamos a partir de los datos. Por lo que la distribución de probabilidad subyacente es $0{,}5$ para ellos.
+> * Los bayesianos podrían concordar con los frecuentistas, pero también podrían inclinarse a darle importancia a la información que se tiene actualmente. Al haber solo un lanzamiento, la distribución binomial asigna una probabilidad _a priori_ distinta de $0{,}5$ para el siguiente lanzamiento. 
+
+En este curso solo hablaremos de estadística en un sentido frecuentista, para mayor información sobre el enfoque bayesiano puede consultar @gelman1995 (otro enfoque posible es uno intermedio entre ambas posturas, frecuentista y bayesiana, que se basa en la idea de una probabilidad fiduciaria o función de verosimilitud. Para más información sobre este enfoque pueden consultar @pawitan2001all). Las dos problemáticas principales para un frecuentista son:
+
+* La elección de una distribución a _priori_ apropiada.
+* El desacuerdo sobre el accionar bajo grados de creencias personales.  
+
+Sin embargo, la incertidumbre inductiva es mayor por varios ordenes de magnitud a cualquier diferencia en la incertidumbre estocástica que resulta de analizar datos siguiendo el criterio de cualquier escuela de pensamiento. 
+
+## Frecuentistas y muestreo repetido.
+
+Los frecuentistas, ven la probabilidad como una **frecuencia a la larga**, suponiendo que un experimento se repite, de forma hipotética, muchas veces. Es decir, se basa en el _principio de muestreo repetido_ bajo las mismas condiciones. Para ellos, cualquier parámetro de importancia es fijo, y no puede tratarse como una variable aleatoria.  
+
+Se trata de entender la relación entre el estimado de una propiedad que podemos calcular y el valor real de esa propiedad, _imaginándonos como podría el resultado cambiar si en lugar de la muestra seleccionada, se hubiese recolectado otra igualmente probable_.
+
+> Imagine que desea conocer el peso promedio de una población de patos negros, que se distribuye como $N(1161\text{ g}, 9604\text{ g}^2)$ (no necesariamente usted ssbe qje esta es la fistribución y, en general, no lo ssbe. Solo usamos este conocimiento para poder ralizqr simulaciones en este ejemplo), por lo que se toma una muestra aleatoria de $n = 50$ patos. En esta muestra, encuentra que el peso promedio es $\hat{\mu} = 1158{,}2$ g. Este peso promedio es una estimación del peso promedio verdadero de la población de $\mu=1161$ g.	
+> Ahora, supongamos que se realiza este experimento muchas veces, unas 10 mil veces digamos, y en cada repetición calculamos el peso promedio. En R, podemos lograr hacer esto de la siguiente forma:
+> 
+```{r inference-one}
+# Se asume media poblacional de 1161 g y desviacion estandar poblacional de 98 g
+bd_wieghts <- tibble(duck_id = 1:2300, weight = rnorm(2300, 1161, 98))
+
+# Se realizan 10000 muestreos aleatorios de 50 observaciones de la población.
+virtual_samples <- bd_wieghts %>% 
+  rep_sample_n(size = 50, reps = 10000)
+
+# A cada replica se le calcula el peso promedio
+virtual_bd_weights <- virtual_samples %>% 
+  group_by(replicate) %>% 
+  summarize(`Peso Promedio` = mean(weight)) 
+
+virtual_bd_weights %>%
+  head(10) %>%
+  kbl()
+```
+> Se puede observar de la tabla anterior, que algunas muestras resultan en un peso mayor al valor real de $1161$ g, y otras en valores menores; y si inspeccionáramos cuidadosamente los resultados, podríamos verificar si de hecho el peso promedio en alguna replica es igual al valor de peso verdadero. Cada uno de esos promedios corresponde a un estimador $\hat{\mu}$ del verdadero valor medio $\mu$. Podríamos realizar un histograma de estos valores y veríamos que el verdadero valor esta en el centro de la distribución de valores medios obtenidos de las 10 mil replicas.
+> 
+```{r inference-two, fig.cap="Distribución muestral de la media $\\bar{X}$ generada por simulación."}
+# Se realiza un grafico de los valores promedios
+ggplot(virtual_bd_weights, aes(x = `Peso Promedio`)) +
+  geom_histogram(binwidth = 0.1, boundary = 0.4, color = "#213555") +
+  geom_vline(xintercept = 1161, colour = "white", linewidth = 1.2) +
+  labs(x = "Peso de los patos negros", y="Conteo",
+    title = "Distribution of 10,000 realizaciones de medidas de peso.") +
+  theme_light() + 
+  theme(panel.grid = element_blank())
+```
+
+> y calcular el valor promedio de los pesos promedios, que arroja un valor de `r round(mean(pull(virtual_bd_weights, "Peso Promedio")), 2)`, el cual esta razonablemente en acuerdo con el valor verdadero (el valor real difiere, porque el número de replcias es finito).
+
+El gráfico del ejemplo anterior es la _distribución muestral_ del estadísitco $\hat{\mu}$. Esta distribución describe la variabilidad de los promedios calculados a partir de las replicas alrededor de la media verdadera $\mu$. Más adelante (en el capitulo [Teoría de Muestreo.]) estudiaremos esta distribución, pero en este punto, es importante notar que las propiedades de los estimadores que estudiaremos estan basados en el muestreo repetido hipotético (teoría frecuentista), que permite justificar el comportamiento de estos estimadores: esto es, nos permite derivar y justificar el uso de una distribución de porbabilidad para estos estimadores y, por lo tanto, justificar los resultados de inferencia estadística. 
+
+## Ámbito de la inferencia Estadística.
+
+A la inferencia estadística le conciernen 4 tipos de problemas, de los cuales se buscan soluciones que permitan realizar estudios experimentales que lleven a conclusiones relevenates y significativas acerca de un fenómeno en estudio. Estos problemas son:
+
+* **Procesos de recolección de muestras.** Hace referencia a la sistematización y correcta cosntrucción de los conjujntos muestras, de forma que sean representativos de la población que se está estudiando, disminuyendo cualquier sesgo en la elección de elementos que conformen la muestra. 
+* **Estimación puntual y a intervalos.** Hace referencia al proceso de hacer inferencia o predicciones acerca de los parámetros de una población, que estan ocultos a nosotros, pero de los cuales queremos precisar su valor a partir de una muestra, tolerando cierto grado de error, que debe cuantificarse. 
+* **Contraste de hipótesis.** Esta hace referencia a un proceso de toma de decisiones acerca de la veracidad estadística de una proposición que se formula como hipótesis de un experimento.
+* **Diseño experimental.** Se refiere a la forma en la que se planea un experimento para poder realizar inferencias por medio de estimaciones y contrastes de hipótesis, y su correcto establecimiento determina la validez de las conclusiones que se obtienen del proceso de inferencia.
+
+En los proximos capitulos estudiaremos cada uno de estos puntos para diferentes posibles experimentos, haciendo mucho emfásis en el contraste de hipótesis. 

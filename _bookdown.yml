@@ -1,0 +1,47 @@
+title: "Bioestadística."
+author: "Marcelo J. Molinatti"
+date: febrero 19, 2024
+toc: true
+toc-depth: 2.0
+toc-title: "Índice."
+geometry:
+- left=3cm
+- right=3cm
+- top=2.5cm
+- bottom=2.5cm
+linestretch: 1.5
+secnumdepth: 2.0
+fontsize: 12pt
+colorlinks: true
+lof: false
+lot: false
+natbiboptions:
+- authoryear
+- comma
+bibliography: ["./latex/references.bib"]
+biblio-style: "apalike"
+biblio-title: "Bibliografía"
+link-citations: true
+book_filename: "Bioestadistitica-UC"
+header-includes: 
+- \usepackage{tikz}
+rmd_files:
+- index.Rmd
+- ./content/01-intro.Rmd
+- ./content/02-probability-theory.Rmd
+- ./content/03-combinatoria.Rmd
+- ./content/04-probability-others.Rmd
+- ./content/05-descriptiva.Rmd
+- ./content/06-distribucion.Rmd
+- ./content/07-distribucion-one.Rmd
+- ./content/08-distribucion-two.Rmd
+- ./content/09-inferencia.Rmd
+- ./content/10-sampling-theory.Rmd
+- ./content/11-estimacion.Rmd
+- ./content/12-hipotesis.Rmd
+- ./content/14-references.Rmd
+rmd_subdir: ["./content", "./latex"]
+output_dir: "./docs"
+lang: es-ES
+#url: 'https\://bookdown.org/john/awesome/'
+#github-repo: "john/awesome"
