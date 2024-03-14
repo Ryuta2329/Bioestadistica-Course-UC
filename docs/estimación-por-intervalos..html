@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="estimación-puntual..html"/>
-<link rel="next" href="introducción-al-contraste-de-hipótesis..html"/>
+<link rel="next" href="ejercicios.-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -210,13 +210,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html"><i class="fa fa-check"></i><b>11.3</b> Estimación por Intervalos.</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html#intervalos-unilaterales."><i class="fa fa-check"></i><b>11.3.1</b> Intervalos Unilaterales.</a></li>
+<li class="chapter" data-level="11.3.1" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html#inferencia-sobre-la-media."><i class="fa fa-check"></i><b>11.3.1</b> Inferencia sobre la media.</a></li>
+<li class="chapter" data-level="11.3.2" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html#inferencia-sobre-la-varianza."><i class="fa fa-check"></i><b>11.3.2</b> Inferencia sobre la varianza.</a></li>
 </ul></li>
+<li class="chapter" data-level="11.4" data-path="ejercicios.-1.html"><a href="ejercicios.-1.html"><i class="fa fa-check"></i><b>11.4</b> Ejercicios.</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="introducción-al-contraste-de-hipótesis..html"><a href="introducción-al-contraste-de-hipótesis..html"><i class="fa fa-check"></i><b>12</b> Introducción al Contraste de Hipótesis.</a></li>
-<li class="chapter" data-level="13" data-path="nos-podemos-equivocar.html"><a href="nos-podemos-equivocar.html"><i class="fa fa-check"></i><b>13</b> Nos podemos equivocar…</a>
+<li class="chapter" data-level="12" data-path="introducción-al-contraste-de-hipótesis..html"><a href="introducción-al-contraste-de-hipótesis..html"><i class="fa fa-check"></i><b>12</b> Introducción al Contraste de Hipótesis.</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="estadístico-de-prueba..html"><a href="estadístico-de-prueba..html"><i class="fa fa-check"></i><b>13.1</b> Estadístico de Prueba.</a></li>
+<li class="chapter" data-level="12.1" data-path="nos-podemos-equivocar.html"><a href="nos-podemos-equivocar.html"><i class="fa fa-check"></i><b>12.1</b> Nos podemos equivocar…</a></li>
+<li class="chapter" data-level="12.2" data-path="estadístico-de-prueba..html"><a href="estadístico-de-prueba..html"><i class="fa fa-check"></i><b>12.2</b> Estadístico de Prueba.</a></li>
+<li class="chapter" data-level="12.3" data-path="pz-ge-hatz.html"><a href="pz-ge-hatz.html"><i class="fa fa-check"></i><b>12.3</b> <span class="math display">\[P(Z \ge \hat{Z}) = ???\]</span></a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="pz-ge-hatz.html"><a href="pz-ge-hatz.html#región-crítica"><i class="fa fa-check"></i><b>12.3.1</b> Región crítica</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="el-p-valor-como-criterio-de-decisión..html"><a href="el-p-valor-como-criterio-de-decisión..html"><i class="fa fa-check"></i><b>12.4</b> El P-valor como criterio de decisión.</a></li>
+<li class="chapter" data-level="12.5" data-path="beta-ptextrechazar-h_0-vert-h_1.html"><a href="beta-ptextrechazar-h_0-vert-h_1.html"><i class="fa fa-check"></i><b>12.5</b> <span class="math display">\[1 - \beta = P(\text{Rechazar }H_0 \vert H_1)\]</span></a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="beta-ptextrechazar-h_0-vert-h_1.html"><a href="beta-ptextrechazar-h_0-vert-h_1.html#errores-de-decisión."><i class="fa fa-check"></i><b>12.5.1</b> Errores de Decisión.</a></li>
+<li class="chapter" data-level="12.5.2" data-path="beta-ptextrechazar-h_0-vert-h_1.html"><a href="beta-ptextrechazar-h_0-vert-h_1.html#pruebas-paramétricas-y-no-paramétricas."><i class="fa fa-check"></i><b>12.5.2</b> Pruebas paramétricas y no paramétricas.</a></li>
+<li class="chapter" data-level="12.5.3" data-path="beta-ptextrechazar-h_0-vert-h_1.html"><a href="beta-ptextrechazar-h_0-vert-h_1.html#elección-de-la-prueba-estadistica."><i class="fa fa-check"></i><b>12.5.3</b> Elección de la prueba estadistica.</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias..html"><a href="referencias..html"><i class="fa fa-check"></i>Referencias.</a></li>
 <li class="divider"></li>
@@ -242,147 +255,256 @@ Proudly published with bookdown</a></li>
             <section class="normal" id="section-">
 <div id="estimación-por-intervalos." class="section level2 hasAnchor" number="11.3">
 <h2><span class="header-section-number">11.3</span> Estimación por Intervalos.<a href="estimación-por-intervalos..html#estimación-por-intervalos." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Una estimación por intervalo de un parámetro <span class="math inline">\(\theta\)</span> es un intervalo de la forma <span class="math inline">\(\hat{\theta}_L &lt; \theta &lt; \hat{\theta}_U\)</span>, donde <span class="math inline">\(\hat{\theta}_L\)</span> y <span class="math inline">\(\hat{\theta}_U\)</span> dependen del valor del estadístico <span class="math inline">\(\hat{\Theta}\)</span> para una muestra específica, y también de la distribución de muestreo de <span class="math inline">\(\hat{\Theta}\)</span>.</p>
-<ul>
-<li>Al intervalo <span class="math inline">\(\hat{\theta}_L &lt; \theta &lt; \hat{\theta}_U\)</span> se le llama <em>intervalo de confinaza</em>, y su longitud es un indicador de la precisión de una estimación puntual.</li>
-<li>Los valores <span class="math inline">\(\hat{\theta}_L\)</span> y <span class="math inline">\(\hat{\theta}_U\)</span> son estimadores de las variables aleatorias <span class="math inline">\(\hat{\Theta}_L\)</span> <span class="math inline">\(\hat{\Theta}_U\)</span>.</li>
-</ul>
-<p>El razonamiento de la construcción de intervalos de confianza es utilizar la distriobución muesral de <span class="math inline">\(\hat{\Theta}\)</span> para determinar los límites del intervalo de tal manera que:</p>
+<p>Una estimación por intervalo de un parámetro <span class="math inline">\(\theta\)</span> es un intervalo de la forma <span class="math inline">\(\hat{\theta}_L &lt; \theta &lt; \hat{\theta}_U\)</span>, donde <span class="math inline">\(\hat{\theta}_L\)</span> y <span class="math inline">\(\hat{\theta}_U\)</span> (los límites inferior y superior del intervalo) dependen del valor del estimador <span class="math inline">\(\hat{\Theta}\)</span> para una muestra específica, y también de la distribución de muestreo de <span class="math inline">\(\hat{\Theta}\)</span>.
+Al intervalo <span class="math inline">\(\hat{\theta}_L &lt; \theta &lt; \hat{\theta}_U\)</span> se le llama <em>intervalo de confianza</em>, y su longitud es un indicador de la precisión de una estimación puntual.</p>
+<div class="figure"><span style="display:block;" id="fig:estimation-two"></span>
+<img src="Bioestadistitica-UC_files/figure-html/estimation-two-1.png" alt="Intervalo de confianza para una variable aleatoria. El área sombreada corresponde al valor de probabilidad asociada al intervalo." width="576" />
+<p class="caption">
+Figure 11.2: Intervalo de confianza para una variable aleatoria. El área sombreada corresponde al valor de probabilidad asociada al intervalo.
+</p>
+</div>
+<blockquote>
+<p>Hay que hacer énfasis en algo muy importante: los límites del intervalo son estimados a partir de la muestra, por lo que son v. a. y no se pueden entender como parámetros fijos.
+Esto es, son estimadores de <span class="math inline">\(\Theta_L\)</span> <span class="math inline">\(\Theta_U\)</span>.
+Esto implica que cualquier medida de probabilidad asociada al intervalo se hace en terminos de los límites, y no del parámetro sobre el cual se construye.</p>
+</blockquote>
+<p>El razonamiento de la construcción de intervalos de confianza es utilizar la distribución muestral de <span class="math inline">\(\hat{\Theta}\)</span> para determinar los límites del intervalo de tal manera que:</p>
 <p><span class="math display">\[P(\hat{\Theta}_L &lt; \theta &lt; \hat{\Theta}_U) = 1 - \alpha, \quad 0 &lt; \alpha &lt; 1\]</span></p>
-<p>y decimos que hay una probabilidad de <span class="math inline">\(1 - \alpha\)</span> de que el intervalo contenga a <span class="math inline">\(\theta\)</span>.</p>
+<p>para un valor prespecificado de <span class="math inline">\(\alpha\)</span>. Decimos que hay una probabilidad de <span class="math inline">\(1 - \alpha\)</span> de que el intervalo contenga al verdadero valor del parámetro <span class="math inline">\(\theta\)</span>, con una confianza de <span class="math inline">\(100(1 - \alpha)\)</span>%.</p>
+<p>Al valor de <span class="math inline">\(\alpha\)</span> se le conoce como <strong>nivel de significancia</strong> y es uno de los parámetros más importantes que estudiaremos, dada su importancia en la especificación del tamaño de muestras al momento de diseñar experimentos.
+Este valor expresa el grado de incertidumbre que esperamos a la larga sobre la veracidad del intervalo que construimos, y, por lo tanto, sobre las conclusiones que derivamos del mismo.</p>
+<blockquote>
+<p>En general, el valor de <span class="math inline">\(\alpha\)</span> se suele especificar como <span class="math inline">\(0{,}1\)</span>, <span class="math inline">\(0{,}05\)</span> o <span class="math inline">\(0{,}01\)</span> dependiendo de que tanta incertidumbre estamos dispuestos a ceder en cuanto a nuestras conclusiones y las consecuencias que derivan de presentar conclusiones equivocadas.<br />
+Por ejemplo, digamos que un médico construye un intervalo de confianza para un estudio en el que se busca probar la eficacia de cierto fármaco en curar una enfermedad.
+Si el investigador eligiera un nivel de significancia de <span class="math inline">\(0{,}1\)</span>, entonces el intervalo construido es del <span class="math inline">\(100(1 - 0{,}1)\% = 90\%\)</span> de confianza, el cual puede parecer bastante grande.<br />
+Sin embargo, la incertidumbre asociada puede ser demasiado grande si notamos que el hecho de equivocarse significaría posiblemente la aparición de efectos secundario graves sobre el paciente e incluso, la muerte de una persona.
+Es por ello que, dependiendo del estudio que estemos realizando, se debe escoger un nivel de confianza adecuado para asegurar que nuestras conclusiones no resulten en la toma de decisiones que puedan tener consecuencias negativas importantes.</p>
+</blockquote>
+<p>El teorema del límite central se hace muy importante para la construcción de estadísticos cuya ley de probabilidad es conocida, tal como se estudio en la sección anterior.</p>
+<div id="inferencia-sobre-la-media." class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Inferencia sobre la media.<a href="estimación-por-intervalos..html#inferencia-sobre-la-media." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ahora veremos unos ejemplos de como usar ese formalismo para construir intervalos de confianza para distintos casos particulares.
+El primero de nuestros ejemplos es sobre la construcción de intervalos de confianza para una muestra para la cual se conoce la varianza poblacional.</p>
+<blockquote>
+<p><em>Ejemplo</em>. Cuando 14 estudiantes de segundo año de medicina del <em>Bellevue Hospital</em> midieron la presión sanguínea de la misma persona, obtuvieron los siguientes resultados: <span class="math inline">\(138, 130, 135, 140, 120, 125, 120, 130, 130, 144, 143, 140, 130\)</span>, y <span class="math inline">\(150\)</span> mmHg. Suponiendo que se sabe que la desviación estándar poblacional es de <span class="math inline">\(10\)</span> mmHg, construya un estimado de un intervalo de confianza del 95% de la media poblacional. De manera ideal, ¿cuál debe ser el intervalo de confianza en esta situación?</p>
+<p><strong>Solución</strong>. Una manera de construir un estadístico es estableciendo una expresión que nos diga cuanto se desvía nuestro estimador del valor real. Esto, ya vimos, lo podemos lograr usando una diferencia estandarizada:
+<span class="math display">\[\hat{Z} = \frac{\hat{X} - \mu}{\sigma/\sqrt{n}} = \frac{133.93 - \mu}{10 / \sqrt{14}} \sim N(0, 1)\]</span>
+Entonces podemos construir un intervalo de confianza del 95% (esto indica que <span class="math inline">\(0{,}95 = 1 - \alpha\)</span>, por lo que <span class="math inline">\(\alpha = 0{,}05\)</span>) como:
+<span class="math display">\[
+\begin{aligned}
+P(z_{\alpha/2} &lt; Z &lt; z_{1 - \alpha/2}) &amp;= P\left(-z_{1 - \alpha/2} &lt; \frac{133.93 - \mu}{10 / \sqrt{14}} &lt; z_{1 - \alpha/2}\right) = 0{,}95 \\
+&amp;= P\left(-z_{1 - \alpha/2}\frac{10}{\sqrt{14}} &lt; 133.93 - \mu &lt; z_{1 - \alpha/2}\frac{10}{\sqrt{14}}\right) = 0{,}95 \\
+&amp;= P\left(-133.93 - z_{1 - \alpha/2}\frac{10}{\sqrt{14}} &lt; - \mu &lt; -133.93 + z_{1 - \alpha/2}\frac{10}{\sqrt{14}}\right) = 0{,}95 \\
+&amp;= P\left(133.93 - z_{1 - \alpha/2}\frac{10}{\sqrt{14}} &lt; \mu &lt; 133.93 + z_{1 - \alpha/2}\frac{10}{\sqrt{14}}\right) = 0{,}95 \\
+\end{aligned}
+\]</span>
+Tal que el intervalo es:
+<span class="math display">\[133.93 - z_{1 - \alpha/2}\frac{10}{\sqrt{14}} &lt; \mu &lt; 133.93 + z_{1 - \alpha/2}\frac{10}{\sqrt{14}}\]</span>
+Como <span class="math inline">\(\alpha=0{,}05\)</span>, entonces <span class="math inline">\(\alpha/2=0{,}025\)</span>, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución normal, o usando <code>qnorm(.975, 0, 1)</code> en R. En este caso, <span class="math inline">\(z_{1 - \alpha/2} = 1.96\)</span>, de forma que:
+<span class="math display">\[128.69 \text{ mmHg} &lt; \mu &lt; 139.17 \text{ mmHg}\]</span>
+Podemos observar que el intervalo ocupa valores de presión sanguínea que podriamos considerar alta, indicando que el paciente sufre de hipertensión, de lo cual podriamos estar seguros con un 95% de confianza.</p>
+</blockquote>
+<p>En el ejemplo anterior, usamos lo aprendido en la seccion anterior sobre estadísticos sobre la media. Pero esto supone que la distribución subyacente de los datos es normal, lo cual hace obvio preguntar <strong>¿cómo sé que mis datos son normales?</strong></p>
+<p>Podemos tratar de ver que tan bien se ajustan nuestros datos a nuestro supuesto de normalidad, evaluando un gráfico QQ (cuantil-cuantil).
+Este gráfico muestra en el eje horizontal la distribución teorica (la normal estándar) y en el eje vertical, la distribución de las observaciones. Si la distribución de las observaciones fuera normal, los puntos observados en la gráfica caerían excatamente sobre la recta central (esta corresponde a el caso teorico de esperado si la data fuera normal realmente).
+De otro modo, si la distribución subyacente no es normal, los puntos se desviaran más de la recta central. La froma como estos se desvían de la recta puede ayudar a indicar cual es la distribución subyacente, o darnos cuenta de observaciones anormales o atípicas.</p>
+<p>El siguiente es un gráfico QQ para los datos de presión sanguínea:</p>
+<div class="figure"><span style="display:block;" id="fig:qqplot-01-show"></span>
+<img src="Bioestadistitica-UC_files/figure-html/qqplot-01-show-1.png" alt="Gráfico QQ para los datos de presión sanguínea del ejemplo del texto." width="576" />
+<p class="caption">
+Figure 11.3: Gráfico QQ para los datos de presión sanguínea del ejemplo del texto.
+</p>
+</div>
+<p>Se observa en el gráfico que las observaciones que caen por debajo de la media se desvían más de la normalidad que aquellas por encima o alrededor de la media. Esto nos indica que estos valores pueden resultar ser atípicos, lo cual podría corresponder bien con la conclusión de que es bastante probable que el paciente parece tener hipertensión (lo cuál hace bastante extraño obtener valores de presión menores a 128 mmHg).</p>
+<p>Ahora, ya dijimos que el TLC es aplicable a estadísticos que son estimadores de parámetros que corresponden a distribuciones otras que la normal. Los siguientes sirven de ejemplos de inferencia sobre parámetros de una distribución Poisson y Binomial, respectivamente.</p>
+<blockquote>
+<p><em>Ejemplo</em>. Unos nutricionistas especializados en dieta canina han estado evaluando la efectividad de cierta dieta (con un componente nutricional especial) como medida para controlar la presencia de garrapatas en mascotas cuidadas bajo las mismas condiciones.<br />
+Para ello, se seleccionaron y asignaron al azar <span class="math inline">\(20\)</span> caninos a dos grupos, 10 en cada grupo. A uno se le administró la nueva dieta, y el otro se alimento con la misma dieta, pero sin el compuesto antiectoparásitos dado al pirmer grupo (este sirve como grupo control para verifiar si existen diferencias).
+Después de un tiempo apropiado, se midió en los canino el número de garrapatas por individuo. Los datos son los siguientes:<br />
+Control: <span class="math inline">\(22, 17, 15, 7, 12, 16, 12, 14, 20, 13\)</span><br />
+Tratamiento: <span class="math inline">\(4, 5, 10, 7, 2, 2, 6, 10, 7, 2\)</span><br />
+Se desea saber si hay un cambio en el número promedio de garrapatas registrado en los caninos debido a la dieta.<br />
+<strong>Solución</strong>. La variable aleatoria se trata de un conteo por unidad de muestreo, que ya hemnos estudiado corresponde bien a una ley de probabilidad Poisson. Para cada grupo, se puede calcular el valor promedio observado de garrapatas por individuos, obteniendo <span class="math inline">\(\hat{\lambda}_C = 14{,}8\)</span> y <span class="math inline">\(\hat{\lambda}_T = 5{,}5\)</span> (el cual recordamos corresponde también a la varianza).<br />
+Podemos obtener entonces intervalos del 95% de confianza para ambos parámetros siguiendo el procedimiento del ejemplo anterior. Construimos el estadístico:
+<span class="math display">\[\hat{Z} = \frac{\hat{\lambda}_j - \lambda}{\sqrt{\hat{\lambda}_j/n}}\]</span>
+donde <span class="math inline">\(j = C\)</span> o <span class="math inline">\(j = T\)</span>, dependiendo del grupo.
+Y luego, aplicando TLC, sabemos que <span class="math inline">\(\hat{Z}\)</span> sigue una distribcuión normal estándar. Sin embargo, el tamaño de la muestra es bastante pequeña por lo que es conveniente usar la distribución <span class="math inline">\(t\)</span>-Student para compensar esta falta de certeza en el valor del parámetro.
+De forma que intervalo del 95% de confianza para el <span class="math inline">\(\lambda_C\)</span> (el control) es:
+<span class="math display">\[
+\begin{aligned}
+14.8 - t_{9, 1 - \alpha/2}\sqrt{\frac{14.8}{10}} &lt; &amp;\lambda_C &lt; 14.8 + t_{9, 1 - \alpha/2}\sqrt{\frac{14.8}{10}} \\
+12.05 &lt; &amp;\lambda_C &lt; 17.55
+\end{aligned}
+\]</span>
+y para el tratameinto:
+<span class="math display">\[3.82 &lt; \lambda_T &lt; 7.18\]</span>
+Puede observar que los intervalos para el número pormedio de garrapatas por perro del control y el tratamiento no se solapan en absoluto: el control parece indicar que hay aproximadamente entre <span class="math inline">\(2\)</span> y <span class="math inline">\(3\)</span> veces más garrapatas en el control que en el tratamiento con la nueva dieta.
+Esto apoya la conclusión de que la dieta es efectiva en controlar los ectoparásitos es los caninos con un nivel de certeza del 95%.</p>
+<p>Si queremos ser más explicitos, podriamos incluso construir un intervalo de confianza para la diferencia en el número promedio de garrapatas por canino. Para ello, podemos seguir la construcción del estadístico usada anteriormente reconociendo que ahora <span class="math inline">\(\theta = \lambda_T - \lambda_C\)</span>, diferencia que denotaremos como <span class="math inline">\(D\)</span>. De esta forma:
+<span class="math display">\[\hat{t} = \frac{\hat{D} - D}{SE(\hat{D})} = \frac{(\hat{\lambda}_T - \hat{\lambda}_C) - (\lambda_T - \lambda_C)}{SE(\hat{D})}\]</span>
+El valor de <span class="math inline">\(SE(\hat{D})\)</span> se calcula notando que, por los intervalos individuales, la varianza del control parece ser mayor que la del tratamiento. Entonces, podemos usar la teoría de propagación de errores como:
+<span class="math display">\[SE(\hat{D}) = \sqrt{\frac{\hat{\lambda}_T}{10} + \frac{\hat{\lambda}_C}{10}} = 1.425\]</span>
+Por lo tanto, escribimos el intervalo para el estadístico como:
+<span class="math display">\[t_{\nu, \alpha/2} &lt; \frac{-9.3 - (\lambda_T - \lambda_C)}{1.425} &lt; t_{\nu, 1 - \alpha/2}\]</span>
+donde el valor de <span class="math inline">\(\nu\)</span>, los grados de libertad, viene dado por la expresión:
+<span class="math display">\[\nu=\frac{(\hat{\lambda}_T/n_T + \hat{\lambda}_C/n_C)^2}{[(\hat{\lambda}_T/n_T)^2/(n_T - 1) + (\hat{\lambda}_C/n_C)^2/(n_C - 1)]} = \frac{2{,}03^2}{0.277} = 14.88\]</span>
+De esta forma, se tiene que el cuantil <span class="math inline">\(1 - \alpha/2\)</span> de la distribución <span class="math inline">\(t\)</span> con 14.88 grados de libertad es 2.13 y, luego de arreglar los terminos en la expresión del intervalo, se obtiene el intervalo de confianza del 95%:
+<span class="math display">\[-12.34 &lt; \lambda_T - \lambda_C &lt; -6.26\]</span>
+Notamos que el intervalo no contiene al cero, por lo que podemos concluir <em>con un 95% de confianza que el número promedio de garrapatas por canino es distinto en el tratamiento y el control</em>. Además, como los límites son ambos negativos, podemos concluir también que el tratamiento con la nueva dieta resulta en un número de garrapatas por canino menor que el encontrado en el control sin la dieta.</p>
+</blockquote>
+<p>En el ejemplo anterior debemos reconocer y enfatizar ciertas consideraciones que resultan de hacer inferencias sobre la media de <strong>dos muestras independientes</strong>.
+En estos casos, el estadístico se construye de la manera que dijimos al final de la sección anterior, como:</p>
+<p><span class="math display">\[\frac{\hat{D} - D}{SE(D)} = \frac{(\bar{X}_1 - \bar{X}_2) - (\mu_1 - \mu_2)}{SE(\mu_1 - \mu_2)}\]</span></p>
+<p>La distribución muestral depende de lo que tomamos como <span class="math inline">\(SE(\mu_1 - \mu_2)\)</span>.</p>
 <ul>
-<li>El intervalo nos permite tener una confianza de <span class="math inline">\(100(1 - \alpha)\)</span>%.</li>
-<li>El grado de confianza es <span class="math inline">\(1-\alpha\)</span>.</li>
+<li>Si conocemos la varianza poblacional, entonces no necesitamos calcular <span class="math inline">\(SE(\mu_1 - \mu_2)\)</span>, y la distribución muestral es una normal estándar.</li>
+<li>Si no conocemos la varianza, debemos estimar <span class="math inline">\(SE(\mu_1 - \mu_2)\)</span> a partir de los datos. En este caso, debemos tomar decisiones dependiendo de si podemos asumir que las varianzas son iguales o no.<br />
+</li>
 </ul>
-<p>El teorema del límite central se hace muy importante para la construcción de estadísticos cuya ley de probabilidad es conocida.</p>
-<p><img src="Bioestadistitica-UC_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p><strong>Una muestra, varianza conocida.</strong></p>
-<p>Cuando 14 estudiantes de segundo año de medicina del <em>Bellevue Hospital</em> midieron la presión sanguínea de la misma persona, obtuvieron los resultados que se listan abajo. Suponiendo que se sabe que la desviación estándar poblacional es de <span class="math inline">\(10\)</span> mmHg, construya un estimado de un intervalo de confianza del 95% de la media poblacional. De manera ideal, ¿cuál debe ser el intervalo de confianza en esta situación?</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="estimación-por-intervalos..html#cb15-1" tabindex="-1"></a>pressure <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">138</span>, <span class="dv">130</span>, <span class="dv">135</span>, <span class="dv">140</span>, <span class="dv">120</span>, <span class="dv">125</span>, <span class="dv">120</span>, <span class="dv">130</span>, <span class="dv">130</span>, <span class="dv">144</span>, <span class="dv">143</span>, <span class="dv">140</span>, <span class="dv">130</span>, <span class="dv">150</span>)</span></code></pre></div>
-<p>Una manera de construir un estadístico es estableciendo una expresión que nos diga cuanto se desvía nuestro estimador del valor real:</p>
-<p><span class="math display">\[\hat{x} - \mu = 133.93 - \mu\]</span></p>
-<p>La media se calcula usando <code>mean(pressure)</code>.</p>
-<p><span class="math display">\[\hat{x} - \mu = 133.93 - \mu \rightarrow \frac{\hat{x} - \mu}{\sigma/\sqrt{n}} = \frac{133.93 - \mu}{10 / \sqrt{14}} \sim N(0, 1)\]</span></p>
-<p>Entonces podemos construir un intervalo de confianza del 95% (esto indica que <span class="math inline">\(0{,}95 = 1 - \alpha\)</span>, por lo que <span class="math inline">\(\alpha = 0{,}05\)</span>) como:</p>
-<p><span class="math display">\[
+<ol style="list-style-type: decimal">
+<li><strong>Si las varianzas se asumen iguales</strong>, entonces
+<span class="math display">\[SE(\bar{X}_1 - \bar{X}_2) = S_{pool}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}, \quad S_{pool}^2 = \frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}\]</span>
+donde <span class="math inline">\(S_{pool}^2\)</span> es la varianza ponderada por los grados de libertad de cada muestra particular. En este caso, la distribución muestral del estadístico es una <span class="math inline">\(t\)</span>-Student con <span class="math inline">\(n_1 + n_2 - 2\)</span> grados de libertad.</li>
+<li><strong>Si las varianzas se asumen distintas</strong>, entonces
+<span class="math display">\[SE(\bar{X}_1 - \bar{X}_2) = \sqrt{\frac{S^2_1}{n_1} + \frac{S^2_2}{n_2}}\]</span>
+esto es, el error estándar es la suma de los errores estándar de las muetras por separado. En este caso, la distribución muestral del estadístico es una <span class="math inline">\(t\)</span>-Student cuyos grados de libertad son:
+<span class="math display">\[\nu=\frac{(S_1^2/n_1 + S_2^2/n_2)^2}{[(S_1^2/n_1)^2/(n_1 - 1) + (S_2^2/n_2)^2/(n_2 - 1)]}\]</span></li>
+</ol>
+<p>Es importante que tome en cuenta estas posibilidades como hicimos en el ejemplo anterior: las varianzas no son conocidas y las asumimos distintas, por lo que usamos el caso dos del segundo inciso.</p>
+<p>Ahora, repasamos un ejemplo que involucra un parámetro de una binomial.</p>
+<blockquote>
+<p><em>Ejemplo</em>. Se hicieron medidas del pico de dos grupos de pinzones terrestres medianos que vivían en la isla de <em>Daphne Major</em>, una de las islas Galápagos, durante una gran sequía en 1977.
+Un grupo de pinzones murió durante la sequía y otro grupo sobrevivió. Los datos de supervivientes y muertos de un total de <span class="math inline">\(36\)</span> pinzones fueron los siguientes:<br />
+Machos: <span class="math inline">\(20\)</span> muertos y <span class="math inline">\(27\)</span> supervivientes.<br />
+Hembras: <span class="math inline">\(10\)</span> muertos y <span class="math inline">\(9\)</span> supervivientes.<br />
+Se desea saber si hay una diferencia en la proporción de pinzones supervivientes a la sequía con respecto al sexo, es decir, si la porporción de supervivientes machos es la misma que la porporción de supervivientes hembras.</p>
+<p><strong>Solución</strong>. Si definimos la v. a. binomial superviviente como <span class="math inline">\(1\)</span> si el pinzón sobrevivió a la sequia, y <span class="math inline">\(0\)</span> de otro modo, entonces vemos que la variable, para machos y hembras, sigue una distribución binomial cuya probabilidad de éxito (supervivencia) <span class="math inline">\(\pi_i\)</span> (<span class="math inline">\(i = M\)</span> o <span class="math inline">\(H\)</span>, dependiendo de si consideramos machos o hembras, respectivamente) puede estimarse usando la proporción observada de exitos:
+<span class="math display">\[\begin{cases}
+p_M = \frac{27}{47} &amp; \text{para los machos} \\
+p_H = \frac{9}{19} &amp; \text{para las hembras}
+\end{cases}\]</span>
+Anteriormente, ya vimos que la varianza de una binomial es <span class="math inline">\(np(1-p)\)</span>, de forma que el error estándar es <span class="math inline">\(SE(p) = \sqrt{p(1-p)/ n}\)</span>. De esta forma tenemos que:
+<span class="math display">\[SE(p_M) = 0.072\]</span>
+y
+<span class="math display">\[SE(p_H) = 0.115\]</span>
+Primero, veamos como lucen intervalos de confianza del 95% para cada una de estas proporciones. Aplicando TLC, sabemos que <span class="math inline">\(p\)</span> tiene una distribución normal, por lo que se escribe el estadístico
+<span class="math display">\[\hat{t} = \frac{p_i - \pi_i}{SE(p_i)}\]</span>
+para machos, <span class="math inline">\(i = M\)</span>, y hembras, <span class="math inline">\(i= H\)</span>. Note que usamos una distribución <span class="math inline">\(t\)</span>, dado que el grupo con el <span class="math inline">\(n\)</span> más pequeño es menor que <span class="math inline">\(30\)</span> (nuestro limite para considerar aplicable el TLC con una normal estándar). De esta forma, procedemos de la manera como ya hemos visto y obtenemos los intervalos (verifique los resultados usted mismo):
+<span class="math display">\[0.429 &lt; \pi_M &lt; 0.72\]</span>
+y
+<span class="math display">\[0.233 &lt; \pi_H &lt; 0.714\]</span>
+Notamos dos cosas en los intervalos:</p>
+<ul>
+<li>La primera es que el intervalo para las hembras es de mayor longitud que el de los machos. Esto es asi, ya que el <span class="math inline">\(n\)</span> usado para estimar los limites del intervalo es mayor en los machos que en las hembras. Esto se traduce en que tenemos una mayor certidumbre sobre el valor del parámetro para los machos que para las hembras.</li>
+<li>Segundo, notamos que ambos intervalos contienen el <span class="math inline">\(0{,}5\)</span>. Esto queire decir, que la proporción observada no se puede considerar distinta de <span class="math inline">\(0{,}5\)</span> con un 95% de confianza. Biologicamente, concluiriamos que la sequía elimino a la mitad de los individuos machos y hembras del grupo de pinzones.</li>
+<li>Tercero, como ambos intervalos contienen el <span class="math inline">\(0{,}5\)</span>, parece posible que estas proporciones no difieran significativamente entre si.</li>
+</ul>
+<p>El ultimo inciso, lo podemos verificar construyendo un intervalo para la diferencia en supervivencia de los pinzones machos y hembras en un solo intervalo.
+Primero escribimos la diferencia como <span class="math inline">\(\Delta = \pi_M - \pi_H\)</span>, la cual se estima por <span class="math inline">\(\hat{\Delta} = p_M - p_H\)</span>. De esta forma, podemos escribir el estadístico como:
+<span class="math display">\[\frac{\hat{\Delta} - \Delta}{SE(\hat{\Delta})} = \frac{(p_M - p_H) - (\pi_M - \pi_H)}{SE(\hat{\Delta})}\]</span>
+la cual, ya sabemos, se distribuye como una norml estándar. Se tiene que:
+<span class="math display">\[SE(\hat{\Delta}) = \sqrt{\frac{p_{M} (1 - p_{M})}{n_M} + \frac{p_{H} (1 - p_{H})}{n_H}}\]</span>
+Introduciendo esta expresión en el estadístico y usando la distribución muestral para el intervalo, obtenemos (verifiquelo!):
+<span class="math display">\[-0.165 &lt; \pi_M - \pi_H &lt; 0.366\]</span>
+Noten de inmediato que este intervalo contiene al cero. Es por ello que podemos concluir que, con un 95% de confianza, no hay diferencias en la porporción de hembras y machos supevivientes a la sequía.</p>
+</blockquote>
+<p>Los ejemplos anteriores sirven para ver como realizar inferencia por medio de intervalos de confianza en medidas de locación para una y dos muestras independientes.</p>
+<p>Cuando las muestras son dependientes, como cuando mides antes y despues de aplicar un tratamiento experimental sobre los mismo individuos, el diseño se dice que es de medidas repetidas.
+En estos casos, se puede usar la diferencia entre ambos estados (antes y después) como um estadístico y tratarlo como si se tratara de una sola muestra (vea el problema 3).</p>
+<p>Ahora, veremos como realizar inferencia por intervalos de confianza, pero sobre la varianza.</p>
+</div>
+<div id="inferencia-sobre-la-varianza." class="section level3 hasAnchor" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> Inferencia sobre la varianza.<a href="estimación-por-intervalos..html#inferencia-sobre-la-varianza." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Como vimos antes, las inferencias sobre la varianza se pueden hacer usando como estadístico la proporción de varianzas escalada por los grados de libertad. Veamos unos ejemplos.</p>
+<blockquote>
+<p><em>Ejemplo</em>. En un estudio de los efectos sobre los bebés que tiene el consumo de cocaína durante el embarazo, se obtuvieron los siguientes datos muestrales de pesos al nacer: <span class="math inline">\(n=190\)</span>, <span class="math inline">\(\bar{x} = 2700\)</span> g, <span class="math inline">\(S = 645\)</span> g (según datos de <em>Cognitive Outcomes of Preschool Children with Prenatal Cocaine Exposure</em>, de Singer <em>et al</em>., <em>Journal of American Medical Association</em>, vol. 291, núm. 20). Utilice los datos muestrales para construir un estimado del intervalo de confianza del 95% para la desviación estándar de todos los pesos al nacer de hijos de madres que consumieron cocaína durante el embarazo. Con base en el resultado, ¿parece que la desviación estándar difiere de la desviación estándar de <span class="math inline">\(696\)</span> g de los pesos al nacer de hijos de madres que no consumieron cocaína durante el embarazo?</p>
+<p><strong>Solución</strong>. Antes ya vismo que un estadistico apropiado para realizar inferencia es:
+<span class="math display">\[X^2 = \frac{(n-1)S^2}{\sigma^2} \sim \chi^2(n-1)\]</span>
+Como vemos, dado que conocemos la distribución muestral, podemos usarla para construir el intervalo como:
+<span class="math display">\[P(\chi^2_{\alpha/2, n-1} &lt; X^2 &lt; \chi^2_{1-\alpha/2, n-1}) = 1 - \alpha\]</span>
+Como el intervalo de confianza es del 95%, esto indica que <span class="math inline">\(0{,}95 = 1 - \alpha\)</span>, por lo que <span class="math inline">\(\alpha = 0{,}05\)</span>. Sustituyendo:
+<span class="math display">\[
 \begin{aligned}
-  P(-z_{\alpha/2} &lt; Z &lt; z_{\alpha/2}) &amp;= P\left(-z_{\alpha/2} &lt; \frac{133.93 - \mu}{10 / \sqrt{14}} &lt; z_{\alpha/2}\right) = 0{,}95 \\
-    &amp;= P\left(-z_{\alpha/2}\frac{10}{\sqrt{14}} &lt; 133.93 - \mu &lt; z_{\alpha/2}\frac{10}{\sqrt{14}}\right) = 0{,}95 \\
-    &amp;= P\left(-133.93 - z_{\alpha/2}\frac{10}{\sqrt{14}} &lt; - \mu &lt; -133.93 + z_{\alpha/2}\frac{10}{\sqrt{14}}\right) = 0{,}95 \\
-    &amp;= P\left(133.93 - z_{\alpha/2}\frac{10}{\sqrt{14}} &lt; \mu &lt; 133.93 + z_{\alpha/2}\frac{10}{\sqrt{14}}\right) = 0{,}95 \\
+P(\chi^2_{\alpha/2, 189} &lt; X^2 &lt; \chi^2_{1 - \alpha/2, 189}) &amp;= P\left(\chi^2_{\alpha/2, 189} &lt; \frac{(189)(645\text{ g})^2}{\sigma^2} &lt; \chi^2_{1 - \alpha/2, 189}\right) = 0{,}95 \\
+&amp;= P\left(\frac{1}{\chi^2_{1 - \alpha/2, 189
+}} &lt; \frac{\sigma^2}{(189)(645\text{ g})^2} &lt; \frac{1}{\chi^2_{\alpha/2, 189}}\right) = 0{,}95 \\
+&amp;= P\left(\frac{(189)(645\text{ g})^2}{\chi^2_{1 - \alpha/2, 189}} &lt; \sigma^2 &lt; \frac{(189)(645\text{ g})^2}{\chi^2_{\alpha/2, 189}}\right) = 0{,}95
 \end{aligned}
-\]</span></p>
-<p><strong>Una muestra, varianza conocida.</strong></p>
-<p>Tal que el intervalo es:</p>
-<p><span class="math display">\[133.93 - z_{\alpha/2}\frac{10}{\sqrt{14}} &lt; \mu &lt; 133.93 + z_{\alpha/2}\frac{10}{\sqrt{14}}\]</span></p>
-<p>Como <span class="math inline">\(\alpha=0{,}05\)</span>, entonces <span class="math inline">\(\alpha/2=0{,}025\)</span>, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución normal, o usando <code>qnorm(.025, 0, 1)</code>. En este caso, <span class="math inline">\(z_{\alpha/2} = -1.96\)</span>:</p>
-<p><span class="math display">\[139.17 \text{ mmHg} &lt; \mu &lt; 128.69 \text{ mmHg}\]</span></p>
-<p><strong>¿Cómo sé que mis datos son normales?</strong></p>
-<p>Se calculan los residuales de la muestra: <span class="math inline">\(\varepsilon_i = X_i - \bar{X}\)</span> para <span class="math inline">\(i=1, 2, \ldots, n\)</span></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="estimación-por-intervalos..html#cb16-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> pressure <span class="sc">-</span> <span class="fu">mean</span>(pressure)</span>
-<span id="cb16-2"><a href="estimación-por-intervalos..html#cb16-2" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="estimación-por-intervalos..html#cb16-3" tabindex="-1"></a><span class="co"># Grafico Cuantil-Cuantil</span></span>
-<span id="cb16-4"><a href="estimación-por-intervalos..html#cb16-4" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="cn">NULL</span>, <span class="fu">aes</span>(<span class="at">sample=</span>res)) <span class="sc">+</span></span>
-<span id="cb16-5"><a href="estimación-por-intervalos..html#cb16-5" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
-<span id="cb16-6"><a href="estimación-por-intervalos..html#cb16-6" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>(<span class="at">colour=</span><span class="st">&quot;#213555&quot;</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb16-7"><a href="estimación-por-intervalos..html#cb16-7" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span> </span>
-<span id="cb16-8"><a href="estimación-por-intervalos..html#cb16-8" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb16-9"><a href="estimación-por-intervalos..html#cb16-9" tabindex="-1"></a>    <span class="at">panel.background=</span><span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">&quot;#F5EFE7&quot;</span>),</span>
-<span id="cb16-10"><a href="estimación-por-intervalos..html#cb16-10" tabindex="-1"></a>    <span class="at">plot.background=</span><span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">&quot;#F5EFE7&quot;</span>)</span>
-<span id="cb16-11"><a href="estimación-por-intervalos..html#cb16-11" tabindex="-1"></a>  )</span></code></pre></div>
-<p><strong>Una muestra, varianza desconocida.</strong></p>
-<p>Control del plomo en el aire. A continuación se listan las cantidades de plomo medidas (en microgramos por metro cúbico o <span class="math inline">\(\mu g\)</span> <span class="math inline">\({m}^{-3}\)</span>) en el aire. La <em>Environmental Protection Agency</em> estableció un estándar de calidad del aire para el plomo de <span class="math inline">\(1{,}5\)</span> <span class="math inline">\(\mu g\)</span> <span class="math inline">\({m}^{-3}\)</span>. Las medidas que se presentan abajo se registraron en el edificio 5 del <em>World Trade Center</em> en diferentes días, inmediatamente después de la destrucción causada por los ataques terroristas del 11 de septiembre de 2001. Después del colapso de los dos edificios hubo una gran preocupación por la calidad del aire. Utilice los valores dados para construir un estimado del intervalo de confianza del 95% para la cantidad media de plomo en el aire. ¿Hay algo en este conjunto de datos que sugiera que el intervalo de confianza tal vez no sea muy bueno? Explique.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="estimación-por-intervalos..html#cb17-1" tabindex="-1"></a>air_quality <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.40</span>, <span class="fl">1.10</span>, <span class="fl">0.42</span>, <span class="fl">0.73</span>, <span class="fl">0.48</span>, <span class="fl">1.10</span>)</span></code></pre></div>
-<p>Al igual que antes:</p>
-<p><span class="math display">\[\hat{x} - \mu = 1.54 - \mu\]</span></p>
-<p>Esta diferencia la debemos entandarizar usando la desviacion típica:</p>
-<p><span class="math display">\[\hat{x} - \mu = 1.54 - \mu \rightarrow \frac{\hat{x} - \mu}{S/\sqrt{n}} = \frac{1.54 - \mu}{1.914 / \sqrt{6}} \sim t(n - 1)\]</span></p>
-<p>La desviación estándar se calcula usando <code>sd(air_quality)</code>.
-Entonces podemos construir un intervalo de confianza del 95% (esto indica que <span class="math inline">\(0{,}95 = 1 - \alpha\)</span>, por lo que <span class="math inline">\(\alpha = 0{,}05\)</span>) como:</p>
-<p><span class="math display">\[
+\]</span>
+Y el intervalo es:
+<span class="math display">\[\frac{(189)(645\text{ g})^2}{\chi^2_{1 - \alpha/2, 189}} &lt; \sigma^2 &lt; \frac{(189)(645\text{ g})^2}{\chi^2_{\alpha/2, 189}}\]</span>
+Como <span class="math inline">\(\alpha=0{,}05\)</span>, entonces <span class="math inline">\(\alpha/2=0{,}025\)</span>, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución chi-cuadrado, o usando <code>qchisq(.025, 189)</code>. En este caso, <span class="math inline">\(\chi^2_{\alpha/2, 189} = 152.82\)</span>. Se procede de igual manera para el otro cuantil y se obtiene el intervalo:
+<span class="math display">\[3.4341145\times 10^{5} &lt; \sigma^2 &lt; 5.1451145\times 10^{5}\]</span>
+De forma que el intervalo para la desviación estándar se obtiene sacado raíz cuadrada:
+<span class="math display">\[586.01 \text{ g} &lt; \sigma &lt; 717.29 \text{ g}\]</span>
+Ahora, tratemos de responder la pregunta de la investigación ¿difiere la desviación estándar de los pesos de bebés de madres expuestas a cocaína de la desviación estándar de <span class="math inline">\(696\)</span> g de bebés de madres que no se expusieron a esa droga? El intervalo de confianza construido incluye dentro de su longitud el valor de <span class="math inline">\(696\)</span> g, por lo que no podemos decir que la desviación estándar de los pesos de los bebés de madres expuestas a cocaína difiere del valor de <span class="math inline">\(696\)</span> g de manera significativa. Esto significa que la variavilidad de los pesos de bebés es la misma sea que provengan de madres expuestas a cocaína o no.</p>
+</blockquote>
+<p>Ahira veamos un ejemplo aplicado a la comparación de varianzas de dos poblaciones distintas.</p>
+<blockquote>
+<p>Se midieron los tamaños de <span class="math inline">\(30\)</span> cráneos de gorilas hembras y <span class="math inline">\(29\)</span> machos (datos de O’Higgins, 1989). La varianza de las hembras es <span class="math inline">\(39{,}7\)</span>, mientras que la varianza de los machos es <span class="math inline">\(105{,}9\)</span>. ¿Son las varianzas de los tamaños de cráneos de machos y hembras iguales?</p>
+<p><strong>Solución</strong>. Más arriba ya vimos que cuando queremos comaprar dos varianzas, podemos usar el cociente entre los estadísticos construidos para estos que siguen una distribución Chi-cuadrado:
+<span class="math display">\[\hat{F} = \frac{\sigma_H^2 S_M^2}{\sigma_M^2 S_H^2} \sim F(n_1 -1, n_2 - 1)\]</span>
+de forma que podemos usar esta distribución muestral para construir el intervalo como:
+<span class="math display">\[P(f_{\alpha/2, n_1-1, n_2-1} &lt; F &lt; f_{1 - \alpha/2, n_1-1, n_2-1}) = 1 - \alpha\]</span>
+Si elegimos un nivel de significancia de <span class="math inline">\(0{,}05\)</span>, esto indica que <span class="math inline">\(1 - 0{,}05 = 0{,}95\)</span>, por lo que el intervalo es de 95% de confianza. Sustituyendo:
+<span class="math display">\[
 \begin{aligned}
-  P(-t_{\alpha/2, n - 1} &lt; T &lt; t_{\alpha/2, n - 1}) &amp;= P\left(-t_{\alpha/2, n - 1} &lt; \frac{1.54 - \mu}{1.914 / \sqrt{6}} &lt; t_{\alpha/2, n - 1}\right) = 0{,}95 \\
-    &amp;= P\left(-t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}} &lt; 1.54 - \mu &lt; t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}}\right) = 0{,}95 \\
-    &amp;= P\left(-133.93 - t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}} &lt; - \mu &lt; -1.54 + t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}}\right) = 0{,}95 \\
-    &amp;= P\left(1.54 - t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}} &lt; \mu &lt; 1.54 + t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}}\right) = 0{,}95 \\
+P(f_{\alpha/2, \nu_1, \nu_2} &lt; F &lt; f_{1 - \alpha/2, \nu_1, \nu_2}) &amp;= P\left(f_{0{,}025, 29, 28} &lt; \frac{105{,}9\sigma_H^2}{39{,}7\sigma_M^2} &lt; f_{0{,}975, 29, 28}\right) = 0{,}95 \\
+&amp;= P\left(f_{0{,}025, 29, 28}\frac{39{,}7}{105{,}9} &lt; \frac{\sigma_H^2}{\sigma_M^2} &lt; f_{0{,}975, 29, 28}\frac{39{,}7}{105{,}9}\right) = 0{,}95 \\
+&amp;= P\left(\frac{1}{f_{0{,}975, 29, 28}}\frac{105{,}9}{39{,}7} &lt; \frac{\sigma_M^2}{\sigma_H^2} &lt; \frac{1}{f_{0{,}025, 29, 28}}\frac{105{,}9}{39{,}7}\right) = 0{,}95
 \end{aligned}
-\]</span></p>
-<p>Y el intervalo es:</p>
-<p><span class="math display">\[1.54 - t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}} &lt; \mu &lt; 1.54 + t_{\alpha/2, n - 1}\frac{1.914}{\sqrt{6}}\]</span></p>
-<p>Como <span class="math inline">\(\alpha=0{,}05\)</span>, entonces <span class="math inline">\(\alpha/2=0{,}025\)</span>, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución <span class="math inline">\(t\)</span>-Student con <span class="math inline">\(n - 1\)</span> grados de libertad, o usando <code>qt(.025, 5)</code>. En este caso, <span class="math inline">\(t_{\alpha/2, 5} = -2.5706\)</span>:</p>
-<p><span class="math display">\[3.55 \mu\text{g m}^{-3} &lt; \mu &lt; -0.47 \mu\text{g m}^{-3}\]</span></p>
-<p><strong>Proporciones</strong></p>
-<p><span class="math display">\[\frac{\hat{p} - \pi}{\sqrt{\hat{p}(1 - \hat{p})}} \sim N(0, 1)\]</span></p>
-<p><strong>Diferencia de proporciones</strong></p>
-<p><span class="math display">\[\frac{(\hat{p}_1 - \hat{p}_2) - \Delta}{\sqrt{\hat{p}_1(1 - \hat{p}_1)/n_1 + \hat{p}_2(1 - \hat{p}_2)/n_2}} \sim N(0, 1)\]</span></p>
-<p><strong>Diferencia de medias, varianzas conocidas</strong></p>
-<p><span class="math display">\[\frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{\sigma_1^2/n_1 + \sigma_2^2/n_2}} \sim N(0, 1)\]</span></p>
-<p><span class="math display">\[P(-z_{\alpha/2} &lt; Z &lt; z_{\alpha/2})= 1 - \alpha\]</span></p>
-<p><img src="Bioestadistitica-UC_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p><strong>Diferencia de medias, varianzas desconocidas iguales</strong></p>
-<p>Se usa el estimado puntual de la varianza agrupada (<em>pooled</em>): <span class="math inline">\(S_{pool}^2 = \frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}\)</span>, de forma que:</p>
-<p><span class="math display">\[\frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{S_{pool}\sqrt{1/n_1 + 1/n_2}} \sim t(n_1 + n_2 - 2)\]</span></p>
-<p><span class="math display">\[P(-t_{\alpha/2, n - 1} &lt; T &lt; t_{\alpha/2, n - 1}) = 1 - \alpha\]</span></p>
-<p><img src="Bioestadistitica-UC_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<p><strong>Diferencia de medias, varianzas desconocidas distintas</strong></p>
-<p>En este caso, se usa una expresión <em>un tanto más complicada</em> para los grados de libertad:</p>
-<p><span class="math display">\[\frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{S_1^2/n_1 + S_2^2/n_2}} \sim t(\nu), \quad \nu=\frac{(S_1^2/n_1 + S_2^2/n_2)}{[(S_1^2/n_1)^2/(n_1 - 1) + (S_2^2/n_2)^2/(n_2 - 1)]}\]</span></p>
-<p><strong>Estimación de la varianza: varianza poblacional conocida</strong></p>
-<p>En un estudio de los efectos sobre los bebés que tiene el consumo de cocaína durante el embarazo, se obtuvieron los siguientes datos muestrales de pesos al nacer: <span class="math inline">\(n=190\)</span>, <span class="math inline">\(\bar{x} = 2700\)</span> g, <span class="math inline">\(S = 645\)</span> g (según datos de <em>Cognitive Outcomes of Preschool Children with Prenatal Cocaine Exposure</em>, de Singer <em>et al</em>., <em>Journal of American Medical Association</em>, vol. 291, núm. 20). Utilice los datos muestrales para construir un estimado del intervalo de confianza del 95% para la desviación estándar de todos los pesos al nacer de hijos de madres que consumieron cocaína durante el embarazo. Con base en el resultado, ¿parece que la desviación estándar difiere de la desviación estándar de <span class="math inline">\(696\)</span> g de los pesos al nacer de hijos de madres que no consumieron cocaína durante el embarazo?</p>
-<p><strong>Estimación de la varianza: varianza poblacional conocida</strong></p>
-<p>Se usan proporciones para realizar las estimaciones:</p>
-<p><span class="math display">\[\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1} \rightarrow P(\chi^2_{1 - \alpha/2, n-1} &lt; X^2 &lt; \chi^2_{\alpha/2, n-1}) = 1 - \alpha\]</span></p>
-<p><strong>Estimación de la varianza: varianza poblacional conocida</strong></p>
-<p>Se usan proporciones para realizar las estimaciones:</p>
-<p><span class="math display">\[\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1} \rightarrow P(\chi^2_{\alpha/2, n-1} &lt; X^2 &lt; \chi^2_{1 - \alpha/2, n-1}) = 1 - \alpha\]</span></p>
-<p>Entonces podemos construir un intervalo de confianza del 95% (esto indica que <span class="math inline">\(0{,}95 = 1 - \alpha\)</span>, por lo que <span class="math inline">\(\alpha = 0{,}05\)</span>) como:</p>
-<p><span class="math display">\[
-\begin{aligned}
-  P(\chi^2_{\alpha/2, n-1} &lt; X^2 &lt; \chi^2_{1 - \alpha/2, n-1}) &amp;= P\left(\chi^2_{\alpha/2, n-1} &lt; \frac{(189)(645\text{ g})^2}{\sigma^2} &lt; \chi^2_{1 - \alpha/2, n-1}\right) = 0{,}95 \\
-    &amp;= P\left(\frac{1}{\chi^2_{1 - \alpha/2, n-1}} &lt; \frac{\sigma^2}{(189)(645\text{ g})^2} &lt; \frac{1}{\chi^2_{\alpha/2, n-1}}\right) = 0{,}95 \\
-    &amp;= P\left(\frac{(189)(645\text{ g})^2}{\chi^2_{1 - \alpha/2, n-1}} &lt; \sigma^2 &lt; \frac{(189)(645\text{ g})^2}{\chi^2_{\alpha/2, n-1}}\right) = 0{,}95
-\end{aligned}
-\]</span></p>
-<p>Y el intervalo es:</p>
-<p><span class="math display">\[\frac{(189)(645\text{ g})^2}{\chi^2_{1 - \alpha/2, n-1}} &lt; \sigma^2 &lt; \frac{(189)(645\text{ g})^2}{\chi^2_{\alpha/2, n-1}}\]</span></p>
-<p>Como <span class="math inline">\(\alpha=0{,}05\)</span>, entonces <span class="math inline">\(\alpha/2=0{,}025\)</span>, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución chi-cuadrado, o usando <code>qchisq(.025, 189)</code>. En este caso, <span class="math inline">\(\chi^2_{\alpha/2, n-1} = 152.82\)</span>:</p>
-<p><span class="math display">\[3.4341145\times 10^{5} &lt; \sigma^2 &lt; 5.1451145\times 10^{5}\]</span></p>
-<p>De forma que el intervalo para la desviación estándar es:</p>
-<p><span class="math display">\[586.01 \text{ g} &lt; \sigma &lt; 717.29 \text{ g}\]</span></p>
-<p><strong>Estimación de la proporción de dos varianza</strong></p>
-<p>Se ha realizado un estudio sobre la velocidad en vuelo de diversas especies de pájaros. El propósito era comparar las velocidades del pelícano pardo y el ostrero americano. Se cronometró una muestra de <span class="math inline">\(9\)</span> pajaros pardos y <span class="math inline">\(12\)</span> pajaros ostreros, volando con el viento de costado con una velocidad de viento de <span class="math inline">\(5\)</span> a <span class="math inline">\(8\)</span> millas h<span class="math inline">\({}^{-1}\)</span>, y se obtuvo que el pájaro pardo vuela, en promedio, a <span class="math inline">\(26{,}05 \pm 6{,}34\)</span> millas h<span class="math inline">\({}^{-1}\)</span>, y el ostrero a <span class="math inline">\(30{,}19 \pm 3{,}20\)</span> millas h<span class="math inline">\({}^{-1}\)</span>. Construya un intervalo de confianza del 95% para la proporción de varianzas.</p>
-<p>Al igual que antes, usamos la proporción entre las varianzas para construir un estadístico a partir del cual derivar nuestra ley de probabilidad:</p>
-<p><span class="math display">\[\frac{\sigma_2^2 S_1^2}{\sigma_1^2 S_2^2} = \frac{(6{,}34)^2\sigma_2^2}{(3{,}20)^2\sigma_1^2} \sim F(n_1 - 1, n_2 - 1) \rightarrow P(f_{1 - \alpha/2, n_1-1, n_2-1} &lt; F &lt; f_{\alpha/2, n_1-1, n_2-1})\]</span></p>
-<p>Entonces podemos construir un intervalo de confianza del 90% (esto indica que <span class="math inline">\(0{,}90 = 1 - \alpha\)</span>, por lo que <span class="math inline">\(\alpha = 0{,}1\)</span>) como:</p>
-<p><span class="math display">\[
-\begin{aligned}
-  P(f_{\alpha/2, \nu_1, \nu_2} &lt; F &lt; f_{1 - \alpha/2, \nu_1, \nu_2}) &amp;= P\left(f_{\alpha/2, \nu_1, \nu_2} &lt; \frac{(6{,}34)^2\sigma_2^2}{(3{,}20)^2\sigma_1^2} &lt; f_{1 - \alpha/2, \nu_1, \nu_2}\right) = 0{,}90 \\
-    &amp;= P\left(f_{\alpha/2, \nu_1, \nu_2}\frac{(3{,}20)^2}{(6{,}34)^2} &lt; \frac{\sigma_2^2}{\sigma_1^2} &lt; f_{1 - \alpha/2, \nu_1, \nu_2}\frac{(3{,}20)^2}{(6{,}34)^2}\right) = 0{,}90 \\
-    &amp;= P\left(\frac{1}{f_{1 - \alpha/2, \nu_1, \nu_2}}\frac{(6{,}34)^2}{(3{,}20)^2} &lt; \frac{\sigma_1^2}{\sigma_2^2} &lt; \frac{1}{f_{\alpha/2, \nu_1, \nu_2}}\frac{(6{,}34)^2}{(3{,}20)^2}\right) = 0{,}90
-\end{aligned}
-\]</span></p>
-<p>Y el intervalo es:</p>
-<p><span class="math display">\[\frac{1}{f_{\alpha/2, n_1-1, n_2-1}}\frac{(6{,}34)^2}{(3{,}20)^2} &lt; \frac{\sigma_1^2}{\sigma_2^2} &lt; \frac{1}{f_{1 - \alpha/2, n_1-1, n_2-1}}\frac{(6{,}34)^2}{(3{,}20)^2}\]</span></p>
-<p>Como <span class="math inline">\(\alpha=0{,}1\)</span>, entonces <span class="math inline">\(\alpha/2=0{,}05\)</span>, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución <span class="math inline">\(F\)</span>, o usando <code>qf(.05, 8, 11)</code>:</p>
-<p><span class="math display">\[1.33 &lt; \frac{\sigma_1^2}{\sigma_2^2} &lt; 13\]</span></p>
-<div id="intervalos-unilaterales." class="section level3 hasAnchor" number="11.3.1">
-<h3><span class="header-section-number">11.3.1</span> Intervalos Unilaterales.<a href="estimación-por-intervalos..html#intervalos-unilaterales." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Simplemente se prescinde de uno de las desigualdades. Pueden ser intervalos a la derecha:</p>
-<p><span class="math display">\[P(Z &gt; z_{1 - \alpha/2}) = 1 - \alpha\]</span></p>
-<p>… o intervalos a la izquierda:</p>
-<p><span class="math display">\[P(Z &lt; z_{\alpha/2}) = 1 - \alpha\]</span></p>
-<p><img src="Bioestadistitica-UC_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+\]</span>
+Y el intervalo es:
+<span class="math display">\[\frac{1}{f_{0{,}975, 29, 28}}\frac{105{,}9}{39{,}7} &lt; \frac{\sigma_M^2}{\sigma_H^2} &lt; \frac{1}{f_{0{,}025, 29, 28}}\frac{105{,}9}{39{,}7}\]</span>
+Para la distribución <span class="math inline">\(F\)</span>, <span class="math inline">\(f_{0{,}025, 29, 28} = 0.47\)</span>. Se procede de igual manera para el otro cuantil y se obtiene el intervalo:
+<span class="math display">\[1.26 &lt; \frac{\sigma_M^2}{\sigma_H^2} &lt; 5.63\]</span>
+¿Qué nos dice el intervalo sobre las varianzas de los cráneos de gorilas machos y hembras? Si las varianszas fueran iguales, entonces el cociente de las varianzas sería igual a <span class="math inline">\(1\)</span>. Notamos que el <span class="math inline">\(1\)</span> no se encuentra dentro del intervalo, por lo que podemos decir, con un <span class="math inline">\(95\)</span>% de confianza, que la varinaza de los cráneos de gorilas machos y hembras son distintas.<br />
+No solo eso, sino que además, como los límites del intervalo son mayores a <span class="math inline">\(1\)</span>, entonces la varianza de los cráneos de los gorilas machos es mayor que la varianza de los cráneos de gorilas hembras.</p>
+</blockquote>
+<!---
+## Intervalos Unilaterales.
 
+Simplemente se prescinde de uno de las desigualdades. Pueden ser intervalos a la derecha:
+
+$$P(Z > z_{1 - \alpha}) = 1 - \alpha$$
+
+o intervalos a la izquierda:
+
+$$P(Z < z_{\alpha}) = 1 - \alpha$$
+
+<img src="Bioestadistitica-UC_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+
+Los intervalos de confianza unilaterales suelen surgir en casos en los que se tiene una idea de la direción en la que irá el efecto de un tratamiento o el fenómeno experimental en estudio. Por ejemplo, si decidimos probar un biofertilizante que esperamos tenga un efecto mejorando el rendimiento de cultivos, estaríamos esperando entonces obtener un rendimiento mayor en la productividad de los cultivos usados como unidad de muestreo y podrúamos construir un intervalo de confianza del $100(1 - \alpha)$% de obtener un rendimiento igual o mayor al límite inferior obtenido.  
+Note en la expresión anterior que el cuantil en este caso sería $z_{\alpha}$, el cual es mayor que $z_{\alpha/2}$. Esto quiere decir que el límite a la izquierda se estrecho y por lo tantop ahora hemos ganado más información sobre el verdadero valor del parámetro.
+
+Veamos un ejemplo.
+
+> En nuestro ejemplo sobre el efecto de una dieta con cierto fármaco en caninos, obtuvimos el siguiente intervalo para la diferecnia entre el número de garrapatas por perro entre el tratamieto de la dieta y el control con alimentación similar, pero sin el fármaco:
+> $$-12.34 < \lambda_T - \lambda_C < -6.26$$
+> Este es un intervalo bidireccional dado que existen dos límites: uno inferior y otro superior. Sin embargo, dado que se espera que la dieta disminuya el número de garrapatas por perro, entonces de antemano se espera que la diferencia $\lambda_T - \lambda_C$ sea menor a cero, y por lo tanto un intervalo unidireccional sería más apropiado.  
+> Escribimos entonces, para un 95% de confianza:
+> $$P(Z < z_{0{,}95}) = 0{,}95$$
+> Sustituyendo:
+> $$
+\begin{aligned}
+  P\left(Z > z_{0{,}95}\right) &= P\left(\frac{(-9.3) - (\lambda_T - \lambda_C)}{1.425} < 1{,}64\right) = 0{,}95 \\
+    &= P\left((-9.3) - (\lambda_T - \lambda_C) < 1{,}64 \times 1.425\right) = 0{,}95 \\
+    &= P\left(- (\lambda_T - \lambda_C) < (9.3) + 1{,}64 \times 1.425\right) = 0{,}95 \\
+    &= P\left(\lambda_T - \lambda_C > (-9.3) - 1{,}64 \times 1.425\right) = 0{,}95 \\
+    &= P\left(\lambda_T - \lambda_C > -11.64\right) = 0{,}95 
+\end{aligned}
+$$
+
+--->
 </div>
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
 <a href="estimación-puntual..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-al-contraste-de-hipótesis..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ejercicios.-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

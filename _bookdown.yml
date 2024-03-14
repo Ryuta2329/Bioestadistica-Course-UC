@@ -15,13 +15,13 @@ fontsize: 12pt
 colorlinks: true
 lof: false
 lot: false
-natbiboptions:
-- authoryear
-- comma
 bibliography: ["./latex/references.bib"]
 biblio-style: "apalike"
 biblio-title: "Bibliografía"
 link-citations: true
+natbiboptions:
+ - authoryear
+ - comma
 book_filename: "Bioestadistitica-UC"
 header-includes: 
 - \usepackage{tikz}

@@ -8,4 +8,4 @@ suppressPackageStartupMessages({
   library(infer)
 })
 
-set.seed(2)
+set.seed(4165)

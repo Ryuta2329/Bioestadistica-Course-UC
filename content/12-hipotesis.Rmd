@@ -12,7 +12,7 @@ La **hipótesis estadística** es una aseveración o conjetura respecto a una o 
 * Una decisión tomada en base al contraste, esta plagada de incertidumbre.
 * Debe ser formalizada en un planteamiento matemático concreto. 
 
-# Nos podemos equivocar...
+## Nos podemos equivocar...
 
 La decisión tomada esta enlazada a una medida de incertidumbre, por lo que es posible cometer errores en las conclusiones. 
 
@@ -125,4 +125,267 @@ Podemos construir un estadístico basado en estas diferencias para verificar si 
 $$\bar{d} - D, \text{ que para el caso particular, } D=0 \text{ por lo que queda } \bar{d} - 0$$
 
 $$\frac{\bar{d} - 0}{\hat{S}_d/\sqrt{n}} = `r round(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), 2)` \sim t(n - 1)$$
+
+
+_Veamos otro ejemplo_. 
+Digamos que en lugar de un contraste sobre la media, se busca un contraste sobre la mediana para el mismo estudio de la succinilcolina. 
+En este caso, se esperaría que la cantidad de diferencias negativas y positivas fuera la misma, si la distribución de probabilidad fuera la misma entre ambas. 
+
+**¿Cómo construyo in estadístico en este caso?**
+
+El razonamiento para construir el estadístico en este caso, es darnos cuenta que si hay un efecto del tratamiento, uno esperaría encontrar diferencias grandes (en valor absoluto) entre las concentraciones de andrógenos antes y despúes.
+
+```{r, echo=FALSE}
+tibble(
+    p1=dnorm(seq(-3, 3, by=.01)),
+    p2=dnorm(seq(-3, 3, by=.01), .5)) %>%
+  ggplot(aes(x=seq(-3, 3, by=.01), y=p1)) +
+    geom_line() +
+    geom_line(aes(y=p2)) +
+    labs(x="", y="") +
+    scale_y_continuous(breaks = NULL) +
+    scale_x_continuous(
+      breaks = c(0, .5), labels=c(latex2exp::TeX("$\\theta_1$"), latex2exp::TeX("$\\theta_2$"))) +
+    geom_segment(aes(x = -.5, y = 0, xend = -.5, yend = dnorm(-.5)), colour = "#213555", linetype=2) +
+    geom_segment(aes(x = 0, y = 0, xend = 0, yend = dnorm(0)), colour = "#213555", linetype=1) +
+    geom_segment(aes(x = 0.1, y = 0, xend = 0.1, yend = dnorm(0.1, .5)), colour = "#213555", linetype=2) +
+    geom_segment(aes(x = 0.5, y = 0, xend = 0.5, yend = dnorm(0.5, .5)), colour = "#213555", linetype=1) +
+    geom_point(aes(x=-.5, y=dnorm(-.5)), colour="#213555") +
+    geom_point(aes(x=.1, y=dnorm(.1, .5)), colour="#213555") +
+    theme_light() + 
+	theme(
+	  axis.line=element_blank(),
+	  panel.grid=element_blank(),
+	  panel.background=element_rect(fill="#F5EFE7"),
+	  plot.background=element_rect(fill="#F5EFE7")
+	)
+```
+
+```{r, echo=FALSE}
+tibble(
+    p1=dnorm(seq(-3, 4, by=.01)),
+    p2=dnorm(seq(-3, 4, by=.01), 2)) %>%
+  ggplot(aes(x=seq(-3, 4, by=.01), y=p1)) +
+    geom_line() +
+    geom_line(aes(y=p2)) +
+    labs(x="", y="") +
+    scale_y_continuous(breaks = NULL) +
+    scale_x_continuous(
+      breaks = c(0, 1), labels=c(latex2exp::TeX("$\\theta_1$"), latex2exp::TeX("$\\theta_2$"))) +
+    geom_segment(aes(x = -.5, y = 0, xend = -.5, yend = dnorm(-.5)), colour = "#213555", linetype=2) +
+    geom_segment(aes(x = 0, y = 0, xend = 0, yend = dnorm(0)), colour = "#213555", linetype=1) +
+    geom_segment(aes(x = 1.5, y = 0, xend = 1.5, yend = dnorm(1.5, 2)), colour = "#213555", linetype=2) +
+    geom_segment(aes(x = 2, y = 0, xend = 2, yend = dnorm(2, 2)), colour = "#213555", linetype=1) +
+    geom_point(aes(x=-.5, y=dnorm(-.5)), colour="#213555") +
+    geom_point(aes(x=1.5, y=dnorm(1.5, 2)), colour="#213555") +
+    theme_light() + 
+    theme(
+      axis.line=element_blank(),
+      panel.grid=element_blank(),
+      panel.background=element_rect(fill="#F5EFE7"),
+      plot.background=element_rect(fill="#F5EFE7")
+    )
+```
+
+Si asignaramos rangos al valor absoluto de cada diferencia, de tal forma que la diferencia más pequeña en magnitud (en valor absoluto) tenga una puntuación de 1, la siguiente diferencia más pequeña una puntuación de 2, y asi susecivamente hasta la $n$-ésima diferencia; entonces la oración anterior se convierte en que _esperaríamos que los rangos de mayor magnitud se distribuyeran preferencialmente sobre las diferencias de magnitud positiva_.
+
+
+**¿Qué esperaríamos si no hubiese un efecto de la succinilcolina sobre las concentraciones de andrógenos?**
+
+Los rangos (de magnitud grande o pequeña) se distribuirían de manera más o menos aleatoria entre las diferencias positivas y negativas.
+
+
+$$T^+ = \sum_{i=1}^n R_i\delta_i\qquad \delta_i = \begin{cases}1, &\text{ si }Z_i > 0 \\ 0, & \text{ de otra forma.}\end{cases} \text{ donde } Z_i = Y_i - X_i$$
+
+Valores grandes de $W$ son indicativos de que hay un efecto en el tratamiento y que hay un cambio en la concentración de andrógenos en la sangre de venados.
+
+## $$P(Z \ge \hat{Z}) = ???$$
+
+### Región crítica
+
+Al definir las hipótesis y calcular un estadístico de prueba, se define un conjunto de valores que puede tomar este último que permiten tomar una decisión sobre la hipótesis que la evidencia esta apoyando.
+
+Se puede escoger un **valor crítico** para el cual se puede definir la región crítica (que no es más que un subconjunto de valores del parámetro $\theta$), la cual permite _rechazar la hipótesis nula_ si el parámetro $\theta$ cae en esa región (pertenece al subconjunto).
+
+_Ejemplo_. Ya construimos un intervalo de confianza que nos sirve para delimitar las regiones (definir los subconjuntos) separadas por un valor de $d$ crítico, dejando una región dentro del cual podemos decir que contiene el verdadero valor del parámetro $D$:
+
+```{r, echo=FALSE}
+dist_norm <- tibble(
+  q=seq(-3.5, 3.5, by= .01),
+  p=dnorm(seq(-3.5, 3.5, by= .01)))
+
+ggplot(dist_norm, aes(x=q, y=p)) +
+  geom_line(colour="#4F709C", size=1.5) +
+  geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(-1.96, 1.96)) +
+  labs(x = "z", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(
+  	breaks = c(-1.96, 1.96),
+  	labels=c(latex2exp::TeX("$-z_{\\alpha/2}$"), latex2exp::TeX("$z_{\\alpha/2}$"))) +
+  theme_light() + 
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7")
+  )
+```
+
+La región crítica es solo el complemento del intervalo de confianza:
+
+```{r, echo=FALSE}
+dist_norm <- tibble(
+  q=seq(-3.5, 3.5, by= .01),
+  p=dnorm(seq(-3.5, 3.5, by= .01)))
+
+ggplot(dist_norm, aes(x=q, y=p)) +
+  geom_line(colour="#4F709C", size=1.5) +
+  geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(-3.5, -1.96)) +
+  geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(1.96, 3.5)) +
+  labs(x = "z", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(
+  	breaks = c(-1.96, 1.96),
+  	labels=c(latex2exp::TeX("$-z_{\\alpha/2}$"), latex2exp::TeX("$z_{\\alpha/2}$"))) +
+  theme_light() + 
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7")
+  )
+```
+
+
+## El P-valor como criterio de decisión.
+
+También es posible asociar un valor de probabilidad específica a obtener un estadístico tan grande como el calculado usando la función de distribución acumulada.
+
+_Ejemplo_. anteriormente, calculamos que el estadístico $\hat{t}$ calculado para las diferencias entre las concentraciones de andrógenos al momento y 30 minutos después de la inyección fue `r round(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), 2)`.
+
+Solo debemos calcular la probabilidad de obtener el valor de probabilidad acumulada para un valor de $t$ tan grande como el calculado:
+
+$$1 - P(t \ge `r round(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), 2)`) = `r round(1 - pt(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), nrow(data_example) - 1), 4)`$$
+
+## $$1 - \beta = P(\text{Rechazar }H_0 \vert H_1)$$
+
+### Errores de Decisión.
+
+```{r, echo=FALSE}
+data.frame(Decision=c("No rechazar $H_0$", "Rechazar $H_0$"), H0_TRUE=c("Decisión Correcta", "Error Tipo I"), H0_FALSE=c("Error Tipo II", "Decisión Correcta")) %>%
+  kbl(col.names=c("", "$H_0\\text{ cierta.}$", "$H_0\\text{ falsa.}$"), escape=FALSE) %>%
+  add_header_above(c("", "Estado Real"=2))
+```
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+la_q <- seq(-3.5, 3.5, by= .01)
+
+ggplot(NULL, aes(x=seq(-3.5, 3.5, by= .01), y=dnorm(la_q))) +
+  geom_line(colour="#4F709C", size=1.5) +
+  geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(1.96, 5)) +
+  geom_line(aes(x=la_q + 2.5, y=dnorm(la_q + 2.5, 2.5)), colour="#4F709C", size=1.5) +
+  geom_vline(xintercept=1.96, linetype=2, size=.8, colour="#4F709C") +
+  labs(x = "z", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(
+  	breaks = 1.96,
+  	labels=latex2exp::TeX("$z_{\\alpha}$")) +
+  theme_light() + 
+  annotate(
+    "text", label = c(latex2exp::TeX("$H_0$"), latex2exp::TeX("$H_1$")),
+    x = c(0, 2.5), y = 0.2, size = 8, colour = "black"
+  ) +
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7")
+  )
+```
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+la_q <- seq(-3.5, 3.5, by= .01)
+
+ggplot(NULL, aes(x=seq(-3.5, 3.5, by= .01), y=dnorm(la_q))) +
+  geom_line(colour="#4F709C", size=1.5) +
+  geom_line(aes(x=la_q + 2.5, y=dnorm(la_q + 2.5, 2.5)), colour="#213555", size=1.5) +
+  geom_area(stat = "function", fun = dnorm, args=list(mean=2.5), fill = "#213555", xlim = c(-5, 1.96)) +
+  geom_vline(xintercept=1.96, linetype=2, size=.8, colour="#4F709C") +
+  labs(x = "z", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(
+  	breaks = 1.96,
+  	labels=latex2exp::TeX("$z_{\\alpha}$")) +
+  annotate(
+    "text", label = c(latex2exp::TeX("$H_0$"), latex2exp::TeX("$H_1$")),
+    x = c(0, 2.5), y = 0.2, size = 8, colour = "black"
+  ) +
+  theme_light() + 
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7")
+  )
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+la_q <- seq(-3.5, 3.5, by= .01)
+
+ggplot(NULL, aes(x=seq(-3.5, 3.5, by= .01), y=dnorm(la_q))) +
+  geom_line(colour="#4F709C", size=1.5) +
+  geom_line(aes(x=la_q + 2.5, y=dnorm(la_q + 2.5, 2.5)), colour="#4F709C", size=1.5) +
+  geom_area(stat = "function", fun = dnorm, args=list(mean=2.5), fill = "#213555", xlim = c(-5, 1.96)) +
+  geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(1.96, 5)) +
+  geom_vline(xintercept=1.96, linetype=2, size=.8, colour="#4F709C") +
+  labs(x = "z", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(
+  	breaks = 1.96,
+  	labels=latex2exp::TeX("$z_{\\alpha}$"), limits=c(-3, 5)) +
+  annotate(
+    "text", label = c(latex2exp::TeX("$H_0$"), latex2exp::TeX("$H_1$")),
+    x = c(0, 2.5), y = 0.2, size = 8, colour = "black"
+  ) +
+  theme_light() + 
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7")
+  )
+```
+
+_Ejemplo_. Antiguos estudios muestran que el germicida DDT puede acumularse en el cuerpo. En 1965 la concentración media de DDT en las partes grasas del cuerpo de las personas en Estados Unidos fue de $9$ ppm. Se espera que, como resultado de estrictos controles, esta concentración haya decrecido.
+
+$$
+\begin{aligned}
+	H_0: & \mu \ge 9\text{ ppm} \\
+	H_1: & \mu < 9 \text{ ppm}
+\end{aligned}
+$$
+
+* Si rechazamos $H_0$ siendo esta cierta...
+* Si fallamos en rechazar $H_0$, siendo esta falsa...
+
+### Pruebas paramétricas y no paramétricas.
+
+Las **pruebas paramétricas** definen claramente la escala de medida de la variable aleatoria, asi como también hacen suposiciones sobre la distribución poblacional y los parámetros de la misma (generalmente, una distribución normal).
+
+Las **pruebas no paramétricas** son aquellas que hacen suposiciones menos restrictivas sobre la escala sobre la cual es posible medir la variable aleatoria, y sobre la distribución poblacional, de la cual "no se asume nada sobre los parámetros".
+
+La elección de la prueba adecuada es aquella que _use mejor la información contenida en la muestra_. 
+Pero el desconocimiento del fenómeno o la distribución subyacente tiene un papel importante en la decisión de peso _al elegir entre información y creencia_.
+
+
+### Elección de la prueba estadistica.
+
+La elección de una prueba no viene determinada solo por la potencia de la misma: 
+
+* La manera como se obtuvo la muestra, 
+* la naturaleza de la población de la que se obtuvo la muestra, 
+* las hipotesis a probar, y 
+* el tipo de medición o escala que se empleó para la variable implicada. 
 

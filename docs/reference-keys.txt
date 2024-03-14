@@ -11,6 +11,8 @@ fig:distribution-continuos-ten
 fig:inference-two
 fig:sampling-theory-one
 fig:unnamed-chunk-5
+fig:estimation-two
+fig:qqplot-01-show
 introducción.
 teoría-de-probabilidades.
 combinatoria.
@@ -58,7 +60,16 @@ propiedades-de-un-estimador.
 estimación-puntual.
 construcción-de-estadísitcos-para-inferencia.
 estimación-por-intervalos.
-intervalos-unilaterales.
+inferencia-sobre-la-media.
+inferencia-sobre-la-varianza.
+ejercicios.-1
 introducción-al-contraste-de-hipótesis.
 nos-podemos-equivocar
 estadístico-de-prueba.
+pz-ge-hatz
+región-crítica
+el-p-valor-como-criterio-de-decisión.
+beta-ptextrechazar-h_0-vert-h_1
+errores-de-decisión.
+pruebas-paramétricas-y-no-paramétricas.
+elección-de-la-prueba-estadistica.

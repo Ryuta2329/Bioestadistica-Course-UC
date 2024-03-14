@@ -210,13 +210,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html"><i class="fa fa-check"></i><b>11.3</b> Estimación por Intervalos.</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html#intervalos-unilaterales."><i class="fa fa-check"></i><b>11.3.1</b> Intervalos Unilaterales.</a></li>
+<li class="chapter" data-level="11.3.1" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html#inferencia-sobre-la-media."><i class="fa fa-check"></i><b>11.3.1</b> Inferencia sobre la media.</a></li>
+<li class="chapter" data-level="11.3.2" data-path="estimación-por-intervalos..html"><a href="estimación-por-intervalos..html#inferencia-sobre-la-varianza."><i class="fa fa-check"></i><b>11.3.2</b> Inferencia sobre la varianza.</a></li>
 </ul></li>
+<li class="chapter" data-level="11.4" data-path="ejercicios.-1.html"><a href="ejercicios.-1.html"><i class="fa fa-check"></i><b>11.4</b> Ejercicios.</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="introducción-al-contraste-de-hipótesis..html"><a href="introducción-al-contraste-de-hipótesis..html"><i class="fa fa-check"></i><b>12</b> Introducción al Contraste de Hipótesis.</a></li>
-<li class="chapter" data-level="13" data-path="nos-podemos-equivocar.html"><a href="nos-podemos-equivocar.html"><i class="fa fa-check"></i><b>13</b> Nos podemos equivocar…</a>
+<li class="chapter" data-level="12" data-path="introducción-al-contraste-de-hipótesis..html"><a href="introducción-al-contraste-de-hipótesis..html"><i class="fa fa-check"></i><b>12</b> Introducción al Contraste de Hipótesis.</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="estadístico-de-prueba..html"><a href="estadístico-de-prueba..html"><i class="fa fa-check"></i><b>13.1</b> Estadístico de Prueba.</a></li>
+<li class="chapter" data-level="12.1" data-path="nos-podemos-equivocar.html"><a href="nos-podemos-equivocar.html"><i class="fa fa-check"></i><b>12.1</b> Nos podemos equivocar…</a></li>
+<li class="chapter" data-level="12.2" data-path="estadístico-de-prueba..html"><a href="estadístico-de-prueba..html"><i class="fa fa-check"></i><b>12.2</b> Estadístico de Prueba.</a></li>
+<li class="chapter" data-level="12.3" data-path="pz-ge-hatz.html"><a href="pz-ge-hatz.html"><i class="fa fa-check"></i><b>12.3</b> <span class="math display">\[P(Z \ge \hat{Z}) = ???\]</span></a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="pz-ge-hatz.html"><a href="pz-ge-hatz.html#región-crítica"><i class="fa fa-check"></i><b>12.3.1</b> Región crítica</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="el-p-valor-como-criterio-de-decisión..html"><a href="el-p-valor-como-criterio-de-decisión..html"><i class="fa fa-check"></i><b>12.4</b> El P-valor como criterio de decisión.</a></li>
+<li class="chapter" data-level="12.5" data-path="beta-ptextrechazar-h_0-vert-h_1.html"><a href="beta-ptextrechazar-h_0-vert-h_1.html"><i class="fa fa-check"></i><b>12.5</b> <span class="math display">\[1 - \beta = P(\text{Rechazar }H_0 \vert H_1)\]</span></a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="beta-ptextrechazar-h_0-vert-h_1.html"><a href="beta-ptextrechazar-h_0-vert-h_1.html#errores-de-decisión."><i class="fa fa-check"></i><b>12.5.1</b> Errores de Decisión.</a></li>
+<li class="chapter" data-level="12.5.2" data-path="beta-ptextrechazar-h_0-vert-h_1.html"><a href="beta-ptextrechazar-h_0-vert-h_1.html#pruebas-paramétricas-y-no-paramétricas."><i class="fa fa-check"></i><b>12.5.2</b> Pruebas paramétricas y no paramétricas.</a></li>
+<li class="chapter" data-level="12.5.3" data-path="beta-ptextrechazar-h_0-vert-h_1.html"><a href="beta-ptextrechazar-h_0-vert-h_1.html#elección-de-la-prueba-estadistica."><i class="fa fa-check"></i><b>12.5.3</b> Elección de la prueba estadistica.</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias..html"><a href="referencias..html"><i class="fa fa-check"></i>Referencias.</a></li>
 <li class="divider"></li>
@@ -248,11 +261,12 @@ Proudly published with bookdown</a></li>
 </blockquote>
 <p>Veamos algunos ejemplos.</p>
 <blockquote>
-<p><em>Ejemplo</em>. Un experimento que busca evaluar la reacción de saltamontes a estímulos visuales o acústicos, en los que midieron el tiempo de reacción a estos antes del vuelo, encontraron que el tiempo de reacción promedio a estúmilos acústicos es <span class="math inline">\(\bar{X}_a = 108{,}05\)</span> segundos, y a estímulos visuales es <span class="math inline">\(\bar{X}_v=87{,}19\)</span> segundos. Estos dos valores son estimadores puntuales de las medias poblacionales <span class="math inline">\(\mu_a\)</span> y <span class="math inline">\(\mu_v\)</span>.</p>
+<p><em>Ejemplo</em>. Un experimento que busca evaluar la reacción de saltamontes a estímulos visuales o acústicos, en los que midieron el tiempo de reacción a estos antes del vuelo, encontraron que el tiempo de reacción promedio a estímulos acústicos es <span class="math inline">\(\bar{X}_a = 108{,}05\)</span> segundos, y a estímulos visuales es <span class="math inline">\(\bar{X}_v=87{,}19\)</span> segundos. Estos dos valores son estimadores puntuales de las medias poblacionales <span class="math inline">\(\mu_a\)</span> y <span class="math inline">\(\mu_v\)</span>.</p>
 </blockquote>
+<p>El siguiente, es un ejemplo que trata de enseñar como realizar estimaciones puntuales en diseños estratificados.</p>
 <blockquote>
-<p><em>Ejemplo.</em> Siniff y Skoog (1964) realizaron un muestreo aleatorio estratificado de una manada de caribúes de Nelchina en Alaska. Para ello, se establecieron 6 estratos (basados en estudios preliminares de la densidad relativa de los caribúes), y seleccionaron de manera aleatoria una muestra en cada uno de tamaño <span class="math inline">\(n_i\)</span> ( <span class="math inline">\(i=A, B, C, D, E, F\)</span> ), cada una de unidades muestrales de 4 millas cuadradas, obteniendose los datos mostrados en la tabla.</p>
-<p>Se desea saber el tamaño total de la población de caribúes.</p>
+<p><em>Ejemplo.</em> Siniff y Skoog (1964) realizaron un muestreo aleatorio estratificado de una manada de caribúes de Nelchina en Alaska. Para ello, se establecieron 6 estratos (basados en estudios preliminares de la densidad relativa de los caribúes), y seleccionaron de manera aleatoria una muestra en cada uno de tamaño <span class="math inline">\(n_i\)</span> ( <span class="math inline">\(i=A, B, C, D, E, F\)</span> ), cada una de unidades muestrales de 4 millas cuadradas, obteniendose los datos mostrados en la tabla.<br />
+Se desea saber el tamaño total de la población de caribúes.</p>
 </blockquote>
 <table>
 <thead>
@@ -406,19 +420,78 @@ NA
 \end{aligned}
 \]</span>
 y se puede calcular la densidad de toda la población usando el total de millas cuadradas que conforman los estratos:
-<span class="math display">\[\hat{N} = S \times \bar{X}_ST = 699\text{ milla}^2 \times 77{,}96\text{ caribúes milla}^{-2} = 54.597\text{ caribúes}\]</span>
-Sabemos entonces, que el estimado del número de caribúes es <span class="math inline">\(\hat{N} = 54.597\text{ caribúes}\)</span>. Sin embargo, aun necesitamos cuantificar la incertidumbre asociada a esta estimación. Podemos calcular la varianza de <span class="math inline">\(\bar{X}_ST\)</span> como:
+<span class="math display">\[\hat{N} = S \times \bar{X}_{ST} = 699\text{ milla}^2 \times 77{,}96\text{ caribúes milla}^{-2} = 54.597\text{ caribúes}\]</span>
+Sabemos entonces, que el estimado del número de caribúes es <span class="math inline">\(\hat{N} = 54.597\text{ caribúes}\)</span>. Sin embargo, aun necesitamos cuantificar la incertidumbre asociada a esta estimación. Podemos calcular la varianza de <span class="math inline">\(\bar{X}_{ST}\)</span> como:
 <span class="math display">\[Var(\bar{X}_{ST}) = \sum_{i=1}^L\left[ \frac{W_h^2 S_h^2}{n_h}(1 - f_h) \right]\]</span>
 donde <span class="math inline">\(W_h = N_h / N\)</span> es el ponderado del estrato y <span class="math inline">\(f_h = n_h / N_h\)</span>. Usando los datos de la tabla:
 <span class="math display">\[Var(\bar{X}_{ST}) = \left[ \frac{0{,}572^2 5575}{98} \right]\left(1 - \frac{98}{400}\right) + \left[ \frac{0{,}043^2 4064}{10} \right]\left(1 - \frac{10}{30}\right) + \ldots = 69{,}83\]</span>
 de forma que la varianza del tamaño de la población de caribúes es <span class="math inline">\(69{,}83 \times 699^2 = 34.105.734\)</span>, y la desviación estándar es <span class="math inline">\(\sqrt{34.105.734} = 5.840\)</span> caribúes.<br />
 Entonces el estimador buscado, con su medida de incertidumbre, es <span class="math display">\[54.597 \pm 5.840 \text{ caribúes}\]</span></p>
 </blockquote>
+<p>El siguiente ejemplo, es uno donde se construye un estadístico a partir de otro que tiene una ley de probabilidad prespecificada. De esta forma, podemos facilitar la obtención de una distribución muestral asociada al nuevo estadistico que permita ontener medidas de probabilidad asociada a valores observados particulares.</p>
 <blockquote>
-<p><em>Ejemplo</em>.</p>
+<p><em>Ejemplo</em>. Digamos que tenemos una estimador puntual que queremos evaluar, digamos, la media calculada <span class="math inline">\(\bar{X}\)</span> de una muestra de tamaño <span class="math inline">\(n\)</span>, en cuanto a la probabilidad de ocurrencia de este. El TLC nos indica que este estimador se distribuye normalmente (si conocemos la varianza poblacional o si el <span class="math inline">\(n\)</span> es lo suficientemente grande como para asumir que conocemos la varianza poblacional lo suficientemente bien). Escribimos entonces el estimador puntual
+<span class="math display">\[\hat{Z} = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}}\]</span>
+Como vimos en la sección [distribucion-normal], este se puede usar para encontrar valores de probabilidad asociado a obtener un valor de a lo sumo <span class="math inline">\(\bar{X}\)</span> como:
+<span class="math display">\[P(X \le \bar{X}) = P(Z \le\hat{Z})\]</span></p>
 </blockquote>
 <div id="construcción-de-estadísitcos-para-inferencia." class="section level3 hasAnchor" number="11.2.1">
 <h3><span class="header-section-number">11.2.1</span> Construcción de estadísitcos para inferencia.<a href="estimación-puntual..html#construcción-de-estadísitcos-para-inferencia." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El ejemplo anterior es muy importante.
+Nos dice que si podemos asumir una distribución para una variable aleatoria, entonces podemos construir un estadístico con el cual facilitar la obtención de medidas de probabilidad.
+Esto nos da una forma sencilla de encontrar probabilidades asociadas a un estimador particular calculado a partir de una muestra, y así, poder obtener medidas de incertidumbre que nos permitan derivar conclusiones adecuadas sobre los estimadores.</p>
+<p><strong>Estadístico sobre la media</strong></p>
+<p>Los estadísticos sobre la media los podemos escribir usando el TLC como base para realizar inferencia.
+Si tenemos un conjunto de v. a. <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> independientes e identicamente distribuidas como <span class="math inline">\(f(\theta)\)</span>, de las cuales se hacen las observaciones <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span>, de la cual estimamos el valor <span class="math inline">\(\hat{\theta}\)</span>, entonces podemos construir un estadístico sobre <span class="math inline">\(\theta\)</span> como:</p>
+<p><span class="math display">\[\frac{\hat{\theta} - \theta}{SE(\theta)}\]</span></p>
+<p>Este estadístico lo podemos entender al darnos cuenta de dos cosas:</p>
+<ul>
+<li>El uso de la diferencia <span class="math inline">\(\hat{\theta} - \theta\)</span> sirve como una medida de similitud entre el estimador <span class="math inline">\(\hat{\theta}\)</span> y el valor real del parámetro <span class="math inline">\(\theta\)</span>: valores grandes inidcan que ambos son menos aprecidos entre sí, mientras que valores pequeños de esta diferencia indican que el estimador y el parámetro son más similares entre sí.</li>
+<li>De igual forma, el signo de la diferencia nos dice la dirección en la que cae el estimador: valores positivos indican que se tienen valores por encima del valor del parámetro, mientras que un signo negativo indica que el valor estimado cae por debajo del verdadero valor del parámetro.</li>
+<li>Al dividir la diferencia entre el error estándar <span class="math inline">\(SE(\theta)\)</span>, lo que se hace es estandarizar la diferencia. De esta forma, las diferencias las podemos entender como desviaciones estándar, esto es, a cuantas desviaciones estándar el estimador cae del parámetro.</li>
+</ul>
+<p>En este caso, se asume que el error estándar es conocido, de forma que el estadístico sigue una distribución normal estándar (según el TLC), y se escribe:</p>
+<p><span class="math display">\[\hat{Z} = \frac{\hat{\theta} - \theta}{SE(\theta)} \sim N(0, 1)\]</span></p>
+<p>La ecuación anterior también es válida aun si tebnemos que calcular el error estándar de los datos, siempre y cuando el tamaño de la muestra recolectada para estimar <span class="math inline">\(SE(\theta)\)</span> sea lo suficientemente grande como para asegurarnos de que sabemos su valor con una exactitud adecuada.</p>
+<p>Si, por otro lado, no conocemos el verdadero valor de <span class="math inline">\(SE(\theta)\)</span> y la muestra de donde estimamos a este es muy pequeña, entonces debemos asumir que este es una variable aletoria más.
+La distribución muestral del nuevo estadístico la podemos obtener notando que:</p>
+<p><span class="math display">\[SE(\hat{\theta}) = \frac{\hat{\sigma}}{\sqrt{n}}\]</span></p>
+<p>donde <span class="math inline">\(\hat{\sigma}^2 \sim \chi^2(n - 1)\)</span>, y por la proposición final en la sección [distribución-<span class="math inline">\(t\)</span>-student], entonces el estadístico sigue una distribución <span class="math inline">\(t\)</span>-Student y se escribe como:</p>
+<p><span class="math display">\[\hat{t} = \frac{\hat{\theta} - \theta}{SE(\hat{\theta})} \sim t(n - 1)\]</span></p>
+<p>Con este esquema general, podremos realizar inferencias con respecto a la media y otros parámetros, como veremos en la siguiente sección.
+Pero antes, veamos como construir un estadístico sobre la varianza.</p>
+<p><strong>Estadístico sobre la varianza</strong></p>
+<p>Antes usamos la diferencia entre el estimador y el parámetro para construir un estadístico que nos dijera que tan similares son.
+Este argumento funciona bien con estadísticos como la media, ya que este corresponde a una medida de locación, y la lejanía de dos locaciones (numericamente hablando) nos permite entender que tan similares son (ve la figura <a href="#fig:location-var"><strong>??</strong></a>).
+Con las varianzas, el argumento de la diferncia no es tan intuitivo. Si queremos saber si una varianza es mayor o menor que otra, resulta más intuitivo verificar qaue tanto mayor (o menor) es la dispersión de una poblacion con respecto a otra.
+Esto apunta al uso de cocientes entre varianzas.</p>
+<p>Si tenemos un conjunto de v. a. <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> independientes e identicamente distribuidas como <span class="math inline">\(f(\theta)\)</span>, de las cuales se hacen las observaciones <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span>, de la cual estimamos la varianza <span class="math inline">\(S^2\)</span>, entonces podemos construir un estadístico sobre <span class="math inline">\(S^2\)</span> como:</p>
+<p><span class="math display">\[\frac{(n - 1) S^2}{\sigma^2}\]</span></p>
+<p>la cual sabemos, por la proposición que vimos al final de la sección [distribucion-ji-cuadrada] sabemos se distribuye como una distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n - 1\)</span> grados de libertad, por lo que podemos escrbir:</p>
+<p><span class="math display">\[X^2 = \frac{(n - 1) S^2}{\sigma^2} \sim \chi^2(n - 1)\]</span></p>
+<p>Se tiene entonces que:</p>
+<ul>
+<li>Si la muestra proviene de la misma población, el valor esperado de la varianza <span class="math inline">\(E[S^2]\)</span> será <span class="math inline">\(\sigma^2\)</span> y el valor esperado del cociente será <span class="math inline">\(E[(n - 1) S^2 / \sigma^2] = \frac{(n - 1)}{\sigma^2} E[S^2] = n - 1\)</span>. Este valor resulta que coprresponde a la media de la distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n - 1\)</span> grados de libertad.</li>
+<li>Si la muestra proviene de una población con un varianza menor, entonces el valor esperado <span class="math inline">\(E[S^2]\)</span> es menor que <span class="math inline">\(\sigma^2\)</span>, por lo que el cociente <span class="math inline">\(\frac{(n - 1)}{\sigma^2} E[S^2] &lt; n - 1\)</span>.</li>
+<li>Si la muestra proviene de una población con un varianza mayor, entonces el valor esperado <span class="math inline">\(E[S^2]\)</span> es mayor que <span class="math inline">\(\sigma^2\)</span>, por lo que el cociente <span class="math inline">\(\frac{(n - 1)}{\sigma^2} E[S^2] &gt; n - 1\)</span>.</li>
+</ul>
+<p>Los casos anteriores corresponden a lo que esperaríamos a la larga (si repitieramos muchas veces el experimento).
+Pero hay que entender, que al hacer el experimento y recolectar una muestra, el valor etimado de <span class="math inline">\(S^2\)</span> puede ser menor o mayor que <span class="math inline">\(\sigma^2\)</span> solo por efecto del azar.
+Podemos calcular entonces que tan probable es que el valor sea tan grande como el encontrado usando la distribución muestral, <span class="math inline">\(P(\chi^2 \ge X^2)\)</span>.</p>
+<p>Ahora, el procedimiento anterior es útil cuando queremos verificar si la variansza calculada de una muestra, corresponde con la varianza conocida para la población de donde se tomo la muestra.
+Pero podriamos querer comparar dos poblaciones distintas, para verificar si sus varianzas son las mismas.
+En este caso, supongamos que las varianzas de las poblaciones son <span class="math inline">\(\sigma_1^2\)</span> y <span class="math inline">\(\sigma_2^2\)</span>, cuyos estimadores respectivos son <span class="math inline">\(S_1^2\)</span> y <span class="math inline">\(S_2^2\)</span>, calculados a partir de muestras de tamaño <span class="math inline">\(n_1\)</span> y <span class="math inline">\(n_2\)</span>, respectivamente.
+Podemos usar una parte de estadístico que construimos antes para cada una de las varianzas:</p>
+<p><span class="math display">\[\frac{(n_i - 1) S_i^2}{\sigma_i^2}\]</span></p>
+<p>para <span class="math inline">\(i = 1\)</span> y <span class="math inline">\(2\)</span>, que sabemos corresponden a una v. a. que siguen una distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n_i - 1\)</span> grados de libertad.
+Entonces, podemos usar la proposición final de la sección [distribucion-f] para verificar que</p>
+<p><span class="math display">\[\frac{S_1^2 / \sigma_1^2}{S_2^2 / \sigma_2^2} = \frac{\sigma_2^2 S_1^2}{\sigma_1^2 S_2^2}\]</span></p>
+<p>sigue una distribución <span class="math inline">\(F\)</span> con <span class="math inline">\(n_1 - 1\)</span> y <span class="math inline">\(n_2 - 1\)</span> grados de libertad, y se puede escribir:</p>
+<p><span class="math display">\[\hat{F} = \frac{\sigma_2^2 S_1^2}{\sigma_1^2 S_2^2} \sim F(n_1 -1, n_2 - 1)\]</span></p>
+<p>El valor esperado para esta distribución es ligeramente mayor a uno para tamaños de muestra muy pequeño, y es aproximadamente de uno para tamaños de muestra grande. De forma que:
+si el valor es mayor o menor a uno, podríamos hablar sobre varianzas que no son iguales, y por tanto, las muestras son obtenidas de poblaciones distintas.
+De nuevo, esto es en un sentido estadístico: la muestra puede resultar en proporciones de varianzas distintas a uno solo por azar. Podemos calcular que tan probable es que el valor sea tan grande como el encontrado usando la distribución muestral, <span class="math inline">\(P(F \ge \hat{F})\)</span>.</p>
+<p>Usando este esquema general (los estadísticos construidos), podemos cuantificar la incertidumbre con respecto a un parámetro en problemas de inferencia como sigue en la siguiente sección.</p>
 </div>
 </div>
             </section>
