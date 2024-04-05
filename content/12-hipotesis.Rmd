@@ -1,32 +1,35 @@
 # Introducción al Contraste de Hipótesis.
 
-Sirve como método que facilite el proceso de toma de decisión en base a datos recolectados de una población. 
-Su finalidad es producir conclusiones sobre la población partiendo de una hipótesis particular. 
+En la inferencia estadística, el contraste de hipótesis sirve como método que facilite el proceso de toma de decisión en base a datos recolectados de una población.  
+Su finalidad es producir conclusiones sobre la población partiendo de una hipótesis particular, recordando siempre que las decisiones tomadas y conclusiones alcanzadas son entendidas en un sentido estadístico, es decir, tienen una medida de incertidumbre asociada.
 
-Se parte de una _conjetura_ inicial sobre el sistema en estudio, esta determina la forma de .
-Se necesitan de datos experimentales. 
+Todo proceso de contraste de hipótesis parte de una _conjetura_ inicial sobre el sistema o fenómeno en estudio. 
+Por ejemplo, al estudiar el efecto que tiene la contaminación de un pequeño lago sobre la densidad de peces presentes en el mismo, los investigadores pueden conjeturar que la contaminación causa una disminución de la capacidad de los peces para sobrevivir, y por lo tanto esperar un descenso de la densidad de peces. 
 
-La **hipótesis estadística** es una aseveración o conjetura respecto a una o más poblaciones que se estudian. 
+En este punto, el investigador diseña un experimento y recolecta datos para probar su conjetura. Para ello, el investigador definiría la v. a. que sirve como medida sensible de lo que desea probar (en el caso de nuestro ejemplo, el investigador podría contabilizar el número de peces en el lago) y establecería sus conjeturas en un esquema formal para probar si su conjetura es cierta o no. 
 
-* Puede ser verdadera o no.
-* Una decisión tomada en base al contraste, esta plagada de incertidumbre.
-* Debe ser formalizada en un planteamiento matemático concreto. 
+La forma en la que se formaliza la conjetura inicial y se pone a prueba, cuantificando a la vez la incertidumbre asociada al método, es lo que es objeto de este capítulo. 
+Comenzamos definiendo con propiedad lo que es una hipótesis estadística.
 
-## Nos podemos equivocar...
+> La **hipótesis estadística** es una aseveración o conjetura respecto a una o más poblaciones que se estudian. Esta puede ser verdadera o no y debe ser formalizada en un planteamiento matemático concreto. 
 
-La decisión tomada esta enlazada a una medida de incertidumbre, por lo que es posible cometer errores en las conclusiones. 
+En este punto, debemos realizar una distinción entre una hipótesis experimental y una hipótesis estadística. La primera es una oración que resume la conjetura del investigador sobre el estado del sistema en estudio. La segunda hace referencia al establecimiento formal (matemático) de la hipótesis experimental. 
 
-Cualquier afirmación estadística, por tanto, debe ser establecida en conjunto con una medida de que tan seguros estamos de que la decisión tomada es correcta. 
+> En nuestro ejemplo anterior, la hipótesis experimental sería _la densidad de peces en el lago ha disminuido por efecto de la contaminación del cuerpo acuático_. Para probar esta conjetura, se debe definir una v. a. que permita corroborar esto: estimando el número de peces y compararlo con un valor de referencia sería una forma, pero también se puede hacer midiendo alguna variable relacionada a la densidad de peces.  
+> Por ejemplo, si la densidad de fitoplancton es dependiente de la densidad de peces, el medir la densidad de fitoplancton puede servir como una medida de la cantidad de peces en el lago (aunque claro está, habría que augurarse que el cambio en la densidad de fitoplancton es debido solamente al cambio en la densidad de peces y no, por ejemplo, que esta también se vea afectada por la contaminación del lago).  
+> En este caso, si se usa al estimado del número de peces, entonces la hipótesis estadística sería verificar si este valor es menor que el esperado según valores previos medidos para el algo. 
+ 
+Al plantear una hipótesis estadística, se plantea en conjunto con esta la negación de la hipótesis: aquella que es la oposición a lo que se piensa está ocurriendo al fenómeno en estudio. Si planteamos la hipótesis de que la densidad de peces ha disminuido, también habremos planteado la hipótesis de que la densidad de peces no ha cambiado o ha aumentado, la cual se opone a nuestra conjetura inicial. Una de estas hipótesis es la correcta, y es el contraste de estas hipótesis los que nos da una medida de que tan probable es que nuestra conjetura sea correcta, y podamos tomar una decisión.
 
-La razón principal es la dependencia con la muestra usada para refutar o ratificar la hipótesis planteada. 
+Una decisión tomada en base al contraste de hipótesis, está plagada de incertidumbre. La decisión tomada esta enlazada a una medida de incertidumbre, por lo que es posible cometer errores en las conclusiones. Dado que el verdadero estado del fenómeno en estudio está oculto a nosotros (en general, no podemos saber exactamente el valor de un parámetro), y que solo podemos estimar basado en muestras de un tamaño limitado, podemos incurrir a errores en las conclusiones solo por azar. Cualquier afirmación estadística, por tanto, debe ser establecida en conjunto con una medida de que tan seguros estamos de que la decisión tomada es correcta. 
 
-_Ejemplo_. Se examinó la influencia del fármaco _succinilcolina_ sobre los niveles de circulación de andrógenos en la sangre. Se obtuvieron muestras de sangre de venados salvajes inmediatamente después de recibir una inyección intramuscular de _succinilcolina_ con dardos de un rifle de caza. Treinta minutos después se obtuvo una segunda muestra de sangre y después los venados fueron liberados. 
+> _Ejemplo_. Se examinó la influencia del fármaco _succinilcolina_ sobre los niveles de circulación de andrógenos en la sangre. Se obtuvieron muestras de sangre de venados salvajes inmediatamente después de recibir una inyección intramuscular de _succinilcolina_ con dardos de un rifle de caza. Treinta minutos después se obtuvo una segunda muestra de sangre y después los venados fueron liberados. 
 Los niveles de andrógenos de 15 venados al momento de la captura y 30 minutos más tarde, medidos en nanogramos por mililitro (ng ${\text{mL}}^{-1}$), se presentan en la tabla.
 
 ```{r, echo=FALSE, eval=TRUE}
 suppressPackageStartupMessages({
-	library(dplyr)
-	library(kableExtra)
+  library(dplyr)
+  library(kableExtra)
 })
 
 data_example <- tibble(
@@ -40,100 +43,106 @@ kbl(data_example,
   add_header_above(c("", "Conc. Adrogenos (ng/mL)"=2))
 ```
 
-De los métodos de estimación sabemos que la cantidad de andrógenos al momento de la inyección es de $`r round(mean(data_example[["androgen_at"]]), 2)` \pm `r round(sd(data_example[["androgen_at"]]), 2)`$. Mientras que la concentración de andrógenos 30 minutos después de la inyección fue de $`r round(mean(data_example[["androgen_30min"]]), 2)` \pm `r round(sd(data_example[["androgen_30min"]]), 2)`$. 
+> El enunciado permite establecer una hipótesis experimental sobre la cual podemos deducir trabajaron los investigadores: la succinilcolina tiene un efecto sobre los niveles de andrógenos en la sangre de los venados (noten que, no necesariamente tiene que haber una dirección, esto es, el enunciado no dice nada sobre si el efecto de la succinilcolina es disminuir o aumentar la cantidad de andrógenos en la sangre, solo dice que hay un cambio y ya).  
+> De los métodos de estimación sabemos que la cantidad de andrógenos al momento de la inyección es de $`r round(mean(data_example[["androgen_at"]]), 2)` \pm `r round(sd(data_example[["androgen_at"]]), 2)`$. Mientras que la concentración de andrógenos 30 minutos después de la inyección fue de $`r round(mean(data_example[["androgen_30min"]]), 2)` \pm `r round(sd(data_example[["androgen_30min"]]), 2)`$. 
+>
+> Podemos construir un intervalo de confianza para las diferencias entre la concentración de andrógenos antes y después, para cada venado. 
+> $$`r round(mean(data_example[["androgen_30min"]] - data_example[["androgen_at"]]) + qt(.025, nrow(data_example) - 1) * sd(data_example[["androgen_30min"]] - data_example[["androgen_at"]]) / sqrt(nrow(data_example)), 2)` < D < `r round(mean(data_example[["androgen_30min"]] - data_example[["androgen_at"]]) + qt(.975, nrow(data_example) - 1) * sd(data_example[["androgen_30min"]] - data_example[["androgen_at"]]) / sqrt(nrow(data_example)), 2)`$$
+> El intervalo de confianza parece indicar que no hay una diferencia significativa en la cantidad de andrógenos en la sangre luego de la inyección de succinilcolina (¿Por qué?). 
 
-Podemos construir un intervalo de confianza para las diferencias entre la concentración de andrógenos antes y después, para cada venado. 
-
-$$`r round(mean(data_example[["androgen_30min"]] - data_example[["androgen_at"]]) + qt(.025, nrow(data_example) - 1) * sd(data_example[["androgen_30min"]] - data_example[["androgen_at"]]) / sqrt(nrow(data_example)), 2)` < D < `r round(mean(data_example[["androgen_30min"]] - data_example[["androgen_at"]]) + qt(.975, nrow(data_example) - 1) * sd(data_example[["androgen_30min"]] - data_example[["androgen_at"]]) / sqrt(nrow(data_example)), 2)`$$
-
-El planteamiento de un sistema de experimentación comienza con una conjetura sobre lo que se desea estudiar (en el ejemplo anterior, se desea saber si la succinilcolina es capaz de disminuir los niveles de andrógenos en la sangre).
+El planteamiento de un sistema de experimentación comienza con una conjetura sobre lo que se desea estudiar: en el ejemplo anterior, se desea saber si la succinilcolina es capaz de disminuir los niveles de andrógenos en la sangre. El intervalo de confianza nos da, con una medida de certeza, una conclusión sobre el efecto de la succinilcolina. Sin  embargo, podemos realizar la inferencia de otro modo.
 
 Nos preocuparemos por obtener una muestra de tamaño $n$ que esté descrita por los valores $x_1, x_2, \ldots, x_n$ de una variable aleatoria $X$. Suponemos que cada valor es independiente de los demás. Por tanto, podemos conceptualizar estos valores como una secuencia $X_1, X_2, \ldots, X_n$ de variables aleatorias independientes e idénticamente distribuidas, cada una de las cuales tiene la misma distribución que $X$.
 
+Partiendo de la conjetura inicial, y su negación, las cuales podemos escribir como:
+
 $$
 \begin{aligned}
-	\text{Conjetura}: & \text{ La succinilcolina modifica la concentración de andrógeno en venados.} \\
-	\text{No hay cambio}: & \text{ La succinilcolina no cambia la concentración de andrógeno en venados.}
+  \text{Conjetura}: & \text{ La succinilcolina modifica la concentración de andrógeno en venados.} \\
+  \text{No hay cambio}: & \text{ La succinilcolina no cambia la concentración de andrógeno en venados.}
 \end{aligned}
 $$
 
-La formalización comienza con el establecimiento de un conjunto de hipótesis posibles al que llamamos $\Theta$; y luego, se seleccionan dos hipótesis $\Theta_0 \subseteq \Theta$ y $\Theta_1 \subseteq \Theta$ tales que:
+Estas hipótesis experimentales se formalizan usando la variable aleatoria usada para probarlas, en este caso, la cantidad de andrógenos en sangre. Esta variable define un conjunto posible de valores que puede adoptar (las concentraciones, por ejemplo, solo pueden medirse como valores reales positivos). Estos valores posibles corresponden al conjunto de todas las posibles hipótesis estadísticas que se pueden hacer con respecto a esta v. a.  
+La formalización comienza con el establecimiento de este conjunto de hipótesis posibles al que llamamos $\Theta$; y luego, se seleccionan dos hipótesis $\Theta_0 \subseteq \Theta$ y $\Theta_1 \subseteq \Theta$ tales que:
 
 $$\Theta_0 \cup \Theta_1 = \Theta, \qquad \Theta_0 \cap \Theta_1 = \emptyset$$
 
-Al conjunto $\Theta_0$ se le conoce como hipótesis nula, $H_0$; y al conjunto $\Theta_1$ se le conoce como hipótesis alternativa, $H_1$; y se escribe:
+Al conjunto $\Theta_0$ se le conoce como hipótesis nula, $H_0$; y al conjunto $\Theta_1$ se le conoce como hipótesis alternativa, $H_1$. Las expresiones anteriores lo que indican es que las hipótesis nula y alternativa cumplen dos propiedades:
+* La de la izquierda dice que no hay otras hipótesis posibles además de la nula y la alternativa. 
+* La de la derecha nos dice que no existen ambigüedades en la toma de decisión basada en hipótesis, ya que ambas, hipótesis nula y alternativa, son mutuamente excluyentes
+ 
+y se escribe formalmente:
 
 $$
 \begin{aligned}
-	H_0: & \Theta_0 \subseteq \Theta \\
-	H_1: & \Theta_1 \subseteq \Theta
+  H_0: & \Theta_0 \subseteq \Theta \\
+  H_1: & \Theta_1 \subseteq \Theta
 \end{aligned}
 $$
 
-Además, si se hace un contraste para obtener una conclusión con respecto a un parámetro $\theta$, el conjunto $\Theta_0$ debe contener la conjetura de que _no hay un cambio_ en el valor esperado del parámetro (más específicamente, en la desviación esperada). 
+Otra propiedad importante es que si se hace un contraste para obtener una conclusión con respecto a un parámetro $\theta$, el conjunto $\Theta_0$ debe contener la conjetura de que _no hay un cambio_ en el valor esperado del parámetro. 
 
-En el ejemplo sobre el efecto de la succinilcolina sobre la concentración de andrógeno en venados, vimos que la diferencia en la concentración de andrógenos antes y después de la inyección de succinilcolina sirve como variable aleatoria para realizar inferencias. 
-
-De forma que podemos definir el conjunto de todas las posibles hipótesis como $\Theta = \{D \in\mathbb{R}\}$. Entonces:
-
-$$
+> En el ejemplo sobre el efecto de la succinilcolina sobre la concentración de andrógeno en venados, vimos que la diferencia en la concentración de andrógenos antes y después de la inyección de succinilcolina sirve como variable aleatoria para realizar inferencias.  
+> De forma que podemos definir el conjunto de todas las posibles hipótesis como $\Theta = \{D \in\mathbb{R}\}$. Entonces: 
+> $$
 \begin{aligned}
-	H_0: & \{D \in \mathbb{R}\vert D = 0\} \\
-	H_1: & \{D \in \mathbb{R}\vert D \ne 0\}
+  H_0: & \{D \in \mathbb{R}\vert D = 0\} \\
+  H_1: & \{D \in \mathbb{R}\vert D \ne 0\}
 \end{aligned}
 $$
-
-$$
+> o, de forma más compacta:
+>  $$
 \begin{aligned}
-	H_0: & D = 0 \\
-	H_1: & D \ne 0
+  H_0: & D = 0 \\
+  H_1: & D \ne 0
 \end{aligned}
 $$
 
-La forma de las hipótesis planteadas para un experimento _es algo subjetiva_, dado que su proposición depende de lo que sabe el investigador y su experiencia.
+La forma de las hipótesis planteadas para un experimento _es algo subjetiva_, dado que su proposición depende de lo que sabe el investigador y su experiencia. A mayor información se tiene, el contraste es más potente (más adelante veremos a que nos referimos con esto). 
 
-Las condiciones de los conjuntos asociados a cada hipótesis pueden ser más precisos, dando lugar a _pruebas unilaterales_. Por ejemplo:
+Una parte importante del contraste de hipótesis es que se asume que la hipótesis nula, la que especifica que no hay un cambio en el parámetro sobre el que se hace inferencia, es cierta. Esta es una suposición del esquema de contraste que facilita la obtención de una distribución muestral para el estadístico con el que se prueba el contraste. En resumen:
 
-$$
-\begin{aligned}
-	H_0: & D \le 0 \\
-	H_1: & D > 0
-\end{aligned}
-$$
+* **La hipótesis a probar es la hipótesis nula**. Esta es la que se toma como cierta, como la proposición de que no hay cambio alguno, y debemos utilizar la información disponible como evidencia para respaldar nuestra _conjetura alternativa_.
+* **La hipótesis nula nunca se acepta**, solo _no se rechaza_. No es que la condición de igualdad no se mantenga, sino que la información que se tiene no es capaz de refutarla. 
 
-**La hipótesis a probar es la hipótesis nula**. Esta es la que se toma como cierta, como la proposición de que no hay cambio alguno, y debemos utilizar la información disponible como evidencia para respaldar nuestra _conjetura alternativa_.  
-
-**La hipótesis nula nunca se acepta**, solo _no se rechaza_. No es que la condición de igualdad no se mantenga, sino que la información que se tiene no es capaz de refutarla.
+Ahora, veamos cómo podemos usar un estadístico para probar nuestra hipótesis. 
 
 ## Estadístico de Prueba.
 
 El estadístico de prueba se construye a partir de la información que se tiene del parámetro poblacional $\theta$, es decir, usando el estimador $\hat{\theta}$ calculado a partir de la muestra de tamaño $n$. 
 
-Para desviaciones con respecto a un valor promedio:
+Ya hemos construido estadísticos con los cuales hacer inferencias sobre distintos estimadores. Para desviaciones con respecto a un valor promedio:
 
-$$\hat{Z} = \frac{\hat{\theta} - \theta}{SE(\theta)} \sim N(0,1), \qquad \hat{T} = \frac{\hat{\theta} - \theta}{\hat{SE(\hat{\theta})}} \sim t(n-1)$$
+$$\hat{Z} = \frac{\hat{\theta} - \theta}{SE(\theta)} \sim N(0,1)$$
 
-Para contrastes de hipótesis sobre la varianza:
+o, en caso de no tener un $n$ lo suficientemente grande para tener un buen estimador de $SE(\hat{\theta})$, se usa:
 
-$$\hat{\chi}^2 = \frac{(n-1) Var(\hat{\theta})}{Var(\theta)} \sim \chi^2(n-1), \qquad \hat{F} = \frac{Var(\hat{\theta_1})}{Var(\hat{\theta_2})} \sim F(n_1 - 1, n_2 - 1)$$
+$$\hat{t} = \frac{\hat{\theta} - \theta}{\hat{SE(\hat{\theta})}}$$
 
-_Ejemplo_. Siguiendo con nuestro ejemplo de la concentración de andrógenos luego de una inyección de succinilcolina, podemos trabajar con las diferencias $d_i$ (pata $i=1, \ldots, n$) entre la concentración de andrógenos antes y 30 min después de la inyección del metabolito. 
-Cada $d_i$ es la realización de una variable aleatoria $D_i$, cuya ley de probabilidad es la misma para todo $i=1,\ldots, n$. 
+que se distribuye como una $t$-Student con grafos de libertad que dependen del tamaño de la muestra (véase los ejemplos más adelante). Para contrastes de hipótesis sobre la varianza:
 
-Podemos construir un estadístico basado en estas diferencias para verificar si de verdad hay un cambio en la concentración de andrógenos:
+$$\hat{X}^2 = \frac{(n-1) Var(\hat{\theta})}{Var(\theta)} \sim \chi^2(n-1)$$ 
 
-$$\bar{d} - D, \text{ que para el caso particular, } D=0 \text{ por lo que queda } \bar{d} - 0$$
+o, si se trata de hacer inferencia sobre la proporción de dos varianzas: 
 
-$$\frac{\bar{d} - 0}{\hat{S}_d/\sqrt{n}} = `r round(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), 2)` \sim t(n - 1)$$
+$$\hat{F} = \frac{Var(\hat{\theta_1})Var(\theta_2)}{Var(\hat{\theta_2})Var(\theta_1)} \sim F(n_1 - 1, n_2 - 1)$$
 
+> _Ejemplo_. Siguiendo con nuestro ejemplo de la concentración de andrógenos luego de una inyección de succinilcolina, podemos trabajar con las diferencias $d_i$ (para $i=1, \ldots, n$) entre la concentración de andrógenos antes y 30 min después de la inyección del metabolito.  
+> Cada $d_i$ es la realización de una variable aleatoria $D_i$ independiente, cuya ley de probabilidad es la misma para todo $i=1,\ldots, n$. Podemos construir un estadístico basado en estas diferencias para verificar si de verdad hay un cambio en la concentración de andrógenos, tal como hicimos antes para construir IC:
+> $$\hat{t} = \frac{\bar{d} - D}{\hat{S}_d/\sqrt{n}}$$
+> Como dijimos antes, el contraste se hace bajo la suposición de que la hipótesis nula es cierta. En este caso, según la hipótesis nula $D = 0$ (vea la sección anterior), por lo que podemos obtener un valor para el estadístico:
+> $$\hat{t} = \frac{\bar{d}}{\hat{S}_d/\sqrt{n}} = \frac{`r round(mean(data_example$androgen_30min - data_example$androgen_at), 2)`}{`r round(sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), 2)`} = `r round(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), 2)`$$
+> Este estadístico es un valor observado de los posibles valores que puede adoptar el estadístico de acuerdo a la ley de probabilidad que sigue, que en este caso sabemos es una $t$-Student con $n-1$ grados de libertad. Y dado que se tiene una distribución muestral, podemos obtener un valor de probabilidad asociado con el cual tomar una decisión sobre si la succinilcolina disminuye o no la cantidad de andrógenos en la sangre de los venados.  
 
+<!---
 _Veamos otro ejemplo_. 
 Digamos que en lugar de un contraste sobre la media, se busca un contraste sobre la mediana para el mismo estudio de la succinilcolina. 
 En este caso, se esperaría que la cantidad de diferencias negativas y positivas fuera la misma, si la distribución de probabilidad fuera la misma entre ambas. 
 
 **¿Cómo construyo in estadístico en este caso?**
 
-El razonamiento para construir el estadístico en este caso, es darnos cuenta que si hay un efecto del tratamiento, uno esperaría encontrar diferencias grandes (en valor absoluto) entre las concentraciones de andrógenos antes y despúes.
+El razonamiento para construir el estadístico en este caso, es darnos cuenta que si hay un efecto del tratamiento, uno esperaría encontrar diferencias grandes (en valor absoluto) entre las concentraciones de andrógenos antes y después.
 
 ```{r, echo=FALSE}
 tibble(
@@ -153,12 +162,12 @@ tibble(
     geom_point(aes(x=-.5, y=dnorm(-.5)), colour="#213555") +
     geom_point(aes(x=.1, y=dnorm(.1, .5)), colour="#213555") +
     theme_light() + 
-	theme(
-	  axis.line=element_blank(),
-	  panel.grid=element_blank(),
-	  panel.background=element_rect(fill="#F5EFE7"),
-	  plot.background=element_rect(fill="#F5EFE7")
-	)
+  theme(
+    axis.line=element_blank(),
+    panel.grid=element_blank(),
+    panel.background=element_rect(fill="#F5EFE7"),
+    plot.background=element_rect(fill="#F5EFE7")
+  )
 ```
 
 ```{r, echo=FALSE}
@@ -187,7 +196,7 @@ tibble(
     )
 ```
 
-Si asignaramos rangos al valor absoluto de cada diferencia, de tal forma que la diferencia más pequeña en magnitud (en valor absoluto) tenga una puntuación de 1, la siguiente diferencia más pequeña una puntuación de 2, y asi susecivamente hasta la $n$-ésima diferencia; entonces la oración anterior se convierte en que _esperaríamos que los rangos de mayor magnitud se distribuyeran preferencialmente sobre las diferencias de magnitud positiva_.
+Si asignáramos rangos al valor absoluto de cada diferencia, de tal forma que la diferencia más pequeña en magnitud (en valor absoluto) tenga una puntuación de 1, la siguiente diferencia más pequeña una puntuación de 2, y así sucesivamente hasta la $n$-ésima diferencia; entonces la oración anterior se convierte en que _esperaríamos que los rangos de mayor magnitud se distribuyeran preferencialmente sobre las diferencias de magnitud positiva_.
 
 
 **¿Qué esperaríamos si no hubiese un efecto de la succinilcolina sobre las concentraciones de andrógenos?**
@@ -198,43 +207,44 @@ Los rangos (de magnitud grande o pequeña) se distribuirían de manera más o me
 $$T^+ = \sum_{i=1}^n R_i\delta_i\qquad \delta_i = \begin{cases}1, &\text{ si }Z_i > 0 \\ 0, & \text{ de otra forma.}\end{cases} \text{ donde } Z_i = Y_i - X_i$$
 
 Valores grandes de $W$ son indicativos de que hay un efecto en el tratamiento y que hay un cambio en la concentración de andrógenos en la sangre de venados.
+--->
 
-## $$P(Z \ge \hat{Z}) = ???$$
+## $P(Z \ge \hat{Z}) = ???$
+
+En esta sección nos interesa encontrar valores de probabilidad asociados a los estadísticos calculados a partir de los datos. 
+Estas probabilidades nos sirve para tomar decisiones basado en que tan probable es que la hipótesis nula sea cierta (que es la que asumimos es la hipótesis que es cierta). 
 
 ### Región crítica
 
-Al definir las hipótesis y calcular un estadístico de prueba, se define un conjunto de valores que puede tomar este último que permiten tomar una decisión sobre la hipótesis que la evidencia esta apoyando.
+Al definir las hipótesis y calcular un estadístico de prueba, se define un conjunto de valores que puede tomar este último que permiten tomar una decisión sobre la hipótesis que la evidencia está apoyando.
 
 Se puede escoger un **valor crítico** para el cual se puede definir la región crítica (que no es más que un subconjunto de valores del parámetro $\theta$), la cual permite _rechazar la hipótesis nula_ si el parámetro $\theta$ cae en esa región (pertenece al subconjunto).
 
-_Ejemplo_. Ya construimos un intervalo de confianza que nos sirve para delimitar las regiones (definir los subconjuntos) separadas por un valor de $d$ crítico, dejando una región dentro del cual podemos decir que contiene el verdadero valor del parámetro $D$:
+Al igual que hicimos para los intervalos de confianza, se elige un valor umbral $\alpha$ que determina el criterio de decisión. Esto se logra por medio del uso del $\alpha$-cuantil de la distribución muestral del estadístico $\Theta$ que construimos, que denotamos como $\Theta_\alpha$.  
+Por ejemplo, si la distribución del estadístico es una normal estándar, de forma que habremos calculado con la evidencia disponible y nuestra conjetura un valor estimado de $\hat{Z}$, elegimos entonces el cuantil $z_\alpha$ para tomar una decisión:
 
-```{r, echo=FALSE}
+* Si $\hat{Z} < z_\alpha$ entonces la desviación observada (del estimador con respecto a muestra conjetura del valor de $\theta$) no es lo suficientemente grande para rechazar la hipótesis nula, y tomamos la decisión de no rechazarla. En este caso, se dice que la desviación observada es una que podríamos esperar por azar solamente.
+* Si $\hat{Z} \ge z_\alpha$ entonces la desviación observada es tan grande o mayor que la que esperaríamos solo por azar, por lo que debe haber un efecto externo (lo que nuestra hipótesis experimental plantea) que está cambiando la ley de probabilidad según la hipótesis nula, por otra expresada en nuestra alternativa, y por lo tanto, debemos rechazar la hipótesis nula en favor de esa alternativa. 
+
+Notamos que no hay ambigüedades en el criterio de decisión: o rechazamos o no rechazamos la hipótesis nula. 
+
+El valor de $\alpha$, como ya mencionamos en el capítulo anterior, se conoce como nivel de significancia. En el contexto del contraste de hipótesis se conoce como la probabilidad de rechazar la hipótesis nula siendo esta cierta, es decir, es una probabilidad de equivocarnos sobre el contraste (más adelante hablaremos de este y otro tipo de error que es importante considerar), y se escribe:
+
+$$\alpha = P(\text{Rechazar } H_0 \vert H_0 \text{ verdadera})$$
+
+Este valor se elige tan pequeño como se quiera, pero no tanto como para afectar la validez de nuestras conclusiones al realizar un contraste. Al igual que con los intervalos de confianza, se suelen elegir valores de $0{,}1$, de $0{,}05$, o de $0{,}01$, de acuerdo a la importancia de cometer un error en el contraste.
+
+En la figura \@ref(fig:region-critica) se muestra una región crítica para la distribución normal estándar, para un contraste hipotético de la forma $H_0 : \theta = \theta_0$ y $H_1: \theta \ne \theta_0$. A este tipo de contraste, en el cual las hipótesis se establecen en términos de igualdad y diferencia, se le conoce como _contrastes bilaterales_, dado que la desviación observada se espera caiga por encima o por debajo del valor esperado. En estos casos, la región crítica se divide en dos regiones a ambos lados del valor esperado de la desviación.
+
+> Los contrastes pueden tener dirección cuando esperamos que el parámetro $\theta$ sea mayor o menor que el valor esperado según la hipótesis nula, $\theta_0$. Esto es, cuando se plantean contrastes de la forma $H_0 : \theta\le \theta_0$ y $H_1: \theta > \theta_0$; o contrastes de la forma $H_0 : \theta \ge \theta_0$ y $H_1: \theta < \theta_0$. En estos casos, se dice que el contraste es _unilateral_.  
+> En estos casos, solo se tiene una región crítica a la derecha o izquierda de la distribución (la dirección depende del símbolo usado en la definición de la hipótesis alternativa). Más adelante hablaremos de contrastes unilaterales. 
+
+Las regiones sombreadas en la figura corresponden a la probabilidad acumulada $\alpha$. Como la suma del área de ambas regiones es $\alpha$, y dada la simetría de la distribución normal, eso quiere decir que la probabilidad acumulada de la región crítica a la derecha, la región sombreada a la derecha, es de $\alpha/2$; y de igual forma, en la región crítica de la izquierda, la probabilidad acumulada, representada por la región sombrada a la izquierda, es de $\alpha/2$. 
+
+```{r region-critica, echo=FALSE, fig.cap="Región crítica para una distribución normal estándar. Note que la región crítica corresponde a los valores de Z de la distribución cuya probabilidad acumulada es $\alpha$."}
+
 dist_norm <- tibble(
-  q=seq(-3.5, 3.5, by= .01),
-  p=dnorm(seq(-3.5, 3.5, by= .01)))
 
-ggplot(dist_norm, aes(x=q, y=p)) +
-  geom_line(colour="#4F709C", size=1.5) +
-  geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(-1.96, 1.96)) +
-  labs(x = "z", y = "") +
-  scale_y_continuous(breaks = NULL) +
-  scale_x_continuous(
-  	breaks = c(-1.96, 1.96),
-  	labels=c(latex2exp::TeX("$-z_{\\alpha/2}$"), latex2exp::TeX("$z_{\\alpha/2}$"))) +
-  theme_light() + 
-  theme(
-    axis.line=element_blank(),
-    panel.grid=element_blank(),
-    panel.background=element_rect(fill="#F5EFE7"),
-    plot.background=element_rect(fill="#F5EFE7")
-  )
-```
-
-La región crítica es solo el complemento del intervalo de confianza:
-
-```{r, echo=FALSE}
-dist_norm <- tibble(
   q=seq(-3.5, 3.5, by= .01),
   p=dnorm(seq(-3.5, 3.5, by= .01)))
 
@@ -245,42 +255,95 @@ ggplot(dist_norm, aes(x=q, y=p)) +
   labs(x = "z", y = "") +
   scale_y_continuous(breaks = NULL) +
   scale_x_continuous(
-  	breaks = c(-1.96, 1.96),
-  	labels=c(latex2exp::TeX("$-z_{\\alpha/2}$"), latex2exp::TeX("$z_{\\alpha/2}$"))) +
+    breaks = c(-1.96, 1.96),
+    labels=c(latex2exp::TeX("$-z_{\\alpha/2}$"), latex2exp::TeX("$z_{\\alpha/2}$"))) +
   theme_light() + 
   theme(
     axis.line=element_blank(),
-    panel.grid=element_blank(),
-    panel.background=element_rect(fill="#F5EFE7"),
-    plot.background=element_rect(fill="#F5EFE7")
+    panel.grid=element_blank()
   )
 ```
 
+De esta forma, se definen dos regiones críticas con dos valores críticos, $z_{\alpha/2}$ define el valor crítico a la izquierda, mientras que $z_{1 - \alpha/2}$ define el valor crítico a la derecha de la distribución. 
 
-## El P-valor como criterio de decisión.
+En el caso particular de la figura \@ref(fig:region-critica), si el valor calculado del estadístico cae en alguna de las regiones sombreada, es decir, si $\hat{Z} \le z_{\alpha/2}$ o si $\hat{Z} \ge z_{1 - \alpha/2}$, se decide rechazar la hipótesis nula, de lo contrario, se mantiene. 
 
-También es posible asociar un valor de probabilidad específica a obtener un estadístico tan grande como el calculado usando la función de distribución acumulada.
+> _Ejemplo_. Siguiendo con nuestro ejemplo del efecto de la succinilcolina sobre la cantidad de andrógenos en venados. Ya antes establecimos las hipótesis en términos del parámetro $D$, la diferencia entre la cantidad de andrógenos antes y después de la inyección de succinilcolina, y calculamos un estadístico para esta diferencia obteniendo el valor de $\hat{t} = `r round(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), 2)`$ el cual sabemos se distribuye como $t$-Student con $n - 1 = `r nrow(data_example)` - 1 = `r nrow(data_example) -1`$ grados de libertad. 
+>
+> Para tomar una decisión seleccionamos un valor adecuado de $\alpha$ que nos de cierta seguridad sobre nuestra decisión. Podemos elegir $\alpha = 0{,}05$ y ahora definir la región crítica: para esto, notamos que la hipótesis alternativa no tiene dirección, esto es, no esperamos que la desviación de $D$ con respecto al valor esperado de cero, sea mayor a cero o menor a cero, por lo que la región crítica debe estar a ambos lados del valor esperado, con probabilidades acumuladas que en total sumen $\alpha$.  
+> Se usa entonces como valores críticos los cuantiles $t_{0{,}05 / 2; `r nrow(data_example) -1`} = t_{0{,}025; `r nrow(data_example) -1`}$ y $t_{1 - 0{,}05 / 2; `r nrow(data_example) -1`} = t_{0{,}975; `r nrow(data_example) -1`}$. Estos cuantiles se pueden obtener en R usando la función ```qt``` que da los cuantiles de la distribución. Se obtiene entonces $t_{0{,}025; `r nrow(data_example) -1`}$ como ```qt(.025, 14)``` cuyo resultado es `r round(qt(.025, 14), 2)`. Para el otro cuantil, se obtiene como ```qt(.975, 14)``` cuyo resultado es `r round(qt(.975, 14), 2)`.  
+> Notamos que nuestro valor calculado cae fuera de la región critica: es mayor que el cuantil t_{0{,}025; `r nrow(data_example) -1`}$ y menor que el cuantil t_{0{,}975; `r nrow(data_example) -1`}$, por lo que no podemos, según nuestro criterio de decisión, rechazar la hipótesis nula en favor de la alternativa. Esto nos lleva a concluir que la inyección de succinilcolina no tiene ningún efecto sobre la concentración de andrógenos en la sangre de los venados, dado que la desviación observada es tan pequeña, que no difiere de la que obtendríamos por azar.
 
-_Ejemplo_. anteriormente, calculamos que el estadístico $\hat{t}$ calculado para las diferencias entre las concentraciones de andrógenos al momento y 30 minutos después de la inyección fue `r round(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), 2)`.
+### El P-valor como criterio de decisión.
 
-Solo debemos calcular la probabilidad de obtener el valor de probabilidad acumulada para un valor de $t$ tan grande como el calculado:
+También es posible asociar un valor de probabilidad específica a obtener un estadístico tan grande como el calculado usando la función de distribución acumulada. Este valor es:
 
-$$1 - P(t \ge `r round(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), 2)`) = `r round(1 - pt(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), nrow(data_example) - 1), 4)`$$
+$$p = P(\Theta \ge \hat{\Theta})$$
 
-## $$1 - \beta = P(\text{Rechazar }H_0 \vert H_1)$$
+donde $p$ no debe confundirse con una proporción, sino que es _la probabilidad de obtener un valor del estadístico $\Theta$ tan grande o mayor que $\hat{\Theta}$ solo por azar_. Este valor de probabilidad sirve como medida de que tan cierta es la hipótesis nula
+
+Dada la facilidad con la cual es posible calcular valores de probabilidad hoy en día usando paquetes estadísticos, siempre podemos obtener la probabilidad acumulada de cualquier estadístico. 
+
+> _Ejemplo_. Anteriormente, calculamos que el estadístico $\hat{t}$ calculado para las diferencias entre las concentraciones de andrógenos al momento y 30 minutos después de la inyección fue `r round(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), 2)`.  
+> Podemos obtener la probabilidad acumulada de obtener una desviación tan grande como esa, solo por azar, usando la función ```pt```, en R. Escribimos:
+> $$1 - P(t \ge `r round(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), 2)`) = `r round(1 - pt(mean(data_example$androgen_30min - data_example$androgen_at) / sd(data_example$androgen_30min - data_example$androgen_at) / sqrt(nrow(data_example)), nrow(data_example) - 1), 4)`$$
+> donde se usó ```pt(0{,}14, 14)``` para calcular la probabilidad acumulada hasta $\hat{t} = 0{,}14$. Este valor nos dice que la probabilidad de encontrar una desviación en la concentración de andrógenos tan grande o mayor como la observada es bastante grande, por lo que se esperaría por azar. En este caso, tampoco rechazamos la hipótesis nula, pero esta vez lo hacemos usando como criterio el valor de probabilidad acumulada.
+
+**El problema de los valores marginales**.
+
+El uso del nivel de significancia como criterio de decisión es bastante útil para tomar decisiones acerca de un contraste que queremos realizar. Sin embargo, debido a la naturaleza estocástica de los experimentos aleatorios, hay casos donde es más difícil llegar a una decisión razonable. 
+Por ejemplo, si realizáramos un contraste hipotético cualquiera a partir de datos recolectados en un experimento, realizaríamos el cálculo del estadístico y lo compararíamos con el valor crítico. Este valor crítico nos dice que la probabilidad acumulada desde este valor hasta infinito es igual a $\alpha$, esto es:
+
+$$P(Z \ge Z_{crtitico}) = \alpha$$
+
+Entonces, si en nuestro experimento hipotético, nuestro estadístico calculado cae en la región crítica a una distancia considerable del valor crítico, no tendríamos problema en rechazar la hipótesis nula. 
+Desde el punto de vista del $p$ valor como criterio de decisión, dicho estadístico tendría una probabilidad asociada mucho menor al valor de $\alpha$.  
+Ahora, suponga que el estadístico no dista mucho del valor crítico, de forma que su probabilidad no es muy diferente de $\alpha$. 
+
+Seamos más prácticos: digamos que en nuestro experimento hipotético usted está trabajando con un nivel de significancia de $0{,}05$ para un contraste bilateral en el que piensa usar la distribución normal estándar para comparar du estadístico calculado, cuyo valor encuentra es de $\hat{Z} = 2{,}00$ que tiene una probabilidad asociada de $p=0{,}0228$.  
+Para un contraste de este tipo usted sabe, por lo discutido antes, que el valor crítico es $1{,}96$, que tiene una probabilidad asociada de $\alpha/2 = 0{,}025$. 
+
+Bajo este caso hipotético particular (que suele ocurrir en la práctica) podríamos pensar en rechazar la hipótesis nula. Después de todo, tanto el valor calculado como la probabilidad del mismo son menores a los valores críticos. Sin embargo, debemos recordar que nuestro valor estimado del estadístico es solo una observación aleatoria del verdadero valor del estadístico, lo cual implica que tendríamos que pensar en que tan diferente es nuestro valor del estadístico del valor crítico: estando muy cerca del valor crítico no nos da mucha seguridad de que sean distintos. 
+
+El argumento dado en el ejemplo anterior nos hace darnos cuenta de la dificultad de realizar inferencia usando _valores marginales_, valores que caen cerca del margen de la región crítica. 
+En estas situaciones, se debe sopesar la necesidad de concluir en una u otra dirección contra las consecuencias de cometer un error de decisión. 
+Si las consecuencia de la decisión son muy relevantes, como lo puede ser el gasto de dinero y/o esfuerzo de investigación, o más importante aún, la salud y supervivencia de algún ser vivo, se ha de optar por una decisión cautelosa que minimice los costos, materiales o humanos, de equivocarse.
+
+El último párrafo pone de manifiesto un problema importante que tiene que ver con el control de la tasa de errores que cometemos. En este sentido, necesitamos precisar estos errores con mayor exactitud. 
+
+## $1 - \beta = P(\text{Rechazar }H_0 \vert H_1\text{ cierta})$
 
 ### Errores de Decisión.
 
-```{r, echo=FALSE}
+Como ya hemos mencionado, desde que iniciamos el estudio de la inferencia estadística, hemos dicho que en un contexto estadístico no hay verdades absolutas. 
+Todas nuestras conclusiones acerca de un fenómeno de estudio se hacen tomando en cuenta cierta incertidumbre inherente al experimento y que debemos cuantificar de alguna manera. 
+
+Al reportar estas conclusiones, y los resultados de nuestros análisis, debemos estar conscientes y controlar, en la medida de lo posible, dos tipos de errores en la toma de decisiones, los cuales se resumen bien en la tabla \@ref(fig:errores-decision).
+
+```{r errores-decision, echo=FALSE, fig.cap="Posibles resultados en la toma de decisiones con respecto al estado real o verdadera distribución de la población."}
 data.frame(Decision=c("No rechazar $H_0$", "Rechazar $H_0$"), H0_TRUE=c("Decisión Correcta", "Error Tipo I"), H0_FALSE=c("Error Tipo II", "Decisión Correcta")) %>%
   kbl(col.names=c("", "$H_0\\text{ cierta.}$", "$H_0\\text{ falsa.}$"), escape=FALSE) %>%
   add_header_above(c("", "Estado Real"=2))
 ```
 
+Como podemos ver en la tabla, si el verdadero estado del experimento es que la hipótesis nula es cierta y, con la evidencia recolectada, decidimos no rechazar $H_0$, entonces no tenemos mayor problema ya que habremos llegado a la decisión correcta. De la misma forma ocurre si el estado del experimento es que $H_1$ es cierta y decidimos rechazar $H_0$. El problema surge cuando tomamos decisiones equivocadas, las cuales son de dos tipos.
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+Decimos que cometemos **error tipo I** cuando decidimos rechazar la hipótesis nula siendo la hipótesis nula cierta, la cual ocurre con una probabilidad:
+
+$$P(\text{Rechazar }H_0 \vert H_0 \text{ cierta}) = \alpha$$
+
+En este caso, habremos recolectado una muestra muy desviada de lo esperado solo por azar. Como observamos, esta corresponde al nivel de significancia que establecemos al diseñar el experimento.
+
+Decimos que cometemos **error tipo II** cuando decidimos mantener la hipótesis nula siendo la alternativa verdadera, lo cual ocurre con probabilidad:
+
+$$P(\text{No rechazar }H_0 \vert H_1 \text{ cierta}) = \beta$$
+
+En la figura \@ref(fig:errors) se representan ambos errores gráficamente. 
+
+```{r errors, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Representación gráfica de los errores de decisión asociados al contraste de hipótesis. A la izquierda el error tipo I y a la derecha el error tipo II.", fig.width = 10, fig.height = 5}
 la_q <- seq(-3.5, 3.5, by= .01)
 
+cowplot::plot_grid(
 ggplot(NULL, aes(x=seq(-3.5, 3.5, by= .01), y=dnorm(la_q))) +
   geom_line(colour="#4F709C", size=1.5) +
   geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(1.96, 5)) +
@@ -289,25 +352,17 @@ ggplot(NULL, aes(x=seq(-3.5, 3.5, by= .01), y=dnorm(la_q))) +
   labs(x = "z", y = "") +
   scale_y_continuous(breaks = NULL) +
   scale_x_continuous(
-  	breaks = 1.96,
-  	labels=latex2exp::TeX("$z_{\\alpha}$")) +
-  theme_light() + 
+    breaks = 1.96,
+    labels=expression("z"[alpha])) +
   annotate(
-    "text", label = c(latex2exp::TeX("$H_0$"), latex2exp::TeX("$H_1$")),
+    "text", label = c(expression("H"["0"]), expression("H"["1"])),
     x = c(0, 2.5), y = 0.2, size = 8, colour = "black"
   ) +
+  theme_light() + 
   theme(
     axis.line=element_blank(),
-    panel.grid=element_blank(),
-    panel.background=element_rect(fill="#F5EFE7"),
-    plot.background=element_rect(fill="#F5EFE7")
-  )
-```
-
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-la_q <- seq(-3.5, 3.5, by= .01)
-
+    panel.grid=element_blank()
+  ),
 ggplot(NULL, aes(x=seq(-3.5, 3.5, by= .01), y=dnorm(la_q))) +
   geom_line(colour="#4F709C", size=1.5) +
   geom_line(aes(x=la_q + 2.5, y=dnorm(la_q + 2.5, 2.5)), colour="#213555", size=1.5) +
@@ -316,22 +371,43 @@ ggplot(NULL, aes(x=seq(-3.5, 3.5, by= .01), y=dnorm(la_q))) +
   labs(x = "z", y = "") +
   scale_y_continuous(breaks = NULL) +
   scale_x_continuous(
-  	breaks = 1.96,
-  	labels=latex2exp::TeX("$z_{\\alpha}$")) +
+    breaks = 1.96,
+    labels=expression("z"[alpha])) +
   annotate(
-    "text", label = c(latex2exp::TeX("$H_0$"), latex2exp::TeX("$H_1$")),
+    "text", label = c(expression("H"["0"]), expression("H"["1"])),
     x = c(0, 2.5), y = 0.2, size = 8, colour = "black"
   ) +
   theme_light() + 
   theme(
     axis.line=element_blank(),
-    panel.grid=element_blank(),
-    panel.background=element_rect(fill="#F5EFE7"),
-    plot.background=element_rect(fill="#F5EFE7")
-  )
+    panel.grid=element_blank()
+  ),
+  nrow=1
+)
 ```
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+Estos dos tipos de errores son inherentes a cualquier contraste de hipótesis, y los experimentos deben diseñarse de tal forma que pueda controlarse la probabilidad de cometer estos errores, dada la relevancia de las consecuencias que resultan de cometer un error de estos tipos.
+
+> Por ejemplo, antiguos estudios muestran que el germicida DDT puede acumularse en el cuerpo. En 1965 la concentración media de DDT en las partes grasas del cuerpo de las personas en Estados Unidos fue de $9$ ppm. Se espera que, como resultado de estrictos controles, esta concentración haya decrecido.
+> $$
+\begin{aligned}
+  H_0: & \mu \ge 9\text{ ppm} \\
+  H_1: & \mu < 9 \text{ ppm}
+\end{aligned}
+$$
+>
+> * Si rechazamos $H_0$ siendo esta cierta, eso quiere decir que la concentración de DDT es de 9 ppm o mayor pero decidimos que no lo es, por lo que cometemos _error tipo I_. Debido a esto, pensaríamos que los programas de control han sido efectivo y se tomaría la decisión de seguir gastando dinero en estos, aun cuando no son efectivos en absoluto, retardando la aplicación de nuevos controles que si pudiesen ser efectivos.
+> * Si fallamos en rechazar $H_0$, siendo esta falsa, cometemos _error tipo II_, y concluiríamos que los controles no están siendo efectivos cuando en realidad si lo son. En este caso se desecharía un programa de control exitoso controlando las concentraciones de DDT, en el cual se ha invertido recursos importantes para su aplicación.
+
+El ejemplo anterior pone de manifiesto las consecuencias que pueden resultar de cometer un error. 
+Podemos ver que si cometemos error tipo I, podríamos tomar la decisión de seguir con el programa de control, pero como no es efectivo, resultaría en dinero gastado y posiblemente los casos de envenenamiento con DTT seguirían aumentando. 
+Si cometemos error tipo II, resultaría en la eliminación de un programa que ha sido exitoso en manejar las cantidades de DDT en el ambiente. 
+Notamos que la equivocación por error tipo I es mucho más grave dado que resulta en consecuencias directas a la salud, mientras que la eliminación del programa por error tipo II solo resultaría en la pérdida del dinero invertido.
+
+En este caso, al diseñar el experimento, el investigador debe estar más interesado en controlar el error tipo I y mantenerlo a un valor de $\alpha$, y no preocuparse tanto por la probabilidad cometer error tipo II. 
+Aunque en teoría esto es cierto, la probabilidad de cometer alguno de los dos errores están relacionados, de tal forma que al disminuir la probabilidad de cometer uno, aumenta la probabilidad de cometer el otro, como se muestra en figura \@ref(fig:errors-relation).
+
+```{r errors-relation, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Relación entre la probabilidad de cometer error tipo I y error tipo II.", fig.width=7, fig.height=5}
 la_q <- seq(-3.5, 3.5, by= .01)
 
 ggplot(NULL, aes(x=seq(-3.5, 3.5, by= .01), y=dnorm(la_q))) +
@@ -343,49 +419,131 @@ ggplot(NULL, aes(x=seq(-3.5, 3.5, by= .01), y=dnorm(la_q))) +
   labs(x = "z", y = "") +
   scale_y_continuous(breaks = NULL) +
   scale_x_continuous(
-  	breaks = 1.96,
-  	labels=latex2exp::TeX("$z_{\\alpha}$"), limits=c(-3, 5)) +
+    breaks = 1.96,
+    labels=expression("z"[alpha]), limits=c(-3, 5)) +
   annotate(
-    "text", label = c(latex2exp::TeX("$H_0$"), latex2exp::TeX("$H_1$")),
+    "text", label = c(expression("H"["0"]), expression("H"["1"])),
     x = c(0, 2.5), y = 0.2, size = 8, colour = "black"
   ) +
   theme_light() + 
   theme(
     axis.line=element_blank(),
-    panel.grid=element_blank(),
-    panel.background=element_rect(fill="#F5EFE7"),
-    plot.background=element_rect(fill="#F5EFE7")
+    panel.grid=element_blank()
   )
 ```
 
-_Ejemplo_. Antiguos estudios muestran que el germicida DDT puede acumularse en el cuerpo. En 1965 la concentración media de DDT en las partes grasas del cuerpo de las personas en Estados Unidos fue de $9$ ppm. Se espera que, como resultado de estrictos controles, esta concentración haya decrecido.
+Estos errores se controlan al momento de diseñar el experimento (no se elige el valor de $\alpha$ luego de recolectados los datos, sino mucho antes). Dado que, en general, las consecuencias de cometer error tipo I son mucho más graves que las de cometer error tipo II, lo que se suele hacer es prestablecer un valor de $\alpha$ pequeño, y se diseña un experimento calculando el tamaño que debe tener la muestra para un valor de $\beta$ dado, manteniendo el $\alpha$ preestablecido. Más adelante veremos cómo realizar estos cálculos, pero primero veamos unos ejemplos.
+
+### Pruebas unilaterales.
+
+Las condiciones de los conjuntos asociados a cada hipótesis pueden ser más precisos, dando lugar a _pruebas unilaterales_. Por ejemplo:
 
 $$
 \begin{aligned}
-	H_0: & \mu \ge 9\text{ ppm} \\
-	H_1: & \mu < 9 \text{ ppm}
+  H_0: & D \le 0 \\
+  H_1: & D > 0
 \end{aligned}
 $$
 
-* Si rechazamos $H_0$ siendo esta cierta...
-* Si fallamos en rechazar $H_0$, siendo esta falsa...
 
-### Pruebas paramétricas y no paramétricas.
+## Otros ejemplos.
 
-Las **pruebas paramétricas** definen claramente la escala de medida de la variable aleatoria, asi como también hacen suposiciones sobre la distribución poblacional y los parámetros de la misma (generalmente, una distribución normal).
+> Una pequeña empresa busca saber si existe alguna preferencia en la elección entre dos posibles variaciones de una bebida probiótica que se quiere lanzar al mercado. Los investigadores piensan que la primera versión tendría una mejor aceptación que la segunda. Para ello, se seleccionaron al azar 223 individuos, de los cuales 118 eran hombres y el resto mujeres. 
+> Los resultados recolectados muestran que de los varones, 68 de estos prefirieron una bebida sobre la otra, mientras que 79 de las mujeres prefirieron esa misma bebida sobre la otra. ¿Prueban los datos recolectados que existe una preferencia en la elección de una bebida sobre la otra? Basado en su respuesta, ¿qué decisiones tomaría sobre las bebidas probióticas probadas?
+> 
+> **Solución**. Si hubiese alguna preferencia por una bebida u otra, entonces uno esperaría que la proporción de personas que prefieren la bebida uno serían más de la mitad de los encuestados (esta es nuestra hipótesis experimental). Para expresar esto formalmente, definimos primero la proporción de personas que eligieron la primera bebida como $\pi$, cuyo estimador es $p = (68 + 79) / 223 = 147 / 223 = 0{,}659$. Esto nos permite expresar la hipótesis experimental como $\pi > 0{,}5$, y lo que se busca probar es el contraste unilateral a la derecha:
+> $$\begin{aligned}
+  H_0: & \pi \le 0{,}5 \\
+  H_1: & \pi > 0{,}5
+\end{aligned}$$
+> Construimos ahora un estadístico para probar el contraste, el cual mide que tanto se desvía el valor estimado del valor que según la hipótesis nula tomamos como cierto:
+> $$\begin{aligned}
+\hat{Z} &= \frac{p - \pi}{\sqrt{\pi(1-\pi)/n}} \\
+ &= \frac{0{,}659 - 0{,}5}{\sqrt{0{,}5(1-0{,}5)/223}} \\
+ &= `r round((.659-.5)/sqrt(.5*.5/223), 2)`
+\end{aligned}$$
+> Por el TLC, sabemos que el estadístico se distribuye como una normal estándar. Si usamos un valor de $\alpha$ de $0{,}05$, entonces, como el contraste es unilateral, el valor crítico es $z_\alpha=1{,}64$ y por lo tanto, dado que $\hat{Z}$ es mucho mayor, decidimos rechazar la hipótesis nula en favor de la alternativa. 
+De hecho, la probabilidad asociada es $P(Z \ge \hat{Z}) = 0{,}000001$, la cual es muy baja para que sea una desviación esperada por azar. Esto nos lleva a concluir que de hecho hay una preferencia por la primera bebida por parte de los encuestados. 
 
-Las **pruebas no paramétricas** son aquellas que hacen suposiciones menos restrictivas sobre la escala sobre la cual es posible medir la variable aleatoria, y sobre la distribución poblacional, de la cual "no se asume nada sobre los parámetros".
+En el ejemplo anterior, notamos que el contraste se establece en terminos del parámetro $\pi$, que es una proporción que puede tomar valores en el intervalo $[0,1]$. 
+Aunque definimos las hipótesis usando una notación más breve para los conjuntos $\Theta_0$ y $\Theta_1$, no debe olvidar que la elección del parámetro sobre el que se hace inferencia define el conjunto de posibles hipótesis como $\Theta = \{\pi \in [0,1]\}$, de forma que el contraste es:
 
-La elección de la prueba adecuada es aquella que _use mejor la información contenida en la muestra_. 
-Pero el desconocimiento del fenómeno o la distribución subyacente tiene un papel importante en la decisión de peso _al elegir entre información y creencia_.
+$$\begin{aligned}
+  H_0: & \Theta_0 = \{\pi \in [0,1] \vert \pi \le 0{,}5 \} \\
+  H_1: & \Theta_1 = \{\pi \in [0,1] \vert \pi > 0{,}5 \}
+\end{aligned}$$
 
+No olvide que las hipótesis son conjuntos mutuamente excluyentes que definen los posibles valores que puede tomar el parámetro según la conjetura inicial. 
 
-### Elección de la prueba estadistica.
+Otra cosa que notar es que, para el cálculo de $SE(\pi)$ usamos el valor de $\pi$ y no la proporción $p$. Esto es así porque suponemos que la hipótesis nula es cierta, y como conocemos el valor de $\pi$, podemos calcular basado en este valor.
 
-La elección de una prueba no viene determinada solo por la potencia de la misma: 
+> Siguiendo con el ejemplo anterior, nos damos cuenta que el estudio esta segmentado de acuerdo al sexo, por lo que los investigadores podrían estar interesados en saber si la preferencia observada es igual en ambos hombres y muejeres, o si solo es debido a un sexo. Por lo que debemos probar dos contrastes más, similares al anterior; pero antes debemos aclarar la notación.  
+>
+> Definimos primero la proporción poblacional de machos y hembras como $\pi_M$ y $\pi_H$, respectivamente, los cuales se estiman por $p_M$ y $p_H$.  
+Los contrastes son iguales al anterior, escribimos:
+> $$\begin{aligned}
+  H_0: & \pi_j \le 0{,}5 \\
+  H_1: & \pi_j > 0{,}5
+\end{aligned}$$
+> donde $j = M, H$. Construimos estadísticos similares al anterior para probar los contrastes, obteniendo para los hombres:
+> $$\hat{Z}_M = \frac{`r round(68/118, 3)` - 0{,}5}{\sqrt{0{,}5(1-0{,}5)/118}} = `r round((68/118-.5)/sqrt(.5*.5/118), 2)`$$
+> y para las mujeres:
+> $$\hat{Z}_H = \frac{`r round(79/105, 3)` - 0{,}5}{\sqrt{0{,}5(1-0{,}5)/118}} = `r round((79/105-.5)/sqrt(.5*.5/105), 2)`$$
+>
+> Estos dos valores son mayores que el valor crítico de $1{,}64$, aunque el valor calculado para la muestra de hombres es marginal. La probabilidad asociada a estos estadísticos son:
+> $$P(Z \ge `r round((68/118-.5)/sqrt(.5*.5/118), 2)`) = 0{,}0488$$ 
+> y 
+> $$P(Z \ge `r round((79/105-.5)/sqrt(.5*.5/105), 2)`) = 0{,}0000001$$
+> Con estos resultados, según los criterios de decisión dados, rechazamos la hipótesis nula en ambos casos y concluimos que hay una preferencia por la primera bebida en hombres y mujeres. Sin embargo, la evidencia parece ser más confiable en la muestra de mujeres encuestadas que en la de varones. 
 
-* La manera como se obtuvo la muestra, 
-* la naturaleza de la población de la que se obtuvo la muestra, 
-* las hipotesis a probar, y 
-* el tipo de medición o escala que se empleó para la variable implicada. 
+Al final del ejercicio anterior, rechazamos la hipótesis nula en ambas muestras de varones y mujeres. Si se nos pidiera dar una opinión sobre la decisión de venta de las bebidas, basado solo en los resultados de esa encuesta, podríamos decidir vender la bebida siguiendo una estrategia de ventas dirigida a las mujeres para la primera bebida probiótica. 
 
+> Se sabe que los topos de cierta especie salen a la superficie para alimentarse de insectos que se encuentran en la superficie, exponiéndose a aves y mamíferos cazadores que se alimentan de estos. Los topos, como estrategia de supervivencia, se exponen a la superficie por un tiempo y luego vuelven a sus hoyos para moverse a uno distinto donde repiten el comportamiento, buscando alimento. 
+>
+> Ciertas praderas se han convertido en zonas de estudio de las comunidades de estas especies de topo. Dos zonas atraen mayor atención debido a que una de las zonas, la de más al sur, es bastante heterogénea espacialmente, con irregularidades y cambios en la planicie que resultan en una gran cantidad de sitios para que los topos puedan protegerse de los depredadores. La otra zona es más regular con menos sitios que sirvan de escondite. 
+> 
+> Se han observado los topos y se han calculado los tiempos de exposición de los topos en la superficie. En la pradera del sur, se obtuvo un tiempo de $33 \pm 8{,}3$ segundos basado en la observación de $14$ topos; mientras que en la otra pradera, la más homogénea, la observación de $12$ topos mostró un tiempo de exposición de $29 \pm 4{,}1$ segundos. Los investigadores buscan saber si hay una diferencia en los tiempos de exposición de los topos  en ambas zonas. 
+>
+> **Solución**. Un cálculo rápido de un intervalo de confianza del 95% para la diferencia en el tiempo promedio de exposición entre ambas zonas se muestra a continuación:
+> $$`r round((33-29) - 1.64 * sqrt(8.3 ** 2 / 14 + 4.1 ** 2 /12), 2)` < \mu_{S} - \mu_{N} < `r  round((33-29) + 1.64 * sqrt(8.3 ** 2 / 14 + 4.1 ** 2 /12), 2)`$$
+> Notamos claramente que no hay una diferencia significativa en el tiempo promedio de exposición de ambas zonas, aun cuando en la zona Sur es más largo. Los investigadores, esperando este resultado, conjeturan que debido a la mayor heterogeneidad en el nicho del sur, el tiempo de exposición sería más variable que en la otra región, dada la menor presión que imponen los depredadores en zonas de mayor dificultad de encuentro de presas. Se decide entonces realizar un contraste para verificar esta hipótesis. 
+>
+> Se desea saber entonces si la varianza en el tiempo de reacción en la zona sur es mayor que en la zona de más al norte, y los contrastes de interés son:
+> $$\begin{aligned}
+  H_0: & \sigma^2_S / \sigma^2_N \le 1 \\
+  H_1: & \sigma^2_S / \sigma^2_N > 1
+\end{aligned}$$
+> Como ya vimos antes, con respecto a las varianzas, podemos construir estadísticos basado en la proporción entre las varianza de ambas poblaciones:
+> $$\begin{aligned} 
+  \hat{F} &= \frac{\sigma^2_N S^2_S}{\sigma^2_S S^2_N} \\
+    &= \frac{(8{,}3)^2\sigma^2_N}{(4{,}1)^2\sigma^2_S } \\
+    &= 4{,}098 \frac{\sigma^2_N}{\sigma^2_S} 
+\end{aligned}$$
+> Bajo el supuesto de que la hipótesis nula es cierta, el cociente $\sigma^2_N / \sigma^2_S = 1$, por lo que el valor estimado del estadístico es $\hat{F} = 4{,}098$, el cual es un valor observado de la distribución $F$ con $n_S - 1 = 13$ y $n_N - 1 = 11$ grados de libertad. El valor crítico para esta distribución, para un nivel de significancia de $0{,}05$, es de $F_{crítico} = `r round(qf(.95, 13, 11), 2)` (la prueba es unilateral asi que solo escogemos el cuantil $F_{0{,}05}$).  
+> Notamos que el valor observado cae en la región crítica, ya que $\hat{F} > F_{crítico}$ y por lo tanto, debemos rechazar la hipótesis nula en favor de la alternativa. De hecho, $P(F \ge \hat{F}) = `r round(1 - pf(8.3 ** 2 / 4.1 ** 2, 13, 11), 4)`$, la cual es bastante baja, y concluimos que una proporción de varianza de aproximadamente $4$ es demasiado grande como para haber ocurrido solo por azar. 
+> Se concluye entonces que el tiempo de exposición de los topos en la zona sur es más variable, lo cual tiene sentido dado que la topografía más heterogénea hace que en ciertos lugares los topos puedan estar más tiempo expuestos por estar más protegidos. 
+
+El ejemplo anterior sirve para ver que en ciertas ocasiones, aún si los valores pormedios de una variable aleatoria no son distintos, las poblaciones pueden ser distintas en términos de la variabilidad de estas. Veamos un ejemplo para un diseño experimental de dos muestras independientes, en la cual se mide una variable aleatoria continua.
+
+## Ejercicios.
+
+1. Se midieron los tamaños de $30$ cráneos de gorilas hembras y $29$ machos (datos de O'Higgins, 1989). La varianza de las hembras es $39{,}7$, mientras que la varianza de los machos es $105{,}9$. ¿Son las varianzas de los tamaños de cráneos de machos y hembras iguales? 
+2. Bruton y Owen (1988) midieron varias muestras de trilobites ilénidos del Ordovícico de Noruega y Suecia. Veremos la longitud del cefalón, medida en $43$ especímenes de _Stenopareia glaber_ de Noruega y $17$ especímenes de _S. linnarssoni_ de Noruega y Suecia. Los valores medios son $16{,}8$ (varianza $15{,}2$) y $25{,}8$ (varianza $64{,}3$) respectivamente, lo que indica que _S. glaber_ es más pequeña que _S. linnarssoni_. ¿La diferencia es estadísticamente significativa o podría ser solo un efecto de muestreo aleatorio?
+3. Se investiga sobre la distancia máxima a la que es audible una llamada de alerta en ardillas. Se cree que la media de las distancias máximas es de más de 87 metros. ¿Apoyan el argumento los datos recolectados de una muestra aleatoria? Explicar la respuesta basándose en el valor P del contraste. los datos, en metros, son los siguientes: $90{,}8$; $79{,}4$; $94{,}4$; $96{,}7$; $85{,}2$; $89{,}7$; $82{,}0$; $88{,}2$; $91{,}9$; $94{,}3$; $95{,}1$; $84{,}5$; $90{,}8$; $79{,}4$; $96{,}7$; $96{,}7$; $85{,}2$; $89{,}7$; $82{,}0$; $88{,}2$; $91{,}9$; $94{,}3$; $95{,}1$; $84{,}5$; $88{,}6$; $95{,}6$; $89{,}4$; $87{,}3$; $98{,}5$; $87{,}1$; $82{,}1$; $86{,}7$; $98{,}5$; $87{,}1$; $82{,}1$; $86{,}7$; $88{,}6$; $95{,}6$; $89{,}4;$ y $87{,}3$. 
+
+4.  Un programa de entrenamiento busca evaluar el desempeño físico de una muestra aleatoria de individuos sometidos al programa. Para ello colocan bajo observación a 10 hombres, para ser sometidos a un programa típico de entrenamiento militar. Se anotaron sus pesos antes y después de dicho entrenamiento, mostrados a continuación (el primer dato de antes y después corresponde al primer individuo, el segundo dato de antes y después al segundo individuo, y así sucesivamente):  
+ _Antes(g)_: $`r paste(c(45, 110, 92, 57, 59, 110, 82, 86, 104, 49), collapse = ",")`$   
+ _Después(g)_: $`r paste(c(40, 105, 75, 85, 53, 113, 78, 85, 107, 49), collapse = ",")`$   
+ Pruebe si el programa de entrenamiento tiene efecto en la disminución del peso. Cualquiera sea su resultado, construya un intervalo de confianza para la diferencia promedio del peso de los individuos luego del programa de entrenamiento. 
+
+5. Los bifenilos policlorados (PCB) son contaminantes de origen industrial relacionados con el DDT, los cuales afectan ambientes de todo el planeta. Aunque se eliminan progresivamente, permanecen en el medio por muchos años. Supongamos que Ud. está interesado en estudiar los efectos del PCB en la capacidad reproductiva de lechuzas, midiendo el espesor de la cáscara (en mm) en huevos de aves expuestas al PCB. Al final del estudio se obtuvo la muestra siguiente (en mm): $0{,}21; 0{,}185; 0{,}22; 0{,}215; 0{,}21; 0{,}265; 0{,}148; 0{,}136; 0{,}257; 0{,}136$ y $0{,}249$. Estudios previos describen el grosor normal de los huevos de la lechuza en estudio, con un valor de $0{,}226$ mm. _a)_ Aplique la prueba estadística apropiada y determine si puede demostrarse estadísticamente la hipótesis de daño con un nivel de significación de $0{,}05$. _b)_ Construya un intervalo de confianza del 95% y redacte su conclusión, argumentando cuantitativamente en base al $p$ del contraste y al intervalo. 
+
+6. Se desea estudiar si todavía la revolución industrial tiene efecto sobre la sobrevivencia de la polilla del abedul (_Biston betularia_),  ya que sus depredadores las detectan por el contraste de su coloración con respecto a la del árbol donde se posan. Para tal fin se comparan muestras colectadas antes de 1845 (principios de la revolución industrial), preservadas en un museo de la ciudad de Manchester, con muestras en la actualidad provenientes de zonas contaminadas de la misma ciudad. En el primer grupo, de $180$ ejemplares, $25$ son oscuras, mientras que en el segundo, de un total de $380$ polillas, $90$ presentan coloración oscura. ¿Habrá diferencia temporal? Construya un intervalo del $99$% de confianza para la diferencia.
+
+7. Se realizó un estudio previo a la planificación de un programa de explotación por caza de subsistencia sobre el conejo sabanero _Silvilagus floridanus_ en una población de Panaquire, Edo Miranda. La tasa de extracción debía conservar la proporción natural hembra:macho de la zona y se deseaba saber si la proporción era igual para ambos sexos. Se capturaron $350$ conejos, de los cuales $105$ resultaron ser hembras. _a)_ Realice una prueba para evaluar la veracidad de la propuesta de los manejadores de fauna. _b)_ Construya un intervalo de confianza del $95$% para la proporción poblacional. _c)_ Usando argumentos cuantitativos ($p$-valor; valores de la estimación por intervalos), explique sus conclusiones. Cinco años después el grupo es contratado por el estado para aplicar el mismo programa de explotación del conejo de monte en Boca de Paguey, al sur-este de Panaquire. Se colectaron $248$ conejos, de los cuales $120$ fueron machos. _d)_ Realice una prueba para comparar ambos grupos de datos y explique sus conclusiones. _e)_ independientemente de sus resultados, construya e interprete un intervalo de confianza del 95% para la diferencia de las proporciones poblacionales. _f)_ Explique si considera Ud que puede establecerse la misma tasa de extracción de hembras y machos fijada para la primera localidad hace 5 años.
+
+8. Un investigador busca poder inducir la formación de callos a partir de semillas de moringa para la obtención de metabolitos secundarios de interés farmacéutico. El trabajo para poder obtener un primer biorreactor piloto de callos es largo y requiere de la caracterización del proceso de inducción. Uno de los pasos requiere el contabilizar el número de aberraciones cromosómicas por célula que aparecen como consecuencia del tratamiento con los factores de crecimiento (FC) usados. Luego de inducir la callogénesis usando dos concentraciones de FC (una alta y otra baja), se obtuvieron los siguientes resultados:  
+ **Control**: $`r paste(rpois(9, 5), collapse=",")`$.  
+ **FC Baja**: $`r paste(rpois(11, 8), collapse=",")`$.  
+ **FC Alta**: $`r paste(rpois(10, 13), collapse=",")`$.  
+ Antes (en los ejercicios del capítulo anterior), se le pidió construir intervalos de confianza para verificar diferencias entre cada una de las muestras tratadas con FC con respecto al control. Ahora, usted debe realizar un contraste de hipótesis para verificar si existen diferencias entre los tratamientos con FC y concluya sobre los resultados. Sea cual sea el resultado, realice un contraste entre la tasa promedio de aberraciones por célula que hay entre las muestras tratadas con FC (esto es, uniendo las muestras con FC baja y alta) y el control. ¿Qué puede decir sobre el proceso de inducción y las aberraciones cromosómicas encontradas en los tratamientos?

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Otros Teoremas de Probabilidades. | Bioestadistitica-UC.knit</title>
+  <title>12.4 Otros ejemplos. | Bioestadistitica-UC.knit</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Otros Teoremas de Probabilidades. | Bioestadistitica-UC.knit" />
+  <meta property="og:title" content="12.4 Otros ejemplos. | Bioestadistitica-UC.knit" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Otros Teoremas de Probabilidades. | Bioestadistitica-UC.knit" />
+  <meta name="twitter:title" content="12.4 Otros ejemplos. | Bioestadistitica-UC.knit" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="combinatoria..html"/>
-<link rel="next" href="estadística-descriptiva..html"/>
+<link rel="prev" href="beta-ptextrechazar-h_0-vert-h_1text-cierta.html"/>
+<link rel="next" href="ejercicios.-2.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -260,17 +260,83 @@ Proudly published with bookdown</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="otros-teoremas-de-probabilidades." class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">4</span> Otros Teoremas de Probabilidades.<a href="otros-teoremas-de-probabilidades..html#otros-teoremas-de-probabilidades." class="anchor-section" aria-label="Anchor link to header"></a></h1>
-
+<div id="otros-ejemplos." class="section level2 hasAnchor" number="12.4">
+<h2><span class="header-section-number">12.4</span> Otros ejemplos.<a href="otros-ejemplos..html#otros-ejemplos." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>Una pequeña empresa busca saber si existe alguna preferencia en la elección entre dos posibles variaciones de una bebida probiótica que se quiere lanzar al mercado. Los investigadores piensan que la primera versión tendría una mejor aceptación que la segunda. Para ello, se seleccionaron al azar 223 individuos, de los cuales 118 eran hombres y el resto mujeres.
+Los resultados recolectados muestran que de los varones, 68 de estos prefirieron una bebida sobre la otra, mientras que 79 de las mujeres prefirieron esa misma bebida sobre la otra. ¿Prueban los datos recolectados que existe una preferencia en la elección de una bebida sobre la otra? Basado en su respuesta, ¿qué decisiones tomaría sobre las bebidas probióticas probadas?</p>
+<p><strong>Solución</strong>. Si hubiese alguna preferencia por una bebida u otra, entonces uno esperaría que la proporción de personas que prefieren la bebida uno serían más de la mitad de los encuestados (esta es nuestra hipótesis experimental). Para expresar esto formalmente, definimos primero la proporción de personas que eligieron la primera bebida como <span class="math inline">\(\pi\)</span>, cuyo estimador es <span class="math inline">\(p = (68 + 79) / 223 = 147 / 223 = 0{,}659\)</span>. Esto nos permite expresar la hipótesis experimental como <span class="math inline">\(\pi &gt; 0{,}5\)</span>, y lo que se busca probar es el contraste unilateral a la derecha:
+<span class="math display">\[\begin{aligned}
+H_0: &amp; \pi \le 0{,}5 \\
+H_1: &amp; \pi &gt; 0{,}5
+\end{aligned}\]</span>
+Construimos ahora un estadístico para probar el contraste, el cual mide que tanto se desvía el valor estimado del valor que según la hipótesis nula tomamos como cierto:
+<span class="math display">\[\begin{aligned}
+\hat{Z} &amp;= \frac{p - \pi}{\sqrt{\pi(1-\pi)/n}} \\
+&amp;= \frac{0{,}659 - 0{,}5}{\sqrt{0{,}5(1-0{,}5)/223}} \\
+&amp;= 4.75
+\end{aligned}\]</span>
+Por el TLC, sabemos que el estadístico se distribuye como una normal estándar. Si usamos un valor de <span class="math inline">\(\alpha\)</span> de <span class="math inline">\(0{,}05\)</span>, entonces, como el contraste es unilateral, el valor crítico es <span class="math inline">\(z_\alpha=1{,}64\)</span> y por lo tanto, dado que <span class="math inline">\(\hat{Z}\)</span> es mucho mayor, decidimos rechazar la hipótesis nula en favor de la alternativa.
+De hecho, la probabilidad asociada es <span class="math inline">\(P(Z \ge \hat{Z}) = 0{,}000001\)</span>, la cual es muy baja para que sea una desviación esperada por azar. Esto nos lleva a concluir que de hecho hay una preferencia por la primera bebida por parte de los encuestados.</p>
+</blockquote>
+<p>En el ejemplo anterior, notamos que el contraste se establece en terminos del parámetro <span class="math inline">\(\pi\)</span>, que es una proporción que puede tomar valores en el intervalo <span class="math inline">\([0,1]\)</span>.
+Aunque definimos las hipótesis usando una notación más breve para los conjuntos <span class="math inline">\(\Theta_0\)</span> y <span class="math inline">\(\Theta_1\)</span>, no debe olvidar que la elección del parámetro sobre el que se hace inferencia define el conjunto de posibles hipótesis como <span class="math inline">\(\Theta = \{\pi \in [0,1]\}\)</span>, de forma que el contraste es:</p>
+<p><span class="math display">\[\begin{aligned}
+  H_0: &amp; \Theta_0 = \{\pi \in [0,1] \vert \pi \le 0{,}5 \} \\
+  H_1: &amp; \Theta_1 = \{\pi \in [0,1] \vert \pi &gt; 0{,}5 \}
+\end{aligned}\]</span></p>
+<p>No olvide que las hipótesis son conjuntos mutuamente excluyentes que definen los posibles valores que puede tomar el parámetro según la conjetura inicial.</p>
+<p>Otra cosa que notar es que, para el cálculo de <span class="math inline">\(SE(\pi)\)</span> usamos el valor de <span class="math inline">\(\pi\)</span> y no la proporción <span class="math inline">\(p\)</span>. Esto es así porque suponemos que la hipótesis nula es cierta, y como conocemos el valor de <span class="math inline">\(\pi\)</span>, podemos calcular basado en este valor.</p>
+<blockquote>
+<p>Siguiendo con el ejemplo anterior, nos damos cuenta que el estudio esta segmentado de acuerdo al sexo, por lo que los investigadores podrían estar interesados en saber si la preferencia observada es igual en ambos hombres y muejeres, o si solo es debido a un sexo. Por lo que debemos probar dos contrastes más, similares al anterior; pero antes debemos aclarar la notación.</p>
+<p>Definimos primero la proporción poblacional de machos y hembras como <span class="math inline">\(\pi_M\)</span> y <span class="math inline">\(\pi_H\)</span>, respectivamente, los cuales se estiman por <span class="math inline">\(p_M\)</span> y <span class="math inline">\(p_H\)</span>.<br />
+Los contrastes son iguales al anterior, escribimos:
+<span class="math display">\[\begin{aligned}
+H_0: &amp; \pi_j \le 0{,}5 \\
+H_1: &amp; \pi_j &gt; 0{,}5
+\end{aligned}\]</span>
+donde <span class="math inline">\(j = M, H\)</span>. Construimos estadísticos similares al anterior para probar los contrastes, obteniendo para los hombres:
+<span class="math display">\[\hat{Z}_M = \frac{0.576 - 0{,}5}{\sqrt{0{,}5(1-0{,}5)/118}} = 1.66\]</span>
+y para las mujeres:
+<span class="math display">\[\hat{Z}_H = \frac{0.752 - 0{,}5}{\sqrt{0{,}5(1-0{,}5)/118}} = 5.17\]</span></p>
+<p>Estos dos valores son mayores que el valor crítico de <span class="math inline">\(1{,}64\)</span>, aunque el valor calculado para la muestra de hombres es marginal. La probabilidad asociada a estos estadísticos son:
+<span class="math display">\[P(Z \ge 1.66) = 0{,}0488\]</span>
+y
+<span class="math display">\[P(Z \ge 5.17) = 0{,}0000001\]</span>
+Con estos resultados, según los criterios de decisión dados, rechazamos la hipótesis nula en ambos casos y concluimos que hay una preferencia por la primera bebida en hombres y mujeres. Sin embargo, la evidencia parece ser más confiable en la muestra de mujeres encuestadas que en la de varones.</p>
+</blockquote>
+<p>Al final del ejercicio anterior, rechazamos la hipótesis nula en ambas muestras de varones y mujeres. Si se nos pidiera dar una opinión sobre la decisión de venta de las bebidas, basado solo en los resultados de esa encuesta, podríamos decidir vender la bebida siguiendo una estrategia de ventas dirigida a las mujeres para la primera bebida probiótica.</p>
+<blockquote>
+<p>Se sabe que los topos de cierta especie salen a la superficie para alimentarse de insectos que se encuentran en la superficie, exponiéndose a aves y mamíferos cazadores que se alimentan de estos. Los topos, como estrategia de supervivencia, se exponen a la superficie por un tiempo y luego vuelven a sus hoyos para moverse a uno distinto donde repiten el comportamiento, buscando alimento.</p>
+<p>Ciertas praderas se han convertido en zonas de estudio de las comunidades de estas especies de topo. Dos zonas atraen mayor atención debido a que una de las zonas, la de más al sur, es bastante heterogénea espacialmente, con irregularidades y cambios en la planicie que resultan en una gran cantidad de sitios para que los topos puedan protegerse de los depredadores. La otra zona es más regular con menos sitios que sirvan de escondite.</p>
+<p>Se han observado los topos y se han calculado los tiempos de exposición de los topos en la superficie. En la pradera del sur, se obtuvo un tiempo de <span class="math inline">\(33 \pm 8{,}3\)</span> segundos basado en la observación de <span class="math inline">\(14\)</span> topos; mientras que en la otra pradera, la más homogénea, la observación de <span class="math inline">\(12\)</span> topos mostró un tiempo de exposición de <span class="math inline">\(29 \pm 4{,}1\)</span> segundos. Los investigadores buscan saber si hay una diferencia en los tiempos de exposición de los topos en ambas zonas.</p>
+<p><strong>Solución</strong>. Un cálculo rápido de un intervalo de confianza del 95% para la diferencia en el tiempo promedio de exposición entre ambas zonas se muestra a continuación:
+<span class="math display">\[-0.12 &lt; \mu_{S} - \mu_{N} &lt; 8.12\]</span>
+Notamos claramente que no hay una diferencia significativa en el tiempo promedio de exposición de ambas zonas, aun cuando en la zona Sur es más largo. Los investigadores, esperando este resultado, conjeturan que debido a la mayor heterogeneidad en el nicho del sur, el tiempo de exposición sería más variable que en la otra región, dada la menor presión que imponen los depredadores en zonas de mayor dificultad de encuentro de presas. Se decide entonces realizar un contraste para verificar esta hipótesis.</p>
+<p>Se desea saber entonces si la varianza en el tiempo de reacción en la zona sur es mayor que en la zona de más al norte, y los contrastes de interés son:
+<span class="math display">\[\begin{aligned}
+H_0: &amp; \sigma^2_S / \sigma^2_N \le 1 \\
+H_1: &amp; \sigma^2_S / \sigma^2_N &gt; 1
+\end{aligned}\]</span>
+Como ya vimos antes, con respecto a las varianzas, podemos construir estadísticos basado en la proporción entre las varianza de ambas poblaciones:
+<span class="math display">\[\begin{aligned}
+\hat{F} &amp;= \frac{\sigma^2_N S^2_S}{\sigma^2_S S^2_N} \\
+&amp;= \frac{(8{,}3)^2\sigma^2_N}{(4{,}1)^2\sigma^2_S } \\
+&amp;= 4{,}098 \frac{\sigma^2_N}{\sigma^2_S}
+\end{aligned}\]</span>
+Bajo el supuesto de que la hipótesis nula es cierta, el cociente <span class="math inline">\(\sigma^2_N / \sigma^2_S = 1\)</span>, por lo que el valor estimado del estadístico es <span class="math inline">\(\hat{F} = 4{,}098\)</span>, el cual es un valor observado de la distribución <span class="math inline">\(F\)</span> con <span class="math inline">\(n_S - 1 = 13\)</span> y <span class="math inline">\(n_N - 1 = 11\)</span> grados de libertad. El valor crítico para esta distribución, para un nivel de significancia de <span class="math inline">\(0{,}05\)</span>, es de $F_{crítico} = 2.76 (la prueba es unilateral asi que solo escogemos el cuantil <span class="math inline">\(F_{0{,}05}\)</span>).<br />
+Notamos que el valor observado cae en la región crítica, ya que <span class="math inline">\(\hat{F} &gt; F_{crítico}\)</span> y por lo tanto, debemos rechazar la hipótesis nula en favor de la alternativa. De hecho, <span class="math inline">\(P(F \ge \hat{F}) = 0.0125\)</span>, la cual es bastante baja, y concluimos que una proporción de varianza de aproximadamente <span class="math inline">\(4\)</span> es demasiado grande como para haber ocurrido solo por azar.
+Se concluye entonces que el tiempo de exposición de los topos en la zona sur es más variable, lo cual tiene sentido dado que la topografía más heterogénea hace que en ciertos lugares los topos puedan estar más tiempo expuestos por estar más protegidos.</p>
+</blockquote>
+<p>El ejemplo anterior sirve para ver que en ciertas ocasiones, aún si los valores pormedios de una variable aleatoria no son distintos, las poblaciones pueden ser distintas en términos de la variabilidad de estas. Veamos un ejemplo para un diseño experimental de dos muestras independientes, en la cual se mide una variable aleatoria continua.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="combinatoria..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="estadística-descriptiva..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="beta-ptextrechazar-h_0-vert-h_1text-cierta.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ejercicios.-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

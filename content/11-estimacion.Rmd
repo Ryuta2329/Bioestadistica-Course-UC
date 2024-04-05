@@ -2,31 +2,31 @@
 
 La estimación consiste en realizar predicciones o inferencias sobre los parámetros de una distribución usando la información contenida en la muestra.
 
-> **Fromalmente** 
+> **Formalmente** 
 > Dada una variable aleatoria $X$ cuya ley de probabilidad depende de un parámetro $\theta$, un estadístico $g(X)$ se dice es estimador de $\theta$ si, para cualquier valor observado de $x \in X$, $g(x)$ se considera un estimado de $\theta$. 
-> Esta definción se puede escribir de otra forma, como:  
-> Dadas las observaciones de variables aleatorias $X_1, X_2, \ldots, X_n$ identica e independientemente distribuidas (_iid_) con función de distirbución $F(x\vert\theta)$, se estima $\theta$.
+> Esta definición se puede escribir de otra forma, como:  
+> Dadas las observaciones de variables aleatorias $X_1, X_2, \ldots, X_n$ idéntica e independientemente distribuidas (_iid_) con función de distribución $F(x\vert\theta)$, se estima $\theta$.
 
-En la primera definicón anterior, $g(x)$ es una función de la muestra (esto es, de las observaciones realizadas de la v. a. $X$). La definción puede ser un poco dificil de comprender, pero podemos revisarla poco a poco usando un ejemplo.
+En la primera definición anterior, $g(x)$ es una función de la muestra (esto es, de las observaciones realizadas de la v. a. $X$). La definición puede ser un poco difícil de comprender, pero podemos revisarla poco a poco usando un ejemplo.
 
 > _Ejemplo_. Digamos que se realiza un muestreo aleatorio simple de una población cuya función de densidad es una v. a. normal de media $\mu$ y varianza finita $\sigma^2$. Digamos que se quiere construir un estimador de la media poblacional. Ya sabemos que el mejor estimador de la meda poblacional es $\bar{X} = \frac{1}{n}\sum_{i=1}^n X_i$, y por lo tanto se tiene que $g(x) = \bar{X}$. 
 
-De aquí en adelante, nos centraremos en construir estadísticos, además de usar los estimadores usuales ya conocidos. Pero antes, veamos las propiedades que tinene un buen estimador.
+De aquí en adelante, nos centraremos en construir estadísticos, además de usar los estimadores usuales ya conocidos. Pero antes, veamos las propiedades que tiene un buen estimador.
 
 ## Propiedades de un estimador.
 
 Cualquier estimador que se precie de ser un buen estimador debe cumplir con 3 propiedades deseables para hacer inferencia.
 
-1. El estimador debe ser **insesgado**: un estimador se dice es insesgado cuando la esperanza de su estadístico es igual al valor del parametro siendo estimado. Se escribe el sesgo $B(\hat{\theta})$ como:
+1. El estimador debe ser **insesgado**: un estimador se dice es insesgado cuando la esperanza de su estadístico es igual al valor del parámetro siendo estimado. Se escribe el sesgo $B(\hat{\theta})$ como:
 $$B(\hat{\theta}) = E[\hat{\theta}] - \theta$$
  
  > _Por ejemplo_, podemos calcular la esperanza del estadístico $\bar{X}$ como $E[\bar{X}] = E\left[\frac{1}{n}\sum_{i=1}^n X_i\right]$. Usando las propiedades $E[cX] = cE[X]$ y $E[\sum_i X] = \sum_iE[X]$, donde $c$ es una constante, se tiene que:
  > $$E\left[\frac{1}{n}\sum_{i=1}^n X_i\right] = \frac{1}{n}\sum_{i=1}^n E[X_i]$$
  > Pero como $E[X] = \mu$ (el valor esperado de una v. a. es su media) entonces:
  > $$\frac{1}{n}\sum_{i=1}^n E[X_i] = \frac{1}{n}\sum_{i=1}^n\mu_X = \mu$$
- > y vemos que el estadísitico $\bar{X}$, que estima $\mu$ tiene sesgo nulo. Por lo tanto, $\bar{X}$ es un buen estimador de la media. 
+ > y vemos que el estadístico $\bar{X}$, que estima $\mu$ tiene sesgo nulo. Por lo tanto, $\bar{X}$ es un buen estimador de la media. 
  
-2. El estimador debe ser **eficiente**: un estimador $g(x)$ se dice que es eficiente si de todos los posibles estiamdores, $g(x)$ tiene la mínima varianza posible. Más formalmente, si $\hat{X_1}$ y $\hat{X_2}$ son ambos estimadores insesgados de $X$, entonces se dice que $\hat{X_1}$ es un estimador más eficiente de $X$ que $\hat{X_2}$, si $\sigma^2_{\hat{X_1}} < \sigma^2_{\hat{X_2}}$.
+2. El estimador debe ser **eficiente**: un estimador $g(x)$ se dice que es eficiente si de todos los posibles estimadores, $g(x)$ tiene la mínima varianza posible. Más formalmente, si $\hat{X_1}$ y $\hat{X_2}$ son ambos estimadores insesgados de $X$, entonces se dice que $\hat{X_1}$ es un estimador más eficiente de $X$ que $\hat{X_2}$, si $\sigma^2_{\hat{X_1}} < \sigma^2_{\hat{X_2}}$.
 
 ```{tikz, echo = FALSE, fig.cap = "Ejemplo gráfico de estimadores: _a)_ sesgado y no eficiente; _b)_ insesgado pero no eficiente; _c)_ sesgado y eficiente; _d)_ insesgado y eficiente.", fig.ext = 'png'}
 \begin{tikzpicture}[font=\sffamily]
@@ -67,12 +67,12 @@ $$B(\hat{\theta}) = E[\hat{\theta}] - \theta$$
 \end{tikzpicture}
 ```
 
-3. El estimador debe ser **consistente**: se dice que un estimador $g(x)$ es consistente si este se aproxima a al parámetro $\theta$ cuando el esfuerzo de meustreo se hace mayor. Formalmente: sea $X_1, X_2, \ldots, X_n$ variables aleatorias _iid_ que se usan para obtener un estimador $\hat{\theta}$ de $\theta$. Se dice que $\hat{\theta}$ es un estimador consistente si converge en probabilidad a $\theta$, esto es:
+3. El estimador debe ser **consistente**: se dice que un estimador $g(x)$ es consistente si este se aproxima a al parámetro $\theta$ cuando el esfuerzo de muestreo se hace mayor. Formalmente: sea $X_1, X_2, \ldots, X_n$ variables aleatorias _iid_ que se usan para obtener un estimador $\hat{\theta}$ de $\theta$. Se dice que $\hat{\theta}$ es un estimador consistente si converge en probabilidad a $\theta$, esto es:
 $$\lim\limits_{n \to \infty} P\left[\vert\hat{\theta} - \theta\vert\ge\varepsilon\right] = 0$$
 
  > El último límite se puede modificar para comprender mejor la propiedad de consistencia. Para ello, se puede usar la **desigualdad de Chebyshev**
  > $$P\left[\vert\hat{\theta} - \theta\vert\ge\varepsilon\right] \le \frac{\sigma^2_\theta}{\varepsilon^2}, \varepsilon > 0$$
- > y luego, tomando limites a ambos lados, podemos escribir la propiedad de consustencia como:
+ > y luego, tomando límites a ambos lados, podemos escribir la propiedad de consistencia como:
  > $$\lim\limits_{n \to \infty} \sigma^2_\hat{\theta} = 0$$
  > Entonces, un estimador es consistente, cuando la varianza de este cae cero cuando aumentamos el esfuerzo de muestreo. Dicho de otra forma, el estimador es consistente cuando se acerca más al verdadero valor del parámetro cuando $n\rightarrow\infty$.
 
@@ -80,7 +80,7 @@ Ahora podemos proceder a estudiar los estimadores puntuales y por intervalos.
 
 ## Estimación puntual.
 
-Cuando un investigador realiza un experimento, por lo general, solo toma una muestra represntativa de tamaño $n$ de la población de interés y calcula estimadores que le permitan describir los datos obtenidos y relalizar inferencias. El investigador no se moelsta en realizar el experiemnto varias veces (no es como las simulaciones, donde podiamos realizar repeticiones tantas como quisieramos. En la realidad, no se tiene el esfuerzo, la aneergía o los emdios apra realizar multiples repeticiones de un experimento). En estos casos se usan estimadores puntuales para poder realizar inferencias basados en solo una repetición del experimento. 
+Cuando un investigador realiza un experimento, por lo general, solo toma una muestra representativa de tamaño $n$ de la población de interés y calcula estimadores que le permitan describir los datos obtenidos y realizar inferencias. El investigador no se molesta en realizar el experimento varias veces (no es como las simulaciones, donde podíamos realizar repeticiones tantas como quisiéramos. En la realidad, no se tiene el esfuerzo, la energía o los medios para realizar múltiples repeticiones de un experimento). En estos casos se usan estimadores puntuales para poder realizar inferencias basados en solo una repetición del experimento. 
 
 > Un estimador puntual de un parámetro $\theta$, es solo un valor $\hat{\theta}$ de un estadístico $\hat{\Theta} = g(X)$. Para aclarar la notación, $\hat{\Theta}$ es el conjunto de todos los posibles valores del estadístico, y $\hat{\theta}$ es un elemento de ese conjunto particular, calculado a partir de una muestra. 
 
@@ -88,9 +88,9 @@ Veamos algunos ejemplos.
 
 > _Ejemplo_. Un experimento que busca evaluar la reacción de saltamontes a estímulos visuales o acústicos, en los que midieron el tiempo de reacción a estos antes del vuelo, encontraron que el tiempo de reacción promedio a estímulos acústicos es $\bar{X}_a = 108{,}05$ segundos, y a estímulos visuales es $\bar{X}_v=87{,}19$ segundos. Estos dos valores son estimadores puntuales de las medias poblacionales $\mu_a$ y $\mu_v$.
 
-El siguiente, es un ejemplo que trata de enseñar como realizar estimaciones puntuales en diseños estratificados.
+El siguiente, es un ejemplo que trata de enseñar cómo realizar estimaciones puntuales en diseños estratificados.
 
-> _Ejemplo._ Siniff y Skoog (1964) realizaron un muestreo aleatorio estratificado de una manada de caribúes de Nelchina en Alaska. Para ello, se establecieron 6 estratos (basados en estudios preliminares de la densidad relativa de los caribúes), y seleccionaron de manera aleatoria una muestra en cada uno de tamaño $n_i$ ( $i=A, B, C, D, E, F$ ),  cada una de unidades muestrales de 4 millas cuadradas, obteniendose los datos mostrados en la tabla.  
+> _Ejemplo._ Siniff y Skoog (1964) realizaron un muestreo aleatorio estratificado de una manada de caribúes de Nelchina en Alaska. Para ello, se establecieron 6 estratos (basados en estudios preliminares de la densidad relativa de los caribúes), y seleccionaron de manera aleatoria una muestra en cada uno de tamaño $n_i$ ( $i=A, B, C, D, E, F$ ),  cada una de unidades muestrales de 4 millas cuadradas, obteniéndose los datos mostrados en la tabla.  
 > Se desea saber el tamaño total de la población de caribúes.
 
 ```{r point-ex-01, echo=FALSE}
@@ -122,14 +122,14 @@ $$
 >  de forma que la varianza del tamaño de la población de caribúes es $69{,}83 \times 699^2 = 34.105.734$, y la desviación estándar es $\sqrt{34.105.734} = 5.840$ caribúes.  
 > Entonces el estimador buscado, con su medida de incertidumbre, es $$54.597 \pm 5.840 \text{ caribúes}$$
 
-El siguiente ejemplo, es uno donde se construye un estadístico a partir de otro que tiene una ley de probabilidad prespecificada. De esta forma, podemos facilitar la obtención de una distribución muestral asociada al nuevo estadistico que permita ontener medidas de probabilidad asociada a valores observados particulares.
+El siguiente ejemplo, es uno donde se construye un estadístico a partir de otro que tiene una ley de probabilidad especificada. De esta forma, podemos facilitar la obtención de una distribución muestral asociada al nuevo estadístico que permita obtener medidas de probabilidad asociada a valores observados particulares.
 
 > _Ejemplo_. Digamos que tenemos una estimador puntual que queremos evaluar, digamos, la media calculada $\bar{X}$ de una muestra de tamaño $n$, en cuanto a la probabilidad de ocurrencia de este. El TLC nos indica que este estimador se distribuye normalmente (si conocemos la varianza poblacional o si el $n$ es lo suficientemente grande como para asumir que conocemos la varianza poblacional lo suficientemente bien). Escribimos entonces el estimador puntual 
 > $$\hat{Z} = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}}$$
 > Como vimos en la sección [distribucion-normal], este se puede usar para encontrar valores de probabilidad asociado a obtener un valor de a lo sumo $\bar{X}$ como:
 > $$P(X \le \bar{X}) = P(Z \le\hat{Z})$$
 
-### Construcción de estadísitcos para inferencia.
+### Construcción de estadísticos para inferencia.
 
 El ejemplo anterior es muy importante. 
 Nos dice que si podemos asumir una distribución para una variable aleatoria, entonces podemos construir un estadístico con el cual facilitar la obtención de medidas de probabilidad. 
@@ -138,13 +138,13 @@ Esto nos da una forma sencilla de encontrar probabilidades asociadas a un estima
 **Estadístico sobre la media**
 
 Los estadísticos sobre la media los podemos escribir usando el TLC como base para realizar inferencia. 
-Si tenemos un conjunto de v. a. $X_1, X_2, \ldots, X_n$ independientes e identicamente distribuidas como $f(\theta)$, de las cuales se hacen las observaciones $x_1, x_2, \ldots, x_n$, de la cual estimamos el valor $\hat{\theta}$, entonces podemos construir un estadístico sobre $\theta$ como: 
+Si tenemos un conjunto de v. a. $X_1, X_2, \ldots, X_n$ independientes e idénticamente distribuidas como $f(\theta)$, de las cuales se hacen las observaciones $x_1, x_2, \ldots, x_n$, de la cual estimamos el valor $\hat{\theta}$, entonces podemos construir un estadístico sobre $\theta$ como: 
 
 $$\frac{\hat{\theta} - \theta}{SE(\theta)}$$
 
 Este estadístico lo podemos entender al darnos cuenta de dos cosas:
 
-* El uso de la diferencia $\hat{\theta} - \theta$ sirve como una medida de similitud entre el estimador $\hat{\theta}$ y el valor real del parámetro $\theta$: valores grandes inidcan que ambos son menos aprecidos entre sí, mientras que valores pequeños de esta diferencia indican que el estimador y el parámetro son más similares entre sí.
+* El uso de la diferencia $\hat{\theta} - \theta$ sirve como una medida de similitud entre el estimador $\hat{\theta}$ y el valor real del parámetro $\theta$: valores grandes indican que ambos son menos parecidos entre sí, mientras que valores pequeños de esta diferencia indican que el estimador y el parámetro son más similares entre sí.
 * De igual forma, el signo de la diferencia nos dice la dirección en la que cae el estimador: valores positivos indican que se tienen valores por encima del valor del parámetro, mientras que un signo negativo indica que el valor estimado cae por debajo del verdadero valor del parámetro.
 * Al dividir la diferencia entre el error estándar $SE(\theta)$, lo que se hace es estandarizar la diferencia. De esta forma, las diferencias las podemos entender como desviaciones estándar, esto es, a cuantas desviaciones estándar el estimador cae del parámetro. 
 
@@ -152,9 +152,9 @@ En este caso, se asume que el error estándar es conocido, de forma que el estad
 
 $$\hat{Z} = \frac{\hat{\theta} - \theta}{SE(\theta)} \sim N(0, 1)$$
 
-La ecuación anterior también es válida aun si tebnemos que calcular el error estándar de los datos, siempre y cuando el tamaño de la muestra recolectada para estimar $SE(\theta)$ sea lo suficientemente grande como para asegurarnos de que sabemos su valor con una exactitud adecuada. 
+La ecuación anterior también es válida aun si tenemos que calcular el error estándar de los datos, siempre y cuando el tamaño de la muestra recolectada para estimar $SE(\theta)$ sea lo suficientemente grande como para asegurarnos de que sabemos su valor con una exactitud adecuada. 
 
-Si, por otro lado, no conocemos el verdadero valor de $SE(\theta)$ y la muestra de donde estimamos a este es muy pequeña, entonces debemos asumir que este es una variable aletoria más. 
+Si, por otro lado, no conocemos el verdadero valor de $SE(\theta)$ y la muestra de donde estimamos a este es muy pequeña, entonces debemos asumir que este es una variable aleatoria más. 
 La distribución muestral del nuevo estadístico la podemos obtener notando que:
 
 $$SE(\hat{\theta}) = \frac{\hat{\sigma}}{\sqrt{n}}$$
@@ -164,39 +164,39 @@ donde $\hat{\sigma}^2 \sim \chi^2(n - 1)$, y por la proposición final en la sec
 $$\hat{t} = \frac{\hat{\theta} - \theta}{SE(\hat{\theta})} \sim t(n - 1)$$
 
 Con este esquema general, podremos realizar inferencias con respecto a la media y otros parámetros, como veremos en la siguiente sección. 
-Pero antes, veamos como construir un estadístico sobre la varianza. 
+Pero antes, veamos cómo construir un estadístico sobre la varianza. 
 
 **Estadístico sobre la varianza**
 
 Antes usamos la diferencia entre el estimador y el parámetro para construir un estadístico que nos dijera que tan similares son. 
-Este argumento funciona bien con estadísticos como la media, ya que este corresponde a una medida de locación, y la lejanía de dos locaciones (numericamente hablando) nos permite entender que tan similares son (ve la figura \@ref(fig:location-var)). 
-Con las varianzas, el argumento de la diferncia no es tan intuitivo. Si queremos saber si una varianza es mayor o menor que otra, resulta más intuitivo verificar qaue tanto mayor (o menor) es la dispersión de una poblacion con respecto a otra. 
+Este argumento funciona bien con estadísticos como la media, ya que este corresponde a una medida de locación, y la lejanía de dos locaciones (numéricamente hablando) nos permite entender que tan similares son (ve la figura \@ref(fig:location-var)). 
+Con las varianzas, el argumento de la diferencia no es tan intuitivo. Si queremos saber si una varianza es mayor o menor que otra, resulta más intuitivo verificar que tanto mayor (o menor) es la dispersión de una población con respecto a otra. 
 Esto apunta al uso de cocientes entre varianzas. 
 
 ```{r location-var, echo = FALSE}
 # Aquu la figura de dsitribuciones
 ```
 
-Si tenemos un conjunto de v. a. $X_1, X_2, \ldots, X_n$ independientes e identicamente distribuidas como $f(\theta)$, de las cuales se hacen las observaciones $x_1, x_2, \ldots, x_n$, de la cual estimamos la varianza $S^2$, entonces podemos construir un estadístico sobre $S^2$ como: 
+Si tenemos un conjunto de v. a. $X_1, X_2, \ldots, X_n$ independientes e idénticamente distribuidas como $f(\theta)$, de las cuales se hacen las observaciones $x_1, x_2, \ldots, x_n$, de la cual estimamos la varianza $S^2$, entonces podemos construir un estadístico sobre $S^2$ como: 
 
 $$\frac{(n - 1) S^2}{\sigma^2}$$
 
-la cual sabemos, por la proposición que vimos al final de la sección [distribucion-ji-cuadrada] sabemos se distribuye como una distribución $\chi^2$ con $n - 1$ grados de libertad, por lo que podemos escrbir:
+la cual sabemos, por la proposición que vimos al final de la sección [distribucion-ji-cuadrada] sabemos se distribuye como una distribución $\chi^2$ con $n - 1$ grados de libertad, por lo que podemos escribir:
 
 $$X^2 = \frac{(n - 1) S^2}{\sigma^2} \sim \chi^2(n - 1)$$
 
 Se tiene entonces que: 
 
-* Si la muestra proviene de la misma población, el valor esperado de la varianza $E[S^2]$ será $\sigma^2$ y el valor esperado del cociente será $E[(n - 1) S^2 / \sigma^2] = \frac{(n - 1)}{\sigma^2} E[S^2] = n - 1$. Este valor resulta que coprresponde a la media de la distribución $\chi^2$ con $n - 1$ grados de libertad. 
+* Si la muestra proviene de la misma población, el valor esperado de la varianza $E[S^2]$ será $\sigma^2$ y el valor esperado del cociente será $E[(n - 1) S^2 / \sigma^2] = \frac{(n - 1)}{\sigma^2} E[S^2] = n - 1$. Este valor resulta que corresponde a la media de la distribución $\chi^2$ con $n - 1$ grados de libertad. 
 * Si la muestra proviene de una población con un varianza menor, entonces el valor esperado $E[S^2]$ es menor que $\sigma^2$, por lo que el cociente $\frac{(n - 1)}{\sigma^2} E[S^2] < n - 1$.
 * Si la muestra proviene de una población con un varianza mayor, entonces el valor esperado $E[S^2]$ es mayor que $\sigma^2$, por lo que el cociente $\frac{(n - 1)}{\sigma^2} E[S^2] > n - 1$.
 
-Los casos anteriores corresponden a lo que esperaríamos a la larga (si repitieramos muchas veces el experimento). 
-Pero hay que entender, que al hacer el experimento y recolectar una muestra, el valor etimado de $S^2$ puede ser menor o mayor que $\sigma^2$ solo por efecto del azar. 
+Los casos anteriores corresponden a lo que esperaríamos a la larga (si repitiéramos muchas veces el experimento). 
+Pero hay que entender, que al hacer el experimento y recolectar una muestra, el valor estimado de $S^2$ puede ser menor o mayor que $\sigma^2$ solo por efecto del azar. 
 Podemos calcular entonces que tan probable es que el valor sea tan grande como el encontrado usando la distribución muestral, $P(\chi^2 \ge X^2)$.
 
-Ahora, el procedimiento anterior es útil cuando queremos verificar si la variansza calculada de una muestra, corresponde con la varianza conocida para la población de donde se tomo la muestra. 
-Pero podriamos querer comparar dos poblaciones distintas, para verificar si sus varianzas son las mismas. 
+Ahora, el procedimiento anterior es útil cuando queremos verificar si la varianza calculada de una muestra, corresponde con la varianza conocida para la población de donde se tomó la muestra. 
+Pero podríamos querer comparar dos poblaciones distintas, para verificar si sus varianzas son las mismas. 
 En este caso, supongamos que las varianzas de las poblaciones son $\sigma_1^2$ y $\sigma_2^2$, cuyos estimadores respectivos son $S_1^2$ y $S_2^2$, calculados a partir de muestras de tamaño $n_1$ y $n_2$, respectivamente. 
 Podemos usar una parte de estadístico que construimos antes para cada una de las varianzas:
 
@@ -245,7 +245,7 @@ ggplot(dist_norm, aes(x=q, y=p)) +
 
 > Hay que hacer énfasis en algo muy importante: los límites del intervalo son estimados a partir de la muestra, por lo que son v. a. y no se pueden entender como parámetros fijos. 
 > Esto es, son estimadores de $\Theta_L$  $\Theta_U$. 
-> Esto implica que cualquier medida de probabilidad asociada al intervalo se hace en terminos de los límites, y no del parámetro sobre el cual se construye. 
+> Esto implica que cualquier medida de probabilidad asociada al intervalo se hace en términos de los límites, y no del parámetro sobre el cual se construye. 
 
 El razonamiento de la construcción de intervalos de confianza es utilizar la distribución muestral de $\hat{\Theta}$ para determinar los límites del intervalo de tal manera que:
 
@@ -259,14 +259,14 @@ Este valor expresa el grado de incertidumbre que esperamos a la larga sobre la v
 > En general, el valor de $\alpha$ se suele especificar como $0{,}1$, $0{,}05$ o $0{,}01$ dependiendo de que tanta incertidumbre estamos dispuestos a ceder en cuanto a nuestras conclusiones y las consecuencias que derivan de presentar conclusiones equivocadas.  
 > Por ejemplo, digamos que un médico construye un intervalo de confianza para un estudio en el que se busca probar la eficacia de cierto fármaco en curar una enfermedad. 
 > Si el investigador eligiera un nivel de significancia de $0{,}1$, entonces el intervalo construido es del $100(1 - 0{,}1)\% = 90\%$ de confianza, el cual puede parecer bastante grande.  
-> Sin embargo, la incertidumbre asociada puede ser demasiado grande si notamos que el hecho de equivocarse significaría posiblemente la aparición de efectos secundario graves sobre el paciente e incluso, la muerte de una persona. 
+> Sin embargo, la incertidumbre asociada puede ser demasiado grande si notamos que el hecho de equivocarse significaría posiblemente la aparición de efectos secundarios graves sobre el paciente e incluso, la muerte de una persona. 
 > Es por ello que, dependiendo del estudio que estemos realizando, se debe escoger un nivel de confianza adecuado para asegurar que nuestras conclusiones no resulten en la toma de decisiones que puedan tener consecuencias negativas importantes.
 
-El teorema del límite central se hace muy importante para la construcción de estadísticos cuya ley de probabilidad es conocida, tal como se estudio en la sección anterior. 
+El teorema del límite central se hace muy importante para la construcción de estadísticos cuya ley de probabilidad es conocida, tal como se estudió en la sección anterior. 
 
 ### Inferencia sobre la media.
 
-Ahora veremos unos ejemplos de como usar ese formalismo para construir intervalos de confianza para distintos casos particulares. 
+Ahora veremos unos ejemplos de cómo usar ese formalismo para construir intervalos de confianza para distintos casos particulares. 
 El primero de nuestros ejemplos es sobre la construcción de intervalos de confianza para una muestra para la cual se conoce la varianza poblacional.
 
 ```{r data-ex-01, echo = FALSE}
@@ -290,14 +290,14 @@ $$
 > $$`r round(mean(pressure), 2)` - z_{1 - \alpha/2}\frac{10}{\sqrt{14}} < \mu < `r round(mean(pressure), 2)` + z_{1 - \alpha/2}\frac{10}{\sqrt{14}}$$
 >  Como $\alpha=0{,}05$, entonces $\alpha/2=0{,}025$, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución normal, o usando `qnorm(.975, 0, 1)` en R. En este caso, $z_{1 - \alpha/2} = `r round(qnorm(.975), 2)`$, de forma que:
 >  $$`r round(mean(pressure) - qnorm(.975) * 10 / sqrt(14), 2)` \text{ mmHg} < \mu < `r round(mean(pressure) + qnorm(.975) * 10 / sqrt(14), 2)` \text{ mmHg}$$
-> Podemos observar que el intervalo ocupa valores de presión sanguínea que podriamos considerar alta, indicando que el paciente sufre de hipertensión, de lo cual podriamos estar seguros con un 95% de confianza. 
+> Podemos observar que el intervalo ocupa valores de presión sanguínea que podríamos considerar alta, indicando que el paciente sufre de hipertensión, de lo cual podríamos estar seguros con un 95% de confianza. 
 
 
-En el ejemplo anterior, usamos lo aprendido en la seccion anterior sobre estadísticos sobre la media. Pero esto supone que la distribución subyacente de los datos es normal, lo cual hace obvio preguntar **¿cómo sé que mis datos son normales?**
+En el ejemplo anterior, usamos lo aprendido en la sección anterior sobre estadísticos sobre la media. Pero esto supone que la distribución subyacente de los datos es normal, lo cual hace obvio preguntar **¿cómo sé que mis datos son normales?**
 
 Podemos tratar de ver que tan bien se ajustan nuestros datos a nuestro supuesto de normalidad, evaluando un gráfico QQ (cuantil-cuantil). 
-Este gráfico muestra en el eje horizontal la distribución teorica (la normal estándar) y en el eje vertical, la distribución de las observaciones. Si la distribución de las observaciones fuera normal, los puntos observados en la gráfica caerían excatamente sobre la recta central (esta corresponde a el caso teorico de esperado si la data fuera normal realmente). 
-De otro modo, si la distribución subyacente no es normal, los puntos se desviaran más de la recta central. La froma como estos se desvían de la recta puede ayudar a indicar cual es la distribución subyacente, o darnos cuenta de observaciones anormales o atípicas.
+Este gráfico muestra en el eje horizontal la distribución teórica (la normal estándar) y en el eje vertical, la distribución de las observaciones. Si la distribución de las observaciones fuera normal, los puntos observados en la gráfica caerían exactamente sobre la recta central (esta corresponde a el caso teórico de esperado si la data fuera normal realmente). 
+De otro modo, si la distribución subyacente no es normal, los puntos se desviaran más de la recta central. La forma como estos se desvían de la recta puede ayudar a indicar cuál es la distribución subyacente, o darnos cuenta de observaciones anormales o atípicas.
 
 El siguiente es un gráfico QQ para los datos de presión sanguínea:
 
@@ -310,7 +310,7 @@ ggplot(NULL, aes(sample=pressure)) +
   theme(panel.grid = element_blank())
 ```
 
-Se observa en el gráfico que las observaciones que caen por debajo de la media se desvían más de la normalidad que aquellas por encima o alrededor de la media. Esto nos indica que estos valores pueden resultar ser atípicos, lo cual podría corresponder bien con la conclusión de que es bastante probable que el paciente parece tener hipertensión (lo cuál hace bastante extraño obtener valores de presión menores a 128 mmHg). 
+Se observa en el gráfico que las observaciones que caen por debajo de la media se desvían más de la normalidad que aquellas por encima o alrededor de la media. Esto nos indica que estos valores pueden resultar ser atípicos, lo cual podría corresponder bien con la conclusión de que es bastante probable que el paciente parece tener hipertensión (lo cual hace bastante extraño obtener valores de presión menores a 128 mmHg). 
 
 
 Ahora, ya dijimos que el TLC es aplicable a estadísticos que son estimadores de parámetros que corresponden a distribuciones otras que la normal. Los siguientes sirven de ejemplos de inferencia sobre parámetros de una distribución Poisson y Binomial, respectivamente.
@@ -321,16 +321,16 @@ trt_garra <- c(4, 5, 10, 7, 2, 2, 6, 10, 7, 2)
 ```
 
 > _Ejemplo_. Unos nutricionistas especializados en dieta canina han estado evaluando la efectividad de cierta dieta (con un componente nutricional especial) como medida para controlar la presencia de garrapatas en mascotas cuidadas bajo las mismas condiciones.  
-> Para ello, se seleccionaron y asignaron al azar $20$ caninos a dos grupos, 10 en cada grupo. A uno se le administró la nueva dieta, y el otro se alimento con la misma dieta, pero sin el compuesto antiectoparásitos dado al pirmer grupo (este sirve como grupo control para verifiar si existen diferencias). 
+> Para ello, se seleccionaron y asignaron al azar $20$ caninos a dos grupos, 10 en cada grupo. A uno se le administró la nueva dieta, y el otro se alimentó con la misma dieta, pero sin el compuesto antiectoparásitos dado al primer grupo (este sirve como grupo control para verificar si existen diferencias). 
 > Después de un tiempo apropiado, se midió en los canino el número de garrapatas por individuo. Los datos son los siguientes:  
 > Control: $22, 17, 15, 7, 12, 16, 12, 14, 20, 13$  
 > Tratamiento: $4, 5, 10, 7, 2, 2, 6, 10, 7, 2$  
 > Se desea saber si hay un cambio en el número promedio de garrapatas registrado en los caninos debido a la dieta.  
-> **Solución**. La variable aleatoria se trata de un conteo por unidad de muestreo, que ya hemnos estudiado corresponde bien a una ley de probabilidad Poisson. Para cada grupo, se puede calcular el valor promedio observado de garrapatas por individuos, obteniendo $\hat{\lambda}_C = 14{,}8$ y $\hat{\lambda}_T = 5{,}5$ (el cual recordamos corresponde también a la varianza).  
+> **Solución**. La variable aleatoria se trata de un conteo por unidad de muestreo, que ya hemos estudiado corresponde bien a una ley de probabilidad Poisson. Para cada grupo, se puede calcular el valor promedio observado de garrapatas por individuos, obteniendo $\hat{\lambda}_C = 14{,}8$ y $\hat{\lambda}_T = 5{,}5$ (el cual recordamos corresponde también a la varianza).  
 > Podemos obtener entonces intervalos del 95% de confianza para ambos parámetros siguiendo el procedimiento del ejemplo anterior. Construimos el estadístico:
 > $$\hat{Z} = \frac{\hat{\lambda}_j - \lambda}{\sqrt{\hat{\lambda}_j/n}}$$
 > donde $j = C$ o $j = T$, dependiendo del grupo. 
-> Y luego, aplicando TLC, sabemos que $\hat{Z}$ sigue una distribcuión normal estándar. Sin embargo, el tamaño de la muestra es bastante pequeña por lo que es conveniente usar la distribución $t$-Student para compensar esta falta de certeza en el valor del parámetro. 
+> Y luego, aplicando TLC, sabemos que $\hat{Z}$ sigue una distribución normal estándar. Sin embargo, el tamaño de la muestra es bastante pequeña por lo que es conveniente usar la distribución $t$-Student para compensar esta falta de certeza en el valor del parámetro. 
 > De forma que intervalo del 95% de confianza  para el $\lambda_C$ (el control) es:
 > $$
 \begin{aligned}
@@ -338,12 +338,12 @@ trt_garra <- c(4, 5, 10, 7, 2, 2, 6, 10, 7, 2)
   `r round(mean(control_garra) - qt(.975, 9) * sqrt(mean(control_garra) / 10), 2)` < &\lambda_C < `r round(mean(control_garra) + qt(.975, 9) * sqrt(mean(control_garra) / 10), 2)` 
 \end{aligned}
 $$
-> y para el tratameinto: 
+> y para el tratamiento: 
 > $$`r round(mean(trt_garra) - qt(.975, 9) * sqrt(mean(trt_garra) / 10), 2)` < \lambda_T < `r round(mean(trt_garra) + qt(.975, 9) * sqrt(mean(trt_garra) / 10), 2)`$$
-> Puede observar que los intervalos para el número pormedio de garrapatas por perro del control y el tratamiento no se solapan en absoluto: el control parece indicar que hay aproximadamente entre $2$ y $3$ veces más garrapatas en el control que en el tratamiento con la nueva dieta. 
+> Puede observar que los intervalos para el número promedio de garrapatas por perro del control y el tratamiento no se solapan en absoluto: el control parece indicar que hay aproximadamente entre $2$ y $3$ veces más garrapatas en el control que en el tratamiento con la nueva dieta. 
 > Esto apoya la conclusión de que la dieta es efectiva en controlar los ectoparásitos es los caninos con un nivel de certeza del 95%.  
 > 
-> Si queremos ser más explicitos, podriamos incluso construir un intervalo de confianza para la diferencia en el número promedio de garrapatas por canino. Para ello, podemos seguir la construcción del estadístico usada anteriormente reconociendo que ahora $\theta = \lambda_T - \lambda_C$, diferencia que denotaremos como $D$. De esta forma:
+> Si queremos ser más explícitos, podríamos incluso construir un intervalo de confianza para la diferencia en el número promedio de garrapatas por canino. Para ello, podemos seguir la construcción del estadístico usada anteriormente reconociendo que ahora $\theta = \lambda_T - \lambda_C$, diferencia que denotaremos como $D$. De esta forma:
 > $$\hat{t} = \frac{\hat{D} - D}{SE(\hat{D})} = \frac{(\hat{\lambda}_T - \hat{\lambda}_C) - (\lambda_T - \lambda_C)}{SE(\hat{D})}$$
 > El valor de $SE(\hat{D})$ se calcula notando que, por los intervalos individuales, la varianza del control parece ser mayor que la del tratamiento. Entonces, podemos usar la teoría de propagación de errores como:
 > $$SE(\hat{D}) = \sqrt{\frac{\hat{\lambda}_T}{10} + \frac{\hat{\lambda}_C}{10}} = `r round(sqrt(mean(control_garra) / 10 + mean(trt_garra) / 10), 3)`$$
@@ -351,7 +351,7 @@ $$
 > $$t_{\nu, \alpha/2} < \frac{`r round(mean(trt_garra) - mean(control_garra), 2)` - (\lambda_T - \lambda_C)}{`r round(sqrt(mean(control_garra) / 10 + mean(trt_garra) / 10), 3)`} < t_{\nu, 1 - \alpha/2}$$
 > donde el valor de $\nu$, los grados de libertad, viene dado por la expresión:
 > $$\nu=\frac{(\hat{\lambda}_T/n_T + \hat{\lambda}_C/n_C)^2}{[(\hat{\lambda}_T/n_T)^2/(n_T - 1) + (\hat{\lambda}_C/n_C)^2/(n_C - 1)]} = \frac{2{,}03^2}{`r round((1.48 ** 2 / 9 + 0.55 ** 2 / 9), 3)`} = `r round(2.03 ** 2 / (1.48 ** 2 / 9 + 0.55 ** 2 / 9), 2)`$$
-> De esta forma, se tiene que el cuantil $1 - \alpha/2$ de la distribución $t$ con `r round(2.03 ** 2 / (1.48 ** 2 / 9 + 0.55 ** 2 / 9), 2)` grados de libertad es `r round(qt(.975, 2.03 ** 2 / (1.48 ** 2 / 9 + 0.55 ** 2 / 9)), 2)` y, luego de arreglar los terminos en la expresión del intervalo, se obtiene el intervalo de confianza del 95%:
+> De esta forma, se tiene que el cuantil $1 - \alpha/2$ de la distribución $t$ con `r round(2.03 ** 2 / (1.48 ** 2 / 9 + 0.55 ** 2 / 9), 2)` grados de libertad es `r round(qt(.975, 2.03 ** 2 / (1.48 ** 2 / 9 + 0.55 ** 2 / 9)), 2)` y, luego de arreglar los términos en la expresión del intervalo, se obtiene el intervalo de confianza del 95%:
 > $$`r round(mean(trt_garra) - mean(control_garra) - qt(.975, 2.03 ** 2 / (1.48 ** 2 / 9 + 0.55 ** 2 / 9)) * sqrt(mean(control_garra) / 10 + mean(trt_garra) / 10), 2)` < \lambda_T - \lambda_C < `r round(mean(trt_garra) - mean(control_garra) + qt(.975, 2.03 ** 2 / (1.48 ** 2 / 9 + 0.55 ** 2 / 9)) * sqrt(mean(control_garra) / 10 + mean(trt_garra) / 10), 2)`$$
 > Notamos que el intervalo no contiene al cero, por lo que podemos concluir _con un 95% de confianza que el número promedio de garrapatas por canino es distinto en el tratamiento y el control_. Además, como los límites son ambos negativos, podemos concluir también que el tratamiento con la nueva dieta resulta en un número de garrapatas por canino menor que el encontrado en el control sin la dieta. 
 
@@ -381,9 +381,9 @@ Ahora, repasamos un ejemplo que involucra un parámetro de una binomial.
 > Un grupo de pinzones murió durante la sequía y otro grupo sobrevivió. Los datos de supervivientes y muertos de un total de $36$ pinzones fueron los siguientes:  
 > Machos: $20$ muertos y $27$ supervivientes.  
 > Hembras: $10$ muertos y $9$ supervivientes.  
-> Se desea saber si hay una diferencia en la proporción de pinzones supervivientes a la sequía con respecto al sexo, es decir, si la porporción de supervivientes machos es la misma que la porporción de supervivientes hembras. 
+> Se desea saber si hay una diferencia en la proporción de pinzones supervivientes a la sequía con respecto al sexo, es decir, si la proporción de supervivientes machos es la misma que la proporción de supervivientes hembras. 
 > 
-> **Solución**. Si definimos la v. a. binomial superviviente como $1$ si el pinzón sobrevivió a la sequia, y $0$ de otro modo, entonces vemos que la variable, para machos y hembras, sigue una distribución binomial cuya probabilidad de éxito (supervivencia) $\pi_i$ ($i = M$ o $H$, dependiendo de si consideramos machos o hembras, respectivamente) puede estimarse usando la proporción observada de exitos:
+> **Solución**. Si definimos la v. a. binomial superviviente como $1$ si el pinzón sobrevivió a la sequía, y $0$ de otro modo, entonces vemos que la variable, para machos y hembras, sigue una distribución binomial cuya probabilidad de éxito (supervivencia) $\pi_i$ ($i = M$ o $H$, dependiendo de si consideramos machos o hembras, respectivamente) puede estimarse usando la proporción observada de éxitos:
 > $$\begin{cases}
   p_M = \frac{27}{47} & \text{para los machos} \\
   p_H = \frac{9}{19} & \text{para las hembras}
@@ -394,31 +394,31 @@ Ahora, repasamos un ejemplo que involucra un parámetro de una binomial.
 > $$SE(p_H) = `r round(sqrt(9/19 * (1 - 9/19) / 19), 3)`$$
 > Primero, veamos como lucen intervalos de confianza del 95% para cada una de estas proporciones. Aplicando TLC, sabemos que $p$ tiene una distribución normal, por lo que se escribe el estadístico
 > $$\hat{t} = \frac{p_i - \pi_i}{SE(p_i)}$$
-> para machos, $i = M$, y hembras, $i= H$. Note que usamos una distribución $t$, dado que el grupo con el $n$ más pequeño es menor que $30$ (nuestro limite para considerar aplicable el TLC con una normal estándar). De esta forma, procedemos de la manera como ya hemos visto y obtenemos los intervalos (verifique los resultados usted mismo):
+> para machos, $i = M$, y hembras, $i= H$. Note que usamos una distribución $t$, dado que el grupo con el $n$ más pequeño es menor que $30$ (nuestro límite para considerar aplicable el TLC con una normal estándar). De esta forma, procedemos de la manera como ya hemos visto y obtenemos los intervalos (verifique los resultados usted mismo):
 > $$`r round(27/47 - qt(.975, 46) * sqrt(27/47 * (1 - 27/47) / 47), 3)` < \pi_M < `r round(27/47 + qt(.975, 46) * sqrt(27/47 * (1 - 27/47) / 47), 3)`$$
 > y
 > $$`r round(9/19 - qt(.975, 18) * sqrt(9/19 * (1 - 9/19) / 19), 3)` < \pi_H < `r round(9/19 + qt(.975, 18) * sqrt(9/19 * (1 - 9/19) / 19), 3)`$$
 > Notamos dos cosas en los intervalos:  
 > 
-> * La primera es que el intervalo para las hembras es de mayor longitud que el de los machos. Esto es asi, ya que el $n$ usado para estimar los limites del intervalo es mayor en los machos que en las hembras. Esto se traduce en que tenemos una mayor certidumbre sobre el valor del parámetro para los machos que para las hembras.
-> * Segundo, notamos que ambos intervalos contienen el $0{,}5$. Esto queire decir, que la proporción observada no se puede considerar distinta de $0{,}5$ con un 95% de confianza. Biologicamente, concluiriamos que la sequía elimino a la mitad de los individuos machos y hembras del grupo de pinzones. 
-> * Tercero, como ambos intervalos contienen el $0{,}5$, parece posible que estas proporciones no difieran significativamente entre si. 
+> * La primera es que el intervalo para las hembras es de mayor longitud que el de los machos. Esto es así, ya que el $n$ usado para estimar los límites del intervalo es mayor en los machos que en las hembras. Esto se traduce en que tenemos una mayor certidumbre sobre el valor del parámetro para los machos que para las hembras.
+> * Segundo, notamos que ambos intervalos contienen el $0{,}5$. Esto quiere decir, que la proporción observada no se puede considerar distinta de $0{,}5$ con un 95% de confianza. Biológicamente, concluiríamos que la sequía elimino a la mitad de los individuos machos y hembras del grupo de pinzones. 
+> * Tercero, como ambos intervalos contienen el $0{,}5$, parece posible que estas proporciones no difieran significativamente entre sí. 
 > 
 > El ultimo inciso, lo podemos verificar construyendo un intervalo para la diferencia en supervivencia de los pinzones machos y hembras en un solo intervalo. 
 > Primero escribimos la diferencia como $\Delta = \pi_M - \pi_H$, la cual se estima por $\hat{\Delta} = p_M - p_H$. De esta forma, podemos escribir el estadístico como:
 > $$\frac{\hat{\Delta} - \Delta}{SE(\hat{\Delta})} = \frac{(p_M - p_H) - (\pi_M - \pi_H)}{SE(\hat{\Delta})}$$
-> la cual, ya sabemos, se distribuye como una norml estándar. Se tiene que:
+> la cual, ya sabemos, se distribuye como una normal estándar. Se tiene que:
 > $$SE(\hat{\Delta}) = \sqrt{\frac{p_{M} (1 - p_{M})}{n_M} + \frac{p_{H} (1 - p_{H})}{n_H}}$$
-> Introduciendo esta expresión en el estadístico y usando la distribución muestral para el intervalo, obtenemos (verifiquelo!):
+> Introduciendo esta expresión en el estadístico y usando la distribución muestral para el intervalo, obtenemos (verifíquelo!):
 > $$`r round((27/47 - 9/19) - qnorm(.975) * sqrt(27/47 * (1 - 27/47) / 47 + 9/19 * (1 - 9/19) / 19), 3)` < \pi_M - \pi_H < `r round((27/47 - 9/19) + qnorm(.975) * sqrt(27/47 * (1 - 27/47) / 47 + 9/19 * (1 - 9/19) / 19), 3)`$$
-> Noten de inmediato que este intervalo contiene al cero. Es por ello que podemos concluir que, con un 95% de confianza, no hay diferencias en la porporción de hembras y machos supevivientes a la sequía. 
+> Noten de inmediato que este intervalo contiene al cero. Es por ello que podemos concluir que, con un 95% de confianza, no hay diferencias en la proporción de hembras y machos supervivientes a la sequía. 
 
-Los ejemplos anteriores sirven para ver como realizar inferencia por medio de intervalos de confianza en medidas de locación para una y dos muestras independientes. 
+Los ejemplos anteriores sirven para ver cómo realizar inferencia por medio de intervalos de confianza en medidas de locación para una y dos muestras independientes. 
 
-Cuando las muestras son dependientes, como cuando mides antes y despues de aplicar un tratamiento experimental sobre los mismo individuos, el diseño se dice que es de medidas repetidas. 
-En estos casos, se puede usar la diferencia entre ambos estados (antes y después) como um estadístico y tratarlo como si se tratara de una sola muestra (vea el problema 3).
+Cuando las muestras son dependientes, como cuando mides antes y después de aplicar un tratamiento experimental sobre los mismos individuos, el diseño se dice que es de medidas repetidas. 
+En estos casos, se puede usar la diferencia entre ambos estados (antes y después) como un estadístico y tratarlo como si se tratara de una sola muestra (vea el problema 3).
 
-Ahora, veremos como realizar inferencia por intervalos de confianza, pero sobre la varianza.
+Ahora, veremos cómo realizar inferencia por intervalos de confianza, pero sobre la varianza.
 
 ### Inferencia sobre la varianza.
 
@@ -426,7 +426,7 @@ Como vimos antes, las inferencias sobre la varianza se pueden hacer usando como 
 
 > _Ejemplo_. En un estudio de los efectos sobre los bebés que tiene el consumo de cocaína durante el embarazo, se obtuvieron los siguientes datos muestrales de pesos al nacer: $n=190$, $\bar{x} = 2700$ g, $S = 645$ g (según datos de _Cognitive Outcomes of Preschool Children with Prenatal Cocaine Exposure_, de Singer _et al_., _Journal of American Medical Association_, vol. 291, núm. 20). Utilice los datos muestrales para construir un estimado del intervalo de confianza del 95% para la desviación estándar de todos los pesos al nacer de hijos de madres que consumieron cocaína durante el embarazo. Con base en el resultado, ¿parece que la desviación estándar difiere de la desviación estándar de $696$ g de los pesos al nacer de hijos de madres que no consumieron cocaína durante el embarazo?
 > 
-> **Solución**. Antes ya vismo que un estadistico apropiado para realizar inferencia es:
+> **Solución**. Antes ya vimos que un estadístico apropiado para realizar inferencia es:
 > $$X^2 = \frac{(n-1)S^2}{\sigma^2} \sim \chi^2(n-1)$$
 > Como vemos, dado que conocemos la distribución muestral, podemos usarla para construir el intervalo como:
 > $$P(\chi^2_{\alpha/2, n-1} < X^2 < \chi^2_{1-\alpha/2, n-1}) = 1 - \alpha$$
@@ -443,11 +443,11 @@ $$
 > $$\frac{(189)(645\text{ g})^2}{\chi^2_{1 - \alpha/2, 189}} < \sigma^2 < \frac{(189)(645\text{ g})^2}{\chi^2_{\alpha/2, 189}}$$
 > Como $\alpha=0{,}05$, entonces $\alpha/2=0{,}025$, y se puede saber el valor del estadístico asociado a este cuantil usando una tabla de distribución chi-cuadrado, o usando `qchisq(.025, 189)`. En este caso, $\chi^2_{\alpha/2, 189} = `r round(qchisq(.025, 189), 2)`$. Se procede de igual manera para el otro cuantil y se obtiene el intervalo:
 > $$`r round(189 * (645 ** 2) / qchisq(.975, 189), 2)` < \sigma^2 < `r round(189 * (645 ** 2) / qchisq(.025, 189), 2)`$$
-> De forma que el intervalo para la desviación estándar se obtiene sacado raíz cuadrada:
+> De forma que el intervalo para la desviación estándar se obtiene sacando raíz cuadrada:
 > $$`r round(sqrt(189 * (645 ** 2) / qchisq(.975, 189)), 2)` \text{ g} < \sigma < `r round(sqrt(189 * (645 ** 2) / qchisq(.025, 189)), 2)` \text{ g}$$
-> Ahora, tratemos de responder la pregunta de la investigación ¿difiere la desviación estándar de los pesos de bebés de madres expuestas a cocaína de la desviación estándar de $696$ g de bebés de madres que no se expusieron a esa droga? El intervalo de confianza construido incluye dentro de su longitud el valor de $696$ g, por lo que no podemos decir que la desviación estándar de los pesos de los bebés de madres expuestas a cocaína difiere del valor de $696$ g de manera significativa. Esto significa que la variavilidad de los pesos de bebés es la misma sea que provengan de madres expuestas a cocaína o no.
+> Ahora, tratemos de responder la pregunta de la investigación ¿difiere la desviación estándar de los pesos de bebés de madres expuestas a cocaína de la desviación estándar de $696$ g de bebés de madres que no se expusieron a esa droga? El intervalo de confianza construido incluye dentro de su longitud el valor de $696$ g, por lo que no podemos decir que la desviación estándar de los pesos de los bebés de madres expuestas a cocaína difiere del valor de $696$ g de manera significativa. Esto significa que la variabilidad de los pesos de bebés es la misma sea que provengan de madres expuestas a cocaína o no.
 
-Ahira veamos un ejemplo aplicado a la comparación de varianzas de dos poblaciones distintas.
+Ahora veamos un ejemplo aplicado a la comparación de varianzas de dos poblaciones distintas.
 
 ```{r, echo = FALSE}
 
@@ -464,7 +464,7 @@ sigma_sq_males <- 105.9
 
 > Se midieron los tamaños de $30$ cráneos de gorilas hembras y $29$ machos (datos de O'Higgins, 1989). La varianza de las hembras es $39{,}7$, mientras que la varianza de los machos es $105{,}9$. ¿Son las varianzas de los tamaños de cráneos de machos y hembras iguales?
 >
-> **Solución**. Más arriba ya vimos que cuando queremos comaprar dos varianzas, podemos usar el cociente entre los estadísticos construidos para estos que siguen una distribución Chi-cuadrado:
+> **Solución**. Más arriba ya vimos que cuando queremos comparar dos varianzas, podemos usar el cociente entre los estadísticos construidos para estos que siguen una distribución Chi-cuadrado:
 > $$\hat{F} = \frac{\sigma_H^2 S_M^2}{\sigma_M^2 S_H^2} \sim F(n_1 -1, n_2 - 1)$$
 > de forma que podemos usar esta distribución muestral para construir el intervalo como:
 > $$P(f_{\alpha/2, n_1-1, n_2-1} < F < f_{1 - \alpha/2, n_1-1, n_2-1}) = 1 - \alpha$$
@@ -480,72 +480,8 @@ $$
 > $$\frac{1}{f_{0{,}975, 29, 28}}\frac{105{,}9}{39{,}7} < \frac{\sigma_M^2}{\sigma_H^2} < \frac{1}{f_{0{,}025, 29, 28}}\frac{105{,}9}{39{,}7}$$
 > Para la distribución $F$, $f_{0{,}025, 29, 28} = `r round(qf(.025, 29, 28), 2)`$. Se procede de igual manera para el otro cuantil y se obtiene el intervalo:
 > $$`r round(105.9 / 39.7 / qf(.975, 29, 28), 2)` < \frac{\sigma_M^2}{\sigma_H^2} < `r round(105.9 / 39.7 / qf(.025, 29, 28), 2)`$$
-> ¿Qué nos dice el intervalo sobre las varianzas de los cráneos de gorilas machos y hembras? Si las varianszas fueran iguales, entonces el cociente de las varianzas sería igual a $1$. Notamos que el $1$ no se encuentra dentro del intervalo, por lo que podemos decir, con un $95$% de confianza, que la varinaza de los cráneos de gorilas machos y hembras son distintas.  
+> ¿Qué nos dice el intervalo sobre las varianzas de los cráneos de gorilas machos y hembras? Si las varianzas fueran iguales, entonces el cociente de las varianzas sería igual a $1$. Notamos que el $1$ no se encuentra dentro del intervalo, por lo que podemos decir, con un $95$% de confianza, que la varianza de los cráneos de gorilas machos y hembras son distintas.  
 > No solo eso, sino que además, como los límites del intervalo son mayores a $1$, entonces la varianza de los cráneos de los gorilas machos es mayor que la varianza de los cráneos de gorilas hembras. 
-
-<!---
-## Intervalos Unilaterales.
-
-Simplemente se prescinde de uno de las desigualdades. Pueden ser intervalos a la derecha:
-
-$$P(Z > z_{1 - \alpha}) = 1 - \alpha$$
-
-o intervalos a la izquierda:
-
-$$P(Z < z_{\alpha}) = 1 - \alpha$$
-
-```{r, echo=FALSE, fig.height=4}
-cowplot::plot_grid(
-  ggplot(dist_norm, aes(x=q, y=p)) +
-  geom_line(colour="#4F709C", size=1.5) +
-  geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(-3.5, 1.96)) +
-  labs(x = "z", y = "") +
-  scale_y_continuous(breaks = NULL) +
-  scale_x_continuous(
-    breaks = 1.96,
-    labels=latex2exp::TeX("$z_{\\alpha}$")) +
-  theme_light() + 
-  theme(
-    axis.line=element_blank(),
-    panel.grid=element_blank()
-  ),
-  ggplot(dist_norm, aes(x=q, y=p)) +
-    geom_line(colour="#4F709C", size=1.5) +
-    geom_area(stat = "function", fun = dnorm, fill = "#213555", xlim = c(-1.96, 3.5)) +
-    labs(x = "z", y = "") +
-    scale_y_continuous(breaks = NULL) +
-    scale_x_continuous(
-      breaks = -1.96,
-      labels=latex2exp::TeX("$-z_{\\alpha}$")) +
-    theme_light() + 
-    theme(
-      axis.line=element_blank(),
-      panel.grid=element_blank()
-  ), nrow=1)
-```
-
-Los intervalos de confianza unilaterales suelen surgir en casos en los que se tiene una idea de la direción en la que irá el efecto de un tratamiento o el fenómeno experimental en estudio. Por ejemplo, si decidimos probar un biofertilizante que esperamos tenga un efecto mejorando el rendimiento de cultivos, estaríamos esperando entonces obtener un rendimiento mayor en la productividad de los cultivos usados como unidad de muestreo y podrúamos construir un intervalo de confianza del $100(1 - \alpha)$% de obtener un rendimiento igual o mayor al límite inferior obtenido.  
-Note en la expresión anterior que el cuantil en este caso sería $z_{\alpha}$, el cual es mayor que $z_{\alpha/2}$. Esto quiere decir que el límite a la izquierda se estrecho y por lo tantop ahora hemos ganado más información sobre el verdadero valor del parámetro.
-
-Veamos un ejemplo.
-
-> En nuestro ejemplo sobre el efecto de una dieta con cierto fármaco en caninos, obtuvimos el siguiente intervalo para la diferecnia entre el número de garrapatas por perro entre el tratamieto de la dieta y el control con alimentación similar, pero sin el fármaco:
-> $$`r round(mean(trt_garra) - mean(control_garra) - qt(.975, 2.03 ** 2 / (1.48 ** 2 / 9 + 0.55 ** 2 / 9)) * sqrt(mean(control_garra) / 10 + mean(trt_garra) / 10), 2)` < \lambda_T - \lambda_C < `r round(mean(trt_garra) - mean(control_garra) + qt(.975, 2.03 ** 2 / (1.48 ** 2 / 9 + 0.55 ** 2 / 9)) * sqrt(mean(control_garra) / 10 + mean(trt_garra) / 10), 2)`$$
-> Este es un intervalo bidireccional dado que existen dos límites: uno inferior y otro superior. Sin embargo, dado que se espera que la dieta disminuya el número de garrapatas por perro, entonces de antemano se espera que la diferencia $\lambda_T - \lambda_C$ sea menor a cero, y por lo tanto un intervalo unidireccional sería más apropiado.  
-> Escribimos entonces, para un 95% de confianza:
-> $$P(Z < z_{0{,}95}) = 0{,}95$$
-> Sustituyendo:
-> $$
-\begin{aligned}
-  P\left(Z > z_{0{,}95}\right) &= P\left(\frac{(`r mean(trt_garra) - mean(control_garra)`) - (\lambda_T - \lambda_C)}{`r round(sqrt(mean(control_garra) / 10 + mean(trt_garra) / 10), 3)`} < 1{,}64\right) = 0{,}95 \\
-    &= P\left((`r mean(trt_garra) - mean(control_garra)`) - (\lambda_T - \lambda_C) < 1{,}64 \times `r round(sqrt(mean(control_garra) / 10 + mean(trt_garra) / 10), 3)`\right) = 0{,}95 \\
-    &= P\left(- (\lambda_T - \lambda_C) < (`r - mean(trt_garra) + mean(control_garra)`) + 1{,}64 \times `r round(sqrt(mean(control_garra) / 10 + mean(trt_garra) / 10), 3)`\right) = 0{,}95 \\
-    &= P\left(\lambda_T - \lambda_C > (`r mean(trt_garra) - mean(control_garra)`) - 1{,}64 \times `r round(sqrt(mean(control_garra) / 10 + mean(trt_garra) / 10), 3)`\right) = 0{,}95 \\
-    &= P\left(\lambda_T - \lambda_C > `r round(mean(trt_garra) - mean(control_garra) - 1.64 * sqrt(mean(control_garra) / 10 + mean(trt_garra) / 10), 2)`\right) = 0{,}95 
-\end{aligned}
-$$
-
----> 
 
 ## Ejercicios.
 
@@ -555,9 +491,9 @@ $$
 air_quality <- c(5.40, 1.10, 0.42, 0.73, 0.48, 1.10)
 ```
 
-2. Se ha realizado un estudio sobre la velocidad en vuelo de diversas especies de pájaros. El propósito era comparar las velocidades del pelícano pardo y el ostrero americano. Se cronometró una muestra de $9$ pajaros pardos y $12$ pajaros ostreros, volando con el viento de costado con una velocidad de viento de $5$ a $8$ millas h${}^{-1}$, y se obtuvo que el pájaro pardo vuela, en promedio, a $26{,}05 \pm 6{,}34$ millas h${}^{-1}$, y el ostrero a $30{,}19 \pm 3{,}20$ millas h${}^{-1}$. Construya un intervalo de confianza del 95% para la proporción de varianzas.
+2. Se ha realizado un estudio sobre la velocidad en vuelo de diversas especies de pájaros. El propósito era comparar las velocidades del pelícano pardo y el ostrero americano. Se cronometró una muestra de $9$ pájaros pardos y $12$ pájaros ostreros, volando con el viento de costado con una velocidad de viento de $5$ a $8$ millas h${}^{-1}$, y se obtuvo que el pájaro pardo vuela, en promedio, a $26{,}05 \pm 6{,}34$ millas h${}^{-1}$, y el ostrero a $30{,}19 \pm 3{,}20$ millas h${}^{-1}$. Construya un intervalo de confianza del 95% para la proporción de varianzas.
 
-3. Un farmaco aun más eficiente contra ectoparásitos ha sido desarrollado. Al momento de realizar el experimento para probar su efectividad en caninos, solo se contaban con $14$ perros. Entonces, en lugar de dividir al conjunto en dos grupos, se decidió  que cada perro fuera su propio control, midiendo el numero de garrapatas antes de darles el medicamento y despues de pasar un tiempo con el mismo, observando el cambio en el numero de garrapatas de cada individuo. Los resultados se muestran en la tabla a continuacion. Construya un intervalo de confianza apropiado y uselo para determinar si el nuevo medicamento es capaz de disminuir el número de ectoparásitos en caninos.
+3. Un fármaco aún más eficiente contra ectoparásitos ha sido desarrollado. Al momento de realizar el experimento para probar su efectividad en caninos, solo se contaban con $14$ perros. Entonces, en lugar de dividir al conjunto en dos grupos, se decidió  que cada perro fuera su propio control, midiendo el número de garrapatas antes de darles el medicamento y después de pasar un tiempo con el mismo, observando el cambio en el número de garrapatas de cada individuo. Los resultados se muestran en la tabla a continuación. Construya un intervalo de confianza apropiado y úselo para determinar si el nuevo medicamento es capaz de disminuir el número de ectoparásitos en caninos.
 
 ```{r, echo = FALSE}
 tibble(
@@ -567,12 +503,12 @@ tibble(
 kbl()
 ```
 
-4. Se tiene un lote de semillas certificadas que se usaran en un ensayo de eficacia de un biocontrolador que tiene propiedades de potenciacion del crecimiento. Previo al ensayo, se desea determinar el porcentaje de germinacion del lote, para asi tener información suficiente para diseñar el ensayo de eficacia. Para esto se decide sembrar 30 semillas en bolsas de vivero con tierra comun, regandolas con agua cada día por 15 días, resultando en un procentaje de germinacion del 70%. Construya un intervalo de confianza del 95% para el porcentaje de germinación. 
- Se tiene otro lote de semillas más recientes, cuyo porcentaje de germinación fue del 88% luego de un ensayo con 25 semillas. Realice un intervalonde confianza para la diferencia entre el procentaje de germinacion del nuevo lote con respecto al lote viejo. Concluya sobre qué semillas usaría para el ensayo de eficacia y por qué.
+4. Se tiene un lote de semillas certificadas que se usaran en un ensayo de eficacia de un biocontrolador que tiene propiedades de potenciación del crecimiento. Previo al ensayo, se desea determinar el porcentaje de germinación del lote, para así tener información suficiente para diseñar el ensayo de eficacia. Para esto se decide sembrar 30 semillas en bolsas de vivero con tierra común, regándolas con agua cada día por 15 días, resultando en un porcentaje de germinación del 70%. Construya un intervalo de confianza del 95% para el porcentaje de germinación. 
+ Se tiene otro lote de semillas más recientes, cuyo porcentaje de germinación fue del 88% luego de un ensayo con 25 semillas. Realice un intervalo de confianza para la diferencia entre el porcentaje de germinación del nuevo lote con respecto al lote viejo. Concluya sobre qué semillas usaría para el ensayo de eficacia y por qué.
 
-5. Luego de varios meses de investigación y modificaciones al proceso de producción, usted a logrado aumentar la cantidad de proteína celular obtenida de biorreactores sumergidos de _A. oryzae_, donde inicialmente se tenia un rendimiento de $8 \pm 3$ kg L${}^{-1}$ (basado en una muestra de 3 procesos seguidos durante esos meses de pruebas). Medidas obtenidas para el nuevo proceso ($n=3$) muestran un incremento en la producción a $11{,}5 \pm 5$ kg L${}^{-1}$ (asuma que las medidas de dispersión reportada corresponden a desviaciones estándar). Construya IC95% para las desviaciones estándar de ambos procesos y comente sobre los resultados ¿Cree usted adecuado el adoptar el nuevo prpceso productivo? Construya un IC95% para la proporción de varianzas de ambos procesos y comente los resultados ¿Cuáles cree usted serían los pasos siguientes a seguir para aumentar la producción de proteína celular si se desea adoptar el segundo proceso? 
+5. Luego de varios meses de investigación y modificaciones al proceso de producción, usted ha logrado aumentar la cantidad de proteína celular obtenida de biorreactores sumergidos de _A. oryzae_, donde inicialmente se tenía un rendimiento de $8 \pm 3$ kg L${}^{-1}$ (basado en una muestra de 3 procesos seguidos durante esos meses de pruebas). Medidas obtenidas para el nuevo proceso ($n=3$) muestran un incremento en la producción a $11{,}5 \pm 5$ kg L${}^{-1}$ (asuma que las medidas de dispersión reportada corresponden a desviaciones estándar). Construya IC95% para las desviaciones estándar de ambos procesos y comente sobre los resultados ¿Cree usted adecuado el adoptar el nuevo proceso productivo? Construya un IC95% para la proporción de varianzas de ambos procesos y comente los resultados ¿Cuáles cree usted serían los pasos siguientes a seguir para aumentar la producción de proteína celular si se desea adoptar el segundo proceso? 
 
-6. Un investigador busca poder inducir la formación de callos a partir de semillas de moringa para la obtención de metabolitos secundarios de interés farmaceutico. El trabajo para poder obtener un primer biorrecator piloto de callos es largo y requiere de la caracterizacion del proceso de inducción. Uno de los pasos requiere el contabilizar el número de aberraciones cromosómicas por célula que aparecen como consecuencia del tratamiento con los factores de crecimiento (FC) usados. Luego de inducir la callogénesis usando dos concnetraciones de FC (una alta y otra baja), se obtuvieron los siguientes resultados:  
+6. Un investigador busca poder inducir la formación de callos a partir de semillas de moringa para la obtención de metabolitos secundarios de interés farmacéutico. El trabajo para poder obtener un primer biorreactor piloto de callos es largo y requiere de la caracterización del proceso de inducción. Uno de los pasos requiere el contabilizar el número de aberraciones cromosómicas por célula que aparecen como consecuencia del tratamiento con los factores de crecimiento (FC) usados. Luego de inducir la callogénesis usando dos concentraciones de FC (una alta y otra baja), se obtuvieron los siguientes resultados:  
  Control: `r paste(rpois(9, 5), collapse=",")`.  
  FC Baja: `r paste(rpois(11, 8), collapse=",")`.  
  FC Alta: `r paste(rpois(10, 13), collapse=",")`.  

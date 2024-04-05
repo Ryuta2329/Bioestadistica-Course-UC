@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Otros Teoremas de Probabilidades. | Bioestadistitica-UC.knit</title>
+  <title>12.3 \(1 - \beta = P(\text{Rechazar }H_0 \vert H_1\text{ cierta})\) | Bioestadistitica-UC.knit</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Otros Teoremas de Probabilidades. | Bioestadistitica-UC.knit" />
+  <meta property="og:title" content="12.3 \(1 - \beta = P(\text{Rechazar }H_0 \vert H_1\text{ cierta})\) | Bioestadistitica-UC.knit" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Otros Teoremas de Probabilidades. | Bioestadistitica-UC.knit" />
+  <meta name="twitter:title" content="12.3 \(1 - \beta = P(\text{Rechazar }H_0 \vert H_1\text{ cierta})\) | Bioestadistitica-UC.knit" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="combinatoria..html"/>
-<link rel="next" href="estadística-descriptiva..html"/>
+<link rel="prev" href="pz-ge-hatz.html"/>
+<link rel="next" href="otros-ejemplos..html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -260,17 +260,119 @@ Proudly published with bookdown</a></li>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="otros-teoremas-de-probabilidades." class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">4</span> Otros Teoremas de Probabilidades.<a href="otros-teoremas-de-probabilidades..html#otros-teoremas-de-probabilidades." class="anchor-section" aria-label="Anchor link to header"></a></h1>
-
+<div id="beta-ptextrechazar-h_0-vert-h_1text-cierta" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> <span class="math inline">\(1 - \beta = P(\text{Rechazar }H_0 \vert H_1\text{ cierta})\)</span><a href="beta-ptextrechazar-h_0-vert-h_1text-cierta.html#beta-ptextrechazar-h_0-vert-h_1text-cierta" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="errores-de-decisión." class="section level3 hasAnchor" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> Errores de Decisión.<a href="beta-ptextrechazar-h_0-vert-h_1text-cierta.html#errores-de-decisión." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Como ya hemos mencionado, desde que iniciamos el estudio de la inferencia estadística, hemos dicho que en un contexto estadístico no hay verdades absolutas.
+Todas nuestras conclusiones acerca de un fenómeno de estudio se hacen tomando en cuenta cierta incertidumbre inherente al experimento y que debemos cuantificar de alguna manera.</p>
+<p>Al reportar estas conclusiones, y los resultados de nuestros análisis, debemos estar conscientes y controlar, en la medida de lo posible, dos tipos de errores en la toma de decisiones, los cuales se resumen bien en la tabla <a href="#fig:errores-decision"><strong>??</strong></a>.</p>
+<table>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Estado Real
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(H_0\text{ cierta.}\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(H_0\text{ falsa.}\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+No rechazar <span class="math inline">\(H_0\)</span>
+</td>
+<td style="text-align:left;">
+Decisión Correcta
+</td>
+<td style="text-align:left;">
+Error Tipo II
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rechazar <span class="math inline">\(H_0\)</span>
+</td>
+<td style="text-align:left;">
+Error Tipo I
+</td>
+<td style="text-align:left;">
+Decisión Correcta
+</td>
+</tr>
+</tbody>
+</table>
+<p>Como podemos ver en la tabla, si el verdadero estado del experimento es que la hipótesis nula es cierta y, con la evidencia recolectada, decidimos no rechazar <span class="math inline">\(H_0\)</span>, entonces no tenemos mayor problema ya que habremos llegado a la decisión correcta. De la misma forma ocurre si el estado del experimento es que <span class="math inline">\(H_1\)</span> es cierta y decidimos rechazar <span class="math inline">\(H_0\)</span>. El problema surge cuando tomamos decisiones equivocadas, las cuales son de dos tipos.</p>
+<p>Decimos que cometemos <strong>error tipo I</strong> cuando decidimos rechazar la hipótesis nula siendo la hipótesis nula cierta, la cual ocurre con una probabilidad:</p>
+<p><span class="math display">\[P(\text{Rechazar }H_0 \vert H_0 \text{ cierta}) = \alpha\]</span></p>
+<p>En este caso, habremos recolectado una muestra muy desviada de lo esperado solo por azar. Como observamos, esta corresponde al nivel de significancia que establecemos al diseñar el experimento.</p>
+<p>Decimos que cometemos <strong>error tipo II</strong> cuando decidimos mantener la hipótesis nula siendo la alternativa verdadera, lo cual ocurre con probabilidad:</p>
+<p><span class="math display">\[P(\text{No rechazar }H_0 \vert H_1 \text{ cierta}) = \beta\]</span></p>
+<p>En la figura <a href="beta-ptextrechazar-h_0-vert-h_1text-cierta.html#fig:errors">12.2</a> se representan ambos errores gráficamente.</p>
+<div class="figure"><span style="display:block;" id="fig:errors"></span>
+<img src="Bioestadistitica-UC_files/figure-html/errors-1.png" alt="Representación gráfica de los errores de decisión asociados al contraste de hipótesis. A la izquierda el error tipo I y a la derecha el error tipo II." width="960" />
+<p class="caption">
+Figure 12.2: Representación gráfica de los errores de decisión asociados al contraste de hipótesis. A la izquierda el error tipo I y a la derecha el error tipo II.
+</p>
+</div>
+<p>Estos dos tipos de errores son inherentes a cualquier contraste de hipótesis, y los experimentos deben diseñarse de tal forma que pueda controlarse la probabilidad de cometer estos errores, dada la relevancia de las consecuencias que resultan de cometer un error de estos tipos.</p>
+<blockquote>
+<p>Por ejemplo, antiguos estudios muestran que el germicida DDT puede acumularse en el cuerpo. En 1965 la concentración media de DDT en las partes grasas del cuerpo de las personas en Estados Unidos fue de <span class="math inline">\(9\)</span> ppm. Se espera que, como resultado de estrictos controles, esta concentración haya decrecido.
+<span class="math display">\[
+\begin{aligned}
+H_0: &amp; \mu \ge 9\text{ ppm} \\
+H_1: &amp; \mu &lt; 9 \text{ ppm}
+\end{aligned}
+\]</span></p>
+<ul>
+<li>Si rechazamos <span class="math inline">\(H_0\)</span> siendo esta cierta, eso quiere decir que la concentración de DDT es de 9 ppm o mayor pero decidimos que no lo es, por lo que cometemos <em>error tipo I</em>. Debido a esto, pensaríamos que los programas de control han sido efectivo y se tomaría la decisión de seguir gastando dinero en estos, aun cuando no son efectivos en absoluto, retardando la aplicación de nuevos controles que si pudiesen ser efectivos.</li>
+<li>Si fallamos en rechazar <span class="math inline">\(H_0\)</span>, siendo esta falsa, cometemos <em>error tipo II</em>, y concluiríamos que los controles no están siendo efectivos cuando en realidad si lo son. En este caso se desecharía un programa de control exitoso controlando las concentraciones de DDT, en el cual se ha invertido recursos importantes para su aplicación.</li>
+</ul>
+</blockquote>
+<p>El ejemplo anterior pone de manifiesto las consecuencias que pueden resultar de cometer un error.
+Podemos ver que si cometemos error tipo I, podríamos tomar la decisión de seguir con el programa de control, pero como no es efectivo, resultaría en dinero gastado y posiblemente los casos de envenenamiento con DTT seguirían aumentando.
+Si cometemos error tipo II, resultaría en la eliminación de un programa que ha sido exitoso en manejar las cantidades de DDT en el ambiente.
+Notamos que la equivocación por error tipo I es mucho más grave dado que resulta en consecuencias directas a la salud, mientras que la eliminación del programa por error tipo II solo resultaría en la pérdida del dinero invertido.</p>
+<p>En este caso, al diseñar el experimento, el investigador debe estar más interesado en controlar el error tipo I y mantenerlo a un valor de <span class="math inline">\(\alpha\)</span>, y no preocuparse tanto por la probabilidad cometer error tipo II.
+Aunque en teoría esto es cierto, la probabilidad de cometer alguno de los dos errores están relacionados, de tal forma que al disminuir la probabilidad de cometer uno, aumenta la probabilidad de cometer el otro, como se muestra en figura <a href="beta-ptextrechazar-h_0-vert-h_1text-cierta.html#fig:errors-relation">12.3</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:errors-relation"></span>
+<img src="Bioestadistitica-UC_files/figure-html/errors-relation-1.png" alt="Relación entre la probabilidad de cometer error tipo I y error tipo II." width="672" />
+<p class="caption">
+Figure 12.3: Relación entre la probabilidad de cometer error tipo I y error tipo II.
+</p>
+</div>
+<p>Estos errores se controlan al momento de diseñar el experimento (no se elige el valor de <span class="math inline">\(\alpha\)</span> luego de recolectados los datos, sino mucho antes). Dado que, en general, las consecuencias de cometer error tipo I son mucho más graves que las de cometer error tipo II, lo que se suele hacer es prestablecer un valor de <span class="math inline">\(\alpha\)</span> pequeño, y se diseña un experimento calculando el tamaño que debe tener la muestra para un valor de <span class="math inline">\(\beta\)</span> dado, manteniendo el <span class="math inline">\(\alpha\)</span> preestablecido. Más adelante veremos cómo realizar estos cálculos, pero primero veamos unos ejemplos.</p>
+</div>
+<div id="pruebas-unilaterales." class="section level3 hasAnchor" number="12.3.2">
+<h3><span class="header-section-number">12.3.2</span> Pruebas unilaterales.<a href="beta-ptextrechazar-h_0-vert-h_1text-cierta.html#pruebas-unilaterales." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las condiciones de los conjuntos asociados a cada hipótesis pueden ser más precisos, dando lugar a <em>pruebas unilaterales</em>. Por ejemplo:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  H_0: &amp; D \le 0 \\
+  H_1: &amp; D &gt; 0
+\end{aligned}
+\]</span></p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="combinatoria..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="estadística-descriptiva..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="pz-ge-hatz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="otros-ejemplos..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

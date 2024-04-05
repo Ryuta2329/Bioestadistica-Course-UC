@@ -39,7 +39,7 @@ rmd_files:
 - ./content/10-sampling-theory.Rmd
 - ./content/11-estimacion.Rmd
 - ./content/12-hipotesis.Rmd
-- ./content/14-references.Rmd
+- ./content/13-categorical-data.rmd
 rmd_subdir: ["./content", "./latex"]
 output_dir: "./docs"
 lang: es-ES

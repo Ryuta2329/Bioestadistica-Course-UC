@@ -1,0 +1,25 @@
+# Análisis de datos categóricos.
+
+## Elección de una prueba estadística.
+
+
+
+### Pruebas paramétricas y no paramétricas.
+
+Las **pruebas paramétricas** definen claramente la escala de medida de la variable aleatoria, asi como también hacen suposiciones sobre la distribución poblacional y los parámetros de la misma (generalmente, una distribución normal).
+
+Las **pruebas no paramétricas** son aquellas que hacen suposiciones menos restrictivas sobre la escala sobre la cual es posible medir la variable aleatoria, y sobre la distribución poblacional, de la cual "no se asume nada sobre los parámetros".
+
+La elección de la prueba adecuada es aquella que _use mejor la información contenida en la muestra_. 
+Pero el desconocimiento del fenómeno o la distribución subyacente tiene un papel importante en la decisión de peso _al elegir entre información y creencia_.
+
+
+### Elección de la prueba estadistica.
+
+La elección de una prueba no viene determinada solo por la potencia de la misma: 
+
+* La manera como se obtuvo la muestra, 
+* la naturaleza de la población de la que se obtuvo la muestra, 
+* las hipotesis a probar, y 
+* el tipo de medición o escala que se empleó para la variable implicada. 
+

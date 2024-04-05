@@ -26,7 +26,7 @@ ggplot(NULL, aes(x=seq(-3.5, 3.5, by=.01), y=dnorm(seq(-3.5, 3.5, by=.01), 0, 1)
   scale_y_continuous(breaks = NULL) +
   scale_x_continuous(
     breaks = 0,
-    labels=latex2exp::TeX("$\\mu$")) +
+    labels="\u00b5") +
   theme_light(base_size=14) +
   theme(
     axis.text = element_text(size = 20),
@@ -56,7 +56,7 @@ ggplot(NULL, aes(x=seq(-3.5, 3.5, by=.01), y=pnorm(seq(-3.5, 3.5, by=.01), 0, 1)
   scale_x_continuous(
     limits = c(-3.5, 3.5),
     breaks = 1,
-    labels=latex2exp::TeX("$x$")) +
+    labels="x") +
   theme_light(base_size=14) +
   theme(
     axis.line=element_blank(),
@@ -90,7 +90,7 @@ cowplot::plot_grid(
     scale_y_continuous(breaks = NULL) +
     scale_x_continuous(
       breaks = 1.5,
-      labels=latex2exp::TeX("$\\mu = 1{,}5 cm$")) +
+      labels="\u00b5 = 1,5 cm") +
     theme_light(base_size=14) +
     theme(
       axis.text = element_text(size = 20),
@@ -120,7 +120,7 @@ cowplot::plot_grid(
     scale_y_continuous(breaks = NULL) +
     scale_x_continuous(
       breaks = 1.5,
-      labels=latex2exp::TeX("$\\mu = 1{,}5 cm$")) +
+      labels="\u00b5 = 1,5 cm") +
     theme_light(base_size=14) +
     theme(
       axis.text = element_text(size = 20),
